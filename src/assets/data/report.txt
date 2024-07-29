@@ -1,0 +1,3799 @@
+Uganda
+
+Infrastructure Transparency Index
+
+2024 Report
+
+i Infrastructure Transparency Index 2024 Uganda Report
+
+ii INFRASTRUCTURE TRANSPARENCY INDEX
+
+The Infrastructure Transparency Index (ITI) is an instrument developed by CoST—the Infrastructure Transparency Initiative. It provides metrics of the levels of transparency and the quality of processes related to public infrastructure at national or subnational levels. Applied consistently, it can rank performance and monitor changes over time. Collaboratively designed and based on international good practice and lessons learned, its objective is to provide stakeholders with quality information that promotes transparency and prompt improvements in the management of public infrastructure.
+
+Research team:
+
+Mr. Cengkuru Michael Patrick (Open Data Specialist). Evaluation Coordinator. CoST Uganda ENG. Muzoora Derrick Turyamuhaki (Mota Engil Uganda Ltd).
+
+ENG. Mutongole Samuel (Technical Director-Projects for Ardsan Technical Service Ltd).
+
+National coordination:
+
+Odong Geoffrey. Country Manager. CoST Uganda
+
+International coordination:
+
+David Zamora. International Consultant. CoST IS Olive Kabatwairwe-Africa Regional Manager & MEAL Manager CoST IS Evelyn Hernandez. Head of Members and Affiliates Programmes. CoST IS Gilbert Sendugwa-Senior África Regional Manager-CoST IS
+
+Disclaimer This report presents the results of an evaluation to measure transparency in the infrastructure sector to generate information that can be used to help strengthen public institutions. Like other evaluation instruments, its impact will depend on the use to which it is put. It is not a methodology to evaluate corruption, nor an instrument of internal control, and it does not assess perceptions. It does not evaluate public officials or measure the general quality of procuring entities. The evaluations and reports prepared with this methodology do not represent CoST's opinion regarding the administrative work of governments or procuring entities.
+
+i Infrastructure Transparency Index 2024 Uganda Report
+
+This work is licensed under a Creative Commons Attribution 4.0 International License.
+
+June, 2024
+
+ii Infrastructure Transparency Index 2024 Uganda Report
+
+Table of Contents
+
+LIST OF TABLES ................................................................................................................... iv
+
+List of figures ............................................................................................................................ v
+
+Acknowledgement .................................................................................................................... vi
+
+Message from the CoST Uganda Champion ......................................................................... vii
+
+Executive Summary ................................................................................................................. ix
+
+LAYOUT OF THE CHAPTERS ......................................................................................... - 1 -
+
+Chapter 1 | The Infrastructure Transparency Index ............................................................... 2
+
+1.1 About CoST .................................................................................................................... 2
+
+CoST Uganda: ...................................................................................................................... 2
+
+1.1 Concept............................................................................................................................ 3
+
+1.2 Objectives ........................................................................................................................ 4
+
+1.3 Principles ......................................................................................................................... 5
+
+1.4 Structure and Content ................................................................................................... 6
+
+Chapter 2 | Methodology ......................................................................................................... 11
+
+2.1 Evaluation process ....................................................................................................... 11
+
+2.2 Data collection .............................................................................................................. 12
+
+2.3 Procuring entities sample ............................................................................................ 14
+
+2.4 Infrastructure project sample ..................................................................................... 20
+
+2.5 Interaction protocol...................................................................................................... 27
+
+2.6 Challenges and limitations .......................................................................................... 30
+
+Chapter 3 | Results .................................................................................................................. 34
+
+3.1 National ITI score......................................................................................................... 34
+
+3.2. Dimensions score analysis........................................................................................... 36
+
+3.3 Procuring entities ITI score ......................................................................................... 41
+
+3.4 Infrastructure projects scores ..................................................................................... 53
+
+3.5. The performance of PEs in the first 2021 and second ......................................... 55
+
+3.6 Summary and Final Thoughts .................................................................................... 60
+
+Conclusion: ............................................................................................................................. 61
+
+iii Infrastructure Transparency Index 2024 Uganda Report
+
+LIST OF TABLES
+
+Table1: Summary of what is being assessed and the data collection methods Table2: Shows the list of the selected PEs indicating their budget, type, and sector.
+
+Table3: Shows the list of PEs assessed in the first Index.
+
+Table4: Shows the list of projects with their general data, such: as name, budget, sector. Table 5: Interaction protocol used to engage the PEs and the stages of assessment process Table6: Shows the different steps taken to engage the stakeholders Table7: Summary of issues that delayed feedback on survey forms from Procuring Entities Table8: National score comparison between Uganda and Costa Rica Table9: Countries Comparison of Scores by Dimensions Table10: PEs ranking for top 10 positions and scores for dimension 2-4 Table11: PEs budget size with the average score received by each group Table12: Sub-ranking the top three positions for each ITI and dimension 3 Table13: Top 10 Infrastructure projects ranking by position, PE, project with their score. Table14: The performance of PEs in the first 2021 and second index 2024.
+
+iv Infrastructure Transparency Index 2024 Uganda Report
+
+List of figures
+
+Figure 1. ITI hierarchy of ITI Score.
+
+Figure 2: Shows the designations of officers engaged during the evaluation exercise. Figure 3: Shows the general results from the national score and the dimensions.
+
+Figure 4: Shows the performance scores of the sub-variables based on the ranking. Figure 5: Shows the performance of the variables and sub-variables.
+
+Figure 6: Shows the national score for the citizen participation dimension.
+
+Figure 7: Score for information disclosure dimension with variable and sub variables. Figure 8: Shows a summary for the best three entities in the index.
+
+Figure 9: Shows Procuring entities grouped and ranked according to the average score. Figure 10: Shows Entities performance by Quartile average scores.
+
+Figure 11: Average performance of entities by type category, Central or Local government. Figure 12 indicates the average score of performance for each sector category.
+
+Figure 13 shows sub-ranking the top positions for each PE type.
+
+v Infrastructure Transparency Index 2024 Uganda Report
+
+Acknowledgement
+
+Drawing from the experience and learning from the first ITI, developing the inaugural second Infrastructure Transparency Index (ITI) in Uganda has been an exciting experience for the evaluation team. We are highly indebted to the enabling environment provided by the Government of Uganda through the Ministry of Works and Transport for CoST Uganda to contribute actively toward the National Development Plan by strengthening action to ensure delivery of “quality infrastructure to foster stronger economy and better lives for Ugandans”.
+
+CoST Uganda continues to implement the Infrastructure Transparency Index among the CoST global partners. We sincerely appreciate and thank the thirty (30) Procuring and Disclosing Entities (PDEs) who participated in the second ITI, whose fifty-eight (58) projects were evaluated in this second ITI Index.
+
+Special thanks go to the contact persons from the 30 sampled entities engaged directly during this 2nd Index. We greatly acknowledge and appreciate their cooperation in providing the requested information and embracing the Index as a tool to improve systems, processes, and procedures for implementing infrastructure projects that were planned and delivered or are being delivered. In a special way we acknowledge and appreciate the Uganda 2nd ITI team led by the CoST Uganda Manager - Geoffrey Odong, field team coordinated by Michael Cengkuru - Open Data Specialist, the evaluators, Eng. Derrick Muzoora and Eng. Samuel Mutongole.
+
+The success in completing this 2nd Index has been due to the technical support of the CoST International Secretariat with the financial backing from the United Kingdom’s Foreign Commonwealth Development Office (FCDO), without which it could not have been possible. Notably, we acknowledge the support of the CoST International Secretariat staff including Evelyn Hernández – Head of Member and Affiliate Programmes; Ms. Olive Kabatwairwe, Africa Regional Manager and MEAL Manager; Gilbert Sendugwa – Senior Regional Manager for Africa; Mr. John Hawkins, the Programme Director CoST IS), and David Zamora, the CoST ITI expert.
+
+vi Infrastructure Transparency Index 2024 Uganda Report
+
+Message from the CoST Uganda Champion
+
+On 11th April 2024, my Ministry commissioned the second Infrastructure Transparency Index at Golf Course Hotel and appealed to the selected government entities to cooperate and provide the required infrastructure project data to support CoST Uganda in effectively completing the evaluation exercise and producing a report that will mirror our performance.
+
+I am happy to learn that 58 projects from 30 entities have been evaluated in this 2nd Index for which we are launching the report. I particularly congratulate the 30 entities and CoST Uganda on the successful conclusion of the exercise. The evaluation results are based on four key dimensions: enabling environment, capacities and processes, citizen participation, and information disclosure. Whereas there is a slight improvement compared to the first index, the performance still needs to be to the expected standard. Still, as we continue to improve our work based on this kind of empirical evidence, we can score up to 100% in subsequent indices and attain maximum infrastructure transparency.
+
+Uganda's national ITI score increased from 20.8% in 2021 to 32.26% in the 2nd index, indicating progress in promoting infrastructure transparency. Improvements were observed across all dimensions:
+
+1. Enabling environment: from 41.4% (2021) to 43.50% (2024)
+
+2. Capacities and processes: from 13.5% (2021) to 29.78% (2024)
+
+3. Citizen participation: from 13.8% (2021) to 33.65% (2024)
+
+4. Information disclosure: from 18.4% (2021) to 26.81% (2024)
+
+These improvements are encouraging, suggesting that the efforts of CoST Uganda and all stakeholders involved in this process are yielding positive results. Procuring Entities (PEs) appear to be making progress.
+
+The performance of Local Governments in the 2nd Index showed some improvement compared to the 2021 index but remained poor overall. Five out of ten local government entities scored above 15%. In contrast, Central Government entities performed better, with 55% scoring above 25% in disclosure, while 45% scored below 25%.
+
+The Ministry of Works and Transport will continue to provide stewardship to CoST Uganda. In my capacity as the Champion, I congratulate this year’s 2024 index inaugural best three winners KCCA 80.26%), MoWT (60.66%), and Office of the President (55.23%). On the other hand, LGs best three winners are Mpigi DLG (42.29%) followed by Jinja DLG (40.97%) and Kabale DLG (40.27%). Therefore, as we celebrate this performance, we encourage entities to improve on areas where you did not perform well and call upon the other entities to double their efforts in promoting transparency and take over in the subsequent indices.
+
+With the current levels of infrastructure transparency revealed in this second ITI index, I appeal to the respective Government entities, oversight bodies, civil society actors, and the media to take a keen interest in transforming these gaps and strengthening improvement by implementing the recommendations.
+
+vii Infrastructure Transparency Index 2024 Uganda Report
+
+On behalf of the Government, I would like to express our appreciation to CoST International for providing this tool and the financial support to implement it across government institutions. My Ministry will work with the respective entities and stakeholders to address the issues and recommendations raised in this 2nd index and those that still need to be implemented from the first Index.
+
+I thank you all.
+
+For God and My Country.
+
+Hon. GEN. EDWARD KATUMBA WAMALA
+
+Minister of Works and Transport
+
+viii Infrastructure Transparency Index 2024 Uganda Report
+
+Executive Summary
+
+The 2024 Infrastructure Transparency Index (ITI) for Uganda presents a comprehensive assessment of transparency in the country's public infrastructure sector. The ITI, developed by CoST - the Infrastructure Transparency Initiative, evaluates transparency across four key dimensions: enabling environment, capacities and processes, citizen participation, and information disclosure. Each dimension is scored on a scale of 0-100%, with the overall national score being a weighted average of these dimensions.
+
+Findings from the second index revealed that Uganda's national ITI score improved to 32.26% in 2024, up from 20.8% in 2021, indicating progress while highlighting substantial room for improvement.
+
+The Infrastructure Transparency Index (ITI) evaluates transparency across four key dimensions:
+
+1. Enabling Environment (43.50%): Assesses the legal and regulatory framework supporting transparency in the infrastructure sector.
+
+2. Capacities and Processes (29.78%): Evaluates procuring entities' abilities and procedures to implement transparency measures effectively.
+
+3. Citizen Participation (33.65%): Measures opportunities for public engagement and the utilization of disclosed information by citizens.
+
+4. Information Disclosure (26.81%): Examines the actual publication of project-related data throughout the infrastructure project lifecycle.
+
+Each dimension is scored on a scale of 0-100%, with the overall national score being a weighted average of these dimensions. This multifaceted approach provides a comprehensive view of transparency practices in Uganda's infrastructure sector, highlighting both progress and areas needing improvement.
+
+The ITI also measured levels of transparency across 30 entities, revealing that only 3 out of 30 evaluated entities scored above 50%, with Kampala Capital City Authority leading at 80.26%. Across the project lifecycle, the Index revealed a marked decrease in transparency from project identification (64.80%) to implementation stages (Execution contract implementation: 8.82%, Supervision contract implementation: 1.08%).
+
+ix Infrastructure Transparency Index 2024 Uganda Report
+
+Results from sector variations revealed significant differences, with the Ministry of Agriculture, Animal Industry & Fisheries leading at 51.28% (Agriculture Sector) and the Ministry of Trade, Industry and Cooperatives scoring the lowest at 4.99%. (Trade Sector). The most improved entity from first Index is Jinja with Jinja District from 5.76% to 40.97% (+35.21%), a remarkable 611.28% increase.
+
+Through the Index, the results were used to assess compliance and practice with the legal and policy framework for delivering infrastructure projects. The results revealed that, there remains a huge policy practice gap in the sector, while Uganda established a robust regulatory framework, implementation remains a significant challenge. The index also revealed that entities and projects with larger projects tend to achieve a higher transparency score. The results also identified that there are cconsistent patterns across dimensions which indicate that barriers to transparency are systemic rather than isolated. The ITI recommendations include the need for government, through its relevant institutions, to bridgee the implementation gap, enhance digital infrastructure, implement lifecycle transparency, capacity building, and boost citizen engagement.
+
+In conclusion, while Uganda has made progress in infrastructure transparency, significant work remains to create a more open, accountable, and effective infrastructure sector. By addressing the identified gaps and leveraging successful practices can enhance public trust and maximize the impact of infrastructure investments
+
+x LAYOUT OF THE CHAPTERS
+
+1. Chapter One.
+
+This chapter present the background information about the infrastructure transparency index, CoST Uganda, the Objectives of the Index and the expected outcomes from the study.
+
+2. Chapter two.
+
+This chapter discusses the methodology of conducting the Infrastructure Transparency Inex, the Evaluation processes, sampled procuring entities and the sampled infrastructure projects.
+
+3. Chapter three.
+
+This chapter analyse, discusses and interpret the results of the Infrastructure Transparency Index, draws conclusion and suggest recommendations to improve infrastructure transparency and accountability in Uganda based on the study findings.
+
+-1- Infrastructure Transparency Index 2024 Uganda Report
+
+Chapter 1 | The Infrastructure Transparency Index
+
+1.1 About CoST
+
+The Infrastructure Transparency Initiative (CoST) is a global program dedicated to improving transparency and accountability in public infrastructure. Established in 2012, CoST works collaboratively with governments, private sector entities, and civil society to enhance governance and maximise the value of infrastructure investments.
+
+Key Features of CoST:
+
+● Disclosure is the publication of data from infrastructure projects. Procuring entities disclose forty data points at critical stages throughout the project cycle in accordance with the CoST Infrastructure Data Standard (CoST IDS) and increasingly in the Open Contracting for Infrastructure Data Standard (OC4IDS) format.
+
+● Assurance is an independent review that highlights the accuracy and completeness of the disclosed data and turns it into compelling information that helps communicate issues of concern and areas of good practice.
+
+● Multi-stakeholder working brings together government, the private sector, and civil society in a concerted effort to pursue the common goal of improving transparency, accountability, and performance in the preparing for and providing public infrastructure information. This is typically achieved through a multi-stakeholder group where each stakeholder has an equal voice in leading a CoST programme.
+
+● Social accountability refers to efforts made to ensure that the disclosed data and assurance reports are taken up and used by stakeholders – including civil society, the private sector and government oversight bodies – to strengthen existing accountability mechanisms and prompt appropriate corrective action, not only about specific projects but also more broadly in the sector.
+
+CoST Uganda:
+
+CoST Uganda was launched in April 2014 and relaunched in February 2017 by the Ministry of Works and Transport carrying on from Uganda National Roads Authority to scale up the CoST approach at the national level. It has established itself as a key player in promoting infrastructure transparency in the country. Hosted by the Africa Freedom of Information Centre (AFIC), a civil society organisation.
+
+Throughout its existence, CoST Uganda has achieved several significant milestones. A key accomplishment has been the integration of the Open Contracting for Infrastructure Data Standard (OC4IDS) into the Government Procurement Portal, with ongoing efforts to incorporate it into the e-GP system. This integration demonstrates Uganda's commitment to aligning with global best practices in infrastructure transparency.
+
+2 Infrastructure Transparency Index 2024 Uganda Report
+
+CoST Uganda's work extends beyond project assessment. The CoST Uganda has also made substantial contributions to project oversight and analysis. Published five Assurance reports covering 59 projects across ten high-spend entities, providing valuable insights into the state of infrastructure projects in the country. Additionally, it launched the first Infrastructure Transparency Index (ITI) in 2021, evaluating 60 projects from 30 entities and setting a benchmark for future assessments.
+
+CoST Uganda's journey since 2014 demonstrates a steady progression in institutionalising transparency practices. Integrating international open data standards into national systems indicates a commitment to aligning with global best practices. However, the need for a relaunch in 2017 suggested the need to address initial challenges in implementation of the CoST approach, highlighting the complex nature of establishing transparency initiatives in the infrastructure sector. Despite these challenges, CoST Uganda's consistent efforts and achievements underscore its crucial role in advancing infrastructure transparency.
+
+1.1 Concept
+
+1.1 Concept of the Infrastructure Transparency Index (ITI)
+
+The Infrastructure Transparency Index (ITI) is a comprehensive tool developed by CoST (the Infrastructure Transparency Initiative) to evaluate and monitor transparency levels in public infrastructure projects. It goes beyond traditional access to information metrics, offering a holistic approach to assessing transparency, participation, and accountability in the sector.
+
+Key Features of the ITI:
+
+1. Multi-dimensional Approach: The ITI evaluates four key dimensions: a. Enabling environment b. Capacities and processes c. Citizen participation d. Information disclosure
+
+2. Broad Interpretation of Transparency: The ITI considers access to information and associated enablers and capacities, including citizen participation, that create public value.
+
+3. Scoring Mechanism: The final ITI score is derived from a weighted sum of the four dimensions, allowing for a nuanced assessment of overall transparency.
+
+4. Applicability: While designed for CoST members, the ITI can be used by any interested parties to evaluate and strengthen their institutions.
+
+5. Evidence-Based Reform: By providing data at each stage of the infrastructure project cycle, the ITI helps drive reforms that reduce mismanagement, inefficiency, and corruption.
+
+3 Infrastructure Transparency Index 2024 Uganda Report
+
+Methodology and Design:
+
+● The ITI instrument is based on international good practices and lessons learned, designed collaboratively to ensure relevance and effectiveness.
+
+● It provides a methodology for calculating scores for individual procuring entities, which can be aggregated for national or sub-national assessments.
+
+● The scores reflect the enabling conditions for transparency and the practical application of transparency measures in recent infrastructure projects.
+
+Benefits of the ITI:
+
+● Helps stakeholders understand strengths and weaknesses in transparency mechanisms within the sector.
+
+● Facilitates monitoring of transparency levels over time.
+
+● Contributes to cost savings by identifying inefficiencies and promoting better practices.
+
+● Supports the delivery of higher-quality infrastructure by improving sector performance.
+
+The ITI's multi-dimensional approach recognises that adequate transparency is about information availability and the systems, capacities, and engagement mechanisms that support it. This holistic view allows for a more nuanced understanding of transparency challenges and opportunities in the infrastructure sector, paving the way for targeted improvements and reforms.
+
+1.2 Objectives
+
+The aim of the ITI instrument, as set out in this manual, is to enable the level of transparency and accountability in public infrastructure to be assessed and monitored over time. The objectives are as follows:
+
+● To provide a measure of infrastructure transparency and the capacity to improve transparency among procuring entities.
+
+● to track and encourage progress and facilitate peer learning while helping to hold procuring entities accountable.
+
+● Building on existing data standards such as the CoST IDS and the OC4IDS to raise awareness of transparency at the national and international levels.
+
+● To allow consistent country comparisons at the international level to facilitate peer learning and the identification of common international strengths and weaknesses.
+
+The tool calculates an ITI score (whether national or subnational) on a scale of zero to one hundred (0-100) for a country’s national or subnational public infrastructure and individual
+
+4 Infrastructure Transparency Index 2024 Uganda Report
+
+Procuring Entity (PE) ITI scores for associated PEs. The scores are based on many unique indicators. These are independently evaluated to assess PE practices and the conditions that give rise to transparency and accountability in the local infrastructure sector.
+
+The score is then published as an ITI index that ranks procuring entities. The resulting highlighting and identification of shortcomings in existing practice can then inform the development of an action plan that will help raise transparency and accountability standards within the country or sector and improve ongoing infrastructure management practices.
+
+The ITI results provide information that can guide public leaders, international organisations, procuring entities, and others interested in strengthening infrastructure-related transparency and accountability. Follow-up ITI assessments should occur periodically and consistently while allowing time for reforms to be introduced and take effect between evaluations.
+
+1.3 Principles
+
+1.3 Principles of the Infrastructure Transparency Index (ITI)
+
+The Infrastructure Transparency Index (ITI) is built on key principles guiding its design, implementation, and evolution. These principles ensure the ITI remains a relevant, reliable, and impactful tool for assessing and improving transparency in public infrastructure projects.
+
+Core Principles:
+
+1. Relevance: The ITI focuses on critical aspects of infrastructure transparency, including legal frameworks, institutional capacities, and information disclosure practices. This ensures the index provides meaningful insights that can drive real project management and delivery improvements.
+
+2. Comprehensiveness: By employing a wide range of indicators, the ITI offers a thorough assessment of the sector while allowing for detailed evaluation of individual procuring entities. This multi-layered approach provides a nuanced understanding of transparency at various levels.
+
+3. Simplicity and Trustworthiness: The ITI uses straightforward data collection and analysis methods. This simplicity ensures diverse stakeholders, from government officials to civil society organisations, can easily understand and trust the results.
+
+4. Objectivity and Replicability: The methodology minimises subjectivity and ensures consistent results when replicated. This objectivity is crucial for maintaining the index's credibility over time and across different contexts.
+
+5. Impartiality: An independent third party with relevant expertise oversees the implementation of the ITI, ensuring unbiased assessment and reporting.
+
+6. Periodicity: Regular evaluations, preferably conducted annually, allow for tracking progress and improvements in transparency over time. This periodic nature encourages continuous enhancement of transparency practices.
+
+5 Infrastructure Transparency Index 2024 Uganda Report
+
+7. Accuracy and Specificity: The ITI relies on primary sources of information and avoids data reuse across indicators. This approach ensures that each aspect of transparency is assessed independently and accurately.
+
+8. Adaptability: The ITI is designed to evolve, accommodating an increasing number of assessed entities and undergoing periodic reviews to maintain its relevance and effectiveness.
+
+9. Constructiveness: By facilitating comparisons and monitoring changes over time, the ITI promotes stakeholder collaboration and continuous improvement in transparency practices.
+
+Expected Outcomes:
+
+Through these principles, the ITI aims to:
+
+1. Provide a comprehensive measure of infrastructure transparency across procuring entities.
+
+2. Enable tracking of progress and facilitate learning between entities and countries.
+
+3. Raise awareness about the importance of transparency in infrastructure projects.
+
+4. Allow for meaningful comparisons to identify common challenges and best practices.
+
+The strength of the ITI lies in its balanced approach to measurement and improvement. A standardised yet adaptable tool enables both internal progress tracking and international benchmarking. This dual focus is a powerful motivator for enhancing transparency practices across the infrastructure sector.
+
+However, it's important to note that the ultimate impact of the ITI depends on how decisionmakers use its results. The index provides evidence and insights, but it's up to stakeholders to translate these findings into concrete actions and reforms. As such, the ITI catalyses change, offering a clear picture of where improvements are needed and providing a roadmap for enhancing transparency in public infrastructure projects.
+
+1.4 Structure and Content
+
+The Infrastructure Transparency Index (ITI) is built on a comprehensive framework designed to capture the multifaceted nature of transparency in public infrastructure projects. Its structure allows for detailed analysis and high-level insights, providing a holistic view of transparency practices.
+
+Core Dimensions:
+
+The ITI is organised around four key dimensions:
+
+1. Enabling Environment: This dimension examines the national or sub-national conditions that support transparency, focusing on regulatory frameworks and digital
+
+6 Infrastructure Transparency Index 2024 Uganda Report
+
+tools. It provides a snapshot of the overall climate for transparency in the infrastructure sector.
+
+2. Capacities and Processes: Here, the ITI evaluates the internal workings of procuring entities, assessing their procedures and capabilities for managing and disclosing information.
+
+3. Citizen Participation: This dimension measures the opportunities for public engagement and how effectively citizens can use the disclosed information. It recognises the crucial role of public involvement in ensuring transparency.
+
+4. Information Disclosure: The final dimension assesses the quantity and quality of project data disclosed by procuring entities, measuring the practical output of transparency efforts.
+
+Each of the four dimensions is divided into a series of components to allow for their comprehensive evaluation. The result is a four-level hierarchy: the dimensions are determined by variables, which are, in turn, shaped by sub-variables, which are derived from indicators (see Figure 1).
+
+Figure 1. ITI hierarchy of ITI Score.
+
+Figure 1: ITI Hierarchy
+
+All the indicators are individually evaluated and scored. A set of weighted indicator scores then gives a sub-variable score; a set of weighted sub-variable scores gives a variable score; and a set of weighted variable scores provides a dimension with the score. A national or subnational ITI score is finally obtained from the weighted sum of the four-dimension scores.
+
+Dimensions Dimension 1: Enabling environment Dimension 1 assesses national or sub-national conditions enabling transparency for the infrastructure sector considering the regulatory framework and centralised digital tools. It has
+
+7 Infrastructure Transparency Index 2024 Uganda Report
+
+one variable, three sub-variables and 12 indicators. The complete list of indicators is provided in Annex 1. The variable and sub-variables of the dimension are:
+
+● Legal framework and digital tools ○ Regulatory framework for public access to information ○ Transparency standards in the public infrastructure sector ○ National digital information tools.
+
+All indicators of this dimension apply at the national or sub-national level and are measured once at the country or local level, irrespective of the number of procuring entities selected for evaluation. Its results provide feedback to strengthen the national or sub-national environment, not processes within institutions. The score for the dimension is obtained through the weighted sum of the underlying indicators.
+
+The indicators in this dimension are evaluated using information from online sources such as websites containing national regulatory frameworks and information linked to the sector, particularly those focused on transparency, public procurement, public infrastructure and public finances.
+
+Dimension 2: Capacities and processes
+
+Dimension 2 assesses the soundness of procuring entities’ procedures and capacities to disclose data and information. It has two variables, five sub-variables and 25 indicators. The complete list of indicators is provided in Annex 1. The variables and sub-variables of the dimension are:
+
+● Institutional capacities ○ Basic knowledge ○ Digital capacities
+
+● Institutional processes ○ Procedures to Disclose Information ○ Enablers and barriers to the disclosure of information ○ Control over infrastructure projects disclosure.
+
+All the indicators of this dimension evaluate procuring entities, not national or subnational conditions. The indicators are assessed once in the selected procuring entities. The dimension results offer feedback to strengthen capacities and processes at the PE level. The dimension score is obtained through the weighted sums of the underlying indicators for each PE.
+
+The data required to evaluate the indicators from this dimension are captured by a survey that must be undertaken by a selected government officer at each procuring entity through either self-assessment or interview.
+
+8 Infrastructure Transparency Index 2024 Uganda Report
+
+Dimension 3: Citizen participation
+
+Dimension 3 evaluates the opportunities provided by PEs for citizen participation and how citizens can use the disclosed public information. It has one variable, two sub-variables and 12 indicators. The complete list of indicators is provided in Annex 1. The variable and subvariables of the dimension are:
+
+● Participation practices ○ Participation opportunities ○ Use of information by citizens.
+
+All the indicators of this dimension evaluate PEs. The indicators are evaluated once for each of the selected PEs. The results from this dimension offer feedback to strengthen a PEs citizen’s participation practices. The score for this dimension is obtained through the weighted sums of the underlying indicators for each PE.
+
+The data required to evaluate the indicators from this dimension are captured by a survey (the same as for dimension 2) that a selected government officer at each PE must undertake through either self-assessment or interview.
+
+Dimension 4: Information disclosure
+
+Dimension 4 assesses the amount of project data and information disclosed by the PEs according to the CoST Infrastructure Data Standard or the Open Contracting for Infrastructure Data Standard. It has one variable, six sub-variables and 44 indicators. The complete list of indicators is provided in Annex 1. The variable and sub-variables of the dimension are:
+
+● Disclosure practices ○ Project identification ○ Project preparation ○ Construction contract procurement ○ Supervision contract procurement ○ Construction contract implementation ○ Supervision contract implementation
+
+All indicators of this dimension evaluate the infrastructure projects developed by each PE. The dimension results offer feedback to the selected PEs to strengthen their information disclosure. The overall dimension score is obtained by averaging the weighted sum of the underlying indicators for each project.
+
+The indices in this dimension are evaluated using information from online sources, such as websites containing data on public infrastructure projects and public procurement and other websites showing information linked to these evaluation objects.
+
+9 Infrastructure Transparency Index 2024 Uganda Report
+
+Weights
+
+The Infrastructure Transparency Index (ITI) draws on four building blocks known as dimensions, namely:
+
+1. Enabling environment (weight: 0.20)
+
+2. Capacities and processes (weight: 0.25)
+
+3. Citizen participation (weight: 0.20)
+
+4. Information disclosure (weight: 0.35)
+
+The weights assigned to each dimension reflect their relative importance in contributing to the overall Infrastructure Transparency Index score. These weights were determined through a collaborative process involving infrastructure transparency and governance experts.
+
+The Enabling Environment dimension, with a weight of 0.20, assesses the national or subnational context and legal framework that support transparency in the infrastructure sector. This dimension is crucial as it sets the foundation for transparency practices at the institutional level.
+
+Capacities and Processes, weighted at 0.25, evaluates the internal capabilities and procedures of procuring entities to disclose information. This dimension is given a slightly higher weight compared to the Enabling Environment, as it directly assesses the ability of entities to implement transparency measures.
+
+Citizen Participation, with a weight of 0.20, measures the opportunities provided by procuring entities for public engagement and the use of disclosed information by citizens. This dimension is considered equally important as the Enabling Environment in promoting transparency and accountability.
+
+Finally, the Information Disclosure dimension, with the highest weight of 0.35, assesses the actual disclosure of project data and information by procuring entities. This dimension is given the highest weight because it represents the tangible output of transparency efforts and is the most direct measure of transparency in practice.
+
+The final ITI score for each procuring entity is calculated using a weighted sum of the scores obtained in each dimension. This approach ensures that the dimensions with higher weights, such as Information Disclosure and Capacities and Processes, have a greater impact on the overall ITI score, reflecting their importance in achieving infrastructure transparency.
+
+10 Infrastructure Transparency Index 2024 Uganda Report
+
+Chapter 2 | Methodology
+
+2.1 Evaluation process
+
+The Infrastructure Transparency Index (ITI) employs a rigorous and tailored evaluation methodology for each of its four dimensions, building upon the framework outlined in Chapter 1. This section focuses on the specific processes and quality control measures implemented during the evaluation.
+
+Quality Assurance Across Dimensions
+
+While each dimension has its unique assessment approach, several overarching quality assurance principles are applied throughout the evaluation process:
+
+1. Multiple Evaluator System: At least two independent evaluators assess each indicator for dimensions relying on desktop research (Enabling Environment and Information Disclosure). This system minimises individual bias and ensures consistency.
+
+2. Conflict Resolution: In cases of disagreement between evaluators, a third evaluator is brought in to resolve discrepancies, ensuring a fair and balanced assessment.
+
+3. Evidence-Based Evaluation: Across all dimensions, evaluators are required to provide evidence supporting their assessments, enhancing the credibility and traceability of the results.
+
+4. Contextual Adaptation: While maintaining a standardised core, the evaluation process allows for some flexibility to accommodate local contexts and data availability, particularly in the Citizen Participation dimension.
+
+Unique Aspects of Dimension 2 and 3 Evaluations
+
+The survey-based approach for Capacities and Processes and Citizen Participation dimensions incorporates additional quality control measures:
+
+1. Official Endorsement: The procuring entity officially appoints and endorses the responding officer, ensuring institutional backing for the provided information.
+
+2. Expertise Requirement: The designated officer must have comprehensive knowledge of the entity's transparency practices and infrastructure projects.
+
+3. Evaluation Team Review: The evaluation team critically reviews survey responses, cross-referencing with available evidence and potentially adjusting scores to ensure accuracy and consistency across entities.
+
+Balancing Standardization and Flexibility
+
+The ITI evaluation process strikes a balance between maintaining a standardized methodology for comparability and allowing enough flexibility to capture the nuances of different institutional and national contexts. This approach enables the ITI to provide a comprehensive and credible assessment of infrastructure transparency while remaining adaptable to diverse global settings.
+
+11 Infrastructure Transparency Index 2024 Uganda Report
+
+This multifaceted approach made the ITI a powerful tool for identifying strengths and weaknesses in transparency practices, guiding policy reforms, and ultimately contributing to more accountable and effective infrastructure development as summarized in the table below.
+
+Table 1. Summary of what is being assessed and the data collection methods
+
+2.2 Data collection
+
+The Infrastructure Transparency Index (ITI) employs a comprehensive data collection strategy, combining rigorous desktop research with targeted surveys of procuring entities. This approach ensures a thorough and multifaceted assessment of transparency in public infrastructure projects.
+
+Desktop Research
+
+For Dimensions 1 (Enabling Environment) and 4 (Information Disclosure), evaluators primarily relied on digital sources, following a hierarchical approach to data collection:
+
+1. Government Procurement Portal (GPP): The primary source for procurement-related information.
+
+2. Electronic Government Procurement (eGP) system: Consulted when data was not available on the GPP.
+
+3. Individual Procuring Entity (PE) websites: Used to supplement and verify information from centralized portals.
+
+4. Multi-lateral websites. This were used to validate and verify information as a means of obtaining accurate data.
+
+Additional data was gathered from various government and regulatory body websites to provide context and cross-verification.
+
+This reliance on official online sources ensures data credibility and reflects the growing importance of digital infrastructure in transparency initiatives. However, it may potentially overlook transparency efforts not captured in digital platforms, highlighting the need for comprehensive digital reporting systems.
+
+12 Infrastructure Transparency Index 2024 Uganda Report
+
+Procuring entity survey
+
+For Dimensions 2 (Capacities and Processes) and 3 (Citizen Participation), data was collected
+
+through a mixed-method approach:
+
+1. Self-assessment forms: Distributed to designated officers in each procuring entity.
+
+2. Structured interviews: Conducted to clarify responses and gather additional insights.
+
+This combination of methods balances the need for standardized data collection with the
+
+benefits of direct engagement and contextual understanding. The flexibility in survey
+
+methodology allows for adaptation to varying entity capacities and contexts, enhancing the
+
+comprehensiveness of the data collected.
+
+Figure 2: Shows the designations of officers that were engaged during the evaluation exercise.
+
+Various entities appointed different officials as contact persons for the second ITI evaluation. In some cases, Accounting Officers personally completed the survey to ensure accuracy of information shared with the evaluators.
+
+Data Collection Period
+
+The data collection process consisted of two main components:
+
+1. Procuring Entity Survey: April 15th to April 30th, 2024, Selected entities completed self-assessment forms on their transparency practices, capacities, processes, and citizen engagement efforts.
+
+2. Infrastructure Project Evaluation: May 1st to May 28th, 2024. The evaluation team assessed sampled infrastructure projects based on publicly available information.
+
+To accommodate varying response times from entities and ensure comprehensive data collection, the evaluation team extended the original deadline. This flexibility resulted in a higher number of completed survey forms and a more robust dataset for analysis.
+
+The dual approach of entity surveys and project evaluations provided a comprehensive view of infrastructure transparency in Uganda, balancing self-reported institutional practices with objective assessments of public project information.
+
+13 Infrastructure Transparency Index 2024 Uganda Report
+
+2.3 Procuring entities sample
+
+The selection of Procuring Entities (PEs) for the ITI evaluation aimed to ensure a representative and comprehensive sample. The process utilized three key disclosure platforms: the Government Procurement Portal (GPP), the Electronic Government Procurement system, and individual PE websites. Additionally, information from multilateral financing banks was consulted.
+
+Selection Process:
+
+1. Initial Identification: An initial pool of 42 PEs across 12 sectors was identified based on their high budget allocations for infrastructure projects.
+
+2. Selection Criteria:
+
+o Budget Allocation: PEs with the highest allocations were prioritized.
+
+o Sector Representation: The sample aimed to cover diverse sectors including transport, health, education, water, and energy.
+
+3. Data Used:
+
+o Procurement plans and reports from the GPP and e-GP o Budget allocation and expenditure information o Sector-specific data
+
+Final Sample:
+
+The final sample consisted of 30 PEs, collectively accounting for 73% of Uganda's infrastructure budget during the evaluation period. This diverse sample provides a comprehensive view of transparency practices across different types of projects and sectors.
+
+By employing this systematic, data-driven approach to PE selection, the ITI evaluation team established a strong foundation for assessing infrastructure transparency in Uganda. The combination of high budget coverage and sector diversity enhances the reliability and usefulness of the ITI findings for driving improvements across the nation's infrastructure sector.
+
+Data Used for Selection:
+
+The selection process relied on a variety of data points:
+
+1. Procurement Plans and Reports: Detailed plans and reports from the GPP and eGP
+
+provided insights into the scale and scope of each PE's projects.
+
+2. Budget Data: Information on budget allocations and expenditures helped identify
+
+high-impact PEs.
+
+3. Sector Data: Sector-specific information ensured a balanced representation across
+
+different areas of infrastructure development.
+
+14 Infrastructure Transparency Index 2024 Uganda Report
+
+Final Sample and Coverage:
+
+The final sample consisted of 30 PEs, which collectively accounted for 80% of the selected PEs infrastructure budget during the evaluation period. This high coverage ensures that the ITI results are representative of the overall state of infrastructure transparency in the country.
+
+Moreover, the diversity of sectors represented in the sample allows for insights into transparency practices across different types of projects, from road construction to healthcare facility upgrades.
+
+By employing a systematic, data-driven approach to PE selection, the ITI evaluation team has laid a strong foundation for a comprehensive and meaningful assessment of infrastructure transparency in Uganda. The combination of high budget coverage and sector diversity in the sample enhances the reliability and usefulness of the ITI findings for driving improvements in transparency practices across the nation's infrastructure sector.
+
+Table 2: Shows the list of the selected PEs indicating their general data, such as: budget, type, and sector.
+
+List of PEs
+
+Atomic Energy Council
+
+Atomic Energy Council
+
+Bushenyi Government
+
+District
+
+Bushenyi Government
+
+District
+
+Jinja District Local Government
+
+Estimated Amount
+
+Data published
+
+Data published
+
+UGX million
+
+515
+
+not
+
+not
+
+Type
+
+Central Government
+
+Central Government
+
+Local Government
+
+2.1 Local Government
+
+not
+
+Local Government
+
+not
+
+Local Government
+
+Sector
+
+Energy
+
+Energy
+
+Local
+
+Local
+
+Local Government
+
+UGX billion
+
+Data published
+
+Data published
+
+Local Government
+
+Local Government
+
+Jinja District Local Government
+
+Local Government
+
+15 Infrastructure Transparency Index 2024 Uganda Report
+
+Kabale District Local Government
+
+Kampala Capital City Authority
+
+Kampala Capital City Authority
+
+Makerere University
+
+Makerere University
+
+Ministry of Agriculture, Industry & Fisheries
+
+Animal
+
+Ministry of Agriculture, Industry & Fisheries
+
+Animal
+
+Ministry of Education and Sports
+
+Ministry of Education and Sports
+
+Mpigi District Local Government
+
+Mpigi District Local Government
+
+Mukono Government
+
+District
+
+Local
+
+Data published
+
+not
+
+Local Government
+
+183.7 Central Government
+
+$ 288 Million
+
+Central Government
+
+$ Million
+
+Data published
+
+not
+
+Education
+
+Data published
+
+not
+
+Education
+
+UGX billion
+
+13.20 Agriculture
+
+USD Million
+
+12.6 Agriculture
+
+Data published
+
+not
+
+Education
+
+Data published
+
+not
+
+Education
+
+Data published
+
+not
+
+Local Government
+
+Data published
+
+not
+
+Local Government
+
+UGX million
+
+150
+
+Local Government
+
+Local Government
+
+Agency
+
+Agency
+
+Department
+
+Department
+
+Ministry
+
+Ministry
+
+Ministry
+
+Ministry
+
+Local Government
+
+Local Government
+
+Local Government
+
+16 Infrastructure Transparency Index 2024 Uganda Report
+
+Mukono Government
+
+District
+
+Local
+
+UGX billion
+
+Data published
+
+1.4 Local Government
+
+not
+
+Local Government
+
+UX 95 million
+
+Local Government
+
+Data published
+
+not
+
+Central Government
+
+Data published
+
+not
+
+Local Government
+
+UGX 496.497 million
+
+Local Government
+
+Data published
+
+not
+
+Central Government
+
+Data published
+
+not
+
+Central Government
+
+$ Million
+
+19.39 Central Government
+
+Data published
+
+not
+
+central Government
+
+$34.1 million
+
+Central Government
+
+30.7 million US dollars AfDB, 3.4 million US dollars GOU
+
+Central Government
+
+Local Government
+
+Nebbi District Local Government
+
+Nebbi District Local Government
+
+Office of the President
+
+Soroti District Local Government
+
+Soroti District Local Government
+
+Uganda Company
+
+Electricity
+
+Distribution
+
+Uganda Company
+
+Electricity
+
+Distribution
+
+Uganda Company
+
+Electricity
+
+Generation
+
+Uganda Company
+
+Electricity
+
+Generation
+
+Ministry of Health
+
+Ministry of Health
+
+Local Government
+
+Local Government
+
+Department
+
+Local Government
+
+Local Government
+
+Energy
+
+Energy
+
+Energy
+
+Energy
+
+Ministry
+
+Ministry
+
+17 Infrastructure Transparency Index 2024 Uganda Report
+
+National Water and Sewerage Corporation (NWSC)
+
+National Water and Sewerage Corporation (NWSC)
+
+Ministry of Works and Transport (MoWT)
+
+Ministry of Works and Transport (MoWT)
+
+Uganda (URC)
+
+Railways
+
+Corporation
+
+Uganda (URC)
+
+Railways
+
+Corporation
+
+Mulago Hospital
+
+National
+
+Referral
+
+Mulago Hospital
+
+National
+
+Referral
+
+Ministry of Trade, Industry and Cooperatives
+
+Ministry of Trade, Industry and Cooperatives
+
+Ministry of Environment
+
+Water
+
+and
+
+Ministry of Environment
+
+Water
+
+and
+
+Uganda Civil Aviation Authority
+
+Uganda Civil Aviation Authority
+
+Euros 84 million
+
+126 million Euros (approx. UGX 520 billion)
+
+USD 479,172,020.00 UGX 8,397,444,464.11
+
++
+
+Euro 67,394,566.56
+
+200 billion
+
+€330 (approx. trillion)
+
+million UGX 1.3
+
+U.A 56,000,000
+
+34.1 million dollar
+
+US
+
+UGX 400 billion
+
+UGX 600 million
+
+USD 134.9 million
+
+USD 280 million
+
+USD 200 million
+
+USD 200 million
+
+Water
+
+Water
+
+Works Transport
+
+Works Transport
+
+Works Transport
+
+Works Transport
+
+Health
+
+Health
+
+Trade
+
+Trade
+
+Water
+
+Water
+
+Works Transport
+
+Works Transport
+
+Agency
+
+Agency
+
+and
+
+and
+
+and
+
+and
+
+and
+
+and
+
+Ministry
+
+Ministry
+
+Agency
+
+Agency
+
+Department
+
+Department
+
+Ministry
+
+Ministry
+
+Ministry
+
+Ministry
+
+Agency
+
+Agency
+
+18 Infrastructure Transparency Index 2024 Uganda Report
+
+Uganda Road fund
+
+Uganda Road fund
+
+Ministry of Local Government
+
+Ministry of Local Government
+
+National Social Security Fund
+
+National Social Security Fund
+
+Ntungamo Government
+
+District
+
+Local
+
+Ntungamo Government
+
+District
+
+Local
+
+Pakwach Government
+
+District
+
+Local
+
+Pakwach Government
+
+District
+
+Local
+
+Kamuli Government
+
+District
+
+Local
+
+Kamuli District Local
+
+Funds released for district and urban roads.
+
+$71.5 Million
+
+$175 Million
+
+Funds released for district and urban roads
+
+Not specified
+
+USD 85 Million
+
+UGX 66 billion
+
+UGX 2.1 billion
+
+UGX 3 billion
+
+Not specified
+
+UGX 29.2 billion
+
+UGX 53 billion
+
+Works Transport
+
+Works Transport
+
+Central Government
+
+Central Government
+
+Central Government
+
+Central Government
+
+and
+
+and
+
+Agency
+
+Agency
+
+Ministry
+
+Ministry
+
+Agency
+
+Agency
+
+Local Government
+
+Local Government
+
+Local Government
+
+Local Government
+
+Local Government
+
+Local Government
+
+Local Government
+
+Local Government
+
+Local Government
+
+Local Government
+
+Local Government
+
+Local Government
+
+19 Infrastructure Transparency Index 2024 Uganda Report
+
+Table 3: shows the list of PEs assessed in the first Index.
+
+PE Jinja DLG MWE MoES NWSC Nebbi DLG Office of the President Makerere KCCA UEDCL NSSF
+
+2021
+
+5.76
+
+8.44
+
+9.18
+
+20.38
+
+7.96
+
+31.75
+
+4.08
+
+62.73
+
+9.16
+
+33.74
+
+2024
+
+40.97
+
+22.28
+
+22.16
+
+48.86
+
+16.03
+
+51.68
+
+6.34
+
+80.26
+
+4.12
+
+4.9
+
+The table above shows the procuring entities that were assessed in the first and the second Index
+
+2.4 Infrastructure project sample
+
+The selection of infrastructure projects for the second ITI evaluation in Uganda aimed to provide a representative and comprehensive view of transparency practices across the 30 selected procuring entities (PEs). The process involved a systematic approach to ensure the inclusion of projects with varying characteristics, such as budget size, type, completion status, and geographical location. Ten (10) infrastructure entities from first Index were included in the second Index to ascertain progress being made toward disclosure best practices. Their comparison is done at the end of this report. New infrastructure projects were assessed in these ten PEs included in the second ITI Index from the first Index.
+
+Initial Identification:
+
+The evaluation team began by extracting a pool of 447 infrastructure projects from the Government Procurement Portal (GPP) for the period under review (2019-2024). Additionally, each PE provided a list of their active and recently completed projects through self-assessment forms and interviews.
+
+Selection Criteria:
+
+From this initial pool, two projects were selected for each PE based on the following criteria:
+
+20 Infrastructure Transparency Index 2024 Uganda Report
+
+1. Budget Size: To capture a range of financial magnitudes, the sample included both small and large-scale projects. For PEs with only one high-value project, that project was automatically selected. For PEs with multiple projects, the second project was randomly chosen from the remaining pool.
+
+2. Project Type: The sample aimed to cover a diverse array of project types across sectors such as transport, health, education, energy, water, and sanitation. This ensured a broad representation of different infrastructure domains.
+
+3. Completion Status: Both ongoing and recently completed projects were included to assess transparency practices throughout the project lifecycle.
+
+4. Geographical Coverage: Projects were selected from various regions within Uganda to account for potential regional variations in transparency and project management.
+
+5. Randomization: For PEs without two high-value projects, the second project was randomly selected from the remaining pool. If a PE had no high-value projects, another entity from the same sector was chosen to maintain sectoral representation.
+
+Data Used for Selection:
+
+The selection process drew upon multiple data sources:
+
+1. Self-Assessment Forms and Interviews: These provided detailed project information, including descriptions, budgets, timelines, and challenges.
+
+2. Government Procurement Portal (GPP): The GPP offered comprehensive data on procurement plans, tender notices, contract awards, and project implementation status.
+
+3. Electronic Government Procurement (eGP) System: This system provided insights into procurement processes, transparency compliance, and financial management.
+
+4. PE Websites: Additional project details, progress reports, and performance assessments were obtained from individual PE websites.
+
+Time Frame and Coverage:
+
+The evaluation considered projects initiated and completed between 2019 and 2024. This fiveyear window captured a period of significant infrastructure development in Uganda and allowed for the assessment of both older and more recent projects, providing a comprehensive view of how transparency practices have evolved over time.
+
+The final sample consisted of 58 projects from 30 PEs, with two entities having only one project each and there were no other infrastructure projects within the sub sector and methodology do not allow picking from other sector. While the original target was 60 projects, this slight deviation does not significantly impact the representativeness of the sample, as it still covers a substantial portion of the PEs' project portfolios.
+
+21 Infrastructure Transparency Index 2024 Uganda Report
+
+It is important to note that while this sampling approach provides a diverse range of projects, it may not be fully representative of all infrastructure projects in Uganda during the period, however, it does provide a global measure for transparency in the delivery of public infrastructure projects in the country. However, the inclusion of both ongoing and completed projects allows for assessment across different project stages, which is crucial given the observed decline in transparency throughout the project lifecycle.
+
+By employing a rigorous, multi-criteria selection process and leveraging various data sources, the ITI evaluation has compiled a robust and representative sample of infrastructure projects. This sample forms the foundation for a comprehensive assessment of transparency practices across Uganda's infrastructure sector, enabling the identification of strengths, weaknesses, and areas for improvement.
+
+Table 4: Shows the list of projects with their general data, such: as name, budget, sector.
+
+S/ N
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+Projects
+
+Disposal of Smoke Detectors in Uganda
+
+The Centre for Nuclear Science and Technology (CNST)
+
+Rehabilitation S.S.S-Bitoomba Road
+
+of Kyamuhunga Trading Centre
+
+Renovation of Bushenyi District Administration Block
+
+Commissioned Kakira TC
+
+water source in
+
+Maintenance of District and Community access roads 726km
+
+Construction Market
+
+of
+
+Kabale
+
+District
+
+EstimatedSector Amount
+
+Atomic Energy Council
+
+Atomic Energy Council
+
+Bushenyi DLG
+
+Bushenyi DLG
+
+Jinja DLG
+
+Jinja DLG
+
+Kabale DLG
+
+Data published
+
+Data published
+
+UGX million
+
+UGX billion
+
+Data published
+
+Data published
+
+Data published
+
+not
+
+not
+
+515
+
+Energy
+
+Energy
+
+Local Government
+
+2.1 Local Government
+
+not
+
+not
+
+not
+
+Local Government
+
+Local Government
+
+Local Government
+
+22 Infrastructure Transparency Index 2024 Uganda Report
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+14
+
+15
+
+16
+
+17
+
+18
+
+19
+
+KCCA
+
+KCCA
+
+Makerere University
+
+Makerere University
+
+MAAIF
+
+MAAIF
+
+MoES
+
+MoES
+
+Mpigi DLG
+
+Mpigi DLG
+
+Mukono DLG
+
+Mukono DLG
+
+Kampala Institutional and Infrastructure Development Projects (KIIDP)
+
+Kampala City Roads Rehabilitation Project (KCRRP) Component 1: Civil Works
+
+Construction Business Hub
+
+of
+
+Makerere
+
+Reconstruction Building
+
+of
+
+the
+
+Main
+
+Rehabilitation of Farm access road chokes under the Agriculture Value chain Development Project. (AVDP)
+
+South South Cooperation Project Phase III
+
+Uganda Secondary Education Expansion Project (USEEP)
+
+Uganda Skills Project (USDP)
+
+Development
+
+Mechanized routine maintenance done on 3kms Luwunga Busagazi Road
+
+Routine mechanized maintenance of Kayabwe-Kinyika-BukasaMuyanga Road (16.5km)
+
+5 -5 Stance latrines constructed at Kyajja PS,Kazinga UMEA,Kayanja Community PS, Kyabakadde RC and Kayini Kamwokya PS
+
+1 Piped water supply constructed at Mpatta SC
+
+system
+
+$ Million
+
+183.7 Central Government
+
+$ 288 Million
+
+Data published
+
+not
+
+Data published
+
+not
+
+Central Government
+
+Education
+
+Education
+
+UGX billion
+
+USD Million
+
+13.20 Agriculture
+
+12.6 Agriculture
+
+Data published
+
+Data published
+
+Data published
+
+Data published
+
+UGX million
+
+UGX billion
+
+not
+
+not
+
+not
+
+not
+
+150
+
+Education
+
+Education
+
+Local Government
+
+Local Government
+
+Local Government
+
+1.4 Local Government
+
+23 Infrastructure Transparency Index 2024 Uganda Report
+
+20
+
+21
+
+22
+
+23
+
+24
+
+25
+
+26
+
+27
+
+28
+
+Nebbi DLG
+
+Nebbi DLG
+
+Office of the President
+
+Soroti DLG
+
+Soroti DLG
+
+UEDCL
+
+UEDCL
+
+UEGCL
+
+UEGCL
+
+Construction at Abong HCII, Maternity Ward construction, Rehabilitation of the Outpatient Department
+
+Construction of 2 Classroom Block with an Office Attached at Adeira P/S Erussi Sub County
+
+Emyooga Project Component 1: Establishment of Zonal artisans/Jua Kali parks
+
+Routine manual maintenance of Gwetom Abengo Road
+
+Construction of General Ward/ maternity, one block of 5 Stance Pit Latrine, 3 stance a bath shelter in Aukot HC II in Aukot Sub County
+
+Construction of a 33kV double circuit line from Acwa 2 42 MW HPP to Angagura feeding Layira 33kV Substation in Gulu City
+
+LV Line extension in Mbulire Village –Bukomansimbi District
+
+Nyagak III Hydro Power Project
+
+600MW Project
+
+Karuma
+
+Hydropower
+
+Data published
+
+not
+
+Local Government
+
+UX 95 million
+
+Data published
+
+not
+
+Data published
+
+not
+
+UGX 496.497 million
+
+Data published
+
+not
+
+Data published
+
+not
+
+Local Government
+
+Central Government
+
+Local Government
+
+Local Government
+
+Energy
+
+Energy
+
+$ Million
+
+19.39 Energy
+
+Data published
+
+not
+
+Energy
+
+24 Infrastructure Transparency Index 2024 Uganda Report
+
+29
+
+30
+
+31
+
+32
+
+33
+
+34
+
+35
+
+36
+
+37
+
+MoH
+
+MoH
+
+NWSC
+
+NWSC
+
+MoWT
+
+MoWT
+
+URCs
+
+URCs
+
+Mulago NRH
+
+Development of a 320 bed Specialized Maternal and Neonatal Healthcare Unit at Mulago National Referral Hospital
+
+Improvement of Health Services Delivery at Mulago Hospital and in the City of Kampala Project (MKCCAP)
+
+Katosi Water Treatment Plant
+
+Masaka Water Project
+
+Kampala-Entebbe Expressway
+
+Kampala Northern Bypass
+
+Rehabilitation of Tororo-Gulu Railway Line (382 km)
+
+Rehabilitation of MalabaKampala Meter Gauge Railway Line (215 km)
+
+Improvement of Health Services Delivery at Mulago Hospital and in the City of Kampala Project
+
+$34.1 million
+
+30.7 million US dollars AfDB, USD3.4 million
+
+Euros Million
+
+84
+
+126 million Euros (approx. UGX 520 billion)
+
+USD 479,172,020. 00 + UGX 8,397,444,46 4.11
+
+Euro 67,394,566.5 6
+
+200 billion
+
+€330 million (approx. UGX 1.3 trillion)
+
+U.A 56,000,000
+
+Central Government
+
+Central Government
+
+Water
+
+Water
+
+Works Transport
+
+Works Transport
+
+Works Transport
+
+Works Transport
+
+Health
+
+and
+
+and
+
+and
+
+and
+
+25 Infrastructure Transparency Index 2024 Uganda Report
+
+38
+
+39
+
+40
+
+41
+
+42
+
+43
+
+44
+
+45
+
+46
+
+47
+
+48
+
+49
+
+50
+
+Mulago NRH
+
+Ministry Trade, I&C
+
+of
+
+Ministry Trade, I&C
+
+of
+
+MWE
+
+MWE
+
+UCAA
+
+UCAA
+
+URF
+
+URF
+
+MoLG
+
+MoLG
+
+Kamuli DLG
+
+Kamuli DLG
+
+Construction of a 320 Specialized Maternal Neonatal Healthcare Unit
+
+bed and
+
+Construction of Cross Border Markets
+
+Establishment of a Industrial Park in Mbale
+
+Textile
+
+Rwizi Catchment Water Resources Development Project
+
+Integrated Water Resources Management and Development Project (IWMDP)
+
+Construction of a Cargo Centre
+
+Development Airport
+
+of
+
+Kabaale
+
+District and Urban Maintenance Projects
+
+Roads
+
+Road Upgrading Project Southwestern Uganda
+
+in
+
+Second Kampala Institutional and Infrastructure Development Project (KIIDP II)
+
+District and Urban Maintenance Projects
+
+Roads
+
+Construction of Kamuli Seed Secondary School
+
+Construction of Kamuli Main Market
+
+34.1 million US dollar
+
+UGX billion
+
+400
+
+UGX million
+
+600
+
+Health
+
+Trade
+
+Trade
+
+USD million
+
+USD million
+
+USD million
+
+USD million
+
+134.9 Water
+
+280
+
+200
+
+200
+
+Funds released for district and urban roads.
+
+$71.5 Million
+
+$175 Million
+
+Funds for district and urban roads
+
+Water
+
+Works Transport
+
+Works Transport
+
+Works Transport
+
+Works Transport
+
+Central Government
+
+Central Government
+
+and
+
+and
+
+and
+
+and
+
+UGX billion
+
+UGX billion
+
+29.2 Local Government
+
+53
+
+Local Government
+
+26 Infrastructure Transparency Index 2024 Uganda Report
+
+51
+
+52
+
+53
+
+54
+
+55
+
+56
+
+57
+
+58
+
+NSSF
+
+NSSF
+
+Ntungamo DLG
+
+Ntungamo DLG
+
+Pakwach DLG
+
+Pakwach DLG
+
+MEMD
+
+MEMD
+
+Temangalo Affordable Housing Project (3,500 units)
+
+Pension Towers Complex, Kampala
+
+Office
+
+Construction of Ntungamo District Administration Block
+
+Construction of Ntungamo Seed Secondary School
+
+Construction of Pakwach Seed Secondary School
+
+Construction of District Headquarters
+
+Pakwach
+
+Energy for Rural transformation III
+
+Electricity Access project (EASP)
+
+Scale
+
+Up
+
+Not specified
+
+USD Million
+
+85
+
+UGX billion
+
+66
+
+Central Government
+
+Central Government
+
+Local Government
+
+UGX billion
+
+2.1 Local Government
+
+UGX 3 billion
+
+Not specified
+
+Not specified
+
+Local Government
+
+Local Government
+
+Central government
+
+Central Government
+
+2.5 Interaction protocol
+
+The engagement with Procuring Entities (PEs) throughout the ITI evaluation process followed a structured and iterative approach to ensure comprehensive data collection and maintain open lines of communication. The interaction protocol was designed to guide PEs through the assessment process, provide support and clarification, and handle any challenges that arose.
+
+The process consisted of the following key stages (see Table 3 for a summary):
+
+1. Invitation and Initial Contact:
+
+The evaluation team sent formal invitation letters to all selected PEs, outlining the purpose and scope of the ITI assessment. Follow-up calls were made to confirm receipt of the invitations and address any initial questions or concerns.
+
+2. Distribution of Self-Assessment Forms:
+
+Self-assessment forms were emailed to the designated contact persons at each PE, along with detailed guidance materials, instructions, and examples to facilitate accurate and complete responses.
+
+3. Ongoing Support and Communication:
+
+27 Infrastructure Transparency Index 2024 Uganda Report
+
+Throughout the data collection period, the evaluation team provided a dedicated helpdesk to offer technical assistance and answer any queries from the PEs.
+
+Weekly check-in calls were conducted to monitor progress, identify potential issues, and provide timely support.
+
+4. Structured Interviews:
+
+In cases where further clarification or in-depth discussions were necessary, the team scheduled structured interviews with key officials at the PEs. These interviews aimed to gather additional insights and ensure a comprehensive understanding of the PEs' transparency practices.
+
+5. Handling Delays and Non-Responses:
+
+To address delays in form completion and submission, the evaluation team sent reminder notices to the PEs and, where necessary, escalated the matter to higher authorities within the entities and in some instance the accounting officers filled the survey form themselves. In cases of persistent non-response, the team considered substituting the unresponsive contact persons with alternative person from the same entity to maintain the representativeness of the sample.
+
+6. Completion and Submission:
+
+Upon receiving the completed self-assessment forms and conducting all necessary interviews, the evaluation team performed a final review of the collected data. Submission confirmations were sent to the PEs.
+
+Table 5: Shows the interaction protocol used to engage the PEs and the stages of evaluation process.
+
+Stage
+
+Invitation and Initial Contact
+
+Distribution of Self-Assessment Forms
+
+Ongoing Support and Communication
+
+Structured Interviews
+
+Action
+
+Formal invitation letters sent
+
+Emailed forms with guidance materials
+
+Helpdesk support and weekly check-in calls
+
+Scheduled with key officials
+
+Details
+
+Follow-up calls to confirm receipt and address questions
+
+Instructions and examples provided
+
+Technical assistance and progress monitoring
+
+In-depth discussions for clarification
+
+28 Infrastructure Transparency Index 2024 Uganda Report
+
+Handling Delays and
+
+Non-Responses
+
+Completion and
+
+Submission
+
+Reminder notices and
+
+escalation to higher
+
+authorities
+
+Final review of forms and
+
+interview notes
+
+Substitution of unresponsive
+
+PEs
+
+Submission confirmation and
+
+feedback sessions
+
+Table 6: Shows the different steps taken to engage the stakeholders in the selection of the
+
+Procuring Entities to participate in the 2nd ITI exercise.
+
+Step1: Selection of the assessment methodology.
+
+The evaluation team conducted an online interview after sharing the survey form via emails and WhatsApp to contact persons from the entities. A follow up visit was done by CoST Manager to selected entities.:
+
+Step3 A press release issued.
+
+The CoST National Secretariat issued three press releases. First to create awareness about the exercise, secondly to inform the entities on the extension of the data collection dates and third one to notify entities of the closed up of the data collection and standard communication protocol were used
+
+Step5: Follow ups by evaluators.
+
+The evaluators consistently follow up on the contact persons for all the entities on emails, phone calls, and WhatsApp messages to support and interest them to fill the survey form and return.
+
+Step7: Development of the dashboard.
+
+To ease analysis, presentation and interpretation of the results. All data collected was entered into the results sharing dashboard that also served as the online repository for data submitted for analysis.
+
+Step9: Peer review of the draft report The draft report developed was reviewed by different by ITI team, ITI Expert and CoST IS Meal Manager among others.
+
+Step2: Presentation of ITI Process to stakeholder. (Commissioning event) CoST Uganda Secretariat in partnership with the Ministry of Works and Transport and Host Organization (AFIC) organized a commissioning event on 11/4/2024 and presented the ITI process and PEs selected to participate in the exercise.
+
+Step4: Self-Assessment done.
+
+All the selected PEs received an official letter for participation in the exercise, and an introductory letter from the PS Ministry of Works and Transport was shared to all accounting Officers of the selected entities.
+
+Step 6: Check-In-calls.
+
+To monitor the progress in the data collection process, 6 check-in-calls were done, and important decisions taken to ensure that entities comply in filling the survey form.
+
+Step8: Report drafting.
+
+The report was produced based on the data analysed, presented and interpreted by the third evaluator and open data specialist. The report was reviewed by a third and fourth eye to ensure conformity with the reporting standard for ITI.
+
+Step10: Final inputs incorporated.
+
+Once the index findings are announced, inputs from the stakeholders including the entities that participated in the index will be
+
+29 Infrastructure Transparency Index 2024 Uganda Report
+
+received and incorporated in the ITI report and published in the CoST website for public consumption.
+
+Step11: Dissemination and validation of the findings.
+
+The announcement of the 2nd ITI index shall be done in an engagement baraza which will be attended by all the entities that participated in the 2nd ITI, invited stakeholders in the infrastructure sector and the media.
+
+Step 12: Media engagements A media engagement was organized to popularize the finding and recommendations to stimulate debates and actions from duty bearers.
+
+Despite all the communications made to all entities, the following entities could not complete their survey forms and return to the evaluation team within the evaluation time frame even when the dates were extended. And yet different communication methods were used to encourage them to complete the exercise. These entities were; -
+
+1. Ministry of Water and Environment
+
+2. Ministry of Local Government
+
+3. Ministry of Trade, Industry and Cooperatives
+
+4. Ministry of Education and Sports
+
+5. Ministry of Health
+
+6. Uganda Electricity Distribution Company Limited
+
+7. Uganda Electricity Generation Company Limited
+
+8. National Social Security Fund
+
+9. Makerere University
+
+10. Kamuli District Local Government
+
+11. Pakwach District Local Government
+
+The non-participation of these entities, while unfortunate, does not significantly detract from the overall representativeness and value of the ITI evaluation, given the comprehensive engagement with most selected PEs. The insights gained from the participating entities provide a robust foundation for assessing and improving infrastructure transparency in Uganda.
+
+2.6 Challenges and limitations
+
+The ITI evaluation process in Uganda encountered several challenges and limitations that highlight systemic issues in data management and transparency practices across government entities. These can be categorized as follows:
+
+1. Data Collection and Management Challenges:
+
+o
+
+Incomplete registration of entities in the Government Procurement Portal (GPP)
+
+30 Infrastructure Transparency Index 2024 Uganda Report
+
+o
+
+o
+
+Mixed project data in procurement portals, making it time-consuming to isolate relevant information Scant project data, often insufficient and not aligned with the Infrastructure Data Standard (IDS) and Open Contracting for Infrastructure Data Standard (OC4IDS)
+
+2. Entity Engagement and Responsiveness:
+
+o Varying levels of engagement, with many citing busy schedules as a reason for delayed responses o Negative attitudes from some entities, exemplified by remarks such as "I'm filling this out because you are insisting" or "you people, Hehe" o Long procedures and bureaucracy in delegating tasks, causing delays and non-responses to the self-assessment survey
+
+3. Technical and Capacity Issues:
+
+o Limited understanding of transparency standards among officials o Difficulties in completing the survey, particularly when contact persons were not project managers for the evaluated projects o Inactive official email accounts, potentially leading to loss of institutional memory and confidentiality risks
+
+4. Time Constraints:
+
+o The assessment coincided with the third and fourth quarters of the financial year, a busy period for government entities Limitations:
+
+1. Data Availability: Limited disclosure of infrastructure project data on public platforms, particularly in less digitally advanced entities, affected the comprehensiveness of the assessment.
+
+2. Time Constraints: The busy period during which the assessment was conducted may have affected the quality of responses from entities.
+
+These challenges underscore the need for broader capacity building in transparency practices and improved data management across government entities, preferably using open data formats and platforms. They also highlight the importance of standardized disclosure practices and the potential value of tools like the IDS and OC4IDS.
+
+To strengthen future ITI evaluations, considerations should be given to:
+
+1. Enhancing digital infrastructure for transparency across all entities
+
+31 Infrastructure Transparency Index 2024 Uganda Report
+
+2. Standardizing data disclosure practices to improve consistency and comparability
+
+3. Expanding capacity-building efforts to address knowledge gaps among officials
+
+4. Exploring ways to incorporate more direct citizen feedback in the assessment process
+
+5. Timing the assessment to avoid peak periods in the government financial calendar
+
+By addressing these challenges and limitations, Uganda can work towards a more comprehensive and accurate picture of infrastructure transparency, ultimately leading to improved practices and outcomes in the sector.
+
+Table 7: Shows the summary of issues that delayed feedback on survey forms from Procuring Entities
+
+Response category/Cluster
+
+Interest Prioritization
+
+and
+
+Nature of responses to evaluators on phone calls and from PE visits.
+
+● I have been down (sick)
+
+● I am too busy and will fill in when I find time.
+
+● I’m filling because you are insisting.
+
+● I have travelled upcountry
+
+● I am on leave/ I have been on leave.
+
+● Let me come back and fill
+
+● You people Hehe…
+
+● Are the questions too many?
+
+● I have started filling
+
+● I am left with the last question.
+
+Ø My boss is not yet back in the office.
+
+Ø I need permission to
+
+Observations
+
+These delays affected the quality of information that was shared which had implications to stakeholders in the infrastructure sector implementation. Therefore, in the absence of a third eye from the stakeholders, it gives opportunities for corrupt practices or mismanagement of implementation processes to occur. Consequently, that will have a bearing on the quality of infrastructure projects delivered. Efficiency will be compromised and that may increase public spending. But if there is timely information sharing in an accessible manner then the above issues will be addressed in time because of the participation from the stakeholders.
+
+Adherence to protocol and procedures is critical in the management of information sharing for public consumption by PEs.
+
+respond.
+
+However, over delayed decision making on sharing such information
+
+32 Infrastructure Transparency Index 2024 Uganda Report
+
+Permission Bureaucracy
+
+and
+
+Denials and fear for sensitivity
+
+Awareness about CoST Uganda
+
+Ø My boss has not yet sanctioned
+
+No respond I have not seen the letter The information is very sensitive I have just seen the letter, it's not even endorsed by the accounting Officer, take back to be endorsed.
+
+§. I don’t know CoST and its work
+
+★ ★ ★
+
+★
+
+has an impact on the timeliness and that may defeat the purpose for which such information is required, to harness stakeholders’ participation in the infrastructure project implementation to enhance the desired impact. For this assessment it had implications on the entity’s performance in all dimensions which is evaluated.
+
+These responses indicate limited information sharing for public usage and it does not conform to the provisions of Access to Information Act 2005 and the PPDA Act (as amended 2021). If information sharing is limited, then stakeholders’ participation in public procurement and implementation of infrastructure project delivery. This means infrastructure delivery will be prone to poor quality, ineffectiveness, inefficiency due corrupt tendencies, mismanagement and wastages.
+
+Limited awareness about the CoST Programme by some PEs could have affected response levels. Especially for entities that have not interfaced with the CoST programme including attending the commissioning of the 2 nd ITI event.
+
+33 Infrastructure Transparency Index 2024 Uganda Report
+
+Chapter 3 | Results
+
+3.1 National ITI score
+
+The Infrastructure Transparency Index (ITI) 2024 Uganda Report presents a comprehensive assessment of the country's progress in enhancing transparency in the public infrastructure sector. The national ITI score is a key benchmark, providing an overall measure of Uganda's performance across four critical dimensions: enabling environment, capacities and processes, citizen participation, and information disclosure.
+
+Figure 4 presents Uganda's national ITI score for 2024, along with the scores for each of the four dimensions. The overall national ITI score stands at 32.26%, marking an improvement from the 2021 score which stood at 20.8% and not really a significant as it is still way below average. This 11.46 percentage point increase demonstrates Uganda's commitment to advancing transparency in the infrastructure sector and highlights the progress made since the previous assessment, but not necessarily the best performance as Uganda still ranks 3rd  last with Indonesia among the 9 countries that have adopted this measure of transparency.
+
+Figure 3: Shows the general results from the national score and the dimensions.
+
+Despite this improvement, the 2024 national ITI score also underscores the substantial work that remains to achieve optimal levels of transparency. With scores ranging from 26.81% to 43.50% across the four dimensions, it is evident that Uganda still faces significant challenges in fully implementing transparency practices in the infrastructure sector.
+
+The enabling environment dimension, which assesses the legal and regulatory framework for transparency, received the highest score at 43.50%, this provides the legal backing for
+
+34 Infrastructure Transparency Index 2024 Uganda Report
+
+infrastructure transparency advocacy in the country. These findings, however, suggests that Uganda will need to make more efforts to realize the much-needed progress in establishing a conducive policy environment for transparency, and opening up public infrastructure delivery to public scrutiny. However, the lower scores in the other dimensions indicate that translating these policies into effective practices remains challenging.
+
+The capacities and processes dimension, which evaluates procuring entities' abilities and procedures to disclose information, received a score of 29.78%. While this represents an improvement from the previous assessment, it highlights the need for further capacity building and institutional strengthening to ensure that procuring entities can effectively implement transparency measures.
+
+Citizen participation, which assesses the opportunities for public engagement and the use of disclosed information, received a score of 33.65%. This improvement indicates that Uganda is progressing in creating avenues for citizen involvement in the infrastructure sector. However, there is still significant room for growth in this area, particularly in terms of making disclosed information more accessible and user-friendly for citizens.
+
+The information disclosure dimension, which examines the actual publication of project-related data, received the lowest score at 26.81%. This underscores the need for procuring entities to prioritise the timely and comprehensive disclosure of project information throughout the project lifecycle. Improving information disclosure practices is critical for enabling effective public oversight and accountability in the infrastructure sector.
+
+3.1.1 International comparison
+
+To contextualise Uganda's performance, the ITI 2024 Uganda Report also includes an international comparison, benchmarking Uganda's ITI scores against those of other countries. This comparison provides valuable insights into Uganda's relative progress and highlights areas where the country can learn from international best practices.
+
+Figure 8 compares Uganda's national ITI score with that of Costa Rica, both from their respective second ITI assessments. Uganda's score of 32.26% represents a significant improvement from its previous assessment, narrowing the gap with Costa Rica's score of 47%. However, the comparison also underscores the substantial progress that Uganda still needs to make to catch up with leading performers in infrastructure transparency.
+
+Table 8: National ITI Score Comparison Country National ITI Score (%) Uganda 32.26 Costa Rica 47.00
+
+35 Infrastructure Transparency Index 2024 Uganda Report
+
+Figure 9 delves deeper into the international comparison, presenting Uganda's scores for each ITI dimension alongside those of Costa Rica. Uganda is compared with Costa Rica because of the long experience Costa Rica has in doing successful ITI and Uganda can borrow a lift to improve on her experience in conducting ITI after drawing lesson. This analysis reveals that Uganda outperforms Costa Rica in the enabling environment dimension, suggesting that Uganda has made significant strides in establishing a strong legal and regulatory framework for transparency. However, Costa Rica's higher scores in the capacities and processes and citizen participation dimensions indicate that Uganda can learn from Costa Rica's experiences in building institutional capacity and engaging citizens in the infrastructure sector.
+
+Table 9: Countries Comparison of Scores by Dimension
+
+Dimension Uganda 2021 Uganda 2024% (%)
+
+Enabling Environment
+
+41.4
+
+43.50
+
+Capacities and Processes
+
+13.5
+
+29.78
+
+Citizen Participation
+
+13.8
+
+33.65
+
+Information Disclosure
+
+18.4
+
+26.81
+
+Costa Rica 2023 (%)
+
+40.00
+
+50.00
+
+52.00
+
+30.00
+
+The international comparison also highlights a common challenge both Uganda and Costa Rica face in the information disclosure dimension. Both countries received their lowest scores in this area, underscoring the need for concerted efforts to improve the quality, timeliness, and accessibility of disclosed project information.
+
+3.2. Dimensions score analysis
+
+3.2.1 Enabling environment (43.50%) Key findings:
+
+• Strong legal foundation (85% score in Access to Public Information Regulatory Framework)
+
+• Moderate sector-specific standards (36% in Transparency Standard in Public Infrastructure Sector)
+
+• Critical weakness in digital tools (12% in National Digital Information Tools)
+
+36 Infrastructure Transparency Index 2024 Uganda Report
+
+Figure 4: Shows the performance scores of the sub-variables based on the ranking.
+
+Insight: A significant "digital infrastructure gap" exists between Uganda's strong regulatory framework and poor implementation of digital transparency tools.
+
+Recommendations:
+
+1. Develop a centralized, user-friendly online portal for infrastructure project disclosure
+
+2. Implement data standards (e.g., OC4IDS) for consistency and interoperability
+
+3. Provide training on digital tools for information disclosure
+
+4. Engage with civil society and tech communities for innovative solutions
+
+.
+
+3.1.2 Capacities and processes (29.78%)
+
+Key findings:
+
+• Digital capacities: 46.67%
+
+• Procedures to disclose information: 33.13%
+
+• Control over infrastructure projects disclosure: 25.67%
+
+• Basic knowledge: 21.2%
+
+37 Infrastructure Transparency Index 2024 Uganda Report
+
+Figure 5: Shows the performance of the variables and sub-variables.
+
+Control over infrastructure projects disclosure Enablers and barriers to disclose information Procedures to disclose information Digital capacities Basic knowledge InstitutionalProcesses Institutional capacities Capacities and processes
+
+25.67
+
+19.03
+
+33.13
+
+46.67
+
+21.2
+
+27.01
+
+33.93
+
+29.78
+
+0
+
+Sub-variable
+
+5
+
+10
+
+15
+
+20
+
+25
+
+30
+
+35
+
+40
+
+45
+
+50
+
+Variable
+
+Dimension
+
+Insight: While some progress has been made in leveraging digital technologies, significant gaps remain in knowledge, procedures, and oversight mechanisms. Recommendations:
+
+1. Develop standardized templates and procedures for project information disclosure
+
+2. Invest in training and capacity-building programs
+
+3. Strengthen oversight and accountability mechanisms
+
+4. Prioritize user-friendly digital platforms for disclosure and citizen engagement “Government is encouraged to continue building capacities of public officials to enhance their knowledge and skills on data transparency standards and its requirements and the sanctions that can follow for non-compliance in disclosing infrastructure data based on such standards”. Conduct awareness creation on sanctions on non-compliance to access to public information law’.
+
+3.1.3 Citizen participation (33.65%)
+
+Key findings:
+
+• Participation opportunities: 38.57%
+
+• Use of disclosed information by citizens: 29.63% .
+
+Figure 6: Shows the national score for the citizen participation dimension.
+
+38 Infrastructure Transparency Index 2024 Uganda Report
+
+Insight: While some avenues for citizen engagement exist, there's significant room for improvement in making participation mechanisms more accessible and effective. Recommendations:
+
+1. Institutionalize citizen participation mechanisms (e.g., public hearings, feedback systems)
+
+2. Prioritize user-friendly formats for disclosed information
+
+3. Engage with civil society to build capacity for information use
+
+4. Promote data literacy among citizens
+
+.
+
+Government is encouraged to create awareness on the digitalization agenda to be embraced by all stakeholders to promote easy access to information on the infrastructure sector.
+
+3.1.4 Information disclosure (26.81%)
+
+Key findings:
+
+• Project identification: 60.52%
+
+• Contract procurement (execution): 32.4%
+
+• Contract procurement (supervision): 17.6%
+
+• Contract implementation (execution): 8.65%
+
+• Contract implementation (supervision): 1.08%
+
+.
+
+39 Infrastructure Transparency Index 2024 Uganda Report
+
+Figure 7: Shows the national score for information disclosure dimension with its variable and sub variables.
+
+Supervision contract implementation Execution contract implementation Supervision contract procurement Execution contract procurement Project preparation Project identification Disclosure practices Information Disclosure
+
+1.08
+
+8.65
+
+17.6
+
+32.4
+
+30.73
+
+60.52
+
+26.81
+
+26.81
+
+0
+
+10
+
+20
+
+30
+
+40
+
+50
+
+60
+
+70
+
+Sub Variable
+
+Variable
+
+Dimension
+
+Insight: Significant gaps exist in disclosure practices, particularly in later stages of the project lifecycle.
+
+Recommendations:
+
+1. Develop comprehensive disclosure policies covering all project stages
+
+2. Prioritize disclosure of detailed project information (e.g., feasibility environmental assessments)
+
+3. Strengthen capacity for timely and accessible disclosure
+
+4. Introduce penalties for non-compliance and strengthen oversight
+
+studies,
+
+The country needs to embark on deliberate efforts to implement incentives and sanctions for non-compliance on public information law which guarantee information disclosure. Secondly, the government should strengthen supervision and execution of contract implementation to ensure quality, effectiveness and efficiency in delivery of infrastructure projects to enhance value for money and improve citizen lives.
+
+“Government is encouraged to strengthen effectiveness and efficiency in execution and supervision of contract implementation in order to realize quality and value for money in the delivery of infrastructure projects that meet the international standards to boost the economy and improve citizen lives”.
+
+“Government is also encouraged to ensure that PEs disclose infrastructure project data based on Infrastructure Data Standard and Open Contracting for Infrastructure
+
+40 Infrastructure Transparency Index 2024 Uganda Report
+
+Data Standard because they promote disclosure of information based on the data points”.
+
+3.3 Procuring entities ITI score
+
+The Infrastructure Transparency Index (ITI) evaluation of procuring entities in Uganda reveals
+
+significant disparities in transparency practices across government institutions. Table 7
+
+presents the top 10 performing entities based on their overall ITI scores and performance
+
+across dimensions 2-4.
+
+Table 10 shows the PEs ranking for top 10 positions and scores for dimension 2-4.
+
+Name of PE
+
+Kampala Capital City Authority Ministry of Works and Transport (MoWT) Office of the President Ministry of Agriculture, Animal Industry & Fisheries National Water and Sewerage Corporation (NWSC) Uganda Railways Corporation (URC) Mpigi District Local Government Jinja District Local Government Kabale District Local Government Uganda Road Fund
+
+Position
+
+01
+
+02
+
+03
+
+04
+
+05
+
+06
+
+07
+
+08
+
+09
+
+10
+
+PE ITI Score 80.26
+
+60.66
+
+55.23
+
+51.28
+
+48.86
+
+46.80
+
+42.29
+
+40.97
+
+40.27
+
+38.64
+
+Capacities & Processes 87.16
+
+81.97
+
+72.37
+
+77.69
+
+66.17
+
+53.85
+
+46.10
+
+58.09
+
+36.41
+
+51.23
+
+Citizen participation 92.85
+
+61.80
+
+91.20
+
+76.35
+
+63.10
+
+57.10
+
+70.45
+
+81.75
+
+50.10
+
+63.05
+
+Information Disclosure 66.35
+
+41.30
+
+17.75
+
+12.50
+
+24.83
+
+34.20
+
+18.50
+
+0.50
+
+37.50
+
+12.38
+
+At the forefront of transparency efforts stands the Kampala Capital City Authority (KCCA),
+
+which has set a new benchmark for transparency in Uganda's public sector. With an
+
+impressive overall score of 80.26%, KCCA demonstrates that high levels of transparency are
+
+achievable and can be consistently maintained across various aspects of infrastructure project
+
+management. Their performance is particularly noteworthy in:
+
+1. Citizen participation (92.85%)
+
+2. Capacities and processes (87.16%)
+
+3. Information disclosure (66.35%)
+
+41 Infrastructure Transparency Index 2024 Uganda Report
+
+This well-rounded approach to transparency could serve as a model for other entities to learn and replicate.
+
+Following KCCA, but with a considerable gap, is the Ministry of Works and Transport (MoWT), securing the second position with a score of 60.66%. The Office of the President rounds out the top three with a score of 55.23%, notably excelling in citizen participation (91.20%) but struggling considerably with information disclosure (8.88%). This significant drop in scores from the top performer underscores the challenges faced by the otherwise presumably wellresourced central government entities in implementing comprehensive transparency measures.
+
+Figure 8: Shows a summary for the best three entities in the index.
+
+Figure 9: Shows Procuring entities grouped and ranked according to the average score.
+
+42 Infrastructure Transparency Index 2024 Uganda Report
+
+Uganda Electricity Distribution Company National Social Security Fund Ministry of Trade, Industry and Cooperatives Pakwach District Local Government Makerere University Kamuli District Local Government Ministry of Local Government Nebbi District Local Government Soroti District Local Government Ministry of Health Ministry of Education and Sports Ministry of Water and Environment Uganda Electricity Generation Company Atomic Energy Council Uganda Civil Aviation Authority Ntungamo District Local Government Mulago National Referral Hospital Mukono District Local Government Ministry of Energy & Mineral Development Bushenyi District Local Government Uganda Road fund Kabale District Local Government Jinja District Local Government Mpigi District Local Government Uganda Railways Corporation (URC) National Water and Sewerage Corporation (NWSC) Ministry of Agriculture, Animal Industry & Fisheries Office of the President Ministry of Works and Transport (MoWT) Kampala Capital City Authority
+
+4.12
+
+4.9
+
+4.99
+
+5.96
+
+6.34
+
+8.52
+
+11.45
+
+16.63
+
+17
+
+20.83
+
+22.16
+
+22.28
+
+22.92
+
+26.01
+
+26.51
+
+29.44
+
+31.36
+
+31.9
+
+33.16
+
+35.07
+
+38.64
+
+40.27
+
+40.97
+
+42.29
+
+46.8
+
+48.86
+
+51.28
+
+55.23
+
+60.66
+
+80.26
+
+0
+
+10
+
+20
+
+30
+
+40
+
+50
+
+60
+
+70
+
+80
+
+90
+
+Figure 9 above shows the performance of the best three entities (KCCA, MoWT and Office of the President) arose from their willingness to disclose information and the will and abilities to remove internal barriers. The performance disparity becomes even more pronounced when examining the broader spectrum of evaluated entities. Only three out of the thirty assessed procuring entities scored above the 50% mark, a stark indication of the systemic challenges pervading transparency practices across Uganda's public infrastructure sector. A quartile analysis of the scores further illuminates this trend:
+
+43 Infrastructure Transparency Index 2024 Uganda Report
+
+To provide a more nuanced understanding of the distribution of transparency performance across procuring entities, we conducted a quartile analysis. This analysis reveals significant disparities in performance:
+
+Figure 10: Shows Entities performance by Quartile average scores.
+
+60
+
+50
+
+40
+
+30
+
+20
+
+10
+
+0
+
+55.53
+
+36.62
+
+20.99
+
+7.09
+
+1
+
+2
+
+3
+
+4
+
+1st Quartile, 8 Entities 3rd Quartile, 8 Entities
+
+2nd Quartile, 7 Entities 4th Quartile, 7 Entities
+
+1. Q1 (Top Quartile, 8 entities): Average Score: 55.53%
+
+2. Q2 (Second Quartile, 7 entities): Average Score: 36.62%
+
+3. Q3 (Third Quartile, 8 entities): Average Score: 20.99%
+
+4. Q4 (Bottom Quartile, 7 entities): Average Score: 7.09%
+
+This distribution aligns with our earlier observation that only three out of the thirty assessed procuring entities scored above the 50% mark. The top quartile, while performing better than the rest, still has significant room for improvement with an average score just above 50%.
+
+The stark contrast between the top and bottom quartiles (55.53% vs. 7.09%) underscores the wide performance gap among procuring entities. This disparity suggests that while some entities have made substantial progress in implementing transparency measures, many others are still at the early stages of this journey.
+
+The second and third quartiles, with average scores of 36.62% and 20.99% respectively, represent the majority of entities that are making progress but still face significant challenges in fully implementing transparency practices.
+
+This quartile analysis highlights the need for targeted interventions, particularly for entities in the lower quartiles, and the potential for peer learning from top-performing entities to elevate overall transparency standards in Uganda's public infrastructure sector.
+
+44 Infrastructure Transparency Index 2024 Uganda Report
+
+3.3.1 Results by Procuring Entities Budget
+
+The analysis of Infrastructure Transparency Index (ITI) scores in relation to procuring entities' budget sizes reveals a striking correlation between financial resources and transparency performance. To better understand this relationship, procuring entities were grouped into five budget categories based on their allocated budgets in trillions of Ugandan Shillings (UGX). The budget ranges were determined by analyzing the distribution of procuring entities' budgets and identifying natural breakpoints that would result in meaningful and comparable groups.
+
+The five budget groups are as follows:
+
+1. 0-2 trillion UGX
+
+2. 2-4 trillion UGX
+
+3. 4-6 trillion UGX
+
+4. 6-8 trillion UGX
+
+8-12 trillion UGX
+
+These ranges were chosen to provide a balanced representation of the procuring entities' budgets, with each group containing a sufficient number of entities to allow for meaningful comparisons. The lower range (0-2 trillion UGX) captures entities with smaller budgets, while the higher range (8-12 trillion UGX) represents entities with the largest budgets. The intermediate ranges (2-4, 4-6, and 6-8 trillion UGX) provide a more granular breakdown of the budget distribution.
+
+By grouping procuring entities into these budget ranges, we can better understand how financial resources influence transparency performance and identify potential trends or patterns. This analysis helps policymakers and stakeholders target their efforts and resources towards entities that may require additional support to improve their transparency practices.
+
+Figure 15 presents the average ITI score for each budget group, revealing a clear trend: as the budget size increases, the average ITI score rises correspondingly. Entities with budgets in the 8-12 trillion UGX range achieved the highest average score of 80.26%, while those in the 0-2 trillion UGX category have the lowest average score of 36.23%.
+
+Table 11: Shows different groups according to the PEs budget size with the average score received by each group
+
+Budget Group (UGX in Trillions)
+
+0-2T
+
+2-4T
+
+4-6T
+
+Average PE ITI Score (%)
+
+36.23
+
+43.39
+
+46.80
+
+45 Infrastructure Transparency Index 2024 Uganda Report
+
+6-8T
+
+8-12T
+
+55.68
+
+80.26
+
+.
+
+This clear positive correlation between budget size and ITI scores suggests that procuring entities with larger budgets tend to have better transparency practices. Several factors could contribute to this trend:
+
+1. Donor funded projects: Most infrastructure project financed by donors are more transparent than government of Uganda funded projects. Projects data information are disclosed in both government and donor digital platforms and websites. Government needs to adopt this good practices.
+
+2. Resource Availability: Larger budgets may allow entities to allocate more resources specifically to transparency initiatives, such as implementing digital disclosure systems or hiring dedicated transparency officers.
+
+3. Institutional Capacity: Entities with larger budgets often have more staff and betterdeveloped institutional structures, which can facilitate the implementation of comprehensive transparency measures.
+
+4. Scrutiny and Accountability: Higher-budget entities may face greater public and regulatory scrutiny, incentivizing them to maintain higher standards of transparency.
+
+5. Project Complexity: Larger budgets often correlate with more complex projects, which may require more sophisticated project management and reporting systems that inherently support better transparency.
+
+6. Technology Adoption: Entities with larger budgets may be better positioned to invest in advanced technologies that facilitate data collection, management, and disclosure.
+
+However, it's important to note that the relationship between budget size and transparency performance is not perfect. Some entities in lower budget categories outperform their peers, demonstrating that effective transparency practices are achievable even with limited resources. This suggests that factors beyond just financial resources, such as leadership commitment, organizational culture, and efficient resource utilization, play crucial roles in determining transparency outcomes.
+
+The performance gap between the highest and lowest budget groups (a difference of 44.03 percentage points) highlights the need for targeted interventions to support lower-budget entities in improving their transparency practices. These could include:
+
+1. Developing cost-effective transparency tools and guidelines tailored for entities with limited resources.
+
+2. Implementing mentorship programs where high-performing, high-budget entities support lower-budget entities through peer learnings.
+
+3. Prioritizing capacity building and training for lower-budget entities.
+
+4. Exploring shared service models for transparency-related functions to help subnational entities access advanced tools and expertise.
+
+5. Strengthening information disclosure and monitoring using the data dashboard for timely identify red flags and redress of the gaps.
+
+46 Infrastructure Transparency Index 2024 Uganda Report
+
+By addressing these budget-related disparities while also recognizing and learning from outperforming lower-budget entities, Uganda can work towards a more equitable and consistently transparent infrastructure sector, regardless of entity size or budget.
+
+3.3.2 Results by procuring entities type
+
+The Infrastructure Transparency Index (ITI) 2024 Uganda also examined transparency performance across different types of procuring entities to identify potential variations and patterns. Procuring entities were classified into three main categories: Central Government, Agencies nd Local Government. This classification reflects the different levels of governance and administrative structures within the Ugandan public sector.
+
+Central Government entities are those that operate at the national level and are typically responsible for large-scale infrastructure projects with wider geographic coverage. These entities often have larger budgets and more specialized technical expertise compared to their local counterparts. Examples of Central Government entities include ministries, departments, and agencies (MDAs) such as the Ministry of Works and Transport, and Ministry of Energy and Mineral Development, among others have more opportunities to win donor support.
+
+On the other hand, Local Government entities operate at the subnational level, such as districts, municipalities, and sub-counties. These entities are responsible for infrastructure projects within their respective jurisdictions and often have smaller budgets and more limited technical capacities compared to central government entities. Local Government entities play a crucial role in delivering infrastructure services to communities and ensuring that projects meet local needs and priorities.
+
+By disaggregating the ITI results by procuring entity type, the report aims to identify any systematic differences in transparency performance between Central and Local Government entities. This analysis can help policymakers and stakeholders understand the unique challenges and opportunities faced by each type of entity and design targeted interventions to improve transparency practices.
+
+Figure 11 presents the average ITI scores for Central and Local Government entities, revealing a notable performance gap. Central Government entities achieved an average score of 30.53%, while Local Government entities scored an average of 25.82%. These results represent an improvement from the 2021 ITI assessment, where Central Government entities scored 15.22%, and Local Government entities uniformly scored 15%.
+
+Figure 11: Shows the average performance of entities by type category (Central and Local Government).
+
+47 Infrastructure Transparency Index 2024 Uganda Report
+
+The improved performance of both Central and Local Government entities in 2024 compared to 2021 suggests that continued efforts to promote transparency could yield positive results across all levels of government. However, the persistence of a performance gap between the two entity types indicates that Local Government entities may still face additional challenges in implementing transparency measures effectively.
+
+Several factors could contribute to this performance gap, such as differences in institutional capacity, resource availability, and technical expertise between Central and Local Government entities. Additionally, the varying scales and complexities of infrastructure projects managed by each entity type may influence their ability to maintain consistent transparency practices.
+
+Despite the performance gap, the improvements observed in both entity types underscore the potential for progress and the importance of continued efforts to strengthen transparency practices at all levels of government. Policymakers and stakeholders can use these findings to prioritize capacity-building initiatives and resource allocation to support Local Government entities in enhancing their transparency performance.
+
+48 Infrastructure Transparency Index 2024 Uganda Report
+
+Furthermore, the relatively smaller performance gap between Central and Local Government entities in 2024 compared to 2021 suggests that decentralization efforts may be contributing to improved local governance capacities. This highlights the importance of continued support for decentralization initiatives and knowledge-sharing between different levels of government to promote best practices in infrastructure transparency.
+
+3.3.3 Results by Procuring Entities Sector
+
+In addition to analysing transparency performance by procuring entity type, the Infrastructure Transparency Index (ITI) 2024 Uganda Report also examines results across different sectors to identify sector-specific trends and challenges. Procuring entities were categorised into various sectors based on their primary areas of operation and the types of infrastructure projects they undertake. The sectors considered in the analysis include Agriculture, Works and Transport, Water, Central Government, Health, Local Governments, Education, and Trade and Industry.
+
+Examining transparency performance by sector is crucial for understanding how different areas of the economy and public service delivery are faring in terms of openness and accountability. Each sector has unique characteristics, stakeholder demands, and regulatory frameworks that can influence transparency practices. By disaggregating the ITI results by sector, policymakers and stakeholders can identify sector-specific strengths, weaknesses, and opportunities for improvement.
+
+Figure 12 presents the average ITI scores for each sector, revealing significant variations in transparency performance. The agriculture sector emerged as the top performer, with an average score of 46.63%, followed closely by the Works and Transport sector at 43.15% due to more opportunities of donor funded projects. On the other hand, the Education and Trade and Industry sectors have the lowest average scores at 14.25% and 4.99%, respectively had more government funded projects.
+
+Figure 12 indicates the average score of performance for each sector category.
+
+Trade & Industry Education Local Government Health Central Government Water Works & Transport Agriculture
+
+4.99
+
+14.25
+
+25.82
+
+26.1
+
+34.86
+
+35.57
+
+43.15
+
+51.28
+
+0
+
+10
+
+20
+
+30
+
+40
+
+50
+
+60
+
+49 Infrastructure Transparency Index 2024 Uganda Report
+
+The agriculture sector emerged as the top performer with an average score of 46.63%, followed closely by the Works and Transport sector at 43.15%. This performance can be attributed to several factors:
+
+1. Historical focus: Both sectors have historically been priority areas for development in Uganda, attracting significant donor funding and scrutiny. This attention has likely led to more robust transparency practices over time.
+
+2. Project scale: These sectors often involve large-scale, high-visibility projects that naturally attract more public and media attention, necessitating greater transparency.
+
+3. Regulatory environment: The agriculture and transport sectors in Uganda have undergone significant regulatory reforms in recent years, which may have included stronger transparency requirements.
+
+The Water sector's performance (35.57%) is noteworthy, falling in the middle range. This could reflect the sector's unique challenges, such as the involvement of both public and private entities in service delivery, which can complicate transparency efforts.
+
+At the lower end of the spectrum, we find the Education (14.25%), Trade and Industry (4.99%) sectors. Several factors might contribute to their poor performance:
+
+1. Resource constraints: These sectors might have fewer resources allocated to transparency initiatives compared to higher-performing sectors.
+
+2. Capacity issues: There may be a lack of specialized personnel or training in transparency practices within these sectors.
+
+3. Project nature: Education and Trade projects might involve smaller, more numerous initiatives that are harder to track and report on consistently.
+
+4. Sector priorities: These sectors may have prioritized other aspects of project delivery over transparency, possibly due to immediate service delivery pressures.
+
+The significant performance gap between the highest and lowest-scoring sectors (over 40 percentage points) underscores the need for sector-specific strategies to improve transparency. High-performing sectors like Agriculture broadly under the Agro-industrialization programme and Works and Transport broadly under the Integrated Transport infrastructure and services programme. These could serve as models, sharing best practices and lessons learned with lower-performing sectors which fall under the public sector transformation and Human Capital development.
+
+To address these disparities, policymakers should consider:
+
+50 Infrastructure Transparency Index 2024 Uganda Report
+
+1. Conducting sector-specific transparency audits to identify unique challenges and opportunities.
+
+2. Developing targeted capacity-building programs for lower-performing sectors.
+
+3. Establishing cross-sector learning initiatives to share best practices.
+
+4. Reviewing and aligning sector-specific regulations to ensure consistent transparency requirements across all sectors.
+
+By addressing these sector-specific challenges and leveraging successful practices from highperforming sectors, Uganda can work towards a more uniformly transparent and accountable infrastructure landscape across all sectors.
+
+3.3.4 Sub-rankings
+
+To provide a more granular analysis of transparency performance, the ITI 2024 Uganda also presents sub-rankings for procuring entities based on their type and performance across individual ITI dimensions. These sub-rankings offer insights into the relative strengths and weaknesses of different procuring entities and highlight areas where targeted interventions may be most effective.
+
+Figure 19 presents the top-performing procuring entities within each entity type (i.e., Central Government and Local Government). This sub-ranking allows for a direct comparison of transparency performance among peers and identifies entities that can serve as role models or benchmarks within their respective categories.
+
+Figure 13 shows sub-ranking the top positions for each PE type.
+
+51 Infrastructure Transparency Index 2024 Uganda Report
+
+4.12
+
+Company average score 13.52%.
+
+UEDCL UEGCL Pakwach DLG Kamuli DLG Nebbi DLG Soroti DLG Ntungamo DLG Mukono DLG Bushenyi DLG Kabale DLG JINJA DLG MPIGI DLG NSSF Atomic Energy… UCAA Uganda Road Fund Uganda Raliways… NWSC KCCA Makerere University Mulago Office of the…
+
+Ministry of Trade,… MoLG Ministry of Health MoES MWE MEMD MAAIF MoWT
+
+0
+
+22.92
+
+Position 05
+
+5.96
+
+8.52
+
+16.03
+
+17
+
+29.44
+
+31.3
+
+LGs average score 26.77%.
+
+35.97
+
+40.27
+
+40.97
+
+42.29
+
+4.9
+
+26.01
+
+26.51
+
+Agency average score 38.85% Position 01
+
+38.64
+
+46.8
+
+48.86
+
+80.26
+
+6.34
+
+31.36
+
+Departments average score 30.97. Position 02
+
+55.23
+
+4.99
+
+11.45
+
+20.83
+
+22.16
+
+22.28
+
+Ministries average score 28.35%. Position 03
+
+33.16
+
+51.28
+
+60.66
+
+20
+
+40
+
+60
+
+80
+
+100
+
+Company
+
+LGs
+
+Agencies
+
+Departments
+
+Ministries
+
+The sub-rankings reveal that the Kampala Capital City Authority (KCCA) performed well under agencies, Ministry of Works and Transport (MoWT) performed well under the Ministries, whereas Office of the President performed well under the Department, Uganda Electricity Generation Company Limit performed better under the company’s cluster., and finally Mpigi District performed well under Local Governments followed by Jinja District. Overall, Agencies outperformed Ministries, Department, Local governments and companies in this Index. These high-performance demonstrate that achieving strong transparency outcomes is possible across board although with many efforts for categories that performed low average scores.
+
+Table 8 takes the sub-ranking analysis a step further by examining the top-performing procuring entities across each ITI dimension. This table highlights the entities that excel in specific aspects of transparency, such as citizen participation or information disclosure.
+
+52 Infrastructure Transparency Index 2024 Uganda Report
+
+Table 12: Shows sub-ranking the top three positions for each ITI and dimension 3
+
+Entity
+
+Kampala Capital City Authority (KCCA)
+
+Ministry of Works and Transport (MoWT)
+
+Office of the President
+
+ITI Score
+
+80.26%
+
+60.66%
+
+55.23%
+
+Dimension 3 Score
+
+92.85%
+
+61.80%
+
+91.20%
+
+By identifying the leaders in each dimension, policymakers and stakeholders can better understand the factors contributing to strong transparency performance. For example, the Office of the President's high score in the citizen participation dimension (Dimension 3) suggests that this entity has established effective mechanisms for engaging citizens and incorporating their feedback into decision-making processes.
+
+The sub-rankings provide valuable insights into procuring entities' relative performance and help identify best practices that can be replicated across the public infrastructure sector. By learning from the successes of top-performing entities, policymakers and practitioners can develop targeted interventions and capacity-building initiatives to support other entities in enhancing their transparency practices.
+
+Moreover, the sub-rankings underscore the importance of a multi-dimensional approach to transparency. While some entities may excel in certain aspects of transparency, such as citizen participation, they may need help in other areas, such as information disclosure. This highlights the need for comprehensive strategies that address all dimensions of transparency to achieve optimal outcomes.
+
+3.4 Infrastructure projects scores
+
+The ITI 2024 Uganda Report also assessed the transparency performance of individual infrastructure projects to provide a more detailed understanding of how transparency practices are implemented at the project level. By examining project-specific scores, policymakers and stakeholders can identify trends, challenges, and best practices that can inform the design and management of future infrastructure projects.
+
+Table 9 presents the top 10 infrastructure projects based on their ITI scores and the corresponding procuring entities responsible for each project. This ranking highlights the
+
+53 Infrastructure Transparency Index 2024 Uganda Report
+
+projects that have demonstrated the highest levels of transparency across various dimensions, such as project identification, preparation, procurement, and implementation.
+
+Table 13: Shows the top 10 Infrastructure projects ranking by position, the PE, the project and the project score.
+
+Project Ranking
+
+Position
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+PE
+
+Ministry of Water and Environment
+
+Kampala Capital City Authority
+
+Ministry of Health
+
+Kampala Capital City Authority
+
+Uganda Electricity Generation Company
+
+Uganda Electricity Generation Company
+
+Ministry of Education and Sports
+
+Ministry of Education and Sports
+
+Mulago National Referral Hospital
+
+Mulago National Referral Hospital
+
+Projects
+
+Integrated Water Resources Development Project (IWMDP)
+
+Kampala City Roads Rehabilitation Component 1: Civil Works
+
+Ranking
+
+Management
+
+and
+
+(KCRRP)
+
+Improvement of Health Services Delivery at Mulago Hospital and in the City of Kampala Project (MKCCAP)
+
+74.3
+
+Project
+
+73.8
+
+65.4
+
+Kampala Institutional Projects (KIIDP)
+
+and
+
+Infrastructure
+
+Development
+
+Uganda Secondary Education Expansion Project (USEEP).
+
+Nyagak III Hydro Power Project
+
+600MW Karuma Hydropower Project
+
+Uganda Skills Development Project (USDP)
+
+Improvement of Health Services Delivery at Mulago Hospital and in the City of Kampala Project
+
+Construction of a 320 bed Specialised Maternal and Neonatal Healthcare Unit
+
+58.9
+
+58.5
+
+56.1
+
+56
+
+54.8
+
+51.3
+
+50.3
+
+The top-performing projects span various sectors, including water, urban infrastructure, and health, demonstrating that high levels of transparency are achievable across different types of
+
+54 Infrastructure Transparency Index 2024 Uganda Report
+
+infrastructure initiatives. For example, the Integrated Water Resources Management and Development Project (IWMDP) by the Ministry of Water and Environment achieved the highest score of 74.3%, setting a new benchmark for project-level transparency in Uganda.
+
+However, the ranking also reveals a significant drop-off in scores after the top three projects, indicating that there is still considerable room for improvement in project-level transparency across the board. This finding underscores the need for procuring entities to prioritise transparency consistently across all projects, regardless of size, sector, or complexity.
+
+The report also notes that out of the 58 projects evaluated, 56 achieved positive scores, while two projects received scores of zero. This suggests that while most projects are making progress in terms of transparency which translates to efficiency and quality delivery, there are still instances of severe transparency failures that require urgent attention and remediation.
+
+3.5. The performance of PEs in the first and second Indices.
+
+Table14: Shows the analysis of the performance of PEs in the first 2021 and second index 2024.
+
+PE Jinja DLG MWE MoES NWSC Nebbi DLG Office of the President Makerere KCCA UEDCL NSSF
+
+2021
+
+5.76
+
+8.44
+
+9.18
+
+20.38
+
+7.96
+
+31.75
+
+4.08
+
+62.73
+
+9.16
+
+33.74
+
+2024
+
+40.97
+
+22.28
+
+22.16
+
+48.86
+
+16.03
+
+51.68
+
+6.34
+
+80.26
+
+Improved
+
+35.2
+
+13.8
+
+13.0
+
+28.5
+
+8.1
+
+23.5
+
+2.3
+
+17.5
+
+4.12 -
+
+5.0
+
+4.9 -
+
+28.8
+
+% Change
+
+611.28%
+
+163.98%
+
+141.39%
+
+139.74%
+
+101.38%
+
+73.95%
+
+55.39%
+
+27.95%
+
+-55.02%
+
+-85.48%
+
+55 Infrastructure Transparency Index 2024 Uganda Report
+
+Discussion of the findings and implications.
+
+Comparative Analysis of 2021 and 2024 ITI Results:
+
+1. Overall Trend:
+
+• Most PEs showed improvement from 2021 to 2024, indicating a general positive trend in transparency practices. This suggests that the ITI initiative and related transparency efforts are having a meaningful impact across many entities.
+
+Discussion of the findings and implications.
+
+Comparative Analysis of 2021 and 2024 ITI Results:
+
+2. Overall Trend:
+
+• Most PEs showed improvement from 2021 to 2024, indicating a general positive trend in transparency practices. This suggests that the ITI initiative and related transparency efforts are having a meaningful impact across many entities.
+
+3. Top Performers:
+
+• Kampala Capital City Authority (KCCA): Improved from 62.73% to 80.26% (+17.53%)
+
+• Office of the President: Improved from 31.75% to 55.68% (+23.5%) These entities not only maintained their high performance but also showed significant improvement, setting benchmarks for others.
+
+3. Most Improved:
+
+• Jinja District Local Government: From 5.76% to 40.97% (+35.21%), a remarkable 611.28% increase
+
+• National Water and Sewerage Corporation (NWSC): From 20.38% to 48.86% (+28.48%), a 139.74% increase. These dramatic improvements suggest targeted interventions or significant internal reforms in transparency practices.
+
+4. Consistent Improvers: Entities like the Ministry of Water and Environment (MWE) and Ministry of Education and Sports (MoES) showed substantial improvements, suggesting consistent efforts to enhance transparency.
+
+5. Decliners:
+
+• Uganda Electricity Distribution Company Limited (UEDCL): Decreased from 9.16% to 4.12% (-5.04%)
+
+56 Infrastructure Transparency Index 2024 Uganda Report
+
+• National Social Security Fund (NSSF): Significant decline from 33.74% to 4.9% (28.84%). These declines are concerning and warrant further investigation into the causes.
+
+6. Local Government Performance:
+
+• Local governments like Jinja DLG and Nebbi DLG showed substantial improvements, indicating that transparency practices are penetrating to lower administrative levels.
+
+7. Sectoral Analysis:
+
+• Infrastructure and Utilities: KCCA, MoWT, and NWSC all showed improvements, suggesting a sector-wide focus on the need for entities to open up public infrastructure delivery to public scrutiny.
+
+• Social Services: Mixed results with MoES improving but NSSF declining significantly.
+
+8. Magnitude of Change:
+
+• The range of change varies widely, from a 611.28% increase (Jinja DLG) to an 85.86% decrease (NSSF), indicating highly variable experiences and potentially inconsistent application of transparency practices.
+
+Key Insights:
+
+1. Policy Impact: The general improvement suggests that policies and initiatives promoting transparency could have a more positive effect if uniformly implemented, since the current progressive change is not uniform across all entities.
+
+2. Capacity Building: The significant improvements in some entities, particularly at the local government level, may indicate progressive capacity-building efforts.
+
+3. Sustainability Challenges: The decline in performance of some previously wellperforming entities (e.g, NSSF) highlights the need for sustained effort and potentially the challenges in maintaining transparency practices over time.
+
+4. Digital Divide: The variable performance might reflect differences in digital capacity and infrastructure among entities, affecting their ability to implement and maintain transparency measures.
+
+5. The donor and grants funding effect: The improvements within Central Government entities and projects could signify the fact that most projects are donor or grant funded, with inbuilt contractual obligations and requirements to open projects, and public consultations that PEs have to comply with compared to non-donor funded projects.
+
+57 Infrastructure Transparency Index 2024 Uganda Report
+
+6. Leadership and Organizational Culture: The dramatic improvements in some entities suggest that leadership commitment and organizational culture play crucial roles in advancing transparency.
+
+Recommendations based on this analysis:
+
+1. Conduct in-depth case studies of the most improved entities to identify replicable best practices.
+
+2. Investigate the causes of decline in underperforming entities to address specific challenges and prevent backsliding.
+
+3. Strengthen peer-learning mechanisms, particularly between high-performing and struggling entities.
+
+4. Develop targeted interventions for entities showing minimal improvement, focusing on their specific challenges and contexts.
+
+5. Ensure continuity and uniformity in transparency practices through institutionalization and reducing dependence on individual leadership.
+
+6. Address potential digital divides by providing tailored support and resources to entities struggling with technological aspects of transparency.
+
+7. Consider sector or programme-specific strategies to address the varying performance across different types of entities and government functions.
+
+This comparative analysis reveals both encouraging progress and persistent challenges in Uganda's journey towards greater infrastructure transparency. The variability in performance underscores the need for nuanced, targeted approaches to further improve transparency across all procuring entities.
+
+ITI 2024 Recommendations
+
+1. Bridging the Implementation Gap: (OPM and PPDA).
+
+○ Develop detailed implementation guidelines for existing transparency policies. ○ Establish a cross-government task force to identify and address barriers to policy implementation.
+
+○ Introduce regular infrastructure transparency compliance audits with tangible consequences for non-compliance.
+
+○ Establish a Formal Disclosure Mandate for all accounting officers
+
+2. Lifecycle Transparency Framework (MoFPED, PPDA).
+
+○ Implement a comprehensive and uniform framework mandating consistent transparency across all project stages.
+
+○ Develop stage-specific disclosure requirements and templates to guide entities through the entire project lifecycle.
+
+58 Infrastructure Transparency Index 2024 Uganda Report
+
+○
+
+○
+
+○
+
+○
+
+○
+
+Introduce milestone-based transparency checks tied to project funding releases Introduce a performance incentives framework on budget increases for most transparent, accountable, performing and compliant entities.
+
+Develop tailored improvement plans for entities in the bottom quartile of performance.
+
+Allocate additional resources and support to sectors with the lowest transparency scores.
+
+Implement intensive monitoring and support for projects showing critical transparency failures.
+
+3. Capacity Building and Knowledge Sharing: (PPDA, MoFPED, Academia) ○ Launch a government-wide capacity building program on infrastructure transparency.
+
+○ Establish a peer learning network where high-performing entities mentor others.
+
+○ Develop sector-specific training modules addressing unique challenges in each sector.
+
+○ Digital Transformation Initiative to be strengthen by NITA under the Ministry of ICT and National Guidance, MoFPED and PPDA: Invest in a centralized, user-friendly digital platform for infrastructure project disclosure.
+
+○ Provide training and resources to ensure all entities can effectively use digital transparency tools.
+
+○ Implement open data standards (e.g OC4IDS) to enhance data accessibility and usability.
+
+○ Establish guidelines of geo-mapping of infrastructure projects for easy monitoring.
+
+○ Develop, mandate and or operationalize the use of standardized templates for project disclosure across all entities.
+
+○ Create a best practices toolkit based on successful projects and entities.
+
+○ Establish a certification program for transparency and quality delivery of infrastructure projects.
+
+4. Enhanced Oversight and Accountability: (Committee on physical infrastructure, OAG, IGG, Anti-Corruption Agency and OPM) ○ Government is encouraged to strengthen the mandate and resources of oversight bodies to monitor transparency compliance. ○ Introduce a transparent system of incentives and sanctions tied to transparency performance. ○ Implement third-party monitoring forums for high-value or high-risk projects.
+
+5. Citizen Engagement Strategy:(All PEs from MDAs, OPM, LGs and CoST) ○ Develop user-friendly interfaces for public access to project information.
+
+59 Infrastructure Transparency Index 2024 Uganda Report
+
+○
+
+○
+
+Launch public awareness campaigns (Barazas) to open up public infrastructure delivery to public scrutiny and promote data use, citizen monitoring.
+
+Create formal mechanisms for incorporating public feedback into project decisions and evaluations processes.
+
+By implementing these recommendations, Uganda can build on its progress and address the identified challenges, working towards a more transparent, accountable, and effective infrastructure sector. This will not only improve project outcomes but also enhance public trust and participation in the country's development process.
+
+3.6 Summary and Final Thoughts
+
+The 2024 Infrastructure Transparency Index (ITI) for Uganda presents a nuanced picture of progress and persistent challenges in the country's efforts to enhance transparency in public infrastructure projects. The overall national score of 32.26%, while an improvement from 2021, underscores that significant work remains to be done across all dimensions of transparency.
+
+Key Takeaways:
+
+1. Incremental Progress: The increase from 20.8% in 2021 to 32.26% in 2024 demonstrates that positive change is possible and ongoing. This progress should be recognized and built upon.
+
+2. Uneven Performance: The wide disparity in scores across entities, sectors, and project stages highlights the need for a more standardized and comprehensive approach to transparency.
+
+3. Strong Foundation, Weak Implementation: Uganda's relatively high score in the Enabling Environment dimension (43.50%) contrasts sharply with lower scores in practical implementation, particularly in Information Disclosure (26.81%).
+
+4. Digital Divide: The low score in National Digital Information Tools (12%) represents a critical gap in Uganda's transparency infrastructure, limiting the potential for effective information sharing and citizen engagement.
+
+5. Project Lifecycle Opacity: The dramatic decline in transparency scores from project identification to implementation stages is a significant concern, potentially exposing projects to increased risks of mismanagement and corruption.
+
+6. Citizen Engagement Potential: Moderate scores in Citizen Participation (33.65%) suggest an opportunity to leverage public oversight as a tool for improving project outcomes and overall transparency.
+
+Moving Forward:
+
+To accelerate progress and address the identified challenges, Uganda should consider adopting a multi-faceted strategy:
+
+60 Infrastructure Transparency Index 2024 Uganda Report
+
+1. Establish a formal Disclosure Mandate and entrench it in Monitoring and Evaluation system to enhance compliance of information disclosure by Accounting Officers.
+
+2. Whole-of-Government Approach: Implement a comprehensive, government-wide strategy for improving transparency that addresses challenges at both central and local levels, and across all sectors.
+
+3. Technology Investment: Prioritize the development and or adoption of robust digital infrastructure for transparency, including centralized platforms for data disclosure and citizen engagement.
+
+4. Capacity Building: Launch intensive training programs to enhance the skills and knowledge of public officials in transparency practices, particularly focusing on consistent disclosure throughout the project lifecycle.
+
+5. Standardization and Best Practices: Develop and mandate the use of standardized disclosure templates and processes across all entities and projects, drawing on identified best practices from high-performing areas.
+
+6. Enhanced Accountability: Strengthen oversight mechanisms and introduce a system of incentives and sanctions tied to transparency performance.
+
+7. Public Engagement: Develop strategies to increase public awareness and participation in infrastructure project oversight, leveraging technology and community outreach programs.
+
+8. Continuous Improvement: Establish a system for ongoing monitoring, evaluation, and refinement of transparency practices, ensuring that efforts remain responsive to emerging challenges and opportunities.
+
+Conclusion:
+
+Uganda's journey towards greater infrastructure transparency is a work in progress. The 2024 ITI results reveal both encouraging signs of improvement and areas requiring significant attention. By addressing the identified gaps, particularly in digital infrastructure and project implementation transparency, Uganda can create a more open, accountable, and effective infrastructure sector that can enhance value for money.
+
+The disparities in performance across entities and sectors also present an opportunity for internal learning and improvement. High-performing entities like the Kampala Capital City Authority demonstrate that achieving high levels of transparency is possible within the Ugandan context. Their practices can serve as models for others to emulate.
+
+Ultimately, enhancing infrastructure transparency is not just about compliance with regulations or meeting international standards. It's about ensuring that public resources are used efficiently and effectively to deliver quality infrastructure that improves the lives of Ugandan citizens. By committing to transparency throughout the project lifecycle, Uganda can build
+
+61 Infrastructure Transparency Index 2024 Uganda Report
+
+public trust, reduce the risk of corruption, and maximize the impact of its infrastructure investments.
+
+The path forward will require sustained commitment, resources, and collaboration across government, civil society, and international partners. However, the potential benefits – in terms of improved project outcomes, increased public trust, and more efficient use of public resources – make this a worthwhile and necessary endeavor for Uganda's continued development.
+
+62 Annex 3 | National ITI scores by indicator.
+
+Kampala Capital City Authority Ministry of Works and Transport (MoWT) Office of the President Ministry of Agriculture, Animal Industry & Fisheries
+
+National Water and Sewerage Corporation…
+
+Uganda Railways Corporation (URC) Mpigi District Local Government Jinja District Local Government Kabale District Local Government Uganda Road fund Bushenyi District Local Government
+
+Ministry of Energy & Mineral Development Mukono District Local Government Mulago National Referral Hospital Ntungamo District Local Government Uganda Civil Aviation Authority Atomic Energy Council
+
+Uganda Electricity Generation Company Ministry of Water and Environment Ministry of Education and Sports Ministry of Health Soroti District Local Government Nebbi District Local Government Ministry of Local Government Kamuli District Local Government Makerere University Pakwach District Local Government
+
+Ministry of Trade, Industry and Cooperatives National Social Security Fund
+
+Uganda Electricity Distribution Company
+
+0
+
+80.26
+
+60.66
+
+55.23
+
+51.28
+
+48.86
+
+46.8
+
+42.29
+
+40.97
+
+40.27
+
+38.64
+
+35.07
+
+33.16
+
+31.9
+
+31.36
+
+29.44
+
+26.51
+
+26.01
+
+22.92
+
+22.28
+
+22.16
+
+20.83
+
+17
+
+16.63
+
+11.45
+
+8.52
+
+6.34
+
+5.96
+
+4.99
+
+4.9
+
+4.12
+
+10
+
+20
+
+30
+
+40
+
+50
+
+60
+
+70
+
+80
+
+90
+
+1 Infrastructure Transparency Index 2024 Uganda Report
+
+Annex 4 | Procuring entities scorecards
+
+Position 1: Kampala Capital City Authority (KCCA)from the overall PEs ranking (80.26%).
+
+Position 2: Ministry of Works and Transports (MoWT) from the overall PEs ranking (60.66%).
+
+2 Infrastructure Transparency Index 2024 Uganda Report
+
+Position 3: Office of the President from the overall PEs ranking (55.23%)
+
+3 Infrastructure Transparency Index 2024 Uganda Report
+
+For the case of Local Government Position 1: Mpigi DLG but in position 7 in the overall PE ranking (42.29%).
+
+Position 2: Jinja DLG but in position 8 in the overall PE ranking (40%).
+
+4 Infrastructure Transparency Index 2024 Uganda Report
+
+Position 2: Kabale DLG but in position 9 in the overall PE ranking (40.27%).
+
+5 Infrastructure Transparency Index 2024 Uganda Report
+
+ANNEXES
+
+1. Annex 1 Evaluation instrument.docx
+
+2. ANNEX 2 Procuring entities survey tool.docx
+
+3. ITI - Data processing sheet
+
+4. ITI - Survey results
+
+6

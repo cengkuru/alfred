@@ -1,0 +1,3578 @@
+December 2020
+Version 1.0
+Infrastructure
+Transparency Index Manual
+Infrastructure Transparency Index Manual
+2
+The Infrastructure Transparency Index (ITI) is an instrument of CoST – the Infrastructure Transparency Initiative
+(CoST) that measures levels of transparency and the quality of processes related to public infrastructure at both
+national and sub-national levels. Collaboratively designed and based on international good practice and lessons
+learned, its objective is to provide stakeholders with quality information that serves to promote transparency and
+improve the management of public infrastructure.
+PRODUCERS:
+David Zamora, International Consultant, CoST.
+Evelyn Hernandez, Head of Members and Affiliate Programmes, CoST.
+TECHNICAL TEAM:
+Hamish Goldie-Scot, Technical Adviser, CoST.
+John Hawkins, Programme Director, CoST.
+Bill Paterson, International Consultant, CoST.
+PROJECT LEADERS:
+Evelyn Hernández, Head of Members and Affiliate Programmes, CoST.
+John Hawkins, Programme Director, CoST.
+SPECIAL CONTRIBUTION:
+Heizel Padilla, CoST Guatemala Manager.
+Gracia Ramirez, CoST Honduras Management Adviser.
+DISCLAIMER
+This document presents a methodology to measure transparency in the infrastructure sector with the objective of providing
+inputs for strengthening public institutions. Like other evaluation instruments, its impact depends on the use to which it is put.
+It is not a methodology to evaluate corruption, not an instrument of internal control and not an instrument of perception.
+It does not evaluate public officials, nor does it measure the general quality of procuring entities’ websites. The evaluations
+and reports prepared with this methodology do not represent the opinion of CoST regarding the administrative work of
+governments or procuring entities.
+DECEMBER 2020
+Infrastructure Transparency Index Manual
+3
+Abbreviations
+CoST CoST – the Infrastructure Transparency Initiative
+CoST IDS CoST Infrastructure Data Standard
+ITI Infrastructure Transparency Index
+OC4IDS Open Contracting for Infrastructure Data Standard
+Infrastructure Transparency Index Manual
+4
+Table of contents
+1. Introduction 6
+1.1 Concept 6
+1.2 The CoST approach 6
+1.3 How the ITI was developed 7
+1.4 Objectives 8
+1.5 Principles 8
+2. Content 10
+2.1 Structure 10
+2.2 Dimensions 10
+		 Dimension 1: enabling environment 10
+		 Dimension 2: capacities and processes 11
+		 Dimension 3: citizen participation 11
+		 Dimension 4: information disclosure 12
+3. Implementation methodolgy 13
+3.1 Preparation 13
+		 Evaluation team 13
+		 Materials 13
+		 Evaluation period 14
+		 Procuring entities sample 14
+Infrastructure projects sample 15
+		 Training 15
+		 Logistics 15
+3.2 Evaluation 16
+		 Dimension 1: enabling environment 16
+		 Dimension 2: capacities and processes 16
+		 Dimension 3: citizen participation 16
+Dimension 4: information disclosure 17
+		 Recommendations about working with procuring entities 17
+		 Remarks on objectivity 19
+		 Processing 19
+		 Reporting 20
+Annexes		 21
+Infrastructure Transparency Index Manual
+5
+Annexes
+Annex 1: Evaluation instrument 21
+Annex 2: Survey for interview or self-assessment 42
+Annex 3: Procuring entities selection method and criteria 59
+Annex 4: Guidance for the evaluation team training 60
+Annex 5: Guide on lessons learned and techniques for an ITI implementation 62
+Annex 6: Glossary of key terms 67
+Infrastructure Transparency Index Manual
+6
+1. Introduction
+1.1 Concept
+CoST − the Infrastructure Transparency Initiative (CoST) works with government, the private sector and civil
+society to improve transparency, participation and accountability in public infrastructure investment. It achieves
+this by disclosing, validating and using infrastructure data at each stage of the infrastructure project cycle.
+CoST’s experience indicates that this provides the evidence and process to help drive reforms that reduce
+mismanagement, inefficiency and corruption, and improve the performance of the sector. Applying this approach
+results in cost savings, helping to close the infrastructure financing gap and deliver better quality infrastructure
+for millions of people.
+CoST has developed the Infrastructure Transparency Index (ITI) as a national or sub-national evaluation instrument to measure
+levels of infrastructure transparency and the quality of the associated processes that improve participation and accountability. It
+will help stakeholders from government, the private sector and civil society understand the relative strengths and weaknesses of
+transparency, participation and accountability within the sector. It has been designed in a collaborative manner and is based on
+international good practice and lessons learned.
+This manual sets out a methodology for calculating a score for evaluated procuring entities in a national or sub-national
+context. The individual scores are then used to generate an Index that compares the evaluated procuring entities. It is based on
+the enabling conditions for strengthening transparency in the sector plus the transparency-related practices applied on recently
+completed infrastructure projects (see Annex 6 for ITI terminology). In its design, the manual interprets transparency in a broad
+and practical sense, not only by looking at it through the traditional lens of access to information, but also by considering
+associated enablers and capacities. These include citizen participation that leads to the creation of public value through access
+to information.
+The final ITI score for each procuring entity is obtained from the weighted sums of four constituent dimensions, namely:
+1. enabling environment
+2. capacities and processes
+3. citizen participation
+4. information disclosure.
+Although the ITI was designed for CoST members to evaluate and strengthen their national or sub-national programmes, other
+interested parties can also use it as a tool to strengthen their institutions.
+The rest of section 1 outlines the CoST approach, how the ITI was developed and the objectives and principles behind it. Section
+2 sets out the structure for determining the ITI based on the four dimensions and a set of weighted variables with section 3
+setting out a detailed methodology. The annexes provide a set of tools for determining the Index.
+1.2 The CoST approach
+CoST has developed an approach that is flexible to suit the context and aims to complement and add value to recognised good
+practice. It provides a global standard for improving infrastructure transparency, participation and accountability based on four
+core ‘features’: disclosure, assurance, multi-stakeholder working and social accountability.
+1. Introduction
+Infrastructure Transparency Index Manual
+7
+■ Disclosure is the publication of data from infrastructure projects. Forty data points are disclosed by procuring entities
+at key stages throughout the entire project cycle in keeping with the CoST Infrastructure Data Standard (CoST IDS) and
+increasingly in the Open Contracting for Infrastructure Data Standard (OC4IDS) format.
+■ Assurance is an independent review that highlights the accuracy and completeness of the disclosed data and turns it into
+compelling information that helps communicate issues of concern and areas of good practice.
+■ Multi-stakeholder working brings together government, the private sector and civil society in a concerted effort to pursue
+the common goal of improving transparency, accountability and ultimately performance in public infrastructure. This
+is typically achieved through a multi-stakeholder group where each stakeholder has an equal voice in leading a CoST
+programme.
+■ Social accountability refers to efforts made to ensure that the disclosed data and assurance reports are taken up and
+used by stakeholders – especially civil society and the private sector − to strengthen accountability and deliver practical
+improvements.
+1.3 How the ITI was developed
+In 2016, the CoST International Secretariat asked CoST Honduras to develop and validate a first version of the ITI based on earlier
+drafts that were variously considered as too simple or overly complex. It then asked CoST Guatemala to validate and test the CoST
+Honduras approach. CoST Guatemala had some concerns with this and developed an alternative methodology and indices.
+The two approaches were then assessed and a final integrated version was designed and tested in both countries. Following the
+tests, lessons learned were captured and the index further improved.
+Finally, the ITI was exposed to an international peer review process, where several experts carefully reviewed it and offered key
+comments that helped shape this the final version of the instrument.
+The lengthy process was necessary to ensure that there was a robust approach that stakeholders can have confidence in. In
+due course, the methodology and indices will be updated to reflect the additional experience and lessons gained from its
+global application.
+A road project site visit in Honduras.
+1. Introduction
+Infrastructure Transparency Index Manual
+8
+1.4 Objectives
+The aim of the ITI is to assess the level of transparency and accountability in public infrastructure over time. The objectives are
+as follows:
+■ to assess the state of infrastructure transparency and the capacity to improve transparency among procuring entities in a
+country at national or sub-national level
+■ to track and encourage progress and facilitate peer learning, while helping to hold procuring entities to account
+■ to raise awareness of transparency at the national and international level, building on existing data standards such as the
+CoST IDS and the OC4IDS.
+The tool calculates a transparency score on a scale of zero to one (0-1) for a country’s national or sub-national public
+infrastructure, as well as for each of its procuring entities. The scores are based on a large number of unique indicators. These
+are independently evaluated to assess procuring entity practices and the national or sub-national conditions that give rise to
+transparency and accountability in the local infrastructure sector.
+The score is then published in the form of an index that ranks procuring entities and provides a national or sub-national
+assessment. By identifying shortcomings in existing practice, an agenda can be developed to raise transparency and
+accountability standards within the country or sector and improve ongoing infrastructure management practices.
+The ITI results provide information that can guide public leaders and others with an interest in strengthening transparency and
+accountability at the national or sub-national level, as well as in procuring entities. Follow-up ITI assessments should take place
+annually to allow time for reforms to be introduced and take effect between evaluations.
+While it is expected the ITI will be used by CoST members as part of their CoST programmes, it is also intended to be a measure
+that is independent of CoST and capable of being applied (at national or sub-national level) in countries not participating in the
+programme.
+1.5 Principles
+The development of the ITI is based on the following principles.
+■ Relevance: offers information about the state of the legal framework, the institutional capacities and the disclosure of
+information to improve infrastructure project administration and implementation.
+■ Comprehensiveness: uses a comprehensive set of indices that allows for a broad assessment of the sector and in-depth
+evaluation of a procuring entity.
+■ Simplicity and trustworthiness: the methods for collecting and processing data are simple, so the results are readily
+understood and can be made use of by different stakeholders.
+■ Replicability and objectivity: any person replicating the ITI methodology will be able to obtain the same results as
+presented in formal reports.
+Further characteristics of the ITI are as follows.
+■ Impartial: the coordination of the ITI methodology and its implementation is undertaken through an independent third
+party with relevant expertise.
+■ Periodic: the evaluation is typically performed annually to offer time between evaluations to improve transparency,
+accountability and management of infrastructure delivery.
+1. Introduction
+Infrastructure Transparency Index Manual
+9
+■ Accurate: the indicators are determined using primary sources of information stemming from national websites and surveys
+of key public officials.
+■ Specific: the score for each indicator is determined against a single piece of information. This piece of information is not
+re-used to determine the score of other indicators.
+■ Informative: the results offer a snapshot of assessed procuring entities, which shed light more broadly on the national or
+sub-national situation.
+■ Evolving: the number of procuring entities assessed will grow in time to offer a more complete representation of the
+national or sub-national context. In addition, the ITI is expected to be reviewed and updated after some years to ensure it
+continues to offer relevant guidance for transparency in public infrastructure.
+■ Constructive: the ITI can help stakeholders compare the level of transparency of procuring entities and monitor how this
+changes over time. At this stage, the ITI it is not intended to compare countries as the methodology does not take into
+account the contextual factors and it allows for some decisions that may lead to a slightly different approach being taken.
+Nevertheless, CoST plans to use the lessons from the initial application of the ITI to allow for country comparisons at a later
+stage of development.
+As with other measuring instruments, the impact of an ITI evaluation depends on the extent to which its results are used by
+those responsible for decision making.
+1. Introduction
+Infrastructure Transparency Index Manual
+10
+2. Content
+2.1 Structure
+The Infrastructure Transparency Index (ITI) is made up of four building blocks known as dimensions, namely:
+1. enabling environment
+2. capacities and processes
+3. citizen participation
+4. information disclosure
+The first dimension evaluates the national or
+sub-national context with its legal framework.
+The other three evaluate the capacities and
+transparency outcomes at the procuring
+entities level. Together, the four dimensions
+align with empirical studies that describe
+how the quality of procurement outcomes
+depends on a combination of the regulatory
+framework and institutional capacities.
+Each of the four dimensions is divided into
+a series of components to allow for their
+comprehensive evaluation. The result is a four-
+level hierarchy: the dimensions are formed
+by variables, which in turn are made up of
+sub-variables, which in turn are composed
+of indicators (see Figure 2.1).
+All the indicators are individually evaluated and scored. A set of weighted indicator scores then gives a sub-variable score; a set
+of weighted sub-variable scores gives a variable score; and a set of weighted variable scores gives a dimension score. A national
+or sub-national ITI score is finally obtained from the weighted sum of the four dimension scores.
+2.2 Dimensions
+DIMENSION 1: ENABLING ENVIRONMENT
+Dimension 1 assesses national or sub-national conditions enabling transparency for the infrastructure sector considering the
+regulatory framework and centralised digital tools. It has one variable, three sub-variables and 12 indicators. The complete list
+of indicators is provided in Annex 1. The variable and sub-variables of the dimension are:
+■ Legal framework and digital tools
+● Access to public information regulatory framework
+● Transparency standards in the public infrastructure sector
+● National digital information tools.
+All indicators of this dimension are national or sub-national and are measured once at the country or local level, irrespective of
+the number of procuring entities selected for evaluation. Its results offer feedback to strengthen the national or sub-national
+environment, not processes within institutions. The score for the dimension is obtained through the weighted sum of the
+underlying indicators.
+Figure 2.1: ITI hierarchy example
+ITI
+Dimensions
+Variables
+Sub-variables
+Indicators
+2. Content
+Infrastructure Transparency Index Manual
+11
+The indicators in this dimension are evaluated using information that is typically available from online sources such as websites
+containing national regulatory frameworks and information linked to the sector, such as those focused on transparency, public
+procurement, public infrastructure and public finances.
+DIMENSION 2: CAPACITIES AND PROCESSES
+Dimension 2 assesses the soundness of procuring entities’ procedures and capacities to disclose data and information. It has
+two variables, five sub-variables and 25 indicators. The complete list of indicators is provided in Annex 1. The variables and sub-
+variables of the dimension are:
+■ Institutional capacities
+● Basic knowledge
+● Digital capacities
+■ Institutional processes
+● Procedures to disclose information
+● Enablers and barriers to disclose information
+● Control over infrastructure projects disclosure.
+All the indicators of this dimension evaluate procuring entities, not national or sub-national conditions. The indicators are
+evaluated once in each of “n
+e” selected procuring entities (see paragraph 3.1.5 on how procuring entities should be selected).
+The dimension results offer feedback to strengthen capacities and processes at the procuring entity level. The score of the
+dimension is obtained through the weighted sums of the underlying indicators for each of procuring entity.
+The data required to evaluate the indicators from this dimension are captured by a survey that has to be undertaken by a
+selected government officer at each procuring entity through either self-assessment or interview. Details of the survey and
+indicator scoring system are provided in Annex 2.
+DIMENSION 3: CITIZEN PARTICIPATION
+Dimension 3 evaluates the opportunities provided by procuring entities for citizen participation and how citizens can use the
+disclosed public information. It has one variable, two sub-variables and 12 indicators. The complete list of indicators is provided
+in Annex 1. The variable and sub-variables of the dimension are:
+■ Participation practices
+● Participation opportunities
+● Use of information by citizens.
+All the indicators of this dimension evaluate procuring entities. The indicators are evaluated once for each of “n
+e
+” selected
+procuring entities (see paragraph 3.1.5 on how procuring entities should be selected). The results from this dimension offer
+feedback to strengthen a procuring entity’s citizen’s participation practices. The score for this dimension is obtained through the
+weighted sums of the underlying indicators for each procuring entity.
+The data required to evaluate the indicators from this dimension are captured by a survey (the same as for dimension 2) that
+has to be undertaken by a selected government officer at each procuring entity through either self-assessment or interview.
+Details of the survey and indicator scoring system are provided in Annex 2.
+2. Content
+Infrastructure Transparency Index Manual
+12
+DIMENSION 4: INFORMATION DISCLOSURE
+Dimension 4 assesses the amount of project data and information disclosed by the procuring entities according to the CoST
+Infrastructure Data Standard or the Open Contracting for Infrastructure Data Standard. It has one variable, six sub-variables and
+44 indicators. The complete list of indicators is provided in Annex 1. The variable and sub-variables of the dimension are:
+■ Disclosure practices
+● Project identification
+● Project preparation
+● Execution or construction contract procurement
+● Supervision or project management contract procurement
+● Execution or construction contract implementation
+● Supervision or project management contract implementation
+All indicators of this dimension evaluate “n
+p” infrastructure projects developed by each of “n
+e” procuring entities (see
+paragraphs 3.1.5 and 3.1.6 on how procuring entities and projects should be selected). The dimension results offer feedback
+to the selected procuring entities to strengthen their information disclosure. The overall score of the dimension is obtained
+through averaging the weighted sum of the underlying indicators for each of “n
+p” projects.
+The indices in this dimension are evaluated using information that is typically available from online sources such as websites
+containing information on public infrastructure projects and public procurement and other websites showing information
+linked to these subjects.
+Table 1 below presents a summary of the evaluation subjects and data collection methods for each of the four dimensions.
+DIMENSION 1:
+enabling environment
+DIMENSION 2:
+capacities and processes
+DIMENSION 3:
+citizens participation
+DIMENSION 4:
+information disclosure
+Evaluation
+subject
+National or sub-national
+conditions Procuring entities Procuring entities Procuring entities’ projects
+Data collection
+method Desktop research Self-assessment or interview Self-assessment or interview Desktop research
+Table 1: Summary of the evaluation subjects and the data collection methods for each ITI dimension
+2. Content
+Infrastructure Transparency Index Manual
+13
+3. Implementation methodology
+Implementing the Infrastructure Transparency Index (ITI) methodology entails following a sequence of four main stages to
+arrive at the final ITI score, as illustrated in Figure 3.1.
+3.1 Preparation
+EVALUATION TEAM
+Identifying an appropriate evaluation team is vital for successfully implementing the methodology that determines an ITI
+score. Regarding knowledge, each member of the team needs to have a clear understanding of CoST’s principles and approach,
+sufficient experience of government portals that contain the information required for evaluation, and experience in requesting
+public information and using collaboration tools.
+The size of the evaluation team will depend on the time and resources available, as well as the number of procuring entities to
+be evaluated. The shorter the time, the bigger the team should be; and the more the procuring entities, the bigger the team
+should be. However, there will always be a constraint, as the number of people in the team and the time allocated will be
+limited by the resources available. A balance therefore needs to be considered when defining the team size. It is recommended
+that there should be a minimum of three people in the evaluation team (see section 3.2).
+In terms of the roles, the team should have a coordinator and evaluators. The coordinator is in charge of methodological and
+administrative arrangements, as well as quality control, data processing and reporting. The evaluators are in charge of all
+data collection based on the ITI methodology. If the team only comprises three people, the minimum number recommended,
+the coordinator will also need to perform the role of third evaluator. The division of responsibilities between the coordinator
+and the evaluators implies the need for a close relationship between them at all times during data collection. The coordinator
+participates in all the ITI implementation stages, while the evaluators only participate in the data collection during the
+evaluation stage.
+MATERIALS
+All working documents and equipment required to conduct the evaluation need to be prepared before the evaluation begins.
+The evaluation team will need computers, internet access and the files and forms used to conduct the evaluations. If the survey
+to collect the data for dimensions 2 and 3 is through interviews, the team will need to print copies of the questionnaire if an
+electronic version cannot be used. If the survey is to be conducted through self-assessment, the team should always use an
+electronic form of the questionnaire to share with the selected public officer.
+Figure 3.1: The four stages to determine an ITI score
+PREPARATION
+EVALUATION
+PROCESSING
+REPORTING
+FINAL
+ITI SCORE
+1
+2
+3
+4
+3. Implementation methodolgy
+Infrastructure Transparency Index Manual
+14
+3. Implementation methodolgy
+EVALUATION PERIOD
+The information required for determining the ITI has to be applicable during a specific evaluation period (e.g. 1 January to
+31 December). An evaluation period needs to be established to avoid using evidence that was used in a previous evaluation
+and to ensure a consistent approach for all procuring entities. There will then be a shorter data collection period when this
+information is collected (e.g. 1 April to 31 May).
+The evaluation period needs to be defined from the outset, clearly understood by the evaluation team and the procuring
+entities, and documented in final reports.
+PROCURING ENTITIES SAMPLE
+There is a need to define the number and identity of the specific procuring entities that will be evaluated. The amount of work
+and time required for the evaluation will generally be proportional to the number of entities evaluated.
+To determine the number of procuring entities, the available resources and time have to be considered. A provisional allocation
+of 0.5 days per procuring entity is suggested to prepare the basic numbers. It is then important to consider the scale and
+structure of the national or sub-national context.
+Based on experience of testing the ITI methodology in Honduras and Guatemala, it is recommended to start by using a
+stratified random method (see example in Annex 3). This involves selecting a sample or around 20% of all procuring entities
+in smaller more centralised economies, or up to 100 procuring entities in larger more decentralised economies. In both cases a
+complete list of all procuring entities with basic information (such budget size, category and sector) will be needed to ensure
+a representative sample. The sample size should increase progressively to 100% or 500 procuring entities over a 4 to 5 year
+period. However, if the number of procuring entities at the national or sub-national level is low, all procuring entities should be
+included from the outset.
+An alternative method can be to select the procuring entities that represent 20% of infrastructure investment and progressively
+increase this number. A combination of the two methods can also be used and this approach can be refined as more is learned
+about its application. The expectation is that as the number
+of procuring entities and investment increases, so too will the
+accuracy of the overall picture of transparency, accountability
+and participation across the infrastructure sector.
+The use of the stratified random method will allow a balanced
+selection in the procuring entities sample according to their
+different categories. To determine the procuring entities
+sample, the recommended criteria would include:
+■ infrastructure budget size (as an indicator of the socio-
+economic impact of its projects)
+■ category or type (e.g. central government, municipality,
+autonomous)
+■ sector (e.g. education, health, energy).
+The categories can be based on the Open Contracting for
+Infrastructure Data Standard (OC4IDS) sectors and sub-sectors
+(see Annex 3).
+The most important aspect of the criteria is that they result in
+the selection of a sample of procuring entities that represents CoST Guatemala highlights infrastructure issues to the media.
+Infrastructure Transparency Index Manual
+15
+3. Implementation methodolgy
+the greatest contribution to economic and social impact while making it clear that any procuring entity could be randomly
+selected. The criteria have to apply to all procuring entities without exception and should be documented and transparent.
+INFRASTRUCTURE PROJECTS SAMPLE
+The selection of projects to be evaluated per procuring entity is a key element for determining the ITI. For each selected entity,
+the same number of projects should be selected for the evaluation using a selective and random sampling approach. In CoST
+countries, it is preferable to select projects that have not previously been part of the assurance process. The same criteria for
+selecting the projects has to be applied to all procuring entities.
+It is a requirement that each project for evaluation is completed to allow an evaluation of the whole project cycle. Each
+completed project is evaluated using the indicators in dimension 4 on information disclosure. The indicators for this dimension
+are evaluated “n
+p” times for each procuring entity, where “np” equals the number of completed projects selected for
+evaluation.
+A minimum of two projects per procuring entity is required. Using a mix of selective and random methods, a minimum of
+one project should be selected based on its perceived importance to stakeholders (for example) and the other would then be
+randomly selected from the total list of projects implemented by each procuring entity.
+To select projects based on importance, it is recommended to start by ranking them by their budget. Two people can then
+look only at the projects with the highest budgets from each of the procuring entities and independently score them based on
+their perceived impact. If there is a significant difference between the scores allocated, a third person can join to resolve the
+difference. From the set of projects with the highest budget, the one with the highest perceived impact should be selected. In
+the interests of transparency and consistency, the criteria used for selecting the projects to be evaluated should be published
+with the results report.
+TRAINING
+Training is needed to ensure every member of the team is capable of evaluating each ITI indicator in the same consistent
+manner. The evaluation instrument and its processes need to be studied, understood and applied. Different scenarios and
+complexities that might occur during the data collection also need be discussed and worked through during training.
+Recommendations for evaluation team training are provided in Annex 4.
+LOGISTICS
+The preparation stage also requires consideration of the different logistical aspects of the evaluation, including the location
+where evaluations will take place and other pertinent details. If the survey is to be undertaken through interviews, it will be
+necessary to include transportation to reach each procuring entity in the budget.
+Logistics also includes the communication required with each procuring entity to collect the data. This entails drafting formal
+letters, making arrangements for the interviews or self-assessments, follow-up communications, invitations and so on. Finally, it
+is necessary to ensure effective communication with other important stakeholders, such as the CoST multi-stakeholder group.
+Infrastructure Transparency Index Manual
+16
+3.2 Evaluation
+The evaluation stage is when all indicators are evaluated. Each of the four ITI dimensions have their own evaluation process, as
+follows.
+DIMENSION 1: ENABLING ENVIRONMENT
+Dimension 1 assesses national or sub-national conditions enabling transparency for the infrastructure sector and its indicators
+are determined through desktop research. Each indicator requires inputs from at least two evaluators, who make an initial
+evaluation independently of each other to avoid any bias.
+If the results from both evaluators for each indicator are the same, then the results are considered final. If there is a difference
+between them, then a third evaluator resolves the difference. This third evaluation must coincide with one of the first two and
+is then considered final. If in the rare case where the third evaluator believes that both initial evaluators are wrong, that specific
+indicator is returned to the two initial evaluators for a review. It is highly probable that after this review, the third evaluator will
+agree with one of the two initial evaluators.
+The quality of the collected data in dimension 1 is achieved through this approach, which ensures that the same observation
+will always be independently obtained by two different evaluators.
+DIMENSION 2: CAPACITIES AND PROCESSES
+Dimension 2 assesses the soundness of a procuring entity’s procedures and capacities to disclose data and information. Its
+indicators are evaluated through a survey that is completed once by an officer at the procuring entity. Normally, this officer
+is recognised as the “information officer”. This is the person who, officially or unofficially, coordinates the efforts linked to
+the national access-to-information law. This means that they are likely to be familiar with the principles of transparency,
+accountability, open data, citizen participation, collaboration and innovation.
+The survey can be undertaken through an interview or self-assessment. Both methods require the officer to respond to all
+questions and provide supporting explanations. The interview method potentially offers a means of ensuring more complete
+and fuller responses, but requires more resources to collect the data. The self-assessment option may require less effort and
+fewer resources but can nevertheless result in good data if there is engagement and validation. The local evaluation team needs
+to consider their situation and context to decide which of the two methods is more practical. Experience within CoST suggest
+that both methods can work effectively when well conducted.
+The quality of data collected by the survey should be verified by triangulating the results with other sources of information.
+These include the following.
+■ Endorsement, which is obtained by a signed statement of veracity of the information provided (see Annex 2).
+■ Evidence that validates the assigned scores. If the evidence (such as explanations, documents, websites, notice boards and
+newspapers) that was provided for a specific question does not match with the score assigned by the officer, the evaluation
+team can go back to the officer to ask for more information and/or request further consideration of the score assigned to
+the specific question.
+DIMENSION 3: CITIZEN PARTICIPATION
+Dimension 3 assesses the opportunities provided by procuring entities for citizen participation and how citizens use the
+disclosed public information. Its indicators are evaluated through the same survey that is completed by the information officer
+of each procuring entity.
+The survey is undertaken by the individual either through self-assessment or interview. The local evaluation team will decide
+which method is more appropriate in their context. It is initially recommended to use the same method for all evaluated
+procuring entities using the same evidence and endorsement control method as used with the other dimensions.
+3. Implementation methodolgy
+Infrastructure Transparency Index Manual
+17
+DIMENSION 4: INFORMATION DISCLOSURE
+Dimension 4 assesses the amount of data and information disclosed by the procuring entities according to the CoST
+Infrastructure Data Standard or the OC4IDS and its indicators are measured through desktop research. These indicators require
+two or three evaluators, as in dimension 1. The quality of the collected data comes from the same method, where a single
+observation will always be obtained through independent evaluation by two different people.
+RECOMMENDATIONS ABOUT WORKING WITH PROCURING ENTITIES
+In some conditions, it can be anticipated that obtaining data from procuring entities will be challenging. For this reason, the
+following approach is recommended.
+■ Collect the contact information of the procuring entity’s access-to-information unit. Since the information required by
+the ITI typically comes from this unit (or the equivalent, as defined in applicable national legislation), having the contact
+information of government officers at the unit can accelerate and facilitate the data collection process.
+■ Prepare a formal written invitation to the ITI process, copying the procuring entity main authority, that covers these points:
+● summary of the ITI concept
+● benefits to be obtained by the procuring entity and the country
+● legal framework that allows access to public information
+● information requirements (a copy of the survey can be attached)
+● request to confirm participation.
+■ Schedule the interviews or request the completion of the self-assessments. If interviews are to be conducted, it will be
+necessary to schedule all the meetings before the evaluation starts to ensure that the interviews are conducted during
+the evaluation period. If there are to be self-assessments, share the survey form with the procuring entities and define
+a deadline for completion. Provide the contact information of the evaluation team to respond to any questions. Always
+provide a completed example response, either for the interview or the self-assessment, to make sure that the officer at the
+procuring entity understands how to answer the survey questions correctly.
+CoST Ukraine showcases its innovative tools.
+3. Implementation methodolgy
+Infrastructure Transparency Index Manual
+18
+Communicate in an empathetic way. Written and verbal communications with government officers at the procuring entities
+should always be in positive terms and need to be formal, standardised and make reference to the access-to-information law
+or any other relevant legislation. It is important to show to the officers the benefits to their day-to-day work, to the procuring
+entity and to citizens that would come from the ITI results. An empathetic and purposeful attitude is key to generating reliable
+communications with these officers and is likely to increase the likelihood of receiving information that reveals the challenges
+faced by the procuring entities and the general contribution generated by the ITI.
+■ Define a protocol to follow when responses are not given by procuring entities. Daily workload and a lack of willingness
+are barriers that can limit the access to information to conduct an ITI evaluation. To address these problems, it is necessary
+before initiating the evaluation to design a protocol that considers national regulations, context and public-sector culture.
+An example of a protocol when conducting a self-assessment is as follows.
+● Initial follow-up phone call (or email) from the evaluation team within the deadline to ask the procuring entity if there are
+questions or problems with the survey.
+● Follow-up phone call (or email) from the evaluation team when the deadline has just expired to try to commit the procuring entity
+to a new and prompt deadline.
+● Another follow-up phone call (or email) from the evaluation team within the second deadline to ask the procuring entity if there
+are questions or problems with the survey.
+● Further follow-up phone calls (or emails) when the second deadline has expired, from an ITI-related high-level authority such as
+the CoST country manager, a CoST multi-stakeholder group member or a high-level official from the national access-to-public-
+information agency or equivalent.
+● Document the lack of response from the procuring entity after the described process. The ITI results report should have a section
+clearly stating the protocol followed and identify the procuring entities that did not contribute with the public information required
+by the ITI. This section will help to minimise the lack of contribution in future evaluations.
+■ Invite the procuring entities to the ITI results presentation. Make sure the government officers from the procuring entities
+that participated in the ITI evaluation, among other people, receive an invitation to the results presentation event, share
+the written results with these officers and invite them to get closer to the initiative and to ask any questions they may have
+related to the process or the instrument.
+Government officials at a CoST Uganda workshop.
+3. Implementation methodolgy
+Infrastructure Transparency Index Manual
+19
+As a general note, since procuring entities will be evaluated and compared (which is an essential part of the ITI) with the
+information they provide, it is necessary to have formal and standard communications with them to make sure none receives
+preferential treatment that may somehow influence the results. Also, it must be made clear that comparisons will only be
+expressed in a constructive manner.
+REMARKS ON OBJECTIVITY
+The ITI has three different methods to minimise the effect of subjectivity when conducting an evaluation. These are as follows.
+■ Scoring scales: each ITI indicator has its own points scoring scale of zero to five (0−5). The scale describes the possible
+answers or scenarios for each indicator and what score has to be assigned based on the conditions that were found during
+the evaluation. The possible answers or scenarios provide clarity to the evaluators and reduce their level of subjectivity
+when assigning scores. All indicators and their scoring scales are shown in Annex 1, with more detailed guidance on
+dimensions 2 and 3 in Annex 2.
+■ Double review: all indicators that require desktop research (those in dimensions 1 and 4) have to go through a process
+where each indicator is evaluated by two or three different people. The results generated by two people have to be the
+same to be acceptable for processing.
+■ Triangulation method: all indicators evaluated with survey information (those in dimensions 2 and 3) are subject to a
+triangulation method that combines evidence and endorsement. First, the government officer who completes the survey is
+required to sign a statement of veracity of information (see Annex 2). Second, their answers are reviewed by the evaluation
+team according to the evidence provided to validate the scores that were assigned. The data is only accepted for processing
+after approval by the evaluation team.
+The combination of the three methods allows an ITI evaluation to maintain objectivity, replicability and trustworthiness.
+PROCESSING
+The data collected has to be converted to assign an score that ranges from zero to one (0−1) for each indicator, sub-variable,
+variable and dimension, based on their assessment and weightings. All ITI components have associated differentiated
+weightings according to their relative importance (see Annex 1). The weightings are based on the validation process and will be
+reviewed over time. To obtain the scores, the following process is applied.
+■ Each indicator, sub-variable, variable and dimension has a weighting in the range of zero to one (0−1).
+■ Each indicator is also given a score ranging from zero to one (0-1). For simplicity the indicators are evaluated on a points
+scale of zero to five (0−5) so, for example, if the evaluation is 2 points, the assigned score is 0.4.
+■ Each indicator contributes a proportion to the score given to the sub-variable. That proportion is determined by the
+indicator weighting multiplied by the score obtained by the indicator. For example, if the indicator weighting is 0.24 and
+the score is 0.8 (because it had an evaluation of 4 points), then this indicator contributes a score 0.192 to the sub-variable
+score. The score for the sub-variable is defined by adding the contribution of all the indicators it contains.
+■ The total score of each variable and dimension is obtained by following the same process as above.
+■ The national or sub-national ITI score is obtained by summing weighted scores of all four dimensions, giving a value
+between zero and one (0−1). For dimensions 2 and 3, the scores of each procuring entity are added together and then
+divided by the number “n
+e” of procuring entities to give an average score. For dimension 4, the scores of each project are
+added together and then divided by the number “n
+p” of projects to give an average score.
+■ The procuring entity ITI score is obtained by summing the alternatively weighted scores of dimensions 2, 3 and 4 (see
+Annex 1). Again, for dimension 4, the scores of each project are added together and then divided by the number “n
+p
+” of
+projects to give an average score.
+3. Implementation methodolgy
+Infrastructure Transparency Index Manual
+20
+The main output of the processing stage is a database where all the procuring entities appear with their scores from each
+indicator, sub-variable, variable and dimension. The database also contains the scores for the national or sub-national ITI
+components.
+REPORTING
+The reporting stage involves the preparation, publication and public presentation of the final results report. The report should
+contain as a minimum: a description of the methodology adopted, together with associated technical decisions (such as the
+procuring entities sample size and selection); the ITI results for each evaluated procuring entity; the national results with
+associated analysis; comparisons (between procuring entities and previous results) with associated analysis; and conclusions.
+The scores in the reports should be presented at the following levels:
+■ National or sub-national ITI score: this is the global score obtained by the weighted sum of the four ITI dimensions. It also
+shows the specific scores for each dimension, considering that the national score for dimensions 2, 3 and 4 are obtained
+from the average for all evaluated procuring entities and their projects.
+■ Procuring entities’ ITI scores: this is the total score obtained by each evaluated procuring entity, with their detailed scores
+for each indicator, sub-variable and variable in dimensions 2, 3 and 4.
+■ Procuring entity scorecards: this is a visualisation summary of the main scores obtained by procuring entities, using charts
+and figures. The visualisation is prepared for each evaluated procuring entity.
+■ ITI results database: this contains the disaggregated scores for each dimension, variable, sub-variable and indicator. The
+database has to be enclosed with complete results, as open data. This file is accessible to multiple actors and gives them the
+opportunity to make use of the data to work with others to identify shortcomings in current practices and thereby achieve
+positive institutional, social and economic change.
+After the presentation and publication of the ITI results, it is normal that procuring entities and other stakeholders raise any
+questions or concerns they may have, ask for follow-up meetings and, in some cases, request training or other forms of support.
+The organisation(s) leading the ITI will need to have the capacity to respond to these needs.
+Civic engagement facilitated by CoST Thailand.
+3. Implementation methodolgy
+Infrastructure Transparency Index Manual
+21
+Annexes
+Annex 1. Evaluation instrument
+Annex 2. Survey for interview or self-assessment
+Annex 3. Procuring entities selection method and criteria
+Annex 4. Guidance for the evaluation team training
+Annex 5. Guide on lessons learned and techniques for an ITI implementation
+Annex 6. Glossary of key terms
+Annex 1: Evaluation instrument
+The Infrastructure Transparency Index (ITI) score (range 0−1) is calculated as follows:
+ITI score = ∑wd ( ∑wv ( ∑wsv ( ∑wi.i ) ) )
+Where wi is the weighting for each evaluated indicator score i (range 0−1) within each sub-variable, wsv is the weighting for
+each sub-variable score within each variable, wv is the weighting for each variable score within each dimension and wd is the
+weighting for each dimension score within the ITI.
+All dimensions, variables, sub-variables, indicators, indicator points scale and weightings are shown in the following table.
+The full scoring process for indicators in dimensions 2 and 3 are contained in Annex 2.
+When calculating a national or sub-national ITI score, the dimension 2 and 3 scores are calculated by adding the respective
+dimension scores for each procurement entity and then dividing each one by the number of procuring entities (n
+e) to provide
+the average values. For dimension 4, the scores for each project are added together and then divided by the number of
+projects (n
+p).
+When calculating a procuring entity ITI score (individually or in groups), dimension 1 and its indicators, sub-variables and
+variables are not included and larger values of wd are used for dimensions 2, 3 and 4 (see weighting column in table below).
+Again for dimension 4, the scores for each project are added together and then then divided by the number of projects (n
+p).
+While the indicators have different evaluation processes, as explained in this manual, all need to be evaluated during the
+same evaluation period. For example, if evaluations are conducted annually, indicators need to be evaluated based on
+evidence and justifications accumulated between the previous evaluation and the present, without using information from
+previous evaluations.
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+22
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+1 Dimension Enabling
+environment
+Evaluates national or sub-national
+conditions enabling transparency for
+the infrastructure sector considering the
+legal and regulatory framework and the
+centralised digital information tools.
+The indicators of this dimension are evaluated just once at the
+national or sub-national level.
+0.20 when calculating
+the national or sub-
+national ITI score
+0.00 when calculating
+the procuring entity
+score (i.e. not used)
+1.1
+Variable Legal
+framework
+and digital
+tools
+1.00
+1.1.1
+Sub-
+variable
+Access
+to public
+information
+regulatory
+framework
+Evaluates the existence of a national
+regulation on access to public
+information, or other related regulation,
+relevant to the infrastructure sector.
+0.30
+1.1.1.1
+Indicator Access-
+to-public
+information
+law
+There is a national law that guarantees
+the access to public information in all
+public sector institutions, which applies
+to all material held by or on behalf
+of public authorities with only few
+exceptions contained in the same law.
+Official websites
+on national
+legislation
+0 = The law does not exist;
+2 = It exists, but based on the text does not apply to all public
+institutions and does not apply to all material;
+3 = It exists and complies with only one of the two conditions;
+5 = It exists and complies with the two conditions.
+0.25 National or
+sub-national
+1.1.1.2
+Indicator Right to
+request public
+information
+There exists within the national legal
+framework the right of citizens to
+request and obtain non-published public
+information with
+•
+access to both information and
+records/documents
+•
+no need to provide reasons for their
+requests
+•
+clear maximum timelines
+•
+access to all public institutions.
+Official websites
+on national
+legislation
+0 = This provision does not exist in the laws or regulations of
+access to information, or there is no law of access to information;
+1 = The provision to request non-published information exists but
+none of the four conditions are covered by the law;
+2 = The provision exists but only one condition is covered by the
+law;
+3 = The provision and two conditions are covered by the law;
+4 = The provision and three conditions are covered by the law;
+5 = The provision and the four conditions are covered by the law.
+0.25 National or
+sub-national
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+23
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+1.1.1.3
+Indicator Sanctions
+over non-
+compliance
+with access
+to public
+information
+mandates
+Within the national legal framework
+there are sanctions for non-compliance
+on proactive and reactive disclosure of
+information.
+Official websites
+on national
+legislation
+0 = No sanctions exist in the laws or regulations, or no law of
+access to information exists;
+3 = The sanctions only apply for non-compliance to proactive and
+reactive publication, or do not apply to all public sector institutions;
+5 = There are sanctions in the law for non-compliance with
+proactive and reactive publications and they apply to all public
+sector institutions.
+0.25 National or
+sub-national
+1.1.1.4
+Indicator Organisation
+guaranteeing
+the sanctions
+Within the national legal framework
+there are organisations or mechanisms
+that are
+•
+protected against political and
+financial interference
+•
+responsible for overseeing the
+compliance of access-to-information
+requirements
+•
+compliant with the sanctions
+determined by law.
+Official websites
+on national
+legislation
+0 = There is no organisation or mechanism in charge of enforcing
+compliance with the access-to- information law/regulation, or there
+is no access to information law/regulation;
+2 = There are organisations or mechanisms with only one of the
+three conditions covered;
+3 = There are organisations or mechanisms with two of the three
+conditions covered;
+5 = There are organisations or mechanisms with the three
+conditions covered.
+0.25 National or
+sub-national
+1.1.2
+Sub-
+variable
+Transparency
+standards in
+the public
+infrastructure
+sector
+Evaluates the existence of laws and
+regulations that guarantee access
+to information in accordance with a
+transparency data standard for public
+infrastructure.
+0.45
+1.1.2.1
+Indicator Proactive
+publication of
+information
+on public
+procurement
+processes
+There is a national act or regulation that
+guarantees proactive disclosure of public
+procurement information in all public
+sector institutions.
+Official websites
+on national
+legislation
+0 = It is not required by the law, or there is no law of access to
+information;
+3 = It is required by the law but does not apply to all public sector
+institutions and/or the procurement data for disclosure are limited;
+5 = It is required by the law, applies to all public sector institutions
+and the procurement file related to all procurement stages is
+required for disclosure.
+0.20 National or
+sub-national
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+24
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+1.1.2.2
+Indicator Proactive
+publication of
+information
+on public
+infrastructure
+projects
+There is a national act or regulation
+that guarantees proactive disclosure on
+public infrastructure projects in all public
+sector institutions.
+Official websites
+on national
+legislation
+0 = It is not required by the law, or there is no law of access to
+information;
+3 = It is required by the law but does not apply to all public sector
+and/or the project infrastructure data for disclosure are limited;
+5 = It is required by the law, applies to all public sector institutions
+and the full infrastructure project file is required for disclosure.
+0.20 National or
+sub-national
+1.1.2.3
+Indicator Infrastructure
+data
+disclosure
+standard
+There is a national act or regulation
+that defines a data disclosure standard
+in public infrastructure (such as a
+formal disclosure requirement (FDR)
+requesting for the data of CoST IDS or
+OC4IDS), that must be complied with
+by all national or sub-national procuring
+entities.
+Official websites
+on national
+legislation
+0 = FDR does not exist;
+3 = Exists but does not apply to all public institutions;
+5 = Exists and applies to all institutions.
+0.20 National or
+sub-national
+1.1.2.4
+Indicator Infrastructure
+data
+disclosure
+standard
+proactively
+published as
+open data
+The national act or regulation with
+the infrastructure data disclosure
+standard requests proactive disclosure of
+infrastructure projects as open data.
+Official websites
+on national
+legislation
+0 = Formal disclosure of open data is not required, or there is no
+law providing the standard for the data publication;
+3 = Formal disclosure of open data is required, but partially
+because does apply to all public sector or does not apply to the full
+data standard (that is the CoST IDS or OC4IDS);
+5 = It requires the publication of all the data standard for
+transparency in public infrastructure (that is the CoST IDS or
+OC4IDS) as open data in all public sector entities.
+0.20 National or
+sub-national
+1.1.2.5
+Indicator Organisation
+responsible
+for the
+infrastructure
+data
+disclosure
+standard
+Within the law or regulation there is an
+organisation responsible for overseeing
+the compliance of the publication
+of information according to the
+infrastructure data disclosure standard.
+Official websites
+on national
+legislation
+0 = There is no organisation responsible for overseeing compliance
+with the regulation, or there is no relation on the standard for data
+publication;
+3 = There is an organisation but it does not have the power to
+oversee compliance;
+5 = There is an organisation and it oversees compliance with the
+standard.
+0.20 National or
+sub-national
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+25
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+1.1.3
+Sub-
+variable
+National
+digital
+information
+tools
+Evaluates the availability of national
+digital tools that facilitate transparency
+in public infrastructure.
+0.25
+1.1.3.1
+Indicator Centralised
+digital
+information
+platforms
+There are centralised national or
+sub-national digital platforms with
+information on public infrastructure
+projects.
+National
+websites
+0 = There are none;
+2-3-4 = There are, but access to information is partial;
+5 = There are and the access to information they offer is complete.
+0.30 National or
+sub-national
+1.1.3.2
+Indicator Easy access to
+information
+in digital
+information
+platforms
+The information that offers the details
+of public infrastructure projects, used for
+example for verification reports, is easily
+accessible, complete and available in an
+orderly manner in digital format.
+National
+websites
+0 = The information is not easily accessible, or there are no digital
+systems;
+2-3-4 = The information is partially ordered, complete and easily
+accessible;
+5 = It is easily accessible, ordered and complete.
+0.40 National or
+sub-national
+1.1.3.3
+Indicator Infrastructure
+projects
+geographic
+information
+system (GIS)
+platform
+There is a web platform tailored to
+the needs of citizens that allows in a
+simple and visual manner, access to a
+GIS database of infrastructure projects
+with key information on works under
+execution or recently executed.
+National
+websites
+0 = There is no platform for geographical visualisation;
+2-3-4 = There is a platform but it is outdated, or shows little
+information, or does not show all public infrastructure projects;
+5 = There is a complete platform with comprehensive information.
+0.30 National or
+sub-national
+2 Dimension Capacities
+and processes
+Evaluates the soundness of procuring
+entities’ procedures and capacities to
+disclose data and information.
+The indicators of this dimension are evaluated “n
+e
+” times at the
+procuring entity level.
+0.25 when calculating
+the national or sub-
+national ITI score
+0.35 when calculating
+the procuring entity
+ITI score
+2.1
+Variable Institutional
+capacities
+0.40
+2.1.1
+Sub-
+variable
+Basic
+knowledge
+Assesses the knowledge of public
+officers on subjects of access to
+information and transparency in public
+infrastructure.
+0.50
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+26
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+2.1.1.1
+Indicator Knowledge
+about the
+access-to-
+information
+law
+The officer who completes the
+survey knows the national access-to-
+information law on public information
+and the main provisions.
+Survey of public
+officials
+0 = The officer does not know the law;
+1 = Only knows it exists without being able to quote its content;
+2-3-4 = Can quote key elements;
+5 = Describes what is public, the proactive and reactive publication,
+the request of access and the organisation that guarantees
+compliance.
+0.20 Institutional
+2.1.1.2
+Indicator Knowledge
+about
+transparency
+initiatives
+in the
+infrastructure
+sector
+The officer who completes the survey
+knows the existence of the transparency
+initiatives in the infrastructure sector
+and their objectives.
+Survey of public
+officials
+0 = The officer does not know them;
+1 = Only knows they exists, without being able to quote on their
+scope;
+2-3-4 = Can quote key elements;
+5 = Describes what is CoST, the data standard, the FDR, the
+multisectoral group and the assurance of projects.
+0.20 Institutional
+2.1.1.3
+Indicator Knowledge
+about the
+transparency
+data standard
+in the
+infrastructure
+sector
+The officer who completes the
+survey knows the national or sub-
+national transparency data standard
+for the infrastructure sector and its
+requirements.
+Survey of public
+officials
+0 = The officer does not know it;
+1 = Only knows it exists without being able to quote its scope;
+2-3-4 = Can quote key elements;
+5 = Besides the key elements, may indicate the level of adoption of
+his/her institution.
+0.20 Institutional
+2.1.1.4
+Indicator Knowledge
+about
+sanctions
+due to non-
+compliance
+on the access-
+to-public-
+information
+law
+The officer who completes the survey
+knows the sanctions applied for non-
+compliance with the standards of access
+to public information and/or State
+contracts.
+Survey of public
+officials
+0 = The officer does not know about sanctions;
+2-3-4 = Knows about them partially;
+5 = Knows about the sanctions adequately or knows that the laws
+or regulations do not include sanctions (if it were so).
+0.20 Institutional
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+27
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+2.1.1.5
+Indicator Knowledge
+about
+different data
+categories
+The officer who completes the
+survey knows what constitutes and
+the differences between: public
+data, personal data, sensitive data,
+confidential data and reserved data.
+Survey of public
+officials
+0 = The officer does not know what the quoted type of data is;
+2-3-4 = Knows them partially;
+5 = Knows them and can differentiate them clearly.
+0.20 Institutional
+2.1.2
+Sub-
+variable
+Digital
+capacities
+Assesses institutional capacities on the
+use of digital technologies to facilitate
+efficiency and transparency.
+0.50
+2.1.2.1
+Indicator Computer
+equipment
+The entity has computer equipment for
+all personnel performing any type of
+administrative work.
+Survey of public
+officials
+0 = There is no access to computer equipment for any officer at
+the entity;
+2-3-4 = Access to computer equipment is partial or insufficient;
+5 = All officers performing administrative work have access to
+computer equipment.
+0.20 Institutional
+2.1.2.2
+Indicator Connectivity
+to the
+internet
+The entity has an internet connection
+that offers an adequate bandwidth
+for the systems operations and the
+personnel.
+Survey of public
+officials
+0 = There is no access to the internet;
+2-3-4 = There is access but its bandwidth is insufficient for the
+systems and the personnel;
+5 = The bandwidth is optimal for the entity´s activity.
+0.20 Institutional
+2.1.2.3
+Indicator Institutional
+website
+The institution has its own website and
+is capable of managing its content and
+services in real time.
+Survey of public
+officials
+0 = The institution does not have a website;
+2-3-4 = Does have a website, but its management capacity is
+partial;
+5 = Has total control.
+0.20 Institutional
+2.1.2.4
+Indicator Information
+systems for
+infrastructure
+projects
+The institution has a digital system to
+record all information related to public
+infrastructure projects.
+Survey of public
+officials
+0 = The institution records are on paper;
+2 = Some records are electronic;
+3 = Records are mainly on spreadsheets, like Excel or others;
+5 = All the records are in information systems.
+0.10 Institutional
+2.1.2.5
+Indicator Use of digital
+information
+systems
+Officers use available digital systems for
+activities related to public infrastructure
+projects.
+Survey of public
+officials
+0 = Systems are not used, or there are no systems;
+3 = The systems are only partially used;
+5 = They are fully used.
+0.10 Institutional
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+28
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+2.1.2.6
+Indicator Infrastructure
+open data
+publication
+The entity publishes information
+of its infrastructure projects in this
+format, complying with the following
+conditions:
+•
+tabulated
+•
+updated
+•
+complete
+•
+processable by computer
+•
+free of payment
+•
+with a license allowing their free use.
+Survey of public
+officials
+0 = The entity does not publish infrastructure data;
+1 = The entity publishes data but only complies with one condition;
+2 = Publishes data and comply with two conditions;
+3 = Publishes data and complies with three or four conditions;
+4 = Publishes data and complies with five conditions;
+5 = Publishes infrastructure data complying with all six conditions.
+0.10 Institutional
+2.1.2.7
+Indicator Visualisations
+based on
+infrastructure
+projects data
+The public entity uses visualisations
+that facilitate the presentation and
+interpretation of information referring to
+public infrastructure projects.
+Survey of public
+officials
+0 = The entity does not publish visualisations on this subject;
+3 = Publishes but not regularly;
+5 = Publishes visualisations regularly (it can be on the web or other
+media such as print).
+0.10 Institutional
+2.2
+Variable Institutional
+processes
+0.60
+2.2.1
+Sub-
+variable
+Procedures
+to disclose
+information
+Evaluates institutional procedures
+to guarantee transparency of data
+and information related to public
+infrastructure.
+0.35
+2.2.1.1
+Indicator Procedures
+for the
+publication of
+information
+There is a documented institutional
+procedure for the proactive disclosure
+of information linked to public
+infrastructure projects.
+Survey of public
+officials
+0 = There is no procedure, or the officer does not know if any
+exists;
+3 = There is a procedure, but the officer only quotes generalities;
+5 = The officer knows it, shows it and describes the main elements.
+0.20 Institutional
+2.2.1.2
+Indicator Respons-
+ibilities for
+disclosure
+The procedure for proactive disclosure
+refers to named officers who are
+responsible for the various stages of
+the proactive disclosure of information
+process.
+Survey of public
+officials
+0 = The procedure does not name anybody, or nobody exists in
+charge of the proactive disclosure;
+3 = The procedure names only some people;
+5 = The procedure names all people per stage.
+0.20 Institutional
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+29
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+2.2.1.3
+Indicator Information
+officer profile
+There is a documented professional
+profile in the institution for an
+“information officer”, “information
+unit”, or similar, that describes the
+professional requirements and main
+tasks for this person or unit.
+Survey of public
+officials
+0 = There is no profile or the officer does not know if there is any;
+3 = There is a profile, but it has unrelated responsibilities (includes
+other activities besides the ones related to public information
+access);
+5 = There is a profile and all documented responsibilities are related
+to it.
+0.20 Institutional
+2.2.1.4
+Indicator Information
+officer
+There is a person nominated for the
+position of information officer and
+the person fully complies with the job
+profile.
+Survey of public
+officials
+0 = There is no person assigned, or there is no profile;
+3 = There is an assigned person but does not comply with the
+profile requirements;
+5 = The assigned person complies with all requirements.
+0.20 Institutional
+2.2.1.5
+Indicator Follow-up
+mechanisms
+on
+information
+requests
+There are procedures to provide
+an internal follow-up to public
+infrastructure project information
+requests that come from citizens or
+other actors.
+Survey of public
+officials
+0 = There is no follow-up mechanism on information requests, or
+the officer does not know if one exists;
+3 = There is a follow-up mechanism but presents weaknesses that
+might result in a lack of response;
+5 = There is an internal follow-up mechanism on which no
+information request can be lost or unanswered.
+0.20 Institutional
+2.2.2
+Sub-
+variable
+Enablers
+and barriers
+to disclose
+information
+Evaluates conditions at the entity
+facilitating or limiting the public
+information publication.
+0.35
+2.2.2.1
+Indicator Internal
+policy for
+information
+publication
+There is in the entity an internal policy,
+issued from the institutional authorities,
+for the publication of information
+containing, among other data, those
+referring to infrastructure projects.
+Survey of public
+officials
+0 = There is no internal standard or policy, or the officer does not
+know if any exists;
+3 = There is one, but the entity does not fully comply with it;
+5 = There is one and the entity fully complies in practice with it.
+0.20 Institutional
+2.2.2.2
+Indicator Disclosure
+training
+programme
+There is an internal disclosure training
+programme or dissemination process
+that makes personnel aware at all
+levels on matters of access to public
+information that includes infrastructure
+projects.
+Survey of public
+officials
+0 = There is no training programme, or the officer does not know
+if there is one;
+3 = There is a programme but is only applied to some personnel;
+5 = There is a programme and is applied to all institutional
+personnel.
+0.20 Institutional
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+30
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+2.2.2.3
+Indicator Identification
+of limitations
+for publishing
+information
+The internal limitations to publishing
+infrastructure projects information have
+been clearly identified.
+Survey of public
+officials
+0 = The officer does not recognise the existence of limitations;
+3 = The officer knows the limitations but does not describe them
+adequately;
+5 = The officer knows the limitations, describes them and they are
+documented, or the officer may prove there are no limitations.
+0.15 Institutional
+2.2.2.4
+Indicator Plan to
+mitigate
+limitations for
+publishing
+information
+There is a document that contains the
+plan to reduce or eliminate the present
+limitations to publishing information
+related to infrastructure projects.
+Survey of public
+officials
+0 = There is no documented plan to reduce or eliminate the
+limitations;
+2 = There is a plan but it is not comprehensive and there is no
+evidence of its implementation;
+3 = There is a non-comprehensive plan but there is evidence of its
+implementation;
+4 = There is a comprehensive plan but there is no evidence of its
+implementation;
+5 = There is a comprehensive plan and there is evidence of its
+implementation.
+0.15 Institutional
+2.2.2.5
+Indicator Bureaucratic
+barriers
+to publish
+information
+The process of proactive and reactive
+publication of public information, in
+practice, is not hindered by internal
+bureaucracy, as for example when it
+is necessary to obtain approval from
+multiple parties.
+Survey of public
+officials
+0 = The process is highly bureaucratic, or the officer cannot
+describe whether this type of problem is present;
+3 = It is considered that these obstacles are few;
+5 = It is considered there are no bureaucratic obstacles to publish
+public information.
+0.15 Institutional
+2.2.2.6
+Indicator Document-
+ation of non-
+compliance
+and sanctions
+There is documentation at the entity
+acknowledging and following-up
+on non-compliance and sanctions
+imposed by controlling entities due
+to non-compliance with the access-
+to-information standards and/or state
+contracts.
+Survey of public
+officials
+0 = There is no documentation, or the officer does not know if
+there is some;
+2 = There is documentation but no follow-up (of the non-
+compliances and/or sanctions), or the follow-up cannot be
+described;
+3 = There is documentation and follow-up (of the non-compliances
+and/or sanctions);
+5 = The officer can show from the specific documentation that
+they have not received sanctions from controlling entities.
+0.15 Institutional
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+31
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+2.2.3
+Sub-
+variable
+Control over
+infrastructure
+projects
+disclosure
+Assesses the existence of disclosure
+control mechanisms and their practical
+impact in improving data disclosure.
+0.30
+2.2.3.1
+Indicator Level of
+disclosed
+infrastructure
+projects
+Proportion of projects on which
+information is disclosed, complying
+with the infrastructure data standard,
+compared with the total number of
+projects managed by the procuring
+entity, expressed as a percentage.
+Survey of public
+officials and/
+or national or
+sub-national
+websites
+0 = 0-10%, or if the officer could not give any numbers;
+1 = 11-29%;
+2 = 30-49%;
+3 = 50-65%;
+4 = 66-85%;
+5 = 86-100% (approximate calculations according to the available
+information).
+0.50 Institutional
+2.2.3.2
+Indicator Level of
+investment
+represented
+by disclosed
+infrastructure
+projects
+Amount of investment represented
+by projects on which information is
+proactively disclosed by the procuring
+entity, complying with the infrastructure
+data standard, as a proportion of
+the total amount of investment on
+infrastructure projects, expressed as a
+percentage.
+Survey of public
+officials and/
+or national or
+sub-national
+websites
+0 = 0-10%, or if the officer could not give any numbers;
+1 = 11-29%;
+2 = 30-49%;
+3 = 50-65%;
+4 = 66-85%;
+5 = 86-100% (approximate calculations according to the available
+information).
+0.50 Institutional
+3 Dimension Citizen
+participation
+Evaluates the opportunities provided
+by procuring entities for citizen
+participation and how citizens use the
+disclosed public information.
+The indicators of this dimension are evaluated “n
+e
+” times at the
+procuring entity level.
+0.20 when calculating
+the national or sub-
+national ITI score
+0.25 when calculating
+the procuring entity
+ITI score
+3.1
+Variable Participation
+practices
+1.00
+3.1.1
+Sub-
+variable
+Participation
+opportunities
+Assesses the formalisation of citizens
+participation opportunities and
+online mechanisms to facilitate this
+participation.
+0.45
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+32
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+3.1.1.1
+Indicator Institution-
+alised citizen
+participation
+The institution has formal citizen
+participation opportunities that
+allow the procuring entity to listen
+and implement requests from the
+citizenship, that may be used for public
+infrastructure projects.
+Survey of public
+officials
+0 = There are no laws, regulations, or policies that can be used as
+foundation for citizens participation;
+2 = There is only a national or sub-national regulatory framework
+for participation, with no internal (institutional) framework;
+3 = There are both, external and internal frameworks for
+participation;
+5 = There are both external and internal frameworks and there are
+also efficient documented procedures for citizens’ participation.
+0.20 Institutional
+3.1.1.2
+Indicator Permanent
+and inclusive
+citizen
+participation
+The citizens participation opportunities
+are permanently available or are
+available with a constant periodicity
+through a variety of inclusive channels.
+Survey of public
+officials
+0 = There are no formal participation opportunities;
+2 = There are participation opportunities, but are not permanent
+and are not available through a variety of inclusive channels;
+3 = Participation opportunities are either permanent or available
+through a variety of inclusive channels;
+5 = Participation spaces are both, permanent and available
+throughout different participation inclusive channels.
+0.10 Institutional
+3.1.1.3
+Indicator Citizen
+participation
+in
+infrastructure
+projects
+The entity conducts formal citizen
+consultation processes to identify,
+define, prioritize and monitor public
+infrastructure projects.
+Survey of public
+officials
+0 = The entity does not conduct these consultation processes on
+infrastructure projects, or the officer is not sure if they do them; 2
+= The entity has consultation in infrastructure projects, but is not
+for all project stages and is not for all projects;
+3 = The entity has consultation in infrastructure projects in all
+project stages, but is not applied to all infrastructure projects;
+5 = The consultation applies to all infrastructure project stages and
+to all infrastructure projects.
+0.25 Institutional
+3.1.1.4
+Indicator Citizen
+attention
+office
+There is in the institution an office for
+citizen service (called the Transparency
+Office, Complaints Office, Information
+Office, etc.) that sees subjects related to
+infrastructure projects.
+Survey of public
+officials
+0 = There is no office, or the officer is not sure if there is one;
+3 = There is one but it has limitations;
+5 = There is one and it serves citizens efficiently.
+0.15 Institutional
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+33
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+3.1.1.5
+Indicator Online
+form for
+consultation
+or requests
+There is an online form by which
+any person may request information,
+perform a consultation, or present a
+complaint referring to an infrastructure
+project and receive an effective
+response.
+Survey of public
+officials
+0 = The entity does not have an online form, or has one that does
+not work;
+2 = It has one but has to be downloaded, printed, completed and
+scanned or physically taken to the entity;
+3 = The entity does have an online form but without a follow-up
+mechanisms (such as request identity number);
+5 = The online form has a specific follow-up mechanism for the
+applicant.
+0.10 Institutional
+3.1.1.6
+Indicator Awareness of
+participation
+opportunities
+The institution makes an effort to
+ensure that citizens are aware of existing
+participation opportunities and of
+the availability of information related
+infrastructure projects.
+Survey of public
+officials
+0 = The entity does not make any effort, or the officer does not
+know if it has;
+3 = The entity makes an effort but not in a consistent, permanent
+and inclusive manner;
+5 = Makes consistent, permanent and inclusive efforts for both
+things.
+0.20 Institutional
+3.1.2
+Sub-
+variable
+Use of
+information
+by citizens
+Assesses the use of information related
+to infrastructure projects by citizens,
+stemming from case evidence.
+0.55
+3.1.2.1
+Indicator Centralised
+citizen
+complaints
+There is a mechanism that documents
+citizens’ complaints related to public
+infrastructure projects, generates a log
+and manages responses in an orderly
+fashion.
+Survey of public
+officials
+0 = There is no centralisation of citizens’ complaints, or there is no
+evidence of its existence;
+2 = There is one, but it does not work optimally;
+3 = There is one, it works optimally, but it does not generate of a
+report with inputs for specific infrastructure projects;
+5 = It exists, works optimally and its results are evidenced in a
+report for improvements on specific infrastructure projects.
+0.10 Institutional
+3.3.2.2
+Indicator Requests and
+responses
+of access to
+information
+Access- to-information requests and
+responses there were from the entity are
+recorded.
+Survey of public
+officials
+0 = The officer cannot show how many requests were there, or
+there is no record of requests;
+3 = The officer can show how many requests and how many
+responses were there, but with no specific details;
+5 = The officer can show how many of the total responses were
+positive (that is, containing the information requested by the
+citizens), how many were referred to other agencies (because they
+were the wrong agency) and how many requests were about the
+same information.
+0.10 Institutional
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+34
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+3.3.2.3
+Indicator Institutional
+response
+capacity
+The response to citizens’ access-
+to-information requests is provided
+according to the period established by
+law.
+Survey of public
+officials
+0 = There is no capacity of response in the period established by
+law, or there is no control over the response time, or there is no
+information about requests;
+2 = Only some cases receive response within the period established
+by law;
+4 = Most cases are responded within the period established by law;
+5 = 100% of cases are responded to within the period established
+by law.
+0.15 Institutional
+3.3.2.4
+Indicator Institutional
+use evidence
+The institution provides the public
+with feedback, such as reports or
+announcements, on how citizens’
+inputs have been used in infrastructure
+projects.
+Survey of public
+officials
+0 = There is no feedback made public, or it is not known if there is
+internal use of citizens participation;
+2 = There is internal use of citizens participation that can be
+referenced, but is not well documented;
+3 = The is internal use and is documented, but not made public;
+5 = The internal documented use of citizens participation in
+infrastructure projects is made public.
+0.15 Institutional
+3.3.2.5
+Indicator Citizens use
+evidence
+The information made public regarding
+infrastructure projects is used by the
+citizens, civil society organisations,
+academia, media, private sector, or any
+other actor.
+Survey of public
+officials
+0 = The officer does not know if there is any type of use;
+3 = The officer knows and quotes an example in this present year;
+5 = The officer knows and quotes more than one example in this
+present year.
+0.15 Institutional
+3.3.2.6
+Indicator Evidence of
+joint projects
+The institution has developed joint
+projects with other actors out of the
+institution as a result of the information
+on infrastructure projects.
+Survey of public
+officials
+0 = The officer does not know if there has been a joint project;
+3 = The officer knows and quotes an example in this present year;
+5 = The officer knows and quotes more than an example in this
+present year.
+0.15 Institutional
+3.3.2.7
+Indicator Improvements
+as a response
+to citizen
+participation
+Changes or reforms have been made
+to infrastructure projects in response
+to feedback, evaluation, or some other
+type of citizen participation.
+Survey of public
+officials
+0 = There are no case, or the officer does not know if there are
+any;
+3 = There is evidence in a project in this current year;
+5 = There is evidence of improvement in more than one project
+during this present year.
+0.20 Institutional
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+35
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+4 Dimension Information
+disclosure
+Evaluates the amount of data and
+information disclosed by procuring
+entities on infrastructure projects
+according to the CoST IDS or the
+OC4IDS.
+The indicators of this dimension are evaluated “n
+p
+” times at the
+infrastructure project level of each of the “n
+e” evaluated procuring
+entities.
+0.35 when calculating
+the national or sub-
+national ITI score
+0.40 when calculating
+the procuring entitiy
+ITI score
+4.1
+Variable Disclosure
+practices
+1.00
+4.1.1
+Sub-
+variable
+Project
+identification
+0.10
+4.1.1.1
+Indicator Project
+reference
+number
+There is a number or code assigned to
+the project that uniquely identifies it.
+Project data on
+the web
+0 = It is not available;
+3 = It is available, but it changes, or it is not the same in all
+registries;
+5 = It is always available.
+0.075 Institutional
+by project
+4.1.1.2
+Indicator Project owner The entity in charge of project
+development and execution contract is
+clearly identified.
+Project data on
+the web
+0 = It is not available;
+5 = It is available.
+0.10 Institutional
+by project
+4.1.1.3
+Indicator Sector and
+sub-sector
+The sector and sub-sector are
+identified according to the government
+structure, for which the project is being
+developed.
+Project data on
+the web
+0 = They are not available;
+3 = Only one is available;
+5 = Both are available.
+0.10 Institutional
+by project
+4.1.1.4
+Indicator Project name The project is clearly identified with
+the same name throughout the project
+cycle.
+Project data on
+the web
+0 = It is not identified;
+3 = It is identified but it changes;
+5 = It is identified with no changes.
+0.075 Institutional
+by project
+4.1.1.5
+Indicator Project
+location
+The physical location of the project is
+clearly identified.
+Project data on
+the web
+0 = It is not available;
+5 = It is available.
+0.15 Institutional
+by project
+4.1.1.6
+Indicator Project
+description
+The project´s description is available,
+indicating what it is about and the
+infrastructure outputs that are part of it.
+Project data on
+the web
+0 = It is not available;
+3 = It is available, but it is insufficient;
+5 = It is available, clear and comprehensive.
+0.25 Institutional
+by project
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+36
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+4.1.1.7
+Indicator Purpose There is a project purpose expressed in
+terms of public infrastructure and its
+intended social and economic impact.
+Project data on
+the web
+0 = It is not available;
+3 = It is available, but it is insufficient;
+5 = It is available, clear and comprehensive.
+0.25 Institutional
+by project
+4.1.2
+Sub-
+variable
+Project
+preparation
+0.15
+4.1.2.1
+Indicator Environmental
+impact
+A document that identifies, evaluates
+and describes the environmental
+impacts produced by the project on
+its surroundings is available; including
+reference to relevant additional studies
+(soil, topography, hydrogeology, etc.)
+Project data on
+the web
+0 = It is not available;
+3 = Only a summary is available;
+5 = The document is available, is clear and comprehensive.
+0.30 Institutional
+by project
+4.1.2.2
+Indicator Land and
+settlement
+impact
+A document that identifies, assesses
+and describes the impacts on human
+settlements and population centres,
+produced by the project, is available.
+Project data on
+the web
+0 = It is not available;
+3 = Only a summary is available;
+5 = The document is available, is clear and comprehensive.
+0.30 Institutional
+by project
+4.1.2.3
+Indicator Contact
+details
+Information identifies the contact details
+of the officer responsible for the project
+in the procuring entity.
+Project data on
+the web
+0 = It is impossible to know who is responsible;
+2 = Only a few names are available;
+3 = All names are available;
+5 = Names are available, as well as their contact information.
+0.10 Institutional
+by project
+4.1.2.4
+Indicator Project
+budget
+and date of
+approval
+The total required budget is available for
+the development of the project and the
+date of approval provided.
+Project data on
+the web
+0 = They are not available;
+3 = Only one of the two is available;
+5 = Both are available.
+0.20 Institutional
+by project
+4.1.2.5
+Indicator Funding
+sources
+The sources where the funds are
+coming from are identified, e.g. from
+the national budget, cooperation,
+multilateral organisations, or others.
+Project data on
+the web
+0 = It is not available;
+5 = It is available
+0.10 Institutional
+by project
+4.1.3
+Sub-
+variable
+Execution
+contract
+procurement
+0.30
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+37
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+4.1.3.1
+Indicator Procuring
+entity and
+contact
+details
+The entity in charge of contracting
+the execution of the infrastructure
+project and its contact details are clearly
+identified.
+Contract data
+on the web
+0 = They are not identified;
+3 = Only one of the two data points is identified;
+5 = Both are identified.
+0.10 Institutional
+by project
+4.1.3.2
+Indicator Procurement
+process
+The type of procurement process that
+was applied to award the contract is
+clearly identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+4.1.3.3
+Indicator Number of
+firms bidding
+The number of companies participating
+in the bidding process for the
+infrastructure execution is clearly
+identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+4.1.3.4
+Indicator Contract type The type of contract to be signed is
+clearly identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+4.1.3.5
+Indicator Contract title The official name of the signed contract
+is clearly identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+4.1.3.6
+Indicator Contract price The final amount of the execution
+contract is clearly stated.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+4.1.3.7
+Indicator Contract start
+date
+The date when the contract execution
+starts is clearly identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+4.1.3.8
+Indicator Contract
+duration
+The contract duration is clearly
+identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified, either because it is clearly provided or because it
+can be calculated with a starting and ending date.
+0.10 Institutional
+by project
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+38
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+4.1.3.9
+Indicator Contractor(s) The
+•
+name
+•
+identification number
+•
+contact information
+of the winning contractor is clearly
+identified.
+Contract data
+on the web
+0 = They are not identified;
+2 = Only one of the three data points are identified;
+3 = Two of the three data points are identified;
+5 = The three data points are identified.
+0.10 Institutional
+by project
+4.1.3.10
+Indicator Contract
+scope of work
+The description of the work and services
+that the firm has to provide under the
+signed contract are clearly identified.
+Contract data
+on the web
+0 = It is not identified;
+3 = It is identified but has deficiencies;
+5 = It is identified, clear and comprehensive.
+0.10 Institutional
+by project
+4.1.4
+Sub-
+variable
+Supervision
+contract
+procurement
+0.20
+4.1.4.1
+Indicator Procuring
+entity and
+contact
+details
+The entity in charge of contracting the
+supervision of the infrastructure and its
+contact details are clearly identified.
+Contract data
+on the web
+0 = They are not identified;
+3 = Only one of the two data points is identified;
+5 = Both are identified.
+0.10 Institutional
+by project
+4.1.4.2
+Indicator Procurement
+process
+The type of tender management process
+applied to award the contract is clearly
+identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+4.1.4.3
+Indicator Number
+of firms/
+individuals
+bidding
+The number of companies or individuals
+participating in the bidding process for
+the supervision is clearly identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+4.1.4.4
+Indicator Contract type The type of contract signed is clearly
+identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+4.1.4.5
+Indicator Contract title The official name of the signed contract
+is clearly identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+39
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+4.1.4.6
+Indicator Contract price The final amount of the supervision
+contract is clearly provided.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+4.1.4.7
+Indicator Contract start
+date
+The start date of the supervision
+contract started is clearly identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified.
+0.10 Institutional
+by project
+4.1.4.8
+Indicator Contract
+duration
+The contract duration is clearly
+identified.
+Contract data
+on the web
+0 = It is not identified;
+5 = It is identified, either because it is clearly provided or because it
+can be calculated with a starting and ending date.
+0.10 Institutional
+by project
+4.1.4.9
+Indicator Contract firm/
+individual
+The name and information of the
+awarded company or individual to
+implement the project supervision is
+clearly identified.
+Contract data
+on the web
+0 = It is not identified;
+3 = Only the name is identified, without all the details;
+5 = The name, contact information and professional are identified.
+0.10 Institutional
+by project
+4.1.4.10
+Indicator Contract
+scope of work
+The description of the work and services
+that the firm or individual has to provide
+under the signed contract are clearly
+identified.
+Contract data
+on the web
+0 = It is not identified;
+3 = It is identified but has deficiencies;
+5 = It is identified, clear and comprehensive.
+0.10 Institutional
+by project
+4.1.5
+Sub-
+variable
+Execution
+contract
+implement-
+ation
+0.15
+4.1.5.1
+Indicator Variation to
+contract price
+It is clearly indicated whether variations
+to the contract price have been made.
+Contract data
+on the web
+0 = The price variations are not pointed out when there is evidence
+that they exist, or there is not price information in the contract;
+5 = The price variations are clearly pointed out if there is evidence
+that they exist, or no price variations could be observed.
+0.10 Institutional
+by project
+4.1.5.2
+Indicator Reasons for
+price changes
+Justifications with arguments why
+changes were made to the contract
+price are available.
+Contract data
+on the web
+0 = The reasons for price changes are not available and price
+changes were observed;
+3 = There are reasons for price changes, but they are partial;
+5 = The reasons for all changes are available, or no changes to the
+contracted price were observed.
+0.25 Institutional
+by project
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+40
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+4.1.5.3
+Indicator Variation
+to contract
+duration
+Contract duration modifications are
+clearly indicated, if made.
+Contract data
+on the web
+0 = Variations to the contract duration are not pointed out when
+there is evidence that they exist;
+5 = Variations are clearly pointed out if there is evidence that they
+exist, or no variations to the contract duration could be observed.
+0.10 Institutional
+by project
+4.1.5.4
+Indicator Reasons for
+contract
+duration
+changes
+Justifications with arguments why
+changes were made to the contract
+duration are available.
+Contract data
+on the web
+0 = The reasons for changes in the duration are not available and
+term changes were observed;
+3 = There are reasons for term changes, but they are partial;
+5 = The reasons for all changes are available, or no changes to the
+contracted term were observed.
+0.25 Institutional
+by project
+4.1.5.5
+Indicator Variation
+to contract
+scope
+Modifications to the project scope, if
+they exist, are clearly indicated.
+Contract data
+on the web
+0 = Variations to the contract scope are not pointed out when
+there is evidence that they exist;
+5 = Variations are clearly pointed out if there is evidence that they
+exist, or no variations to the contract scope could be observed.
+0.10 Institutional
+by project
+4.1.5.6
+Indicator Reasons
+for scope
+changes
+Justifications with arguments why
+changes were made to project scope are
+available.
+Contract data
+on the web
+0 = The reasons for changes in the project scope are not available
+and changes were observed;
+3 = There are reasons for scope changes, but they are partial;
+5 = The reasons for all changes are available, or no changes to the
+contracted scope were observed.
+0.20 Institutional
+by project
+4.1.6
+Sub-
+variable
+Supervision
+contract
+implement-
+ation
+0.10
+4.1.6.1
+Indicator Variation to
+contract price
+It is clearly indicated whether variations
+to the contract price have been made.
+Contract data
+on the web
+0 = The price variations are not pointed out when there is evidence
+that they exist, or there is not price information in the contract;
+5 = The price variations are clearly pointed out if there is evidence
+that they exist, or no price variations could be observed.
+0.10 Institutional
+by project
+4.1.6.2
+Indicator Reasons for
+price changes
+Justifications with arguments why
+changes were made to the contract
+price are available.
+Contract data
+on the web
+0 = The reasons for price changes are not available and price
+changes were observed;
+3 = There are reasons for price changes, but they are partial;
+5 = The reasons for all changes are available, or no changes to the
+contracted price were observed.
+0.25 Institutional
+by project
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+41
+NO. LEVEL NAME DESCRIPTION
+INDICATOR
+EVALUATION
+SOURCE
+INDICATOR SCORING SCALE
+(0 points = 0, 1 point = 0.2, 2 points = 0.4, 3 points = 0.6, 4
+points = 0.8, 5 points = 1) WEIGHTING
+INDICATOR
+TYPE
+4.1.6.3
+Indicator Variation
+to contract
+duration
+Contract duration modifications are
+clearly pointed out, if made.
+Contract data
+on the web
+0 = Variations to the contract duration are not pointed out when
+there is evidence that they exist;
+5 = Variations are clearly pointed out if there is evidence that they
+exist, or no variations to the contract duration could be observed.
+0.10 Institutional
+by project
+4.1.6.4
+Indicator Reasons for
+duration
+changes
+Justifications with arguments why
+changes were made to the contract
+duration are available.
+Contract data
+on the web
+0 = The reasons for changes in the duration are not available and
+duration changes were observed;
+3 = There are reasons for term changes, but they are partial;
+5 = The reasons for all changes are available, or no changes to the
+contracted term were observed.
+0.25 Institutional
+by project
+4.1.6.5
+Indicator Variation
+to contract
+scope
+Modifications to the project scope, if
+they exist, are clearly pointed out.
+Contract data
+on the web
+0 = Variations to the contract scope are not pointed out when
+there is evidence that they exist;
+5 = Variations are clearly pointed out if there is evidence that they
+exist, or no variations to the contract scope could be observed.
+0.10 Institutional
+by project
+4.1.6.6
+Indicator Reasons
+for scope
+changes
+Justifications with arguments why
+changes were made to project scope are
+available.
+Contract data
+on the web
+0 = The reasons for changes in the project scope are not available
+and they were observed;
+3 = There are reasons for scope changes, but they are partial;
+5 = The reasons for all changes are available, or no changes to the
+contracted scope were observed.
+0.20 Institutional
+by project
+Annex 1: Evaluation instrument
+Infrastructure Transparency Index Manual
+42
+Annex 2: Survey for interview or self-assessment
+CoST Infrastructure Transparency Index survey
+STATEMENT OF VERACITY OF INFORMATION
+The honest and accurate completion of this questionnaire will make an essential contribution to evaluating the CoST
+Infrastructure Transparency Index (ITI). The ITI is designed to assess the knowledge, procedures, digital capabilities, spaces for
+citizen participation and uses that are given to public information, all from the perspective of the procuring entity. The results
+of the ITI evaluation serve to clarify where and how transparency in public infrastructure can be improved, with the ultimate
+goal of collaboratively increasing the social and economic value of public resources.
+To this end, the answers to the questions of this survey must be provided in a truthful, objective and concise manner that
+provides information that is up to date, clear and internally consistent. While some questions require reference to be made to
+supporting evidence (such as sections of documents, websites, notice boards and newspapers), all require a short description to
+elaborate on the response and validate it for subsequent analysis.
+The scope of the information and data points referred to in this questionnaire is limited to what is required to be made public
+according to applicable national laws and regulations.
+For this exercise to be effective, it is necessary for the respondent to express a commitment to answer the questions honestly
+and truthfully to achieve the objectives that this instrument promotes. Please help us by providing the following information
+and answering the subsequent questions.
+The personal information of individual respondents will remain confidential.
+Procuring entity name:
+Name of the surveyed person:
+Position of the surveyed person:
+Telephone of the surveyed person:
+Email of the surveyed person:
+Signature of the surveyed person:
+Name of the evaluator:
+Signature of the evaluator:
+Place and date:
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+43
+Variable 2.1: institutional capacities
+SUB-VARIABLE 2.1.1: BASIC KNOWLEDGE
+1. Do know the national legal framework for access to public information?
+( ) Yes
+( ) No
+1.1. If yes, can you briefly describe what it is for and what it contains?
+Scoring for evaluation team:
+1 - The officer does not remember its content
+2 - Can describe few things
+3 - Can describe basic points
+4 - Can describe it well
+5 - Can clearly specify the essentials of the national legal framework, including what is public, what is proactive and reactive
+publication, what is a request for access to information, the guarantor agency and limitations the framework may have
+2. Do you know the existence of the national initiative for transparency in the infrastructure sector, also called CoST?
+( ) Yes
+( ) No
+2.1. If yes, can you briefly describe what it is and what characterises it?
+Scoring for evaluation team:
+1 - The officer does not remember the content of the initiative
+2 - Can describe few things
+3 - Can describe basic points
+4 - Can describe it well
+5 - Can clearly specify the essentials of what CoST is, the CoST Infrastructure Data Standard, the formal disclosure
+requirements, the multi-stakeholder group, project assurance and citizen audits.
+3. Do you know the data standard for infrastructure transparency, also known as CoST Infrastructure Data Standard?
+( ) Yes
+( ) No
+3.1. If yes, can you briefly describe what it is, what characterises it and your entity’s adoption level?
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+44
+Scoring for evaluation team:
+1 - Does not remember the content or the standard purpose
+2 - Can describe few things
+3 - Can describe basic points
+4 - Can describe it well
+5 - Can clearly describe it well (purpose, type of data it contains) and the level of adoption of the entity
+4. Do you know the sanctions applied for non-compliance with the access to public information and state contracts laws?
+( ) Yes
+( ) No
+4.1. If yes, can you briefly mention what are the sanctions that apply and why?
+Scoring for evaluation team:
+2 - The officer can describe few things about the sanctions
+3 - Can describe basic points
+4 - Can describe them well
+5 - Can adequately describe the sanctions and why they apply, or knows that the legal or regulatory frameworks do not
+include sanctions (if that was the case)
+5. Do you know the differences between: public data, personal data, sensitive data, confidential data and reserved data?
+( ) Yes
+( ) No
+5.1. If yes, can you briefly describe each one of them?
+Scoring for evaluation team:
+2 - Can describe few things about them
+3 - Can describe basic points
+4 - Can describe them well
+5 - Can clearly describe and differentiate them
+SUB-VARIABLE 2.1.2: DIGITAL CAPACITIES
+1. Is there in the procuring entity computer equipment for all the personnel who perform some type of administrative work?
+( ) There is no access to computer equipment for any officer at the procuring entity
+( ) Few officers have computer equipment
+( ) About half of officers have computer equipment
+( ) Most officers have computer equipment
+( ) All the officers who do administrative work have computer equipment
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+45
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no access to computer equipment for any officer at the procuring entity
+2 - Few officers have computer equipment
+3 - About half of officers have computer equipment
+4 - Most officers have computer equipment
+5 - All the officers who do administrative work have computer equipment
+2. Is there an internet connection in the entity with the optimal bandwidth for digital systems and personnel operations?
+( ) There is no internet access
+( ) The bandwidth does not allow the personnel to complete their tasks
+( ) The bandwidth allows the personnel to complete their tasks, but it is slow
+( ) The bandwidth is acceptable to complete personnel tasks
+( ) The bandwidth is optimal for all the entity activities (systems and personnel tasks)
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no internet access
+2 - The bandwidth does not allow the personnel to complete their tasks
+3 - The bandwidth allows the personnel to complete their tasks, but it is slow
+4 - The bandwidth is acceptable to complete personnel tasks
+5 - The bandwidth is optimal for all the entity activities (systems and personnel tasks)
+3. Is there a website in the entity and at least some officers are able to manage its content and can apply changes in real time?
+( ) There is no website
+( ) There is one, but the entity cannot apply changes
+( ) There is one, but the entity depends on third parties to apply changes
+( ) There is one and the entity can apply changes internally, but it takes time
+( ) There is one and the entity has full control in real time
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no website
+2 - There is one, but the entity cannot apply changes
+3 - There is one, but the entity depends on third parties to apply changes
+4 - There is one and the entity can apply changes internally, but it takes time
+5 - There is one and the entity has full control in real time
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+46
+4. Is there a digital information system or platform to record all information regarding public infrastructure projects?
+( ) Records are kept on paper
+( ) Some records are digital
+( ) Records are predominantly on spreadsheets, like Excel or others
+( ) All records are on information systems
+Description/evidence:
+Scoring for evaluation team:
+0 - Records are kept on paper
+2 - Some records are digital
+3 - Records are predominantly on spreadsheets, like Excel or others
+5 - All records are on information systems
+5. Do the government officers at the entity use the available digital systems for activities related to public infrastructure projects?
+( ) Systems are not used, or there are no systems whatsoever
+( ) They are only partially used
+( ) They are fully used
+Description/evidence:
+Scoring for evaluation team:
+0 - Systems are not used, or there are no systems whatsoever
+3 - They are only partially used
+5 - They are fully used
+6. Does the entity publish infrastructure projects information as open data?
+( ) Yes
+( ) No
+6.1. If yes, does the infrastructure projects information meet all the following conditions: tabulated, updated, complete,
+processable by computer, free of payment and with a license allowing its free use.
+( ) Published projects data only complies with one condition
+( ) Published projects data complies with two conditions
+( ) Published projects data complies with three or four conditions
+( ) Published projects data complies with five conditions
+( ) Published projects data complies with all six conditions
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+47
+Description/evidence:
+Scoring for evaluation team:
+1 - Published projects data only complies with one condition
+2 - Published projects data complies with two conditions
+3 - Published projects data complies with three or four conditions
+4 - Published projects data complies with five conditions
+5 - Published projects data complies with all six conditions
+7. Does the entity publish visualisations, on the website or other media (for example physical), that can graphically facilitate
+the presentation and interpretation, by citizens, of the infrastructure projects information?
+( ) No visualisations on this subject are published
+( ) Visualisations are published, but not in a regular manner (either on the web or other media)
+( ) Visualisations are published in a regular manner (either on the web or other media)
+Description/evidence:
+Scoring for evaluation team:
+0 - No visualisations on this subject are published
+3 - Visualisations are published, but not in a regular manner (either on the web or other media)
+5 - Visualisations are published in a regular manner (either on the web or other media)
+Variable 2.2: institutional processes
+SUB-VARIABLE 2.2.1: PROCEDURES TO DISCLOSE INFORMATION
+1. Is there an internal documented procedure for the proactive disclosure of information linked to public infrastructure projects?
+( ) Yes
+( ) No
+If yes, can you describe it and share a copy of it?
+Scoring for evaluation team:
+3 - There is a procedure but the officer only refers to generalities
+5 - There is a procedure, the officer describes its main elements and shares it
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+48
+2. Do you have with the procedure the names of the officers who are responsible for the different stages of the proactive
+disclosure of information?
+( ) The procedure does not name anybody, or nobody is in charge of proactive publication
+( ) The procedure names only some people
+( ) The procedure names all the people per stage
+Description/evidence:
+Scoring for evaluation team:
+0 - The procedure does not name anybody, or nobody is in charge of proactive publication
+3 - The procedure names only some people
+5 - The procedure names all the people per stage
+3. Is there a documented professional profile in the entity for an “information officer”, “information unit”, or similar title, that
+describes the professional requirements and main tasks of this person/unit?
+( ) There is no profile or you do not know if one exists
+( ) The profile exists but it has unrelated responsibilities (this are other activities besides the ones related to public
+information access))
+( ) The profile exists and all documented responsibilities are related to it
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no profile or you do not know if one exists
+3 - The profile exists but it has unrelated responsibilities (this are other activities besides the ones related to public
+information access)
+5 - The profile exists and all documented responsibilities are related to it
+4. Is there a person assigned for the position of information officer and the person fully complies with the profile conditions?
+( ) There is no person assigned to the position, or the profile or position does not exist
+( ) There is a person assigned but does not comply with the profile requirements
+( ) The assigned person complies with all requirements
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no person assigned to the position, or the profile or position does not exist
+3 - There is a person assigned but does not comply with the profile requirements
+5 - The assigned person complies with all requirements
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+49
+5. Is there a procedure to internally follow-up information requests from citizens or other actors related to public infrastructure
+projects?
+( ) There is no follow-up mechanism on information requests, or you do not know if one exists
+( ) There is a mechanism but presents weaknesses that might result in a lack of response
+( ) There is a mechanism on which no information request can be lost or unanswered.
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no follow-up mechanism on information requests, or you do not know if one exists
+3 - There is a mechanism but presents weaknesses that might result in a lack of response
+5 - There is a mechanism on which no information request can be lost or unanswered.
+SUB-VARIABLE 2.2.2: ENABLERS AND BARRIERS TO DISCLOSE INFORMATION
+1. Is there an internal policy issued from the entity’s high authorities for the publication of information containing, among
+other data, public infrastructure projects?
+( ) There is no internal norm or policy or you do not know if one exists
+( ) There is one but it is not fully complied in practice
+( ) There is one and it is fully complied in practice
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no internal norm or policy or you do not know if one exists
+3 - There is one but it is not fully complied in practice
+5 - There is one and it is fully complied in practice
+2. Is there is an internal disclosure training programme or dissemination process that makes the personnel aware at all levels
+on matters of access to public information, that includes infrastructure projects?
+( ) There is no training programme or you do not know if one exists
+( ) There is one but it is only applied to a part of the personnel
+( ) There is one and it is applied to all the entity’s personnel
+Description/evidence:
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+50
+Scoring for evaluation team:
+0 - There is no training programme or you do not know if one exists
+3 - There is one but it is only applied to a part of the personnel
+5 - There is one and it is applied to all the entity’s personnel
+3. Are there internal limitations to publish the information related to public infrastructure projects?
+( ) Yes
+( ) No
+If yes, can you describe them and provide documental evidence?
+If no, can you describe why and/or provide evidence?
+Scoring for evaluation team:
+0 - The officer does not recognise the existence of limitations; or not evidence can be provided if no limitations are identified
+3 - The officer recognises the limitations, but does not describe them adequately
+5 - The officer knows the limitations, describes them and provides a document with them; or the officer can provide evidence
+that there are no limitations
+4. Is there a document that contains a plan to reduce or eliminate the present limitations to publish infrastructure projects
+information?
+( ) There is no document with a mitigation plan
+( ) There is a plan but it is not comprehensive and there is no evidence of its implementation
+( ) There is a non-comprehensive plan but there is evidence of its implementation
+( ) There is a comprehensive plan but there is no evidence of its implementation
+( ) There is a comprehensive plan and there is evidence of its implementation
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no document with a mitigation plan
+2 - There is a plan but it is not comprehensive and there is no evidence of its implementation
+3 - There is a non-comprehensive plan but there is evidence of its implementation
+4 - There is a comprehensive plan but there is no evidence of its implementation
+5 - There is a comprehensive plan and there is evidence of its implementation
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+51
+5. Does the process of proactive and reactive publication become slow or hinders because of internal bureaucracy, as for
+example, obtaining several approvals from different bosses?
+( ) The process is highly bureaucratic or you do not know if it has this type of problems
+( ) The bureaucratic obstacles are very few
+( ) There are no bureaucratic obstacles to publish public information
+Description/evidence:
+Scoring for evaluation team:
+0 - The process is highly bureaucratic or you do not know if it has this type of problems
+3 - The bureaucratic obstacles are very few
+5 - There are no bureaucratic obstacles to publish public information
+6. Is there some type of documentation at the entity acknowledging and following-up to non-compliances and sanctions
+dictated by controlling entities, due to non-compliance with the access-to-information law and/or state contracts? Has the
+procuring entity received any sanctions from controlling entities?
+( ) There is no documentation or you do not know if there is some
+( ) There is documentation but no follow-up (of the non-compliances and/or sanctions) or you do not know if there is
+follow-up
+( ) There is documentation and follow-up (of the non-compliances and/or sanctions)
+( ) The specific documentation at the procuring entity proves the entity has not received sanctions from controlling entities
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no documentation or you do not know if there is some
+2 - There is documentation but no follow-up (of the non-compliances and/or sanctions) or you do not know if there is follow-
+up
+3 - There is documentation and follow-up (of the non-compliances and/or sanctions)
+5 - The specific documentation at the procuring entity proves the entity has not received sanctions from controlling entities
+SUB-VARIABLE 2.2.3: CONTROL OVER INFRASTRUCTURE PROJECTS DISCLOSURE
+1. How many public infrastructure projects are managed by the entity in this year and in the previous year? (If the exact
+number is not known a precise approximation is valid)
+This year:
+Previous year:
+( ) You cannot approximate a number
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+52
+1.1. How many of those projects disclosed information according to the infrastructure data standard (based on CoST IDS or OC4IDS)?
+This year:
+Previous year:
+( ) You cannot approximate a number or you do not know the data standard
+Description/evidence:
+Scoring for the evaluation team:
+0 – 0−10%, or if the officer could not give any numbers
+1 – 11−29%
+2 – 30−49%
+3 – 50−65%
+4 – 66−85%
+5 – 86−100%
+(approximate calculations according to the available information)
+2. What is the investment amount for infrastructure projects managed by the entity in this year and in the previous year? (If
+the exact number is not known a precise approximation is valid)
+This year:
+Previous year:
+( ) You cannot approximate a number
+2.1. What is the investment amount of those projects in which information is disclosed according to the infrastructure data
+standard (based on CoST IDS or OC4IDS)?
+This year:
+Previous year:
+( ) You cannot approximate a number or you do not know the data standard
+Description/evidence:
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+53
+Scoring for the evaluation team:
+0 – 0−10%, or if the officer could not give any numbers
+1 – 11−29%
+2 – 30−49%
+3 – 50−65%
+4 – 66−85%
+5 – 86−100%
+(approximate calculations according to the available information)
+Variable 3.1 citizen participation
+SUB-VARIABLE 3.1.1: PARTICIPATION OPPORTUNITIES
+1. Does the entity have formal citizens participation opportunities that allow to listen and implement requests from the
+citizens, that may be used for public infrastructure projects?
+( ) There are no laws, regulations, or policies that can be used as foundation for citizens participation
+( ) There is only a national or sub-national legal or regulatory framework for participation, with no internal (institutional)
+normative framework
+( ) There are both, national or sub-national, as well as internal normative frameworks
+( ) There are both normative frameworks and there are also efficient documented procedures for citizens participation
+Description/evidence:
+Scoring for evaluation team:
+0 - There are no laws, regulations, or policies that can be used as foundation for citizens participation
+2 - There is only a national or sub-national legal or regulatory framework for participation, with no internal (institutional)
+normative framework
+3 - There are both, national or sub-national, as well as internal normative frameworks
+5 - There are both normative frameworks and there are also efficient documented procedures for citizens participation
+2. Are citizens participation opportunities permanently available or available with a constant periodicity through a variety of
+inclusive channels?
+( ) There are no formal participation opportunities
+( ) There are participation opportunities, but are not permanent/periodic and are not available through a variety of inclusive
+channels
+( ) Participation opportunities are either permanent/periodic or available through a variety of inclusive channels
+( ) Participation spaces are both, permanent/periodic and available throughout different participation inclusive channels
+Description/evidence:
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+54
+Scoring for evaluation team:
+0 - There are no formal participation opportunities
+2 - There are participation opportunities, but are not permanent/periodic and are not available through a variety of inclusive
+channels
+3 - Participation opportunities are either permanent/periodic or available through a variety of inclusive channels
+5 - Participation spaces are both, permanent/periodic and available throughout different participation inclusive channels
+3. Does the entity conduct formal citizens consultation processes to identify, define, prioritize and monitor public infrastructure
+projects?
+( ) The entity does not conduct these consultation processes on infrastructure projects or you do not know if they take place
+( ) The entity has consultation in infrastructure projects but is not for all project stages and is not for all projects
+( ) The entity has consultation in infrastructure projects in all project stages, but is not applied to all infrastructure projects
+( ) The consultation applies to all infrastructure project stages and to all infrastructure projects
+Description/evidence:
+Scoring for evaluation team:
+0 - The entity does not conduct these consultation processes on infrastructure projects or you do not know if they take place
+2 - The entity has consultation in infrastructure projects but is not for all project stages and is not for all projects
+3 - The entity has consultation in infrastructure projects in all project stages, but is not applied to all infrastructure projects
+5 - The consultation applies to all infrastructure project stages and to all infrastructure projects
+4. Is there in the entity a citizen service office (that may be called Transparency Office, Complaints Office, Information Office,
+etc.) that sees subjects related to the infrastructure projects?
+( ) There is no office or you do not know if there is one
+( ) There is one but has limitations to do its job
+( ) There is one and efficiently attends the citizens
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no office or you do not know if there is one
+3 - There is one but has limitations to do its job
+5 - There is one and efficiently attends the citizens
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+55
+5. Is there an online form through which any person may request information, ask questions, or present a complaint referring
+to an infrastructure project and receive an effective response?
+( ) There is no online form, or there is one but it does not work
+( ) There is one but has to be downloaded, printed, completed, scanned and submitted or physically taken to the entity
+( ) There is one, but it has no follow-up mechanism (this mechanism allows the applicant to later identify his/her request,
+such as a request ID number)
+( ) There is one and has a specific follow-up mechanism for the applicant
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no online form, or there is one but it does not work
+2 - There is one but has to be downloaded, printed, completed, scanned and submitted or physically taken to the entity
+3 - There is one, but it has no follow-up mechanism (this mechanism allows the applicant to later identify his/her request, such
+as a request ID number)
+5 - There is one and has a specific follow-up mechanism for the applicant
+6. Does the entity conduct some type of effort for the citizens to know the existing participation opportunities and the
+availability of information related to infrastructure projects?
+( ) There is no effort or you do not know if any effort is made
+( ) There are efforts, but they are not consistent, permanent and inclusive
+( ) There are consistent, permanent and inclusive efforts for both things (the publicity of citizens’ participation spaces and
+infrastructure projects information)
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no effort or you do not know if any effort is made
+3 - There are efforts, but they are not consistent, permanent and inclusive
+5 - There are consistent, permanent and inclusive efforts for both things (the publicity of citizens’ participation spaces and
+infrastructure projects information)
+SUB-VARIABLE 3.1.2: USE OF INFORMATION BY CITIZENS
+1. Is there a mechanism that documents citizens’ complaints referring to public infrastructure projects, generates a log and
+manages responses in an orderly fashion?
+( ) There is no centralisation of citizens’ complaints, or there is no evidence of its existence
+( ) There is one, but it does not work optimally
+( ) There is one, it works optimally, but it does not generate a report with inputs for specific infrastructure projects
+( ) There is one, works optimally and its results are evidenced in a report for improvements on specific infrastructure projects
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+56
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no centralisation of citizens’ complaints, or there is no evidence of its existence
+2 - There is one, but it does not work optimally
+3 - There is one, it works optimally, but it does not generate a report with inputs for specific infrastructure projects
+5 - There is one, works optimally and its results are evidenced in a report for improvements on specific infrastructure projects
+2. Can you show how many accesses to information requests are there, how many responses were positive (that is, containing
+the information requested by the citizens), how many were referred to other agencies (because they were the wrong agency)
+and how many requests were about the same information?
+( ) You cannot show how many requests are there, or there is no record of requests
+( ) You can show how many requests and how many responses are there, but with no specific details
+( ) You can show how many of the total responses were positive, how many were referred to other agencies and how many
+requests were about the same information.
+Description/evidence:
+Scoring for evaluation team:
+0 - You cannot show how many requests are there, or there is no record of requests
+3 - You can show how many requests and how many responses are there, but with no specific details
+5 - You can show how many of the total responses were positive, how many were referred to other agencies and how many
+requests were about the same information.
+3. Are the responses to citizens information requests provided according to the period established by law?
+( ) There is no capacity to answer within the period stablished by law, or there is no control over the response time, or there
+is no information about requests
+( ) Only some cases receive response within the period established by law
+( ) Most cases are responded to within the period established by law
+( ) 100% of cases are responded to within the period established by law
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no capacity to answer within the period stablished by law, or there is no control over the response time, or there is
+no information about requests
+2 - Only some cases receive response within the period established by law
+4 - Most cases are responded to within the period established by law
+5 - 100% of cases are responded to within the period established by law
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+57
+4. Does the entity provide the public with feedback, such as reports or announcements, on how citizens’ inputs have been
+used in infrastructure projects?
+( ) There is no feedback made public, or it is not known if there is internal use of citizens participation
+( ) There is internal use of citizens participation that can be referenced, but is not well documented
+( ) There is internal use and it is documented, but not made public
+( ) The internal documented use of citizens participation in infrastructure projects is made public
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no feedback made public, or it is not known if there is internal use of citizens participation
+2 - There is internal use of citizens participation that can be referenced, but is not well documented
+3 - The is internal use and is documented, but not made public
+5 - The internal documented use of citizens participation in infrastructure projects is made public
+5. Do you know if the information made public about infrastructure projects is used somehow by citizens, civil society
+organisations, academia, media, private sector, or any other actor?
+( ) You do not know if there is any type of use
+( ) You know and can describe an example in the current year
+( ) You know and can describe more than one example in the current year
+Description/evidence:
+Scoring for evaluation team:
+0 - You do not know if there is any type of use
+3 - You know and can describe an example in the current year
+5 - You know and can describe more than one example in the current year
+6. Do you know if the entity has developed joint projects (this is when the project design and implementation are executed
+with shared responsibilities) with other actors different from the entity, using infrastructure projects information?
+( ) You do not know if there has been a joint project
+( ) You know and can describe an example in the current year
+( ) You know and can describe more than one example in the current year
+Description/evidence:
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+58
+Scoring for evaluation team:
+0 - You do not know if there is any type of use
+3 - You know and can describe an example in the current year
+5 - You know and can describe more than one example in the current year
+7. Is there evidence of changes or reforms that have been made in infrastructure projects as response to feedback, evaluation,
+or some other type of citizens’ participation?
+( ) There is no case or you do not know if there is any
+( ) There is evidence of improvements in one project in this current year
+( ) There is evidence of improvements in more than one project in this current year
+Description/evidence:
+Scoring for evaluation team:
+0 - There is no case or you do not know if there is any
+3 - There is evidence of improvements in one project in this current year
+5 - There is evidence of improvements in more than one project in this current year
+Annex 2: Survey for interview
+or self-assessment
+Infrastructure Transparency Index Manual
+59
+Annex 3: Procuring entities selection method and criteria
+It is recommended to use a stratified random method to select the procuring entities that will be part of the sample for
+evaluation. The method and criteria that have been applied during a Infrastructure Transparency Index (ITI) evaluation must to
+be published along with the reports for the transparency and consistency of the process. A simplified example of this method
+can be seen below.
+This table shows the procuring entities selected during the ITI test in Honduras. To define this procuring entities sample, the
+following process was applied:
+1. A full list of the national procuring entities was conducted, including information such as budget size, type and sector.
+2. The different types of procuring entities were sorted in three main categories: ministries and state secretaries, municipalities
+and autonomous agencies (including autonomous, semi-autonomous, public companies and similar types of entities).
+3. Three sub-groups were made based on the above distribution and the procuring entities were sorted based on their budget
+size from the biggest to the smallest.
+4. Randomly, without knowing the name of the procuring entities, a shorter list of them were selected by including procuring
+entities with high, medium and low budget size. More emphasis was given to selecting more entities with bigger budgets
+since this criterion was considered as an indicator of social and economic impact.
+5. The names were uncovered and a short list of procuring entities for testing the ITI was defined.
+TYPE BUDGET PROCURING ENTITY NAME
+Autonomous 33,499,973,007 Empresa Nacional de Energía Eléctrica (ENEE)
+Autonomous 5,212,678,239 Inversión Estratégica de Honduras (INVEST-H)
+Autonomous 4,916,695,586 Universidad Nacional Autónoma de Honduras (UNAH)
+Autonomous 1,165,347,444 Empresa Nacional Portuaria (ENP)
+Autonomous 66,292,886 Comisión Nacional de Vivienda y Asentamientos Humanos de Honduras (CONVIVIENDA)
+Autonomous 43,127,176 Dirección Nacional de Parques y Recreación (DNPR)
+Ministry 29,905,852,087 Secretaría de Educación (SEDUC)
+Ministry 14,741,983,690 Secretaría de Salud (SESAL)
+Ministry 5,044,826,623 Secretaría de Infraestructura y Servicios Públicos (INSEP)
+Ministry 2,027,484,384 Secretaría de Agricultura y Ganadería (SAG)
+Ministry 1,094,655,999 Secretaría de Desarrollo e Inclusion Social (SEDIS)
+Ministry 49,939,633 Secretaría de Estado en los Despachos de Desarrollo Comunitario, Agua y Saneamiento
+(SEDECOAS)
+Municipality 5,390,365,117 Alcaldía Municipal de San Pedro Sula
+Municipality 5,361,342,393 Alcaldía Municipal del Distrito Central (AMDC)
+Municipality 719,282,396 Alcaldía Municipal de Puerto Cortés
+Municipality 478,500,000 Alcaldía Municipal de El Progreso
+Municipality 165,454,024 Alcaldía Municipal de Choluteca
+Annex 3: Procuring entities selection
+method and criteria
+Infrastructure Transparency Index Manual
+60
+Annex 4: Guidance for the evaluation team training
+The following guidance is a recommendation for how the training of a Infrastructure Transparency Index (ITI) evaluation team
+can be conducted, based on the experience of the trials conducted in Guatemala and Honduras. A minimum of three days of
+training should be provided. The following is based on those three days, but can be readily be elaborated with further detail.
+Considerations before initiating
+■ Evaluators were selected before the training and had sufficient time to allow them to make arrangements related to their
+short but full-time dedication during the evaluation.
+■ The selected evaluators already had experience of CoST’s principles and approach. In addition, they had experience in the
+use of centralised government portals that contain the data and information required for the evaluation such as those
+related to tender management, transparency, budgeting, financial management and investment.
+■ The training materials were prepared before the training. These included PowerPoint presentations, handouts and
+worksheets.
+DAY 1
+■ Welcome and introduction.
+■ Presentation of the evaluation team.
+■ Concepts, relevance and objectives.
+■ Elaboration process.
+■ Principles, norms and guiding processes.
+■ Structure and introduction to the dimensions.
+■ Rules for evaluating each dimension.
+■ Data processing and scoring system.
+■ In-depth study of dimension 1:
+● variables, sub-variables and indicators
+● indicators and their scoring scales, with the use of examples
+● data collection method for the indicators of the dimension.
+Annex 4: Guidance for the
+evaluation team training
+Infrastructure Transparency Index Manual
+61
+DAY 2
+■ In-depth study of dimension 2:
+● variables, sub-variables and indicators
+● indicators and their scoring scales, with the use of examples
+● data collection method for the indicators of the dimension.
+■ In-depth study of dimension 3:
+● variables, sub-variables and indicators
+● indicators and their scoring scales, with the use of examples
+● data collection method for the indicators of the dimension.
+■ Desktop research to practise dimension 1 with feedback.
+DAY 3
+■ Desktop research to practise dimension 4 evaluation with feedback. A specific infrastructure project, not included in the
+evaluation, was previously selected for practise.
+■ Discussion and response definition for complex scenarios while collecting data through the survey, either by interview or
+self-assessment.
+■ Evaluation team role definition (first, second and third evaluators).
+■ Review of procuring entities sample.
+■ Review of procuring entities infrastructure projects to be evaluated.
+■ Protocol for data collection.
+■ Logistics for data collection and incident protocol.
+During the data collection, questions and incidents may occur. The evaluation team, along with CoST staff, need to discuss them
+to find the best solution and a standard process to follow whenever is appropriate.
+After the data collection, the evaluation team should together evaluate the process to make improvements for the next ITI
+evaluation and document the experiences in a report with the lessons learned and recommendations. The evaluation team
+should evaluate:
+■ the training
+■ the data collection experience
+■ the processing and reporting
+■ the protocols and logistics.
+Annex 4: Guidance for the
+evaluation team training
+Infrastructure Transparency Index Manual
+62
+Annex 5: Guide on lessons learned and techniques for an ITI implementation
+From test implementations conducted in different countries and other accumulated experience, the following points
+describe lessons learned and recommendations for any CoST national or sub-national or member interested in implementing
+the Infrastructure Transparency Index (ITI). It provides additional information for decisions during an ITI implementation,
+particularly on topics that may become complex or sensitive.
+1. Preparation stage
+1.1 EVALUATION TEAM
+1.1.1 Evaluators’ profile: the people to be selected for the data collection process should have experience on CoST’s principles
+and approach and should understand the data points of the CoST Infrastructure Data Standard (IDS) and/or the Open
+Contracting for Infrastructure Data Standard (OC4IDS). They need to have experience using the government information
+platforms that contain the information required for the evaluation, such as procurement, transparency, financial,
+investment, legal framework and others; and should have experience on conducting interviews in the public sector.
+■ Third evaluator: the person who performs this role is someone who is careful with data and details and has a deep
+understanding of the ITI instrument, clearly understanding all its indicators and the sources from where the data is
+collected. The third evaluator has a high responsibility on quality assurance because of his/her role in resolving any
+differences of opinion between the other evaluators.
+1.1.2 Coordination profile: to conduct an ITI evaluation is necessary to have someone responsible of administrative
+arrangements, project management, implementation methodology, training, quality control, data processing and final
+reports. This implies that the person selected for the coordination requires to have a deep understanding of the ITI, its
+components and its implementation process, as well as experience in leading similar evaluation studies.
+1.2 TIME CONCERNS
+1.2.1 It is important to consider the different implementation phases and their time requirements to plan properly, the
+following points present some time definitions for consideration.
+■ The administrative arrangements related to the ITI evaluation need to be taken in consideration. Depending on the
+contractual or partnership arrangements, these administrative processes will take more or less time. It is necessary to
+include this time to the total project implementation period.
+■ The evaluation team should be appointed sufficiently early in the process to allow them to make preparations related
+to their short but full-time dedication during the evaluation. The training days and the evaluation initiation need to be
+scheduled and informed to the evaluation team for them to get prepared.
+■ There is a recommendation to dedicate a minimum of three days to conduct the evaluation team training. The
+recommendations for the training are available in Annex 4.
+■ The total evaluation time, this is for the data collection process, will depend on the number of procuring entities
+and projects to evaluate, as well as the number of evaluators. But when following the basic recommendation of two
+infrastructure projects per procuring entity and at least three evaluators, a half-day can be provisionally allowed for
+evaluation of each procuring entity. This means that 20 procuring entities, for example, will be evaluated in 10 days.
+■ After that, data can be processed in less than a week and will be ready to prepare the reports and the database to be
+published. A general consideration of 3 weeks should be enough to prepare these outputs and to be ready for the results
+presentation event.
+Annex 5: Guide on lessons learned and
+techniques for an ITI implementation
+Infrastructure Transparency Index Manual
+63
+1.3 TRAINING
+1.3.1 Time and content: the training time has to be sufficient to allow the evaluation team to understand the instrument and
+evaluation indicators, to practice real cases using the instrument and to discuss different scenarios and complexities that
+might occur in the evaluation process. Even for people familiar with the topics, three days would be the minimum time
+investment. The recommendations on how to structure the training are available in Annex 4.
+1.4 SELECTION OF PROCURING ENTITIES
+1.4.1 Criteria: when selecting the specific procuring entities, besides the recommended criteria (procuring entity type,
+infrastructure budget and projects’ social and economic impact), other things can be considered, such as corruption
+history, social complaints and more representation from specific categories of the general public sector. In all conditions,
+the criteria have to be the same for all procuring entities and have to be published in the final reports.
+1.4.2 Location: if the evaluation requires interviews, there is a need to consider the necessary budget and time to reach to
+procuring entities that might be far from the evaluation team’s base. Such investment is necessary because possibility of a
+procuring entity being selected for evaluation should not be unduly constrained as a result of its location.
+1.5 SELECTION OF PROJECTS
+1.5.1 Access to information related to the procuring entities infrastructure projects: it is critical to have information about all
+the infrastructure projects for which a procuring entity is responsible to be able to select the ones that will be included
+in the evaluation. This information can be available in a centralised government authority or in each procuring entity. If
+having the full list of projects with information by procuring entities cannot be achieved, making an effort to compile the
+fullest possible list of projects by procuring entities prior the evaluation is necessary for an objective project selection.
+1.5.2 Avoid bias in the selection criteria: it is important to be careful with limiting the selection of projects to those whose
+implementation and supervision contracts, for example, are published in the electronic procurement system (if there is one
+available). The use of this type of criterion will force the selection of only transparent projects and this will significantly
+bias the final results. In contrast, once the list of projects is identified, two completed projects can be selected from the list
+(one on the basis of relevance and the other randomly), without checking whether they have published information. The
+projects should be selected and later evaluated based on the available information, whether there is little or much data is
+available. This means that the amount of information available must not affect the project selection.
+1.5.3 Completed projects: it is a precondition for the ITI that the projects considered for evaluation must be at the completed
+stage. This allows their full evaluation throughout the different ITI indicators. If a project is not completed, the
+information required for its evaluation will not exist and this will significantly affect the final results. For this reason, only
+completed infrastructure projects can be evaluated. If the ITI evaluations are conducted annually, this precondition can be
+tuned, for example, by only considering projects that were completed in the previous year.
+2. Evaluation and processing stages
+2.1 COORDINATION WITH PROCURING ENTITIES
+2.1.1 Contact information: since it is recognised that about half of the information to conduct an evaluation has to be collected
+from the access-to-information unit of the procuring entity (or the equivalent, as defined in the applicable national
+regulation), having the contact information of public officials at these units can accelerate and facilitate the coordination
+and data collection.
+2.1.2 Preparation: during the preparation and prior the evaluation, it is necessary to submit a formal letter to all procuring
+entities, directed to the access-to-information unit, to inform them about the ITI project and the information
+requirements. If the interviews will be conducted, it is necessary to schedule all the meetings before the evaluation starts
+to make sure all interviews are conducted during the evaluation period.
+Annex 5: Guide on lessons learned and
+techniques for an ITI implementation
+Infrastructure Transparency Index Manual
+64
+2.1.3 Standardised communications: since procuring entities will be evaluated and compared (which is an essential part of the
+ITI), it is necessary to have formal and standard communications with procuring entities to make sure no one receives
+preferential treatment that may influence the results in some way.
+2.2 BUY-IN FROM PROCURING ENTITIES
+2.2.1 Build a collaboration relationship with procuring entities: it is recognised that to conduct an ITI evaluation, there is
+an important need for cooperation from the procuring entities. They are required to respond to the survey (either
+by interview or self-assessment) and to provide justifications and evidence to all the survey questions. The access-to-
+information officer of the procuring entity (or the person performing in the similar role) will need to allocate time within
+a specific timeframe to support the ITI. These are some recommendations to get a buy-in from the procuring entities and
+particular, from the access-to-information officer.
+■ Identify the right person: there might be cases where the access-to-information officer of the procuring entity is not
+clearly defined. In such situations, it will be necessary to call the procuring entity and ask who is the person that internally
+performs this role. Once the person is identified, it is necessary to collect their contact information.
+■ Assign one specific evaluator to each procuring entity: To build a communication channel and a trust relation with the ITI
+process, a specific evaluator should take care of the relations with each procuring entity. This will require the procuring
+entities to be distributed among the evaluation team and that each evaluator assumes the responsibility for data collection
+with that specific procuring entity.
+■ Hold a one-to-one conversation with the access-to-information officer: as part of the conversation, it is necessary to
+introduce the ITI, its evaluation process, its outcomes and, specially, its benefits to the procuring entity. It is also important
+to confirm the will from the government officer to collaborate with the ITI and to answer any question that may limit the
+response from the procuring entity. Some of the key benefits that can be mentioned during the conversation are:
+● visibility of the access-to-information unit day-to-day role and needs
+● institutional awareness about the strengths and weaknesses related to public infrastructure transparency and management
+● custom guidance for the procuring entity on how to build capacities to strengthen transparency and management on
+infrastructure projects
+● support over the time to respond to questions and training needs related to the ITI
+● development of a collaborative agenda, among stakeholders and at the national or sub-national scale, to raise transparency and
+accountability standards.
+■ After these actions, it is recommended to follow the process described in Chapter 3 paragraph 3.2.5 (Recommendations
+about working with procuring entities).
+2.2.2 Draw on the access to public information legal framework: This approach can be used as a complement to the
+collaboration relationship approach, or as an alternative to it, when the procuring entities do not want to collaborate
+with the ITI. The law or regulation on access to information will allow the evaluation team formally to request the data
+required for the ITI, drawing upon the right to public information. The national or sub-national conditions, as well as
+the response from the procuring entities, should be evaluated by the evaluation team to define the best combination of
+actions to obtain the support from the procuring entities.
+2.3 INTERVIEWS
+2.3.1 Flexibility to select the data collection method: an evaluation team may conclude that an interview, rather than self-
+assessment, is the appropriate method in their location. This might be, for example, because of distrust generated by
+corruption, the high number of government officers sanctioned on related issues or the high possibility of reluctance from
+government officers. But in contrast, another evaluation team in other location may conclude that self-assessment, rather
+than interview, offers them better results because they can reach a higher number of procuring entities and government
+officers at the procuring entities are likely to cooperate completing the self-assessment in the given time. For this reason,
+Annex 5: Guide on lessons learned and
+techniques for an ITI implementation
+Infrastructure Transparency Index Manual
+65
+this ITI manual does not recommend one option over the other. Rather, it invites the evaluation team to analyse the pros
+and cons of the two methods based on their conditions to select the most appropriate one.
+2.3.2 Approach to government officers: the approach to the government officers at the access-to- information units has to be
+positive, formal, standardised and make reference to the access-to- information law and any other relevant regulation.
+It is important to show to the officers the benefits to their day-to-day work, to the procuring entity and to citizens that
+would come from the ITI results. An empathetic and purposeful attitude is key to generating reliable communication with
+these officers and would increase the chances of receiving information that reveals the challenges faced by the procuring
+entities and the general contribution generated by the ITI.
+2.4 SELF-ASSESSMENT
+2.4.1 Protocol for data collection: it can be anticipated that having a government officer at each selected procuring entity
+formally responding to the self-assessment over a specific period of time is a big challenge. For this reason, any evaluation
+team selecting this data collection method needs to design a protocol with the characteristics that best match to the local
+conditions. A recommended example of a protocol is included in Chapter 3 paragraph 3.2.5 (Recommendations about
+working with procuring entities).
+2.4.2 Approach to government officers: as mentioned in the interview method, the approach to contacting government officers
+at the access-to-information units for self-assessment also has to be positive, formal, standardised and reference the
+access-to-information law.
+2.5 EVALUATION OF WEBSITES
+2.5.1 Experience: it is essential for the evaluation team to have experience using websites where the information for evaluation
+is available. Sometimes, the data is published but it is not easy to find. Hence, in order to conduct the evaluation, the
+evaluation team members need to be able to know where the data is. Though it is public information, it is also technical
+and sometimes only available within complex documents. The evaluation team must have experience searching for such
+information.
+2.5.2 Balance on the depth of search: a balance needs to be defined with the evaluation team before conducting the
+evaluation, because reading a full document with several hundreds of pages to find one specific data point is not feasible
+or realistic. A recommendation on this regard is that only recognised and key documents, not all them, should be opened
+and searched to determine whether data points are available.
+2.5.3 Private access: at the beginning of the evaluation a question may arise as to whether private access to some government
+websites is required. The appropriate response depends on the purpose of that access. Because if the purpose is to
+evaluate whether the procuring entity has published data about the infrastructure projects, then no private access is
+justified because the ITI only evaluates public data that any normal citizen should be able to see. On the other hand, if
+the purpose of the private access is to contribute to the preparation of the evaluation, such as collecting information for
+project selection (as mentioned in Annex 5 paragraph 1.5.1), then the access is valid for the ITI. This means that if the
+private access is requested to evaluate ITI indicators, then is not valid for the ITI; but if the access is requested to make
+preparations and design decisions, then it is valid.
+Annex 5: Guide on lessons learned and
+techniques for an ITI implementation
+Infrastructure Transparency Index Manual
+66
+3 Reporting stage
+3.1 RESULTS PRESENTATION
+3.1.1 Formal results presentation: there will be an important contribution to the national or local context if the ITI results are
+shared with everyone. Publishing the final report and making it and the results database available for download will
+always be required. Moreover, a periodic event with multiple stakeholders can be formally established each time the
+results and key findings are ready to release, where the procuring entities that won the first places of the ranking can also
+be recognised and acknowledged because of their good practices.
+3.1.2 Press: there should be a press strategy for publicising the ITI results. A press release should be issued the day the results are
+published, and further press releases on specific aspects of the ITI results should be issued in the course of the following
+weeks to keep the topic in the public eye.
+3.1.3 Social media: the results should also be promoted on social media, with key findings and links to the reports and data.
+3.2 AFTER RESULTS
+3.2.1 Response to questions: once the results are released, it is normal to have questions from the procuring entities and some
+other stakeholders about the results and about what is evaluated by the ITI. They will want to understand the indicators
+where they have doubts. So, it is necessary to have a basic internal structure to be able to respond to these questions and
+eventually to assist with meetings.
+3.2.2 Procuring entity training: procuring entities may request training to improve their performance on the ITI. This is very
+positive and will require efforts to present, describe and conduct workshops about the ITI. These events will require the
+CoST national secretariats to respond to these training requests. It will be necessary for them to be prepared to respond to
+this need.
+3.2.3 Impartiality while assisting stakeholders and procuring entities: all efforts to train stakeholders and procuring entities on
+the ITI must remain impartial and objective. Since CoST national secretariats lead the evaluations, they will need to avoid
+any situation that could lead to bias or perceived bias in their evaluations. It is vital to protect the credibility of the ITI
+through guaranteeing impartiality.
+Annex 5: Guide on lessons learned and
+techniques for an ITI implementation
+Infrastructure Transparency Index Manual
+67
+Annex 6: Glossary of key terms
+An index is a number giving the magnitude of a physical property or other measured phenomenon in terms of a standard.
+As result of the application of an index, there is a number or, a series of numbers, ranking the phenomenon that have been
+measured.
+Transparency is commonly understood as the characteristic of being easy to see through. As a social phenomenon, there is a
+general consensus that transparency relates to the right to know and public access to information.
+In its design, the ITI understands transparency in a broad and practical way, not only by looking at it as the traditional access
+to information, but by also looking at the enablers and capacities that can enhance the access to information, as well as the
+citizens participation that lead to the creation of public value with the access to information.
+Infrastructure can be defined as the basic physical and organisational structures and facilities (e.g. buildings, roads, power
+supplies) needed for the operation of a society or enterprise.
+Therefore, an Infrastructure Transparency Index, in a simple definition, refers to metrics around the right of access to public
+information on the infrastructure sector.
+Procuring entities are understood by the ITI as the government organisations that manage and are accountable of specific
+infrastructure projects, whether they manage the procurement processes of that project or not.
+Infrastructure projects are understood by the ITI as the development of infrastructure assets in a specified location, generally
+under the responsibility of a single procuring entity and budget authority and comprising all development stages, namely:
+identification, preparation, implementation and completion.
+Annex 6: Glossary of key terms
+Facebook Twitter
+www.infrastructuretransparency.org LinkedIn

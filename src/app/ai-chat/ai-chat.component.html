@@ -1,0 +1,146 @@
+<div class="font-inter bg-lightgray min-h-screen p-4 sm:p-6 md:p-8">
+  <div class="max-w-3xl mx-auto bg-accent6 rounded-[1rem] shadow-xl overflow-hidden">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-teal to-lightblue text-white p-6">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <i class="bi bi-robot text-3xl"></i>
+          <div>
+            <h1 class="text-2xl font-semibold text-darkgray">Alfred</h1>
+          </div>
+        </div>
+        <button (click)="clearChat()" class="bg-accent3 text-darkgray px-3 py-1 rounded-full text-sm hover:bg-accent5 transition-colors duration-300 ease-apple-ease-out">
+          <i class="bi bi-trash mr-1"></i>Clear Chat
+        </button>
+      </div>
+      <p class="mt-3 text-sm opacity-75 text-darkgray">Developed by CoST to make access to information easy. I'm here to help, but please note that I may not always be correct and my knowledge is limited.</p>
+    </div>
+
+    <!-- Chat messages -->
+      <div #chatContainer class="h-[calc(100vh-20rem)] overflow-y-auto p-4 sm:p-6 bg-gray-50" role="log" aria-live="polite">
+          <div *ngFor="let message of chatHistory" class="mb-6 animate-fade-in">
+              <div [ngClass]="{'flex justify-end': message.sender === 'user', 'flex justify-start': message.sender === 'ai'}">
+                  <div [ngClass]="{
+            'bg-accent5 text-black': message.sender === 'user',
+            'bg-white text-darkgray': message.sender === 'ai',
+            'bg-red-100 text-red-800': message.isError
+          }"
+                 class="w-full sm:max-w-[80%] p-4 rounded-[1rem] shadow-md"
+                 [attr.role]="message.sender === 'ai' ? 'status' : null">
+              <div class="flex items-start space-x-2">
+                  <i *ngIf="message.sender === 'ai'" class="bi bi-robot text-lg mt-1 flex-shrink-0"></i>
+                  <i *ngIf="message.sender === 'user'" class="bi bi-person text-lg mt-1 flex-shrink-0"></i>
+                  <div class="flex-grow">
+                      <span class="sr-only">{{message.sender === 'ai' ? 'Alfred says:' : 'You said:'}}</span>
+                      <span [innerHTML]="message.content" class="text-sm sm:text-base"></span>
+                      <span *ngIf="message.sender === 'ai' && message.isTyping" class="typing-cursor"></span>
+                  </div>
+              </div>
+
+            <!-- Feedback buttons -->
+            <div *ngIf="message.sender === 'ai' && !message.isError && message.id" class="mt-3 flex justify-end space-x-2">
+              <button (click)="provideFeedback(message.id!, true)"
+                      [disabled]="message.feedback === 'positive'"
+                      class="text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full bg-green-100 text-green-800 hover:bg-green-200 disabled:opacity-50 transition-ease-out">
+                <i class="bi bi-hand-thumbs-up mr-1"></i> Helpful
+              </button>
+              <button (click)="provideFeedback(message.id!, false)"
+                      [disabled]="message.feedback === 'negative'"
+                      class="text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full bg-red-100 text-red-800 hover:bg-red-200 disabled:opacity-50 transition-ease-out">
+                <i class="bi bi-hand-thumbs-down mr-1"></i> Not Helpful
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isLoading" class="flex justify-start mb-4 animate-fade-in">
+        <div class="bg-white text-darkgray p-4 rounded-[1rem] shadow-md flex items-center space-x-2" role="status">
+          <div class="animate-bounce">
+            <i class="bi bi-three-dots text-xl"></i>
+          </div>
+          <span class="text-sm sm:text-base">Alfred is thinking...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Relevant Documents -->
+    <div *ngIf="relevantDocuments.length > 0" class="p-6 bg-gray-100 border-t border-gray-200">
+      <h2 class="text-lg font-semibold mb-3 text-darkgray">Relevant Documents</h2>
+      <ul class="space-y-2">
+        <li *ngFor="let doc of relevantDocuments" class="flex items-center text-sm text-darkgray">
+          <i class="bi bi-file-text mr-2"></i>
+          <span>{{doc}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Input area -->
+    <div class="p-6 bg-white border-t border-gray-200">
+      <form (ngSubmit)="askQuestion()" class="flex items-center space-x-2">
+        <label for="userInput" class="sr-only">Type your message</label>
+        <div class="relative flex-grow">
+          <input
+            id="userInput"
+            type="text"
+            [(ngModel)]="question"
+            name="question"
+            placeholder="Ask Alfred a question..."
+            class="w-full p-3 pr-10 rounded-[1rem] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal transition-ease-out"
+            [attr.aria-label]="'Type your message'"
+          />
+          <i class="bi bi-chat-dots absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+        </div>
+        <button
+          type="submit"
+          [disabled]="isLoading || !question.trim()"
+          class="bg-accent6 text-white p-3 rounded-[1rem] hover:bg-lightblue focus:outline-none focus:ring-2 focus:ring-teal disabled:opacity-50 transition-ease-out press-effect"
+          [attr.aria-label]="'Send message'"
+        >
+          <i class="bi bi-send"></i>
+          <span class="sr-only">Send</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-3xl mx-auto p-8 bg-light-gray">
+  <h2 class="text-2xl font-semibold text-dark-gray mb-6 text-center">Usage Statistics</h2>
+  <div class="flex flex-col md:flex-row justify-center space-y-6 md:space-y-0 md:space-x-8">
+    <div class="bg-white bg-opacity-80 backdrop-filter backdrop-blur-lg p-6 rounded-[1rem] shadow-md text-center transform transition duration-300 ease-[cubic-bezier(0.25, 0.1, 0.25, 1)] hover:translate-y-[-4px] hover:shadow-lg">
+      <div class="text-4xl font-bold text-teal mb-3 animate-fade-in">{{ visitCount$ | async }}</div>
+      <div class="text-sm text-gray flex items-center justify-center">
+        <i class="bi bi-eye-fill mr-2 text-lg"></i>
+        <span>Page Visits</span>
+      </div>
+    </div>
+    <div class="bg-white bg-opacity-80 backdrop-filter backdrop-blur-lg p-6 rounded-[1rem] shadow-md text-center transform transition duration-300 ease-[cubic-bezier(0.25, 0.1, 0.25, 1)] hover:translate-y-[-4px] hover:shadow-lg">
+      <div class="text-4xl font-bold text-teal mb-3 animate-fade-in">{{ searchCount$ | async }}</div>
+      <div class="text-sm text-gray flex items-center justify-center">
+        <i class="bi bi-search mr-2 text-lg"></i>
+        <span>Searches Made</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer with links -->
+<footer class="mt-12 px-6 py-8 bg-primary border-t border-accent2">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col sm:flex-row justify-between items-center space-y-6 sm:space-y-0">
+      <nav class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8">
+        <a routerLink="/overview" class="flex items-center text-accent hover:text-accent4 transition-colors duration-300 ease-apple-ease-out group">
+          <i class="bi bi-bar-chart-fill mr-3 text-lg group-hover:text-accent6"></i>
+          <span class="text-sm font-medium">Interactive Report</span>
+        </a>
+        <a (click)="downloadFullReport()" class="flex items-center text-accent hover:text-accent4 transition-colors duration-300 ease-apple-ease-out group cursor-pointer">
+          <i class="bi bi-download mr-3 text-lg group-hover:text-accent6"></i>
+          <span class="text-sm font-medium">Download Full Report</span>
+        </a>
+      </nav>
+      <p class="text-xs text-accent3">
+        © 2024 Infrastructure Transparency Initiative. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>

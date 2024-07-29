@@ -1,0 +1,6 @@
+.apple-press-effect {
+  transition: transform 0.1s ease-in-out;
+}
+.apple-press-effect:active {
+  transform: scale(0.95);
+}
