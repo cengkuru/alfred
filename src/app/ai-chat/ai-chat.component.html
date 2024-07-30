@@ -1,139 +1,87 @@
-<div class="font-inter bg-lightgray min-h-screen p-4 sm:p-6 md:p-8">
-    <div class="max-w-4xl mx-auto bg-white rounded-[1rem] shadow-xl overflow-hidden">
+<div class="font-inter bg-light-gray text-dark-gray min-h-screen">
+    <div class="max-w-4xl mx-auto h-screen flex flex-col">
         <!-- Header -->
-        <header class="bg-gradient-to-r from-secondary to-accent3 text-white p-6">
+        <header class="bg-white border-b border-gray p-4 shadow-md">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <i class="bi bi-robot text-3xl" aria-hidden="true"></i>
+                <div class="flex items-center space-x-4">
+                    <img src="/assets/alfred.png" alt="Alfred Avatar" class="w-12 h-12 rounded-full shadow-md">
                     <div>
-                        <h1 class="text-2xl font-semibold">Alfred</h1>
-                        <p class="text-sm opacity-75">Your AI Infrastructure Transparency Assistant</p>
+                        <h1 class="text-2xl font-semibold text-dark-gray">Alfred</h1>
+                        <p class="text-sm text-gray">AI Infrastructure Transparency Assistant</p>
                     </div>
                 </div>
-                <button (click)="clearChat()" class="bg-accent5 text-accent3 px-3 py-1 rounded-full text-sm hover:bg-accent6 transition-colors duration-300 ease-apple-ease-out" aria-label="Clear chat history">
-                    <i class="bi bi-trash mr-1" aria-hidden="true"></i>Clear Chat
+                <button (click)="clearChat()" class="text-gray hover:text-dark-gray transition ease-out duration-250">
+                    <i class="bi bi-trash text-xl"></i>
+                    <span class="sr-only">Clear chat</span>
                 </button>
             </div>
-            <p class="mt-3 text-sm opacity-75">Developed by CoST to make access to information easy. I'm here to help with the Infrastructure Transparency Index 2024 report for Uganda.</p>
         </header>
 
         <!-- Chat messages -->
-        <main #chatContainer class="h-[calc(100vh-20rem)] overflow-y-auto p-4 sm:p-6 bg-gray-50" role="log" aria-live="polite">
-            <div *ngFor="let message of chatHistory; let i = index" class="mb-6 animate-fade-in" [attr.aria-label]="message.sender === 'ai' ? 'Alfred\'s response' : 'Your message'">
-                <div [ngClass]="{'flex justify-end': message.sender === 'user', 'flex justify-start': message.sender === 'ai'}">
-                    <div [ngClass]="{
-            'bg-accent5 text-black': message.sender === 'user',
-            'bg-white text-darkgray': message.sender === 'ai',
-            'bg-red-100 text-red-800': message.isError
-          }"
-                         class="w-full sm:max-w-[80%] p-4 rounded-[1rem] shadow-md"
-                         [attr.role]="message.sender === 'ai' ? 'status' : null">
-                        <div class="flex items-start space-x-2">
-                            <i *ngIf="message.sender === 'ai'" class="bi bi-robot text-lg mt-1 flex-shrink-0" aria-hidden="true"></i>
-                            <i *ngIf="message.sender === 'user'" class="bi bi-person text-lg mt-1 flex-shrink-0" aria-hidden="true"></i>
-                            <div class="flex-grow">
-                                <span class="sr-only">{{message.sender === 'ai' ? 'Alfred says:' : 'You said:'}}</span>
-                                <span [innerHTML]="message.content" class="text-sm sm:text-base"></span>
-                                <span *ngIf="message.sender === 'ai' && message.isTyping" class="typing-cursor" aria-hidden="true"></span>
-                            </div>
-                        </div>
-
-                        <!-- Feedback buttons -->
-                        <div *ngIf="message.sender === 'ai' && !message.isError && message.id" class="mt-3 flex justify-end space-x-2">
-                            <button (click)="provideFeedback(message.id!, true)"
-                                    [disabled]="message.feedback === 'positive'"
-                                    class="text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full bg-green-100 text-green-800 hover:bg-green-200 disabled:opacity-50 transition-ease-out"
-                                    [attr.aria-label]="'Mark this response as helpful'"
-                                    [attr.aria-pressed]="message.feedback === 'positive'">
-                                <i class="bi bi-hand-thumbs-up mr-1" aria-hidden="true"></i> Helpful
-                            </button>
-                            <button (click)="provideFeedback(message.id!, false)"
-                                    [disabled]="message.feedback === 'negative'"
-                                    class="text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full bg-red-100 text-red-800 hover:bg-red-200 disabled:opacity-50 transition-ease-out"
-                                    [attr.aria-label]="'Mark this response as not helpful'"
-                                    [attr.aria-pressed]="message.feedback === 'negative'">
-                                <i class="bi bi-hand-thumbs-down mr-1" aria-hidden="true"></i> Not Helpful
-                            </button>
-                        </div>
+        <main #chatContainer class="flex-1 overflow-y-auto p-6 space-y-6 bg-light-gray">
+            <ng-container *ngFor="let message of chatHistory">
+                <div class="flex" [ngClass]="{'justify-end': message.sender === 'user'}">
+                    <div class="max-w-[80%] p-4 rounded-lg shadow-md transition ease-out duration-250"
+                         [ngClass]="{
+                 'bg-accent text-primary': message.sender === 'user',
+                 'bg-white text-dark-gray': message.sender === 'ai'
+               }">
+                        <p [innerHTML]="message.content" class="leading-relaxed"></p>
                     </div>
                 </div>
-            </div>
-            <div *ngIf="isLoading" class="flex justify-start mb-4 animate-fade-in">
-                <div class="bg-white text-darkgray p-4 rounded-[1rem] shadow-md flex items-center space-x-2" role="status">
-                    <div class="animate-bounce">
-                        <i class="bi bi-three-dots text-xl" aria-hidden="true"></i>
-                    </div>
-                    <span class="text-sm sm:text-base">Alfred is thinking...</span>
+            </ng-container>
+            <div *ngIf="isLoading" class="flex justify-start">
+                <div class="bg-white p-4 rounded-lg shadow-md">
+                    <p class="text-gray flex items-center">
+                        <i class="bi bi-circle-fill animate-pulse mr-2"></i>
+                        Alfred is thinking...
+                    </p>
                 </div>
             </div>
         </main>
 
-        <!-- Relevant Documents -->
-        <aside *ngIf="relevantDocuments.length > 0" class="p-6 bg-gray-100 border-t border-gray-200">
-            <h2 class="text-lg font-semibold mb-3 text-darkgray">Relevant Documents</h2>
-            <ul class="space-y-2">
-                <li *ngFor="let doc of relevantDocuments" class="flex items-center text-sm text-darkgray">
-                    <i class="bi bi-file-text mr-2" aria-hidden="true"></i>
-                    <span>{{doc}}</span>
-                </li>
-            </ul>
-        </aside>
-
         <!-- Input area -->
-        <footer class="p-6 bg-white border-t border-gray-200">
-            <form (ngSubmit)="askQuestion()" class="flex items-center space-x-2">
-                <label for="userInput" class="sr-only">Type your message</label>
-                <div class="relative flex-grow">
-                    <input
-                        #chatInput
-                        id="userInput"
-                        type="text"
-                        [(ngModel)]="question"
-                        name="question"
-                        placeholder="Ask Alfred a question..."
-                        class="w-full p-3 pr-10 rounded-[1rem] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal transition-ease-out"
-                        [attr.aria-label]="'Type your message'"
-                        (focus)="triggerPulseAnimation()"
-                    />
-                    <i class="bi bi-chat-dots absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" aria-hidden="true"></i>
-                </div>
+        <footer class="bg-white rounded-lg border-t border-gray p-4 shadow-md">
+            <form (ngSubmit)="askQuestion()" class="flex items-center space-x-3">
+                <input
+                    #chatInput
+                    type="text"
+                    [(ngModel)]="question"
+                    name="question"
+                    placeholder="Message Alfred..."
+                    class="flex-1 p-3 border border-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-gray transition ease-out duration-250"
+                    (focus)="triggerPulseAnimation()"
+                >
                 <button
                         type="submit"
                         [disabled]="isLoading || !question.trim()"
-                        class="bg-accent6 text-white p-3 rounded-[1rem] hover:bg-lightblue focus:outline-none focus:ring-2 focus:ring-teal disabled:opacity-50 transition-ease-out press-effect"
-                        [attr.aria-label]="'Send message'"
+                        class="bg-accent6 text-white p-3 rounded-apple-lg hover:bg-accent4 disabled:opacity-50 transition ease-apple-ease-out duration-250 apple-press-effect"
                         [@pulse]="pulseState"
-                        (click)="askQuestion(); focusInput()"
                 >
-                    <i class="bi bi-send" aria-hidden="true"></i>
+                    <i class="bi bi-send text-xl"></i>
                     <span class="sr-only">Send</span>
                 </button>
             </form>
         </footer>
     </div>
-</div>
 
-<!-- Usage Statistics -->
-<div class="fixed bottom-4 right-4 z-10">
-    <button (click)="toggleStats()" class="bg-accent6 text-white p-2 rounded-full shadow-md hover:bg-lightblue transition-colors duration-300" aria-label="Toggle usage statistics">
-        <i class="bi" [ngClass]="{'bi-chevron-up': showStats, 'bi-chevron-down': !showStats}" aria-hidden="true"></i>
-    </button>
-    <div *ngIf="showStats" [@slideInOut] class="mt-2 p-4 bg-white rounded-lg shadow-md">
-        <h2 class="text-sm font-semibold text-dark-gray mb-2">Usage Statistics</h2>
-        <div class="flex flex-col space-y-2">
-            <div class="flex items-center justify-between">
-        <span class="text-xs text-gray flex items-center">
-          <i class="bi bi-eye-fill mr-1" aria-hidden="true"></i> Page Visits
-        </span>
-                <span class="text-sm font-bold text-teal">{{ visitCount$ | async }}</span>
-            </div>
-            <div class="flex items-center justify-between">
-        <span class="text-xs text-gray flex items-center">
-          <i class="bi bi-search mr-1" aria-hidden="true"></i> Searches Made
-        </span>
-                <span class="text-sm font-bold text-teal">{{ searchCount$ | async }}</span>
+    <!-- Usage Statistics (Hidden by default) -->
+    <div class="fixed bottom-6 right-6">
+        <button (click)="toggleStats()" class="bg-white p-3 rounded-full shadow-md hover:bg-gray transition ease-out duration-250">
+            <i class="bi" [ngClass]="{'bi-chevron-up': showStats, 'bi-chevron-down': !showStats}"></i>
+        </button>
+        <div *ngIf="showStats" [@slideInOut] class="mt-3 p-5 bg-white rounded-lg shadow-lg">
+            <h2 class="text-lg font-semibold mb-3 text-dark-gray">Usage Statistics</h2>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                    <span class="text-gray">Page Visits:</span>
+                    <span class="font-medium text-dark-gray">{{ visitCount$ | async }}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray">Searches Made:</span>
+                    <span class="font-medium text-dark-gray">{{ searchCount$ | async }}</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
-

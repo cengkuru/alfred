@@ -67,7 +67,7 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
   loadingSubscription: Subscription;
 
   // Toggle state for statistics visibility
-  showStats = true;
+  showStats = false;
 
   constructor(
       private aiService: AiService,
@@ -122,7 +122,7 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   private addWelcomeMessage() {
     this.chatHistory.push({
-      content: "<i class='bi bi-emoji-smile mr-2'></i>Hello! I'm Alfred, an AI assistant here to help you with information about the Infrastructure Transparency Index 2024 report for Uganda. What would you like to know?",
+      content: "<i class='bi bi-emoji-smile mr-2'></i>Hello! I'm Alfred, an AI assistant here to help you with information about the Infrastructure Transparency. What would you like to know?",
       sender: 'ai'
     });
   }
