@@ -32,8 +32,10 @@ export class AppComponent implements OnInit, OnDestroy {
       console.log(`Processing progress: ${progress}%`);
     });
 
+
     // Uncomment these lines when you want to process the documents
     // this.processDocument();
+    //this.processJson();
   }
 
   ngOnDestroy(): void {
@@ -43,7 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   processDocument() {
-    this.textService.processDocument('assets/data/itiManual.txt').subscribe({
+    this.textService.processDocument('assets/data/hondurasITI2021.txt').subscribe({
       next: (response) => {
         console.log('Vectorization started:', response);
         // Start monitoring progress
@@ -57,6 +59,23 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  processJson() {
+    this.textService.processJsonDataset('assets/data/projectScores.json').subscribe({
+      next: (response) => {
+        console.log('JSON processing started:', response);
+        // Start monitoring progress
+        this.monitorVectorizationProgress();
+      },
+      error: (error) => {
+        console.error('Error starting JSON processing:', error);
+      },
+      complete: () => {
+        console.log('JSON processing initiation completed');
+      }
+    });
+  }
+
 
   private monitorVectorizationProgress() {
     const progressSubscription = this.textService.progress$.subscribe({

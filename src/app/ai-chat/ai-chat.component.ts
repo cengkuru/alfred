@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { AiService, AiResponse } from "../services/ai.service";
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import {interval, Observable, of, Subscription, takeWhile} from 'rxjs';
+import {interval, Observable, Subscription, takeWhile} from 'rxjs';
 import { catchError, finalize, tap } from 'rxjs/operators';
 import firebase from 'firebase/compat/app';
 import { AngularFireStorage } from "@angular/fire/compat/storage";
@@ -53,6 +53,7 @@ interface ChatMessage {
 })
 export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
   @ViewChild('chatContainer') private chatContainer!: ElementRef;
+  @ViewChild('chatInput') private chatInput!: ElementRef;
 
   question = '';
   chatHistory: ChatMessage[] = [];
@@ -65,17 +66,21 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
   searchCount$: Observable<number>;
   loadingSubscription: Subscription;
 
+  // Toggle state for statistics visibility
+  showStats = true;
+
   constructor(
-    private aiService: AiService,
-    private storage: AngularFireStorage,
-    private firestore: AngularFirestore,
+      private aiService: AiService,
+      private storage: AngularFireStorage,
+      private firestore: AngularFirestore,
   ) {
     this.visitCount$ = this.aiService.getVisitCountExt();
     this.searchCount$ = this.aiService.getSearchCountExt();
     this.loadingSubscription = this.aiService.getLoadingState().subscribe(
-      isLoading => this.isLoading = isLoading
+        isLoading => this.isLoading = isLoading
     );
   }
+
 
   ngOnInit() {
     this.addWelcomeMessage();
@@ -92,6 +97,10 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
     }
   }
 
+  toggleStats() {
+    this.showStats = !this.showStats;
+  }
+
   askQuestion() {
     if (this.question.trim()) {
       this.addUserMessage(this.question);
@@ -105,8 +114,8 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
     if (message) {
       message.feedback = isPositive ? 'positive' : 'negative';
       this.aiService.provideFeedback(messageId, isPositive).subscribe(
-        () => console.log('Feedback submitted successfully'),
-        (error) => console.error('Error submitting feedback:', error)
+          () => console.log('Feedback submitted successfully'),
+          (error) => console.error('Error submitting feedback:', error)
       );
     }
   }
@@ -124,13 +133,13 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   private getAiResponse() {
     this.aiService.askQuestion(this.question).pipe(
-      finalize(() => {
-        this.question = '';
-        this.pulseState = 'inactive';
-      })
+        finalize(() => {
+          this.question = '';
+          this.pulseState = 'inactive';
+        })
     ).subscribe(
-      (response: AiResponse) => this.handleAiResponse(response),
-      (error) => this.handleError(error)
+        (response: AiResponse) => this.handleAiResponse(response),
+        (error) => this.handleError(error)
     );
   }
 
@@ -206,9 +215,9 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
 
     // Apply additional formatting
     formattedAnswer = formattedAnswer
-      .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
-      .replace(/(\w+):/g, '<span class="font-semibold secondary">$1:</span>');
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
+        .replace(/(\w+):/g, '<span class="font-semibold secondary">$1:</span>');
 
     // Add an icon to the beginning of the answer
     return `<div class="flex items-start">
@@ -244,27 +253,18 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
     }
   }
 
-  async downloadFullReport() {
-    const filePath = 'Report-final.pdf';
-    const fileRef = this.storage.ref(filePath);
+  // New method to trigger pulse animation
+  triggerPulseAnimation() {
+    this.pulseState = 'active';
+    setTimeout(() => {
+      this.pulseState = 'inactive';
+    }, 300);
+  }
 
-    try {
-      const url = await fileRef.getDownloadURL().toPromise();
-
-      // Increment download count
-      await this.firestore.doc('downloads/Report-final.pdf').set({
-        count: firebase.firestore.FieldValue.increment(1)
-      }, { merge: true });
-
-      // Trigger download
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'Report-final.pdf';
-      link.target = '_blank';
-      link.click();
-    } catch (error) {
-      console.error('Error downloading file:', error);
-      // Handle error (e.g., show an error message to the user)
+  // New method to focus on the input field
+  focusInput() {
+    if (this.chatInput) {
+      this.chatInput.nativeElement.focus();
     }
   }
 
