@@ -11,10 +11,10 @@ import {AI_SERVICE_CONFIG, AiServiceConfig} from "./ai-service.config";
 
 export interface AiResponse {
   answer: string;
-  pineconeResults: any;
-  relevantContext: string;
   contextRelevance: string;
-  enrichedQuestion?: string;
+  pineconeResults: any[];
+  relevantContext: string;
+  enrichedQuestion: string;
 }
 
 export interface FeedbackData {
@@ -73,36 +73,23 @@ export class AiService {
     const sessionId = this.getOrCreateSessionId();
     const cacheKey = `${sessionId}:${question}`;
 
-    return this.getCachedResponse(cacheKey).pipe(
+    return this.getCachedResponse(question, sessionId).pipe(
+        tap(response => {
+          this.saveMessageToHistory({ role: 'user', content: question, id: `user-${Date.now()}` });
+          this.saveMessageToHistory({ role: 'assistant', content: response.answer, id: `ai-${Date.now()}` });
+        }),
         finalize(() => this.loadingSubject.next(false))
     );
   }
-
-  private getCachedResponse(cacheKey: string): Observable<AiResponse> {
-    if (!this.cache.has(cacheKey)) {
-      const response$ = this.fetchResponse(cacheKey).pipe(
-          shareReplay(1)
-      );
-      this.cache.set(cacheKey, response$);
-    }
-    return this.cache.get(cacheKey)!;
-  }
-
-  private fetchResponse(cacheKey: string): Observable<AiResponse> {
-    const [sessionId, question] = cacheKey.split(':');
-    return from(this.textVectorizationService.enrichQuery(question)).pipe(
-        switchMap(enrichedQuestion => {
+  private fetchResponse(question: string, sessionId: string): Observable<AiResponse> {
+    return this.getConversationHistory().pipe(
+        take(1),
+        switchMap(history => {
           const callable = this.functions.httpsCallable('askAlfred');
-          return callable({ question: enrichedQuestion, sessionId }).pipe(
+          return callable({ question, sessionId, conversationHistory: history }).pipe(
               timeout(this.config.timeoutDuration),
-              retry({
-                count: this.config.maxRetries,
-                delay: (error, retryCount) => {
-                  this.loggingService.log(`Retrying question (${retryCount}/${this.config.maxRetries}): ${enrichedQuestion}`);
-                  return of(1000 * Math.pow(2, retryCount)); // Exponential backoff
-                }
-              }),
-              map(response => this.processResponse(response, enrichedQuestion)),
+              retry(this.config.maxRetries),
+              map(response => this.processResponse(response, question)),
               catchError(error => this.errorHandlingService.handleError(error))
           );
         }),
@@ -111,14 +98,30 @@ export class AiService {
         })
     );
   }
+  private getCachedResponse(question: string, sessionId: string): Observable<AiResponse> {
+    const cacheKey = `${sessionId}:${question}`;
 
-  private processResponse(response: any, enrichedQuestion: string): AiResponse {
+    if (!this.cache.has(cacheKey)) {
+      const response$ = this.fetchResponse(question, sessionId).pipe(
+          shareReplay(1)
+      );
+      this.cache.set(cacheKey, response$);
+    }
+
+    return this.cache.get(cacheKey)!;
+  }
+
+
+  private processResponse(response: any, question: string): AiResponse {
     if (!response || !response.answer) {
       throw new Error('Invalid response from AI service');
     }
     return {
-      ...response,
-      enrichedQuestion
+      answer: response.answer,
+      contextRelevance: response.contextRelevance || 'Unknown',
+      pineconeResults: response.pineconeResults || [],
+      relevantContext: response.relevantContext || '',
+      enrichedQuestion: question
     };
   }
 
@@ -142,10 +145,8 @@ export class AiService {
   }
 
   clearConversationHistory(): Observable<void> {
-    const callable = this.functions.httpsCallable('clearConversationHistory');
     const sessionId = this.getOrCreateSessionId();
-
-    return callable({ sessionId }).pipe(
+    return from(this.firestore.collection('conversations').doc(sessionId).delete()).pipe(
         tap(() => this.cache.clear()),
         catchError(error => this.errorHandlingService.handleError(error))
     );
