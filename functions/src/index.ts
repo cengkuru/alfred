@@ -384,6 +384,66 @@ export const clearConversationHistory = functions.https.onCall(async (data, cont
 
 
 
+// Contextual questions
+// Cloud Function (add to your existing functions file)
+export const getContextualQuestions = functions.https.onCall(async (data, context) => {
+  try {
+    const prompt = `You are Alfred, an AI assistant specializing in Infrastructure Transparency and the Construction Sector Transparency Initiative (CoST). Your purpose is to help users understand and implement transparency in infrastructure projects.
+
+Given this context, generate 4 engaging and relevant questions that users might want to ask about infrastructure transparency. Each question should be concise (no more than 6 words) and paired with an appropriate Bootstrap icon name.
+
+Format your response as a JSON array of objects, each with 'text' and 'icon' properties. For example:
+[
+  { "text": "CoST impact on corruption?", "icon": "bi-shield-check" },
+  ...
+]
+
+Focus on key areas such as:
+1. Transparency in public contracting
+2. Benefits of the CoST initiative
+3. Best practices in infrastructure project management
+4. Socio-economic impacts of transparent infrastructure investments
+
+Generate the questions now:`;
+
+    const response = await axios.post(ANTHROPIC_API_URL, {
+      model: "claude-3-haiku-20240307",
+      max_tokens: 400,
+      messages: [{ role: "user", content: prompt }]
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+    });
+
+    if (response.data?.content?.[0]?.text) {
+      const generatedContent = response.data.content[0].text.trim();
+      const questions = JSON.parse(generatedContent);
+
+      // Validate the structure of the generated questions
+      if (Array.isArray(questions) && questions.length === 4 &&
+          questions.every(q => typeof q.text === 'string' && typeof q.icon === 'string')) {
+        return questions;
+      } else {
+        throw new Error('Invalid question format generated');
+      }
+    } else {
+      throw new Error('Unexpected response structure from AI');
+    }
+  } catch (error) {
+    console.error('Error generating contextual questions:', error);
+    // Fallback to static questions if there's an error
+    return [
+      { text: "CoST initiative overview?", icon: "bi-info-circle" },
+      { text: "Transparency impact on projects?", icon: "bi-graph-up" },
+      { text: "Public engagement in CoST?", icon: "bi-people" },
+      { text: "Implementing CoST standards?", icon: "bi-clipboard-check" }
+    ];
+  }
+});
+
 
 
 
