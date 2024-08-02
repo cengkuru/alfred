@@ -30,6 +30,11 @@ export interface ConversationMessage {
   contextRelevance?: string; // Added this line
 }
 
+export interface ContextualQuestion {
+  text: string;
+  icon: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -81,6 +86,17 @@ export class AiService {
         finalize(() => this.loadingSubject.next(false))
     );
   }
+
+
+  getContextualQuestions(): Observable<ContextualQuestion[]> {
+    const callable = this.functions.httpsCallable('getContextualQuestions');
+    return callable({}).pipe(
+        timeout(this.config.timeoutDuration),
+        retry(this.config.maxRetries),
+        catchError(error => this.errorHandlingService.handleError(error))
+    );
+  }
+
   private fetchResponse(question: string, sessionId: string): Observable<AiResponse> {
     return this.getConversationHistory().pipe(
         take(1),
