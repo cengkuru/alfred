@@ -1,14 +1,14 @@
-import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild, OnDestroy, SecurityContext} from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { AiService, AiResponse } from "../services/ai.service";
+import { AiService, AiResponse, FeedbackData } from "../services/ai.service";
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import {interval, Observable, Subscription, takeWhile} from 'rxjs';
-import { catchError, finalize, tap } from 'rxjs/operators';
-import firebase from 'firebase/compat/app';
+import {Observable, Subscription, interval, Subject, takeUntil} from 'rxjs';
+import {take, takeWhile, debounceTime, finalize} from 'rxjs/operators';
 import { AngularFireStorage } from "@angular/fire/compat/storage";
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { RouterLink } from "@angular/router";
+import {DomSanitizer} from "@angular/platform-browser";
 
 interface ChatMessage {
   content: string;
@@ -17,6 +17,7 @@ interface ChatMessage {
   id?: string;
   feedback?: 'positive' | 'negative' | null;
   isTyping?: boolean;
+  contextRelevance?: string;
 }
 
 @Component({
@@ -29,25 +30,31 @@ interface ChatMessage {
     trigger('fadeInOut', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateY(10px)' }),
-        animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
+        animate('200ms ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
       ]),
       transition(':leave', [
-        animate('300ms ease-in', style({ opacity: 0, transform: 'translateY(10px)' })),
+        animate('150ms ease-in', style({ opacity: 0, transform: 'translateY(10px)' })),
       ]),
     ]),
     trigger('slideInOut', [
       transition(':enter', [
         style({ transform: 'translateY(100%)' }),
-        animate('300ms ease-out', style({ transform: 'translateY(0)' })),
+        animate('200ms ease-out', style({ transform: 'translateY(0)' })),
       ]),
       transition(':leave', [
-        animate('300ms ease-in', style({ transform: 'translateY(100%)' })),
+        animate('150ms ease-in', style({ transform: 'translateY(100%)' })),
       ]),
     ]),
     trigger('pulse', [
       state('inactive', style({ transform: 'scale(1)' })),
-      state('active', style({ transform: 'scale(1.1)' })),
-      transition('inactive <=> active', animate('300ms ease-in-out')),
+      state('active', style({ transform: 'scale(1.05)' })),
+      transition('inactive <=> active', animate('150ms ease-in-out')),
+    ]),
+    trigger('scaleIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.95)' }),
+        animate('200ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
     ]),
   ],
 })
@@ -59,32 +66,38 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
   chatHistory: ChatMessage[] = [];
   isLoading = false;
   pulseState = 'inactive';
-  relevantDocuments: string[] = [];
-  private typingSpeed = 10; // ms per character
+  rotateState = 'default';
+  private typingSpeed = 15; // ms per character
 
-  visitCount$: Observable<number>;
-  searchCount$: Observable<number>;
-  loadingSubscription: Subscription;
-
-  // Toggle state for statistics visibility
+  visitCount$!: Observable<number>;
+  searchCount$!: Observable<number>;
+  private destroy$ = new Subject<void>();
+  private debounceSubject = new Subject<string>();
   showStats = false;
 
   constructor(
       private aiService: AiService,
       private storage: AngularFireStorage,
       private firestore: AngularFirestore,
-  ) {
-    this.visitCount$ = this.aiService.getVisitCountExt();
-    this.searchCount$ = this.aiService.getSearchCountExt();
-    this.loadingSubscription = this.aiService.getLoadingState().subscribe(
-        isLoading => this.isLoading = isLoading
-    );
-  }
-
+      private sanitizer: DomSanitizer // For sanitizing HTML
+  ) {}
 
   ngOnInit() {
     this.addWelcomeMessage();
     this.aiService.logPageVisit();
+    this.initializeConversation();
+
+    this.visitCount$ = this.aiService.getVisitCountExt();
+    this.searchCount$ = this.aiService.getSearchCountExt();
+
+    this.aiService.getLoadingState()
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(isLoading => this.isLoading = isLoading);
+
+    this.debounceSubject.pipe(
+        debounceTime(300),
+        takeUntil(this.destroy$)
+    ).subscribe(() => this.askQuestion());
   }
 
   ngAfterViewChecked() {
@@ -92,15 +105,9 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.loadingSubscription) {
-      this.loadingSubscription.unsubscribe();
-    }
+    this.destroy$.next();
+    this.destroy$.complete();
   }
-
-  toggleStats() {
-    this.showStats = !this.showStats;
-  }
-
   askQuestion() {
     if (this.question.trim()) {
       this.addUserMessage(this.question);
@@ -109,30 +116,83 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
     }
   }
 
+  debounceAskQuestion() {
+    this.debounceSubject.next(this.question);
+  }
+
+  toggleStats() {
+    this.showStats = !this.showStats;
+    this.rotateState = this.showStats ? 'rotated' : 'default';
+  }
+
   provideFeedback(messageId: string, isPositive: boolean) {
     const message = this.chatHistory.find(msg => msg.id === messageId);
     if (message) {
       message.feedback = isPositive ? 'positive' : 'negative';
-      this.aiService.provideFeedback(messageId, isPositive).subscribe(
+      const feedbackData: FeedbackData = {
+        questionId: messageId,
+        isHelpful: isPositive,
+        comment: ''
+      };
+      this.aiService.provideFeedback(feedbackData).pipe(
+          takeUntil(this.destroy$)
+      ).subscribe(
           () => console.log('Feedback submitted successfully'),
           (error) => console.error('Error submitting feedback:', error)
       );
+    } else {
+      console.error('Message not found for feedback');
     }
   }
+  private initializeConversation() {
+    this.aiService.getConversationHistory().pipe(
+        take(1),
+        takeUntil(this.destroy$)
+    ).subscribe(
+        history => {
+          if (history.length === 0) {
+            this.addWelcomeMessage();
+          } else {
+            this.chatHistory = history.map(msg => ({
+              content: msg.content,
+              sender: msg.role === 'user' ? 'user' : 'ai',
+              id: msg.id,
+              contextRelevance: msg.contextRelevance || undefined // Handle possible undefined
+            }));
+          }
+          this.scrollToBottom();
+        },
+        error => {
+          console.error('Error loading conversation history:', error);
+          this.addWelcomeMessage();
+        }
+    );
+  }
+
 
   private addWelcomeMessage() {
-    this.chatHistory.push({
-      content: "<i class='bi bi-emoji-smile mr-2'></i>Hello! I'm Alfred, an AI assistant here to help you with information about the Infrastructure Transparency. What would you like to know?",
-      sender: 'ai'
-    });
+    const welcomeMessage = "<i class='bi bi-emoji-smile mr-2'></i>Hello! I'm Alfred, an AI assistant here to help you with information about Infrastructure Transparency. What would you like to know?";
+    this.addMessage(welcomeMessage, 'ai', false, `welcome-${Date.now()}`);
+    this.aiService.saveMessageToHistory({ role: 'assistant', content: welcomeMessage, id: `welcome-${Date.now()}` })
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(
+            () => console.log('Welcome message saved to history'),
+            error => console.error('Error saving welcome message:', error)
+        );
   }
 
   private addUserMessage(content: string) {
-    this.chatHistory.push({ content, sender: 'user' });
+    this.addMessage(content, 'user');
   }
+
+  private addMessage(content: string, sender: 'user' | 'ai', isError: boolean = false, id: string = '', feedback: 'positive' | 'negative' | null = null, isTyping: boolean = false, contextRelevance?: string) {
+    this.chatHistory.push({ content, sender, isError, id, feedback, isTyping, contextRelevance });
+  }
+
 
   private getAiResponse() {
     this.aiService.askQuestion(this.question).pipe(
+        takeUntil(this.destroy$),
         finalize(() => {
           this.question = '';
           this.pulseState = 'inactive';
@@ -146,50 +206,32 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
   private handleAiResponse(response: AiResponse) {
     const formattedAnswer = this.formatAnswer(response.answer);
     const messageId = `msg-${Date.now()}`;
-    this.addAiMessage('', messageId); // Start with an empty message
+    this.addAiMessage('', messageId, response.contextRelevance);
     this.simulateTyping(formattedAnswer, messageId);
-    this.addContextInfo(response, messageId);
   }
 
-  private addAiMessage(content: string, id: string) {
-    this.chatHistory.push({
-      id,
-      content: `<div class="bg-gray-100 rounded-lg p-4 mb-4 shadow-sm">${content}</div>`,
-      sender: 'ai',
-      isTyping: true
-    });
+  private addAiMessage(content: string, id: string, contextRelevance?: string) {
+    const sanitizedContent = this.sanitizer.sanitize(SecurityContext.HTML, content) || '';
+    this.addMessage(`<div class="bg-primary-200 rounded-apple-lg p-4 mb-4 shadow-apple-sm">${sanitizedContent}</div>`, 'ai', false, id, null, true, contextRelevance);
   }
 
-  private simulateTyping(content: string, messageId: string) {
-    let index = 0;
+  private async simulateTyping(content: string, messageId: string) {
     const message = this.chatHistory.find(msg => msg.id === messageId);
     if (!message) return;
 
-    const typingInterval = interval(this.typingSpeed).pipe(
-        takeWhile(() => index < content.length)
-    ).subscribe(() => {
-      message.content += content[index];
-      index++;
-      if (index === content.length) {
-        message.isTyping = false;
-      }
+    for (let i = 0; i < content.length; i++) {
+      await new Promise(resolve => setTimeout(resolve, this.typingSpeed));
+      message.content += content[i];
       this.scrollToBottom();
-    });
-  }
-
-  private addContextInfo(response: AiResponse, messageId: string) {
-    if (response.contextRelevance) {
-      this.chatHistory.push({
-        content: `<i class='bi bi-info-circle mr-2'></i>Context Relevance: ${response.contextRelevance}`,
-        sender: 'ai',
-        id: `${messageId}-context`
-      });
     }
+    message.isTyping = false;
   }
 
   private formatAnswer(answer: string): string {
+    let formattedAnswer = answer;
+
     // Split the answer into paragraphs
-    const paragraphs = answer.split('\n\n');
+    const paragraphs = formattedAnswer.split('\n\n');
 
     // Process each paragraph
     const formattedParagraphs = paragraphs.map(paragraph => {
@@ -200,39 +242,44 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
 
         const formattedList = listItems.map(item => {
           const cleanItem = item.replace(/^(\d+\.|-)\s/, '').trim();
-          return `<li class="ml-5 mb-2">${cleanItem}</li>`;
+          return `<li class="ml-4 mb-1">${cleanItem}</li>`;
         }).join('');
 
-        return `<${listType} class="list-disc list-inside mb-4">${formattedList}</${listType}>`;
+        return `<${listType} class="list-disc list-inside mb-3">${formattedList}</${listType}>`;
       } else {
         // Regular paragraph
-        return `<p class="mb-4">${paragraph}</p>`;
+        return `<p class="mb-3">${paragraph}</p>`;
       }
     });
 
     // Join the formatted paragraphs
-    let formattedAnswer = formattedParagraphs.join('');
+    formattedAnswer = formattedParagraphs.join('');
 
     // Apply additional formatting
     formattedAnswer = formattedAnswer
         .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
         .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>')
-        .replace(/(\w+):/g, '<span class="font-semibold secondary">$1:</span>');
+        .replace(/(\w+):/g, '<span class="font-semibold text-gray-700">$1:</span>');
 
-    // Add an icon to the beginning of the answer
-    return `<div class="flex items-start">
-      <i class="bi bi-chat-left-text mr-2 mt-1 secondary"></i>
-      <div>${formattedAnswer}</div>
-    </div>`;
+    // Handle table formatting
+    formattedAnswer = formattedAnswer.replace(
+        /<table>([\s\S]*?)<\/table>/g,
+        (match, tableContent) => {
+          const rows = tableContent.trim().split('\n');
+          const formattedRows = rows.map((row: string) => {
+            const cells = row.split('|').filter((cell: string) => cell.trim() !== '');
+            return `<tr>${cells.map((cell: string) => `<td class="border px-3 py-2">${cell.trim()}</td>`).join('')}</tr>`;
+          }).join('');
+          return `<table class="table-auto border-collapse border border-gray-300 my-3">${formattedRows}</table>`;
+        }
+    );
+
+    return `<div class="text-gray-800">${formattedAnswer}</div>`;
   }
 
   private handleError(error: any) {
     const errorMessage = this.createErrorMessage(error);
-    this.chatHistory.push({
-      content: "<i class='bi bi-exclamation-triangle mr-2'></i>" + errorMessage,
-      sender: 'ai',
-      isError: true
-    });
+    this.addMessage("<i class='bi bi-exclamation-triangle mr-2 text-secondary-300'></i>" + errorMessage, 'ai', true);
   }
 
   private createErrorMessage(error: any): string {
@@ -248,12 +295,11 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
   private scrollToBottom(): void {
     try {
       this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-    } catch(err) {
+    } catch (err) {
       console.error('Error scrolling to bottom:', err);
     }
   }
 
-  // New method to trigger pulse animation
   triggerPulseAnimation() {
     this.pulseState = 'active';
     setTimeout(() => {
@@ -261,16 +307,31 @@ export class AiChatComponent implements OnInit, AfterViewChecked, OnDestroy {
     }, 300);
   }
 
-  // New method to focus on the input field
   focusInput() {
     if (this.chatInput) {
       this.chatInput.nativeElement.focus();
     }
   }
 
-  clearChat() {
-    this.chatHistory = [];
-    this.addWelcomeMessage();
-    this.aiService.clearCache();
+  async clearChat() {
+    const confirmed = await this.confirmClearChat();
+    if (confirmed) {
+      this.chatHistory = [];
+      this.addWelcomeMessage();
+      this.aiService.clearCache();
+      this.aiService.clearConversationHistory().pipe(
+          takeUntil(this.destroy$)
+      ).subscribe(
+          () => console.log('Conversation history cleared successfully'),
+          error => console.error('Error clearing conversation history:', error)
+      );
+    }
+  }
+
+  private confirmClearChat(): Promise<boolean> {
+    return new Promise(resolve => {
+      const confirmed = window.confirm('Are you sure you want to clear the chat history?');
+      resolve(confirmed);
+    });
   }
 }

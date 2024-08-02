@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import {TextVectorizationService} from "./services/ textVectorization.service";
+import {AI_SERVICE_CONFIG, DEFAULT_AI_SERVICE_CONFIG} from "./services/ai-service.config";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,10 @@ import {TextVectorizationService} from "./services/ textVectorization.service";
     CommonModule,
     RouterModule
   ],
-  providers: [TextVectorizationService], // Ensure the service is provided here
+  providers: [
+      TextVectorizationService,
+    { provide: AI_SERVICE_CONFIG, useValue: DEFAULT_AI_SERVICE_CONFIG },
+  ], // Ensure the service is provided here
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -45,7 +45,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   processDocument() {
-    this.textService.processDocument('assets/data/hondurasITI2021.txt').subscribe({
+    this.textService.processDocument('assets/data/impactStories2024.txt').subscribe({
       next: (response) => {
         console.log('Vectorization started:', response);
         // Start monitoring progress

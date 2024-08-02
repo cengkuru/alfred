@@ -42,3 +42,21 @@ body {
   z-index: 1000;
   /* Add more styles as needed */
 }
+
+
+/* Apply this style to your global styles or component-specific styles */
+
+.bg-accent-300 .prose {
+  color: white;
+}
+
+/* If you need to target more specifically, you can use: */
+.user-message .prose {
+  color: white;
+}
+
+/* If you're using Tailwind's @apply directive, you can create a new class: */
+.prose-white {
+  @apply prose text-white;
+}
+

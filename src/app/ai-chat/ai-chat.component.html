@@ -1,87 +1,123 @@
-<div class="font-inter bg-light-gray text-dark-gray min-h-screen">
-    <div class="max-w-4xl mx-auto h-screen flex flex-col">
-        <!-- Header -->
-        <header class="bg-white border-b border-gray p-4 shadow-md">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <img src="/assets/alfred.png" alt="Alfred Avatar" class="w-12 h-12 rounded-full shadow-md">
-                    <div>
-                        <h1 class="text-2xl font-semibold text-dark-gray">Alfred</h1>
-                        <p class="text-sm text-gray">AI Infrastructure Transparency Assistant</p>
+<div class="font-inter bg-primary-100 text-accent min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-primary-100 border-b border-primary-400 shadow-apple-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 bg-secondary rounded-apple-full flex items-center justify-center text-primary-100 text-2xl font-bold">
+                        A
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-xl font-semibold text-accent">Alfred</h1>
+                        <p class="text-sm text-accent-100">AI Infrastructure Assistant</p>
                     </div>
                 </div>
-                <button (click)="clearChat()" class="text-gray hover:text-dark-gray transition ease-out duration-250">
-                    <i class="bi bi-trash text-xl"></i>
-                    <span class="sr-only">Clear chat</span>
+                <button (click)="clearChat()" class="apple-button bg-primary-400 text-accent hover:bg-primary-500 transition-colors duration-250">
+                    <i class="bi bi-trash mr-2"></i>
+                    Clear Chat
                 </button>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <!-- Chat messages -->
-        <main #chatContainer class="flex-1 overflow-y-auto p-6 space-y-6 bg-light-gray">
-            <ng-container *ngFor="let message of chatHistory">
-                <div class="flex" [ngClass]="{'justify-end': message.sender === 'user'}">
-                    <div class="max-w-[80%] p-4 rounded-lg shadow-md transition ease-out duration-250"
-                         [ngClass]="{
-                 'bg-accent text-primary': message.sender === 'user',
-                 'bg-white text-dark-gray': message.sender === 'ai'
-               }">
-                        <p [innerHTML]="message.content" class="leading-relaxed"></p>
+    <!-- Main Chat Container -->
+    <main class="flex-grow bg-primary-200">
+        <div class="h-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="h-full flex flex-col bg-primary-100 shadow-apple-lg rounded-apple overflow-hidden">
+                <!-- Messages -->
+                <div #chatContainer class="flex-grow overflow-y-auto p-4 space-y-4">
+                    <ng-container *ngFor="let message of chatHistory; let i = index">
+                        <div class="flex" [ngClass]="{'justify-end': message.sender === 'user'}" [@fadeInOut]>
+                            <div class="max-w-[70%] rounded-apple px-4 py-3 shadow-apple-sm"
+                                 [ngClass]="message.sender === 'user' ? 'bg-accent-300' : 'bg-primary-300'"
+                                 [@scaleIn]>
+                                <div [ngClass]="message.sender === 'user' ? 'text-white' : 'text-accent'">
+                                    <div class="prose max-w-none" [innerHTML]="message.content"></div>
+                                </div>
+
+                                <!-- Context relevance for AI messages -->
+                                <div *ngIf="message.sender === 'ai' && message.contextRelevance"
+                                     class="mt-2 text-xs text-accent-100 flex items-center">
+                                    <i class="bi bi-info-circle mr-1"></i>
+                                    <span>Context: {{ message.contextRelevance }}</span>
+                                </div>
+
+                                <!-- Feedback buttons for AI messages -->
+                                <div *ngIf="message.sender === 'ai'" class="mt-2 flex justify-end space-x-2">
+                                    <button (click)="provideFeedback(message.id, true)"
+                                            class="text-sm text-accent-100 hover:text-secondary transition-colors duration-250"
+                                            [ngClass]="{'text-secondary': message.feedback === 'positive'}"
+                                            aria-label="Helpful">
+                                        <i class="bi bi-hand-thumbs-up"></i>
+                                    </button>
+                                    <button (click)="provideFeedback(message.id, false)"
+                                            class="text-sm text-accent-100 hover:text-red-500 transition-colors duration-250"
+                                            [ngClass]="{'text-red-500': message.feedback === 'negative'}"
+                                            aria-label="Not helpful">
+                                        <i class="bi bi-hand-thumbs-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                    <!-- Loading indicator -->
+                    <div *ngIf="isLoading" class="flex justify-start" [@fadeInOut]>
+                        <div class="bg-primary-300 px-4 py-3 rounded-apple shadow-apple-sm">
+                            <p class="text-accent flex items-center">
+                                <i class="bi bi-three-dots animate-apple-pulse mr-2"></i>
+                                Alfred is thinking...
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </ng-container>
-            <div *ngIf="isLoading" class="flex justify-start">
-                <div class="bg-white p-4 rounded-lg shadow-md">
-                    <p class="text-gray flex items-center">
-                        <i class="bi bi-circle-fill animate-pulse mr-2"></i>
-                        Alfred is thinking...
-                    </p>
-                </div>
-            </div>
-        </main>
 
-        <!-- Input area -->
-        <footer class="bg-white rounded-lg border-t border-gray p-4 shadow-md">
-            <form (ngSubmit)="askQuestion()" class="flex items-center space-x-3">
-                <input
-                    #chatInput
-                    type="text"
-                    [(ngModel)]="question"
-                    name="question"
-                    placeholder="Message Alfred..."
-                    class="flex-1 p-3 border border-gray rounded-lg focus:outline-none focus:ring-2 focus:ring-dark-gray transition ease-out duration-250"
-                    (focus)="triggerPulseAnimation()"
-                >
-                <button
-                        type="submit"
-                        [disabled]="isLoading || !question.trim()"
-                        class="bg-accent6 text-white p-3 rounded-apple-lg hover:bg-accent4 disabled:opacity-50 transition ease-apple-ease-out duration-250 apple-press-effect"
-                        [@pulse]="pulseState"
-                >
-                    <i class="bi bi-send text-xl"></i>
-                    <span class="sr-only">Send</span>
-                </button>
-            </form>
-        </footer>
-    </div>
-
-    <!-- Usage Statistics (Hidden by default) -->
-    <div class="fixed bottom-6 right-6">
-        <button (click)="toggleStats()" class="bg-white p-3 rounded-full shadow-md hover:bg-gray transition ease-out duration-250">
-            <i class="bi" [ngClass]="{'bi-chevron-up': showStats, 'bi-chevron-down': !showStats}"></i>
-        </button>
-        <div *ngIf="showStats" [@slideInOut] class="mt-3 p-5 bg-white rounded-lg shadow-lg">
-            <h2 class="text-lg font-semibold mb-3 text-dark-gray">Usage Statistics</h2>
-            <div class="space-y-3">
-                <div class="flex justify-between items-center">
-                    <span class="text-gray">Page Visits:</span>
-                    <span class="font-medium text-dark-gray">{{ visitCount$ | async }}</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="text-gray">Searches Made:</span>
-                    <span class="font-medium text-dark-gray">{{ searchCount$ | async }}</span>
+                <!-- Input area -->
+                <div class="border-t border-primary-400 px-4 py-4 bg-primary-100">
+                    <form (ngSubmit)="askQuestion()" class="flex items-center space-x-3">
+                        <input
+                            #chatInput
+                            type="text"
+                            [(ngModel)]="question"
+                            name="question"
+                            placeholder="Message Alfred..."
+                            class="flex-grow px-4 py-2 border border-primary-400 rounded-apple focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all duration-250 ease-apple"
+                            (focus)="triggerPulseAnimation()"
+                        >
+                        <button
+                                type="submit"
+                                [disabled]="isLoading || !question.trim()"
+                                class="apple-button bg-secondary text-primary-100 hover:bg-secondary-300 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-250 ease-apple"
+                                [@pulse]="pulseState"
+                        >
+                            <i class="bi bi-send mr-2"></i>
+                            Send
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <!-- Footer with Usage Statistics -->
+    <footer class="bg-primary-100 border-t border-primary-400 shadow-apple-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-sm text-accent-100">
+                    <span class="mr-4">Page Visits: {{ visitCount$ | async }}</span>
+                    <span>Searches Made: {{ searchCount$ | async }}</span>
+                </div>
+                <button (click)="toggleStats()" class="text-accent-100 hover:text-accent transition-colors duration-250">
+                    <i class="bi" [ngClass]="{'bi-chevron-up': showStats, 'bi-chevron-down': !showStats}"></i>
+                    <span class="sr-only">Toggle statistics</span>
+                </button>
+            </div>
+
+            <!-- Detailed Statistics (Hidden by default) -->
+            <div *ngIf="showStats" [@slideInOut] class="mt-3 bg-primary-200 rounded-apple p-4 shadow-apple-inner">
+                <h2 class="text-lg font-semibold mb-2 text-accent">Detailed Usage Statistics</h2>
+                <!-- Add more detailed stats here -->
+            </div>
+        </div>
+    </footer>
 </div>

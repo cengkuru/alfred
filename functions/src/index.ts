@@ -33,10 +33,6 @@ interface TextItem {
   text: string;
   metadata: Record<string, any>;
 }
-interface RelevantContext {
-  context: string;
-  pineconeResults: any;
-}
 
 
 
@@ -74,6 +70,11 @@ interface ConversationHistory {
   messages: { role: 'user' | 'assistant', content: string }[];
 }
 
+interface RelevantContext {
+  context: string;
+  pineconeResults: any;
+}
+
 // New: Function to retrieve conversation history
 async function getConversationHistory(sessionId: string): Promise<ConversationHistory> {
   const doc = await admin.firestore().collection('conversations').doc(sessionId).get();
@@ -91,31 +92,71 @@ async function updateConversationHistory(sessionId: string, newMessage: { role: 
 async function getRelevantContext(question: string, conversationHistory: ConversationHistory): Promise<RelevantContext> {
   const index = pinecone.Index(PINECONE_INDEX_NAME);
 
-  // Combine the current question with recent conversation history for context
-  const contextualQuery = [
-    ...conversationHistory.messages.slice(-3).map(m => m.content),
-    question
-  ].join(' ');
+  // Use more sophisticated query expansion
+  const expandedQuery = await expandQuery(question, conversationHistory);
 
-  const queryEmbedding = await embeddings.embedQuery(contextualQuery);
+  const queryEmbedding = await embeddings.embedQuery(expandedQuery);
 
   const queryResponse = await index.query({
     vector: queryEmbedding,
-    topK: 10,
+    topK: 15, // Increased from 10 to get more context
     includeValues: true,
     includeMetadata: true,
   });
 
-  const contexts = queryResponse.matches
+  // Implement re-ranking of results
+  const rerankedResults = rerank(queryResponse.matches, question);
+
+  const contexts = rerankedResults
       .map(match => match.metadata?.text || '')
       .filter(Boolean);
 
   return {
     context: contexts.join('\n\n'),
-    pineconeResults: queryResponse.matches
+    pineconeResults: rerankedResults
   };
 }
 
+async function expandQuery(question: string, conversationHistory: ConversationHistory): Promise<string> {
+  const recentMessages = conversationHistory.messages.slice(-3).map(m => m.content).join(' ');
+  const expandedQuery = `${recentMessages} ${question}`;
+
+  // Use Claude to generate an expanded query
+  const response = await axios.post(ANTHROPIC_API_URL, {
+    model: "claude-3-haiku-20240307",
+    max_tokens: 50,
+    messages: [{
+      role: "user",
+      content: `Given the conversation context and question, generate an expanded search query to find relevant information:
+      
+      Context: ${recentMessages}
+      Question: ${question}
+      
+      Expanded query:`
+    }]
+  }, {
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01'
+    },
+  });
+
+  return response.data?.content?.[0]?.text || expandedQuery;
+}
+
+function rerank(matches: any[], question: string): any[] {
+  // Implement a simple re-ranking based on keyword matching
+  const keywords = question.toLowerCase().split(' ');
+
+  return matches.sort((a, b) => {
+    const scoreA = keywords.reduce((score, keyword) =>
+        score + (a.metadata?.text.toLowerCase().includes(keyword) ? 1 : 0), 0);
+    const scoreB = keywords.reduce((score, keyword) =>
+        score + (b.metadata?.text.toLowerCase().includes(keyword) ? 1 : 0), 0);
+    return scoreB - scoreA;
+  });
+}
 const ANTHROPIC_API_KEY = functions.config().anthropic.apikey;
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
 
@@ -130,7 +171,7 @@ async function chunkText(text: string, chunkSize: number = 400, overlap: number 
 
 // Improved: Prompt generation function
 async function generatePrompt(question: string, context: string, conversationHistory: ConversationHistory, userLevel: string = 'intermediate'): Promise<string> {
-  const chunks = await chunkText(context);
+  const chunks = await chunkText(context, 600, 50); // Increased chunk size and overlap
   const contextPrompt = chunks.map(chunk => `Context: ${chunk}\n`).join('\n');
 
   const recentConversation = conversationHistory.messages.slice(-5).map(m => `${m.role}: ${m.content}`).join('\n');
@@ -149,70 +190,49 @@ Current Question: ${question}
 Instructions:
 1. Analyze the question, context, and recent conversation to provide a coherent and relevant response.
 2. If this is a follow-up question, make sure to reference and build upon the previous parts of the conversation.
-3. Provide a concise, accurate answer that directly addresses the user's query.
-4. Use markdown formatting to enhance readability.
-5. Include relevant statistics or examples from the provided context when applicable.
+3. Provide a comprehensive answer that directly addresses the user's query, using multiple paragraphs if necessary.
+4. Use markdown formatting to enhance readability, including headers, lists, and emphasis where appropriate.
+5. Include relevant statistics, examples, or case studies from the provided context when applicable.
 6. Adjust your language and explanation depth based on the user's expertise level.
-7. Highlight CoST's role and impact in promoting infrastructure transparency when relevant.
-8. If the question is unclear or lacks context, politely ask for clarification.
-9. Conclude with a brief summary and an open-ended question to encourage further engagement.
+7. If the information provided is insufficient or unclear, acknowledge this and suggest potential avenues for further research.
+8. End your response with a thought-provoking question or suggestion for further exploration of the topic.
 
 Begin your response now:`;
 }
 
-
-// Improved: Main askAI function
-export const askAI = functions.runWith({
+// Improved: Main askAlfred function
+// Improved: Main askAlfred function
+export const askAlfred = functions.runWith({
   timeoutSeconds: 300,
   memory: '1GB'
 }).https.onCall(async (data, context) => {
-  const question: string = data?.question;
-  const userLevel: string = data?.userLevel || 'intermediate';
-  const sessionId: string = data?.sessionId || 'default';
+  const { question, userLevel = 'intermediate', sessionId = 'default' } = data;
 
   if (!question || typeof question !== 'string') {
     throw new functions.https.HttpsError('invalid-argument', 'Please provide a question as a string.');
   }
 
   try {
-    // Retrieve conversation history
     const conversationHistory = await getConversationHistory(sessionId);
-
-    // Get relevant context
     const { context: relevantContext } = await getRelevantContext(question, conversationHistory);
-
-    // Generate prompt
     const prompt = await generatePrompt(question, relevantContext, conversationHistory, userLevel);
 
-    // Call Claude API
-    const requestBody = {
-      model: "claude-3-haiku-20240307",
-      max_tokens: 1000,
-      messages: [
-        {
-          role: "user",
-          content: prompt
-        }
-      ]
-    };
+    const response = await axios.post(ANTHROPIC_API_URL, {
+      model: "claude-3-haiku-20240307", // Using the most concise model, // Using a more capable model for better responses
+      max_tokens: 1000, // Increased max tokens for more comprehensive answers
+      messages: [{ role: "user", content: prompt }]
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+    });
 
-    const response = await axios.post(
-        ANTHROPIC_API_URL,
-        requestBody,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': ANTHROPIC_API_KEY,
-            'anthropic-version': '2023-06-01'
-          },
-        }
-    );
-
-    if (response.data && response.data.content && response.data.content[0] && response.data.content[0].text) {
-      const rawAnswer = response.data.content[0].text.trim();
+    if (response.data?.content?.[0]?.text) {
+      const rawAnswer: string = response.data.content[0].text.trim();
       const processedAnswer = postProcessAnswer(rawAnswer);
 
-      // Update conversation history
       await updateConversationHistory(sessionId, { role: 'user', content: question });
       await updateConversationHistory(sessionId, { role: 'assistant', content: processedAnswer });
 
@@ -221,18 +241,19 @@ export const askAI = functions.runWith({
       throw new Error('Unexpected response structure from AI');
     }
   } catch (error) {
-    logger.error('Error in askAI function:', error);
-    if (axios.isAxiosError(error)) {
-      if (error.response) {
-        logger.error('Anthropic API error response:', error.response.data);
-        throw new functions.https.HttpsError('unavailable', `The AI service returned an error: ${error.response.data.error?.message || 'Unknown error'}`);
-      } else if (error.request) {
-        throw new functions.https.HttpsError('deadline-exceeded', 'The request to the AI service timed out. Please try again.');
-      }
+    logger.error('Error in askAlfred function:', error);
+    if (axios.isAxiosError(error) && error.response) {
+      logger.error('Anthropic API error response:', error.response.data);
+      throw new functions.https.HttpsError('unavailable', `AI service error: ${error.response.data.error?.message || 'Unknown error'}`);
     }
-    throw new functions.https.HttpsError('internal', 'Sorry, I encountered an issue while processing your question. Please try again later.');
+    throw new functions.https.HttpsError('internal', 'Processing error. Please try again later.');
   }
 });
+
+function postProcessAnswer(rawAnswer: string): string {
+  // Remove this function entirely to preserve formatting and full content
+  return rawAnswer.trim();
+}
 
 // New: Function to clear conversation history
 export const clearConversationHistory = functions.https.onCall(async (data, context) => {
@@ -246,6 +267,25 @@ export const clearConversationHistory = functions.https.onCall(async (data, cont
     throw new functions.https.HttpsError('internal', 'Failed to clear conversation history. Please try again.');
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 interface VectorizationState {
   totalItems: number;
@@ -397,134 +437,7 @@ export const processVectorizationBatch = functions.firestore
         await snap.ref.update({ status: 'failed', error: JSON.stringify(error) });
       }
     });
-function postProcessAnswer(rawAnswer: string): string {
-  let processedAnswer = rawAnswer;
 
-  // Apply basic formatting (headers, lists, etc.)
-  processedAnswer = applyBasicFormatting(processedAnswer);
-
-  // Intelligent section detection and formatting
-  processedAnswer = detectAndFormatSections(processedAnswer);
-
-  // Add emojis to headers intelligently
-  processedAnswer = addHeaderEmojis(processedAnswer);
-
-  // Ensure proper spacing and readability
-  processedAnswer = improveReadability(processedAnswer);
-
-  // Add a dynamic concluding remark
-  processedAnswer = addDynamicConclusion(processedAnswer);
-
-  return processedAnswer;
-}
-
-function applyBasicFormatting(text: string): string {
-  // Format headings
-  text = text.replace(/^(#{1,6})\s*(.+)$/gm, (_, hashes, headingText) => {
-    return `\n${hashes} ${headingText.trim()}\n`;
-  });
-
-  // Format lists
-  text = text.replace(/^(\d+)\.\s+/gm, (_, number) => `\n${number}. `);
-  text = text.replace(/^[-*]\s+/gm, '\n- ');
-
-  // Format blockquotes
-  text = text.replace(/^>\s*(.*)/gm, (_, content) => `> ${content.trim()}`);
-
-  // Format code blocks
-  text = text.replace(/```(\w+)?\n([\s\S]+?)\n```/g, (_, language, code) => {
-    return `\n\`\`\`${language || ''}\n${code.trim()}\n\`\`\`\n`;
-  });
-
-  // Format inline code
-  text = text.replace(/`([^`\n]+)`/g, (_, code) => `\`${code.trim()}\``);
-
-  // Format bold and italic
-  text = text.replace(/\*\*\*([^*\n]+)\*\*\*/g, (_, content) => `***${content.trim()}***`);
-  text = text.replace(/\*\*([^*\n]+)\*\*/g, (_, content) => `**${content.trim()}**`);
-  text = text.replace(/\*([^*\n]+)\*/g, (_, content) => `*${content.trim()}*`);
-
-  // Format links
-  text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, linkText, url) => `[${linkText.trim()}](${url.trim()})`);
-
-  // Format horizontal rules
-  text = text.replace(/^(-{3,}|\*{3,})$/gm, '\n---\n');
-
-  return text;
-}
-
-function addHeaderEmojis(text: string): string {
-  const emojiMap: { [key: string]: string } = {
-    'Main Answer': '💡',
-    'Key Points': '🔑',
-    'Detailed Explanation': '📊',
-    'Real-World Impact': '🌍',
-    'Summary': '📝',
-    'Example': '🔍',
-    'Conclusion': '🎯',
-    'Further Reading': '📚'
-  };
-
-  return text.replace(/^(#{1,6})\s+(.*?)$/gm, (match, hashes, header) => {
-    const trimmedHeader = header.trim();
-    const emoji = emojiMap[trimmedHeader] || '';
-    return emoji ? `${hashes} ${emoji} ${trimmedHeader}` : match;
-  });
-}
-
-function improveReadability(text: string): string {
-  // Remove excessive newlines
-  text = text.replace(/\n{3,}/g, '\n\n');
-
-  // Ensure there's always a newline after a heading
-  text = text.replace(/^(#{1,6}.*?)$/gm, '$1\n');
-
-  // Add line breaks after punctuation for better readability
-  text = text.replace(/([.!?])\s+(?=[A-Z])/g, '$1\n\n');
-
-  // Capitalize first letter after punctuation
-  text = text.replace(/([.!?]\s+)([a-z])/g, (_, punctuation, letter) => `${punctuation}${letter.toUpperCase()}`);
-
-  // Ensure proper spacing around list items
-  text = text.replace(/(\n[^\n]+)(\n[-\d])/g, '$1\n\n$2');
-
-  return text;
-}
-
-function detectAndFormatSections(text: string): string {
-  const sections = [
-    { name: 'Main Answer', emoji: '💡' },
-    { name: 'Key Points', emoji: '🔑' },
-    { name: 'Detailed Explanation', emoji: '📊' },
-    { name: 'Real-World Impact', emoji: '🌍' },
-    { name: 'Summary', emoji: '📝' },
-    { name: 'Example', emoji: '🔍' },
-    { name: 'Conclusion', emoji: '🎯' },
-    { name: 'Further Reading', emoji: '📚' }
-  ];
-
-  sections.forEach(section => {
-    const regex = new RegExp(`(?:^|\\n)${section.name}:?\\s*(.+(?:\\n(?!\\n).+)*)`, 'i');
-    const match = text.match(regex);
-    if (match) {
-      const content = match[1].trim();
-      text = text.replace(match[0], `\n\n## ${section.emoji} ${section.name}\n\n${content}\n\n`);
-    }
-  });
-
-  return text;
-}
-
-function addDynamicConclusion(text: string): string {
-  const conclusions = [
-    "I hope this information helps! Do you have any other questions about infrastructure transparency or CoST's work?",
-    "Is there anything else you'd like to know about this topic or CoST's initiatives?",
-    "How else can I assist you with understanding infrastructure transparency and CoST's methodologies?",
-    "Would you like to explore any specific aspects of infrastructure project lifecycles or transparency measures further?"
-  ];
-
-  return text + "\n\n" + conclusions[Math.floor(Math.random() * conclusions.length)];
-}
 
 
 export const clearVectorizationProgress = functions.https.onCall(async (data = {}, context) => {
