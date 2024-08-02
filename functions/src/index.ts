@@ -229,6 +229,8 @@ Instructions:
 Begin your response now:`;
 }
 
+
+
 export const askAlfred = functions.runWith({
   timeoutSeconds: 300,
   memory: '1GB'
@@ -248,12 +250,14 @@ export const askAlfred = functions.runWith({
     const { context: relevantContext } = await hybridSearch(question, conversationHistory);
     const prompt = await generatePrompt(question, relevantContext, conversationHistory);
 
-    // Format messages for Anthropic API, ensuring alternating roles
-    const formattedMessages = formatMessagesForAPI(conversationHistory.messages, prompt);
+    // Ensure messages alternate between user and assistant
+    const formattedMessages = strictlyAlternateMessages(conversationHistory.messages, prompt);
+
+    console.log('Formatted messages:', JSON.stringify(formattedMessages, null, 2)); // Debug log
 
     const response = await axios.post(ANTHROPIC_API_URL, {
       model: "claude-3-haiku-20240307",
-      max_tokens: 1000,
+      max_tokens: 500,
       messages: formattedMessages
     }, {
       headers: {
@@ -289,40 +293,6 @@ export const askAlfred = functions.runWith({
 });
 
 
-
-function formatMessagesForAPI(history: Message[], currentPrompt: string): Message[] {
-  const formattedMessages: Message[] = [];
-  let lastRole: 'user' | 'assistant' | null = null;
-
-  // Process historical messages
-  for (const msg of history) {
-    if (msg.role !== lastRole) {
-      formattedMessages.push(msg);
-      lastRole = msg.role;
-    } else if (msg.role === 'user') {
-      // If we have consecutive user messages, combine them
-      formattedMessages[formattedMessages.length - 1].content += '\n' + msg.content;
-    }
-    // Ignore consecutive assistant messages as they're not allowed
-  }
-
-  // Ensure the conversation starts with a user message
-  if (formattedMessages.length === 0 || formattedMessages[0].role !== 'user') {
-    formattedMessages.unshift({ role: 'user', content: 'Hello, I have a question.' });
-  }
-
-  // Add the current prompt as a user message
-  if (lastRole !== 'user') {
-    formattedMessages.push({ role: 'user', content: currentPrompt });
-  } else {
-    // If the last message was from the user, append the current prompt to it
-    formattedMessages[formattedMessages.length - 1].content += '\n' + currentPrompt;
-  }
-
-  return formattedMessages;
-}
-
-
 function calculateContextRelevance(context: string, answer: string): string {
   // Implement a simple relevance calculation (e.g., based on keyword overlap)
   const contextKeywords = new Set(context.toLowerCase().split(/\W+/));
@@ -334,6 +304,33 @@ function calculateContextRelevance(context: string, answer: string): string {
   if (relevancePercentage > 50) return "Medium";
   return "Low";
 }
+
+function strictlyAlternateMessages(history: Message[], currentPrompt: string): Message[] {
+  const formattedMessages: Message[] = [];
+
+  // Always start with a user message
+  if (history.length === 0 || history[0].role !== 'user') {
+    formattedMessages.push({ role: 'user', content: 'Hello, I have a question.' });
+  }
+
+  // Process historical messages, ensuring strict alternation
+  for (const message of history) {
+    if (formattedMessages.length === 0 || message.role !== formattedMessages[formattedMessages.length - 1].role) {
+      formattedMessages.push(message);
+    }
+  }
+
+  // Ensure the last message before the new prompt is from the assistant
+  if (formattedMessages.length % 2 === 1) {
+    formattedMessages.push({ role: 'assistant', content: 'How can I assist you?' });
+  }
+
+  // Add the current prompt as a user message
+  formattedMessages.push({ role: 'user', content: currentPrompt });
+
+  return formattedMessages;
+}
+
 
 
 async function getConversationHistory(sessionId: string): Promise<ConversationHistory> {
@@ -349,25 +346,37 @@ async function getConversationHistory(sessionId: string): Promise<ConversationHi
     }))
   };
 }
+
+
+
 async function updateConversationHistory(sessionId: string, newMessage: Message): Promise<void> {
   const conversationRef = admin.firestore().collection('conversations').doc(sessionId);
 
   await admin.firestore().runTransaction(async (transaction) => {
     const doc = await transaction.get(conversationRef);
-    if (!doc.exists) {
-      transaction.set(conversationRef, {
-        messages: [newMessage],
-        lastUpdated: admin.firestore.FieldValue.serverTimestamp()
-      });
-    } else {
-      const existingMessages = doc.data()?.messages || [];
-      transaction.update(conversationRef, {
-        messages: [...existingMessages.slice(-9), newMessage], // Keep last 10 messages
-        lastUpdated: admin.firestore.FieldValue.serverTimestamp()
-      });
+    let messages: Message[] = [];
+
+    if (doc.exists) {
+      messages = doc.data()?.messages || [];
     }
+
+    // Ensure the conversation starts with a user message if it's empty
+    if (messages.length === 0 && newMessage.role === 'assistant') {
+      messages.push({ role: 'user', content: 'Hello, I have a question.' });
+    }
+
+    messages.push(newMessage);
+
+    // Keep only the last 10 messages
+    messages = messages.slice(-10);
+
+    transaction.set(conversationRef, {
+      messages: messages,
+      lastUpdated: admin.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
   });
 }
+
 
 export const clearConversationHistory = functions.https.onCall(async (data, context) => {
   const sessionId: string = data?.sessionId || 'default';
