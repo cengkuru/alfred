@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, throwError, of, BehaviorSubject, from } from 'rxjs';
-import { catchError, map, retry, timeout, shareReplay, tap, finalize, switchMap, take } from 'rxjs/operators';
+import {catchError, map, retry, timeout, shareReplay, tap, finalize, switchMap, take, takeWhile} from 'rxjs/operators';
 import firebase from 'firebase/compat/app';
 import {TextVectorizationService} from "./ textVectorization.service";
 import {LoggingService} from "./logging.service";
@@ -33,6 +33,12 @@ export interface ConversationMessage {
 export interface ContextualQuestion {
   text: string;
   icon: string;
+}
+
+interface ProcessingProgress {
+  percentage: number;
+  processedChunks: number;
+  totalChunks: number;
 }
 
 @Injectable({
@@ -255,6 +261,34 @@ export class AiService {
     return this.firestore.collection('conversations').doc(sessionId).valueChanges().pipe(
         map(doc => doc ? (doc as any).messages : []),
         catchError(error => this.errorHandlingService.handleError(error))
+    );
+  }
+
+
+  processDocument(text: string): Observable<any> {
+    const documentId = `doc_${Date.now()}`;
+    const callable = this.functions.httpsCallable('processDocument');
+
+    return callable({ text, documentId }).pipe(
+        tap(result => console.log('Document processing result:', result)),
+        switchMap(() => this.monitorProcessingProgress(documentId)),
+        catchError(error => this.errorHandlingService.handleError(error))
+    );
+  }
+
+  private monitorProcessingProgress(documentId: string): Observable<ProcessingProgress | null> {
+    return this.firestore.collection('processingProgress').doc(documentId).valueChanges().pipe(
+        map(progress => {
+          if (progress) {
+            return {
+              percentage: (progress as ProcessingProgress).percentage,
+              processedChunks: (progress as ProcessingProgress).processedChunks,
+              totalChunks: (progress as ProcessingProgress).totalChunks
+            };
+          }
+          return null;
+        }),
+        takeWhile(progress => progress === null || progress.percentage < 100, true)
     );
   }
 }
