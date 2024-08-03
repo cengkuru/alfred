@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutComponent } from './layout.component';
+import { UploadDocsComponent } from './upload-docs.component';
 
-describe('LayoutComponent', () => {
-  let component: LayoutComponent;
-  let fixture: ComponentFixture<LayoutComponent>;
+describe('UploadDocsComponent', () => {
+  let component: UploadDocsComponent;
+  let fixture: ComponentFixture<UploadDocsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LayoutComponent]
+      imports: [UploadDocsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LayoutComponent);
+    fixture = TestBed.createComponent(UploadDocsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

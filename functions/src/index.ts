@@ -190,7 +190,7 @@ async function expandQuery(question: string, conversationHistory: ConversationHi
 
 const ANTHROPIC_API_KEY = functions.config().anthropic.apikey;
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
-
+const CHUNK_SIZE = 4000; // Adjust based on Claude's token limit
 
 async function chunkText(text: string, chunkSize: number = 600, overlap: number = 50): Promise<string[]> {
   const splitter = new RecursiveCharacterTextSplitter({
@@ -645,3 +645,98 @@ export const provideFeedback = https.onCall(async (data, context) => {
   }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+async function summarizeWithClaude(text: string): Promise<string> {
+  try {
+    const response = await axios.post(ANTHROPIC_API_URL, {
+      model: "claude-3-haiku-20240307",
+      max_tokens: 500,
+      messages: [
+        { role: "user", content: `Summarize the most important information from the following text, focusing on key points and essential details:\n\n${text}` }
+      ]
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+    });
+
+    return response.data.content[0].text;
+  } catch (error) {
+    console.error('Error summarizing with Claude:', error);
+    throw error;
+  }
+}
+
+async function processAndVectorizeChunk(chunk: string, chunkId: string): Promise<void> {
+  const summary = await summarizeWithClaude(chunk);
+
+  // Store summary in Firestore
+  await admin.firestore().collection('summaries').doc(chunkId).set({
+    summary,
+    processed: false,
+    timestamp: admin.firestore.FieldValue.serverTimestamp()
+  });
+
+  // Vectorize and store in Pinecone
+  const index = pinecone.Index(PINECONE_INDEX_NAME);
+  const embedding = await embeddings.embedQuery(summary);
+
+  await index.upsert([{
+    id: chunkId,
+    values: embedding,
+    metadata: { summary }
+  }]);
+
+  // Mark as processed in Firestore
+  await admin.firestore().collection('summaries').doc(chunkId).update({ processed: true });
+}
+
+exports.processDocument = functions.runWith({
+  timeoutSeconds: 540,
+  memory: '2GB'
+}).https.onCall(async (data, context) => {
+  const { text, documentId } = data;
+
+  if (!text || typeof text !== 'string') {
+    throw new functions.https.HttpsError('invalid-argument', 'The function must be called with a non-empty "text" string.');
+  }
+
+  try {
+    const splitter = new RecursiveCharacterTextSplitter({
+      chunkSize: CHUNK_SIZE,
+      chunkOverlap: 200,
+    });
+
+    const chunks = await splitter.splitText(text);
+
+    for (let i = 0; i < chunks.length; i++) {
+      const chunkId = `${documentId}_chunk_${i}`;
+      await processAndVectorizeChunk(chunks[i], chunkId);
+
+      // Update progress
+      await admin.firestore().collection('processingProgress').doc(documentId).set({
+        totalChunks: chunks.length,
+        processedChunks: i + 1,
+        percentage: ((i + 1) / chunks.length) * 100
+      }, { merge: true });
+    }
+
+    return { success: true, message: `Processed all ${chunks.length} chunks of the document` };
+  } catch (error) {
+    console.error('Error in processDocument:', error);
+    throw new functions.https.HttpsError('internal', 'Document processing failed. Please try again.');
+  }
+});
