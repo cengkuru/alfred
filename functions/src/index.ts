@@ -7,7 +7,7 @@ import axios from 'axios';
 import {https, logger} from "firebase-functions";
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import * as natural from 'natural';
-
+import * as zlib from 'zlib';
 
 // Initialize Firebase Admin SDK if not already done
 if (!admin.apps.length) {
@@ -34,6 +34,17 @@ interface TextItem {
   text: string;
   metadata: Record<string, any>;
 }
+
+interface ProcessedChunk {
+  text: string;
+  metadata: Record<string, any>;
+  summaries: {
+    brief: string;
+    medium: string;
+    detailed: string;
+  };
+}
+
 
 
 
@@ -76,138 +87,158 @@ interface ConversationHistory {
   messages: Message[];
 }
 
-interface RelevantContext {
-  context: string;
-  pineconeResults: any;
-}
 
 // Improved keyword search function using TF-IDF
-function keywordSearch(question: string, documents: string[]): string[] {
+function keywordSearch(query: string, documents: string[]): string[] {
   const TfIdf = natural.TfIdf;
   const tfidf = new TfIdf();
 
   documents.forEach(doc => tfidf.addDocument(doc));
 
   const tokenizer = new natural.WordTokenizer();
-  const questionTokens = tokenizer.tokenize(question.toLowerCase());
+  const queryTokens = tokenizer.tokenize(query.toLowerCase());
 
   const scores = documents.map((_, index) => {
-    return questionTokens.reduce((score, token) => {
+    return queryTokens.reduce((score, token) => {
       return score + tfidf.tfidf(token, index);
     }, 0);
   });
 
-  const topIndices = scores
+  return scores
       .map((score, index) => ({ score, index }))
       .sort((a, b) => b.score - a.score)
       .slice(0, 5)
-      .map(item => item.index);
-
-  return topIndices.map(index => documents[index]);
+      .map(item => documents[item.index]);
 }
+function rerank(vectorResults: any[], keywordResults: string[], query: string): any[] {
+  const allResults = [...vectorResults];
 
-function rerank(matches: any[], question: string): any[] {
-  const keywords = question.toLowerCase().split(' ');
-
-  return matches.map(match => {
-    const text = match.metadata?.text?.toLowerCase() || '';
-    const keywordScore = keywords.reduce((score, keyword) =>
-        score + (text.includes(keyword) ? 1 : 0), 0);
-    return { ...match, keywordScore };
-  }).sort((a, b) => {
-    // Combine vector similarity score and keyword score
-    const scoreA = (a.score || 0) + a.keywordScore;
-    const scoreB = (b.score || 0) + b.keywordScore;
-    return scoreB - scoreA;
-  });
-}
-
-async function hybridSearch(question: string, conversationHistory: ConversationHistory): Promise<RelevantContext> {
-  const index = pinecone.Index(PINECONE_INDEX_NAME);
-  const expandedQuery = await expandQuery(question, conversationHistory);
-  const queryEmbedding = await embeddings.embedQuery(expandedQuery);
-
-  const queryResponse = await index.query({
-    vector: queryEmbedding,
-    topK: 20,
-    includeValues: true,
-    includeMetadata: true,
+  keywordResults.forEach(result => {
+    if (!allResults.some(r => r.text === result)) {
+      allResults.push({ text: result, score: 0 });
+    }
   });
 
-  const documents = queryResponse.matches
-      .map(match => match.metadata?.text)
-      .filter((text): text is string => typeof text === 'string');
-
-  const keywordResults = keywordSearch(question, documents);
-
-  const combinedResults = rerank(queryResponse.matches, question)
-      .filter(match => match.metadata?.text && keywordResults.includes(match.metadata.text))
-      .slice(0, 10);  // Keep top 10 results after reranking
-
-  return {
-    context: combinedResults.map(match => match.metadata?.text || '').join('\n\n'),
-    pineconeResults: combinedResults
-  };
+  return allResults.map(result => {
+    const keywordScore = keywordResults.indexOf(result.text) !== -1 ? 1 : 0;
+    const combinedScore = (result.score || 0) + keywordScore;
+    return { ...result, combinedScore };
+  }).sort((a, b) => b.combinedScore - a.combinedScore).slice(0, 5);
 }
 
-function postProcessAnswer(rawAnswer: string): string {
-  let processedAnswer = rawAnswer.trim();
 
-  if (!/[.!?]$/.test(processedAnswer)) {
-    processedAnswer += '.';
+// Updated hybridSearch function
+async function hybridSearch(query: string, conversationHistory: ConversationHistory): Promise<any[]> {
+  console.log('Starting hybridSearch with query:', query);
+
+  try {
+    const expandedQuery = await expandQuery(query, conversationHistory);
+    console.log('Expanded query:', expandedQuery);
+
+    const queryEmbedding = await embeddings.embedQuery(expandedQuery);
+    console.log('Query embedding generated');
+
+    const index = pinecone.Index(PINECONE_INDEX_NAME);
+    const vectorResults = await index.query({
+      vector: queryEmbedding,
+      topK: 10,
+      includeMetadata: true
+    });
+    console.log('Vector search results:', vectorResults.matches.length);
+
+    const allDocuments = await admin.firestore().collection('documents').get();
+    const documents = allDocuments.docs.map(doc => doc.data().text);
+    console.log('Retrieved documents for keyword search:', documents.length);
+
+    const keywordResults = keywordSearch(expandedQuery, documents);
+    console.log('Keyword search results:', keywordResults.length);
+
+    const rerankedResults = rerank(vectorResults.matches, keywordResults, expandedQuery);
+    console.log('Reranked results:', rerankedResults.length);
+
+    const fullResults = await Promise.all(rerankedResults.map(async (result) => {
+      if (!result.metadata?.documentId) {
+        console.error('Invalid documentId in result metadata', result.metadata);
+        return null;
+      }
+      const docRef = admin.firestore().collection('documents').doc(result.metadata.documentId);
+      const doc = await docRef.get();
+      const data = doc.data();
+      if (!data) {
+        console.error('No data found for document', result.metadata.documentId);
+        return null;
+      }
+
+      if (!data.chunks || !data.chunks[result.metadata.chunkIndex]) {
+        console.error('Invalid chunk data for document', result.metadata.documentId, 'at index', result.metadata.chunkIndex);
+        return null;
+      }
+
+      const chunk = data.chunks[result.metadata.chunkIndex];
+      return {
+        ...result,
+        text: decompressData(chunk.text),
+        summaries: {
+          brief: decompressData(chunk.summaries.brief),
+          medium: decompressData(chunk.summaries.medium),
+          detailed: decompressData(chunk.summaries.detailed)
+        }
+      };
+    }));
+
+    const validResults = fullResults.filter((result): result is NonNullable<typeof result> => result !== null);
+    console.log('Final processed results:', validResults.length);
+
+    return validResults;
+  } catch (error) {
+    console.error('Error in hybridSearch:', error);
+    throw error; // Re-throw to be caught in askAlfred
   }
-
-  processedAnswer = processedAnswer.charAt(0).toUpperCase() + processedAnswer.slice(1);
-
-  return processedAnswer;
 }
 async function expandQuery(question: string, conversationHistory: ConversationHistory): Promise<string> {
   const recentMessages = conversationHistory.messages.slice(-3).map(m => m.content).join(' ');
   const expandedQuery = `${recentMessages} ${question}`;
 
-  const response = await axios.post(ANTHROPIC_API_URL, {
-    model: "claude-3-haiku-20240307",
-    max_tokens: 50,
-    messages: [{
-      role: "user",
-      content: `Given the conversation context and question, generate an expanded search query to find relevant information:
-      
-      Context: ${recentMessages}
-      Question: ${question}
-      
-      Expanded query:`
-    }]
-  }, {
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': ANTHROPIC_API_KEY,
-      'anthropic-version': '2023-06-01'
-    },
-  });
+  try {
+    const response = await axios.post(ANTHROPIC_API_URL, {
+      model: "claude-3-haiku-20240307",
+      max_tokens: 100,
+      messages: [{
+        role: "user",
+        content: `Given the conversation context and question, generate an expanded search query to find relevant information:
+        
+        Context: ${recentMessages}
+        Question: ${question}
+        
+        Expanded query:`
+      }]
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+    });
 
-  return response.data?.content?.[0]?.text || expandedQuery;
+    return response.data?.content?.[0]?.text || expandedQuery;
+  } catch (error) {
+    console.error('Error expanding query:', error);
+    return expandedQuery;
+  }
 }
-
 const ANTHROPIC_API_KEY = functions.config().anthropic.apikey;
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
 const CHUNK_SIZE = 4000; // Adjust based on Claude's token limit
 
-async function chunkText(text: string, chunkSize: number = 600, overlap: number = 50): Promise<string[]> {
-  const splitter = new RecursiveCharacterTextSplitter({
-    chunkSize: chunkSize,
-    chunkOverlap: overlap,
-  });
-  return await splitter.splitText(text);
-}
-// Improved: Prompt generation function
-async function generatePrompt(question: string, context: string, conversationHistory: ConversationHistory): Promise<string> {
-  const chunks = await chunkText(context);
-  const contextPrompt = chunks.map(chunk => `Context: ${chunk}\n`).join('\n');
 
-  const recentConversation = conversationHistory.messages.slice(-5).map(m => `${m.role}: ${m.content}`).join('\n');
+
+// Improved: Prompt generation function
+function generatePrompt(question: string, context: string, conversationHistory: ConversationHistory): string {
+  const recentConversation = conversationHistory.messages.slice(-3).map(m => `${m.role}: ${m.content}`).join('\n');
 
   return `
-${contextPrompt}
+Context:
+${context}
 
 Recent Conversation:
 ${recentConversation}
@@ -219,46 +250,58 @@ Current Question: ${question}
 Instructions:
 1. Analyze the question, context, and recent conversation to provide a coherent and relevant response.
 2. If this is a follow-up question, make sure to reference and build upon the previous parts of the conversation.
-3. Provide a comprehensive answer that directly addresses the user's query, using multiple paragraphs if necessary.
-4. Use markdown formatting to enhance readability, including headers, lists, and emphasis where appropriate.
-5. Include relevant statistics, examples, or case studies from the provided context when applicable.
-6. If the information provided is insufficient or unclear, acknowledge this and suggest potential avenues for further research.
-7. End your response with a thought-provoking question or suggestion for further exploration of the topic.
-8. Important: Do not generate additional questions or responses on behalf of the user. Wait for the user's next input.
+3. Provide a comprehensive but concise answer that directly addresses the user's query.
+4. Use markdown formatting to enhance readability, including headers and emphasis where appropriate.
+5. Include relevant statistics or examples from the provided context when applicable.
+6. If the information provided is insufficient, acknowledge this and suggest potential avenues for further research.
+7. Aim for a response length of about 150-200 words to ensure it fits within the token limit.
 
 Begin your response now:`;
 }
 
+function truncatePrompt(prompt: string, maxTokens: number): string {
+  const tokens = prompt.split(/\s+/);
+  if (tokens.length <= maxTokens) return prompt;
+  return tokens.slice(0, maxTokens).join(' ') + '...';
+}
 
 
+// Updated askAlfred function
 export const askAlfred = functions.runWith({
   timeoutSeconds: 300,
   memory: '1GB'
 }).https.onCall(async (data, context) => {
   const { question, sessionId } = data;
 
-  if (!question || typeof question !== 'string') {
-    throw new functions.https.HttpsError('invalid-argument', 'Please provide a question as a string.');
+  console.log('askAlfred called with:', { question, sessionId });
+
+  if (!question || typeof question !== 'string' || question.trim() === '') {
+    console.error('Invalid question provided:', question);
+    throw new functions.https.HttpsError('invalid-argument', 'Please provide a valid non-empty question.');
   }
 
-  if (!sessionId || typeof sessionId !== 'string') {
-    throw new functions.https.HttpsError('invalid-argument', 'Please provide a valid sessionId.');
+  if (!sessionId || typeof sessionId !== 'string' || sessionId.trim() === '') {
+    console.error('Invalid sessionId provided:', sessionId);
+    throw new functions.https.HttpsError('invalid-argument', 'Please provide a valid non-empty sessionId.');
   }
 
   try {
+    console.log('Getting conversation history for sessionId:', sessionId);
     const conversationHistory = await getConversationHistory(sessionId);
-    const { context: relevantContext } = await hybridSearch(question, conversationHistory);
-    const prompt = await generatePrompt(question, relevantContext, conversationHistory);
 
-    // Ensure messages alternate between user and assistant
-    const formattedMessages = strictlyAlternateMessages(conversationHistory.messages, prompt);
+    console.log('Performing hybrid search');
+    const searchResults = await hybridSearch(question, conversationHistory);
 
-    console.log('Formatted messages:', JSON.stringify(formattedMessages, null, 2)); // Debug log
+    console.log('Generating prompt');
+    const context = searchResults.map(result => result.summaries.medium).join('\n\n');
+    const prompt = generatePrompt(question, context, conversationHistory);
+    const truncatedPrompt = truncatePrompt(prompt, 4000);
 
+    console.log('Sending request to Anthropic API');
     const response = await axios.post(ANTHROPIC_API_URL, {
       model: "claude-3-haiku-20240307",
       max_tokens: 500,
-      messages: formattedMessages
+      messages: [{ role: "user", content: truncatedPrompt }]
     }, {
       headers: {
         'Content-Type': 'application/json',
@@ -271,30 +314,51 @@ export const askAlfred = functions.runWith({
       const rawAnswer: string = response.data.content[0].text.trim();
       const processedAnswer = postProcessAnswer(rawAnswer);
 
-      // Update conversation history
+      console.log('Updating conversation history');
       await updateConversationHistory(sessionId, { role: 'user', content: question });
       await updateConversationHistory(sessionId, { role: 'assistant', content: processedAnswer });
 
+      console.log('Returning answer');
       return {
         answer: processedAnswer,
-        contextRelevance: calculateContextRelevance(relevantContext, processedAnswer)
+        contextRelevance: calculateContextRelevance(context, processedAnswer)
       };
     } else {
       throw new Error('Unexpected response structure from AI');
     }
-  } catch (error) {
-    console.error('Error in askAlfred function:', error);
-    if (axios.isAxiosError(error) && error.response) {
-      console.error('Anthropic API error response:', error.response.data);
-      throw new functions.https.HttpsError('unavailable', `AI service error: ${error.response.data.error?.message || 'Unknown error'}`);
+  } catch (error: unknown) {
+    console.error('Detailed error in askAlfred:', error);
+
+    if (axios.isAxiosError(error)) {
+      if (error.response) {
+        console.error('Error response data:', error.response.data);
+        console.error('Error response status:', error.response.status);
+        console.error('Error response headers:', error.response.headers);
+      } else if (error.request) {
+        console.error('Error request:', error.request);
+      } else {
+        console.error('Error message:', error.message);
+      }
+    } else if (error instanceof Error) {
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    } else {
+      console.error('Unknown error:', error);
     }
+
     throw new functions.https.HttpsError('internal', 'Processing error. Please try again later.');
   }
 });
 
 
+function postProcessAnswer(rawAnswer: string): string {
+  let processedAnswer = rawAnswer.trim();
+  processedAnswer = processedAnswer.replace(/^Sure,?\s+/, '');
+  processedAnswer = processedAnswer.charAt(0).toUpperCase() + processedAnswer.slice(1);
+  return processedAnswer;
+}
+
 function calculateContextRelevance(context: string, answer: string): string {
-  // Implement a simple relevance calculation (e.g., based on keyword overlap)
   const contextKeywords = new Set(context.toLowerCase().split(/\W+/));
   const answerKeywords = new Set(answer.toLowerCase().split(/\W+/));
   const overlapCount = [...contextKeywords].filter(word => answerKeywords.has(word)).length;
@@ -305,70 +369,37 @@ function calculateContextRelevance(context: string, answer: string): string {
   return "Low";
 }
 
-function strictlyAlternateMessages(history: Message[], currentPrompt: string): Message[] {
-  const formattedMessages: Message[] = [];
-
-  // Always start with a user message
-  if (history.length === 0 || history[0].role !== 'user') {
-    formattedMessages.push({ role: 'user', content: 'Hello, I have a question.' });
-  }
-
-  // Process historical messages, ensuring strict alternation
-  for (const message of history) {
-    if (formattedMessages.length === 0 || message.role !== formattedMessages[formattedMessages.length - 1].role) {
-      formattedMessages.push(message);
-    }
-  }
-
-  // Ensure the last message before the new prompt is from the assistant
-  if (formattedMessages.length % 2 === 1) {
-    formattedMessages.push({ role: 'assistant', content: 'How can I assist you?' });
-  }
-
-  // Add the current prompt as a user message
-  formattedMessages.push({ role: 'user', content: currentPrompt });
-
-  return formattedMessages;
-}
 
 
 
 async function getConversationHistory(sessionId: string): Promise<ConversationHistory> {
+  if (!sessionId) {
+    throw new Error('Invalid sessionId provided to getConversationHistory');
+  }
   const doc = await admin.firestore().collection('conversations').doc(sessionId).get();
   if (!doc.exists) {
     return { messages: [] };
   }
   const data = doc.data();
   return {
-    messages: (data?.messages || []).map((msg: Message) => ({
+    messages: (data?.messages || []).map((msg: any) => ({
       role: msg.role,
       content: msg.content
     }))
   };
 }
 
-
-
 async function updateConversationHistory(sessionId: string, newMessage: Message): Promise<void> {
+  if (!sessionId) {
+    throw new Error('Invalid sessionId provided to updateConversationHistory');
+  }
   const conversationRef = admin.firestore().collection('conversations').doc(sessionId);
 
   await admin.firestore().runTransaction(async (transaction) => {
     const doc = await transaction.get(conversationRef);
-    let messages: Message[] = [];
-
-    if (doc.exists) {
-      messages = doc.data()?.messages || [];
-    }
-
-    // Ensure the conversation starts with a user message if it's empty
-    if (messages.length === 0 && newMessage.role === 'assistant') {
-      messages.push({ role: 'user', content: 'Hello, I have a question.' });
-    }
-
+    let messages = doc.exists ? (doc.data()?.messages || []) : [];
     messages.push(newMessage);
-
-    // Keep only the last 10 messages
-    messages = messages.slice(-10);
+    messages = messages.slice(-10); // Keep only the last 10 messages
 
     transaction.set(conversationRef, {
       messages: messages,
@@ -376,7 +407,6 @@ async function updateConversationHistory(sessionId: string, newMessage: Message)
     }, { merge: true });
   });
 }
-
 
 export const clearConversationHistory = functions.https.onCall(async (data, context) => {
   const sessionId: string = data?.sessionId || 'default';
@@ -657,13 +687,64 @@ export const provideFeedback = https.onCall(async (data, context) => {
 
 
 
-async function summarizeWithClaude(text: string): Promise<string> {
-  try {
+
+
+
+
+
+
+// Intelligent Chunking
+async function intelligentChunking(text: string): Promise<string[]> {
+  const splitter = new RecursiveCharacterTextSplitter({
+    chunkSize: CHUNK_SIZE,
+    chunkOverlap: 200,
+    separators: ['\n\n', '\n', '. ', ' ', '']
+  });
+  return splitter.splitText(text);
+}
+
+// Metadata Extraction
+function extractMetadata(text: string): Record<string, any> {
+  const metadata: Record<string, any> = {};
+
+  // Extract dates
+  const dateRegex = /\b\d{1,2}\/\d{1,2}\/\d{4}\b|\b\d{4}-\d{2}-\d{2}\b/g;
+  metadata.dates = text.match(dateRegex) || [];
+
+  // Extract monetary values (assuming USD)
+  const moneyRegex = /\$\s?[0-9,]+\.?[0-9]*/g;
+  metadata.monetaryValues = text.match(moneyRegex) || [];
+
+  // Extract potential vendor names (capitalized words)
+  const vendorRegex = /\b[A-Z][a-z]+ (?:[A-Z][a-z]+ )*(?:Inc\.|LLC|Ltd\.|Corp\.)\b/g;
+  metadata.potentialVendors = text.match(vendorRegex) || [];
+
+  return metadata;
+}
+
+// Relevance Filtering
+function isRelevantChunk(chunk: string): boolean {
+  const tokenizer = new natural.WordTokenizer();
+  const tokens = tokenizer.tokenize(chunk);
+  const uniqueTokens = new Set(tokens.map(t => t.toLowerCase()));
+
+  // Consider a chunk relevant if it has a certain number of unique words
+  return uniqueTokens.size > 20; // Adjust this threshold as needed
+}
+
+async function progressiveSummarization(text: string): Promise<{ brief: string; medium: string; detailed: string }> {
+  const summaries = {
+    brief: '',
+    medium: '',
+    detailed: ''
+  };
+
+  for (const level of ['detailed', 'medium', 'brief']) {
     const response = await axios.post(ANTHROPIC_API_URL, {
       model: "claude-3-haiku-20240307",
       max_tokens: 500,
       messages: [
-        { role: "user", content: `Summarize the most important information from the following text, focusing on key points and essential details:\n\n${text}` }
+        { role: "user", content: `Provide a ${level} summary of the following text:\n\n${text}` }
       ]
     }, {
       headers: {
@@ -673,38 +754,36 @@ async function summarizeWithClaude(text: string): Promise<string> {
       },
     });
 
-    return response.data.content[0].text;
-  } catch (error) {
-    console.error('Error summarizing with Claude:', error);
-    throw error;
+    summaries[level as keyof typeof summaries] = response.data.content[0].text.trim();
   }
+
+  return summaries;
 }
 
-async function processAndVectorizeChunk(chunk: string, chunkId: string): Promise<void> {
-  const summary = await summarizeWithClaude(chunk);
 
-  // Store summary in Firestore
-  await admin.firestore().collection('summaries').doc(chunkId).set({
-    summary,
-    processed: false,
-    timestamp: admin.firestore.FieldValue.serverTimestamp()
-  });
-
-  // Vectorize and store in Pinecone
-  const index = pinecone.Index(PINECONE_INDEX_NAME);
-  const embedding = await embeddings.embedQuery(summary);
-
-  await index.upsert([{
-    id: chunkId,
-    values: embedding,
-    metadata: { summary }
-  }]);
-
-  // Mark as processed in Firestore
-  await admin.firestore().collection('summaries').doc(chunkId).update({ processed: true });
+async function batchProcess<T, R>(items: T[], batchSize: number, processFn: (batch: T[]) => Promise<R[]>): Promise<R[]> {
+  const results: R[] = [];
+  for (let i = 0; i < items.length; i += batchSize) {
+    const batch = items.slice(i, i + batchSize);
+    const batchResults = await processFn(batch);
+    results.push(...batchResults);
+  }
+  return results;
 }
 
-exports.processDocument = functions.runWith({
+// Compress data for Firebase storage
+function compressData(data: string): Buffer {
+  return zlib.gzipSync(Buffer.from(data));
+}
+
+// Decompress data from Firebase storage
+function decompressData(data: Buffer): string {
+  return zlib.gunzipSync(data).toString();
+}
+
+
+// Updated processDocument function
+export const processDocument = functions.runWith({
   timeoutSeconds: 540,
   memory: '2GB'
 }).https.onCall(async (data, context) => {
@@ -715,28 +794,71 @@ exports.processDocument = functions.runWith({
   }
 
   try {
-    const splitter = new RecursiveCharacterTextSplitter({
-      chunkSize: CHUNK_SIZE,
-      chunkOverlap: 200,
-    });
+    const chunks = await intelligentChunking(text);
+    const relevantChunks = chunks.filter(isRelevantChunk);
 
-    const chunks = await splitter.splitText(text);
+    const processedChunks: ProcessedChunk[] = [];
 
-    for (let i = 0; i < chunks.length; i++) {
-      const chunkId = `${documentId}_chunk_${i}`;
-      await processAndVectorizeChunk(chunks[i], chunkId);
+    // Batch process chunks
+    const batchSize = 5;
+    await batchProcess(relevantChunks, batchSize, async (batch) => {
+      const batchResults = await Promise.all(batch.map(async (chunk) => {
+        const metadata = extractMetadata(chunk);
+        const summaries = await progressiveSummarization(chunk);
+        return { text: chunk, metadata, summaries };
+      }));
+      processedChunks.push(...batchResults);
 
       // Update progress
       await admin.firestore().collection('processingProgress').doc(documentId).set({
-        totalChunks: chunks.length,
-        processedChunks: i + 1,
-        percentage: ((i + 1) / chunks.length) * 100
+        totalChunks: relevantChunks.length,
+        processedChunks: processedChunks.length,
+        percentage: (processedChunks.length / relevantChunks.length) * 100
       }, { merge: true });
-    }
 
-    return { success: true, message: `Processed all ${chunks.length} chunks of the document` };
+      return batchResults;
+    });
+
+    // Store processed chunks in Firebase
+    const compressedChunks = processedChunks.map(chunk => ({
+      ...chunk,
+      text: compressData(chunk.text),
+      summaries: {
+        brief: compressData(chunk.summaries.brief),
+        medium: compressData(chunk.summaries.medium),
+        detailed: compressData(chunk.summaries.detailed)
+      }
+    }));
+
+    await admin.firestore().collection('documents').doc(documentId).set({
+      chunks: compressedChunks,
+      metadata: extractMetadata(text),
+      timestamp: admin.firestore.FieldValue.serverTimestamp()
+    });
+
+    // Generate and store embeddings in Pinecone
+    const index = pinecone.Index(PINECONE_INDEX_NAME);
+    const embeddingsArray = await batchProcess(processedChunks, batchSize, async (batch) => {
+      const texts = batch.map(chunk => chunk.summaries.medium);
+      return embeddings.embedDocuments(texts);
+    });
+
+    const vectors = processedChunks.map((chunk, i) => ({
+      id: `${documentId}_chunk_${i}`,
+      values: embeddingsArray[i],
+      metadata: {
+        ...chunk.metadata,
+        documentId,
+        chunkIndex: i
+      }
+    }));
+
+    await index.upsert(vectors);
+
+    return { success: true, message: `Processed ${processedChunks.length} chunks of the document` };
   } catch (error) {
     console.error('Error in processDocument:', error);
     throw new functions.https.HttpsError('internal', 'Document processing failed. Please try again.');
   }
 });
+
