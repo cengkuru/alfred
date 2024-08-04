@@ -1,6 +1,6 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
-import { Pinecone } from '@pinecone-database/pinecone';
+import {Pinecone, QueryResponse} from '@pinecone-database/pinecone';
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { Configuration, OpenAIApi } from 'openai';
 import axios from 'axios';
@@ -45,6 +45,29 @@ interface ProcessedChunk {
   };
 }
 
+// Type definitions
+interface SearchResult {
+  text: string;
+  score: number;
+  documentId: string;
+  chunkIndex: number;
+  summaries: {
+    brief: string;
+    medium: string;
+    detailed: string;
+  };
+}
+
+interface PineconeMetadata {
+  text: string;
+  documentId: string;
+  chunkIndex: number;
+  summaries: string[]; // Changed to string[] to match the actual structure
+}
+
+interface ConversationHistory {
+  messages: { role: 'user' | 'assistant'; content: string }[];
+}
 
 
 
@@ -83,116 +106,122 @@ interface Message {
   content: string;
 }
 
-interface ConversationHistory {
-  messages: Message[];
+
+
+
+const ANTHROPIC_API_KEY = functions.config().anthropic.apikey;
+const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
+const CHUNK_SIZE = 4000; // Adjust based on Claude's token limit
+
+
+async function performKeywordSearch(query: string): Promise<SearchResult[]> {
+  console.log('Starting keyword search for query:', query);
+
+  try {
+    const allDocuments = await admin.firestore().collection('documents').get();
+
+    const documents = allDocuments.docs.map(doc => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        text: data.text ? decompressData(Buffer.from(data.text, 'base64')) : '',
+        summaries: {
+          brief: data.summaries?.brief ? decompressData(Buffer.from(data.summaries.brief, 'base64')) : '',
+          medium: data.summaries?.medium ? decompressData(Buffer.from(data.summaries.medium, 'base64')) : '',
+          detailed: data.summaries?.detailed ? decompressData(Buffer.from(data.summaries.detailed, 'base64')) : ''
+        }
+      };
+    });
+
+    console.log(`Retrieved ${documents.length} documents for keyword search`);
+
+    const keywordResults = keywordSearch(query, documents.map(doc => doc.text));
+
+    console.log(`Keyword search returned ${keywordResults.length} results`);
+
+    return keywordResults.map(result => {
+      const document = documents.find(doc => doc.text === result);
+      if (!document) {
+        console.warn('No matching document found for keyword result');
+        return null;
+      }
+      return {
+        text: result,
+        score: 1, // Default score for keyword results
+        documentId: document.id,
+        chunkIndex: 0, // Assuming each document is a single chunk for keyword search
+        summaries: document.summaries
+      };
+    }).filter((result): result is SearchResult => result !== null);
+  } catch (error) {
+    console.error('Error in performKeywordSearch:', error);
+    return [];
+  }
 }
 
-
-// Improved keyword search function using TF-IDF
+// Helper function for keyword search
 function keywordSearch(query: string, documents: string[]): string[] {
+  console.log(`Performing keyword search with query: "${query}" on ${documents.length} documents`);
+
+  const validDocuments = documents.filter(doc => typeof doc === 'string' && doc.trim() !== '');
+
+  if (validDocuments.length === 0) {
+    console.warn('No valid documents for keyword search');
+    return [];
+  }
+
   const TfIdf = natural.TfIdf;
   const tfidf = new TfIdf();
 
-  documents.forEach(doc => tfidf.addDocument(doc));
+  validDocuments.forEach(doc => tfidf.addDocument(doc));
 
   const tokenizer = new natural.WordTokenizer();
   const queryTokens = tokenizer.tokenize(query.toLowerCase());
 
-  const scores = documents.map((_, index) => {
+  const scores = validDocuments.map((_, index) => {
     return queryTokens.reduce((score, token) => {
       return score + tfidf.tfidf(token, index);
     }, 0);
   });
 
-  return scores
+  const results = scores
       .map((score, index) => ({ score, index }))
       .sort((a, b) => b.score - a.score)
       .slice(0, 5)
-      .map(item => documents[item.index]);
+      .map(item => validDocuments[item.index]);
+
+  console.log(`Keyword search returned ${results.length} results`);
+  return results;
 }
-function rerank(vectorResults: any[], keywordResults: string[], query: string): any[] {
-  const allResults = [...vectorResults];
-
-  keywordResults.forEach(result => {
-    if (!allResults.some(r => r.text === result)) {
-      allResults.push({ text: result, score: 0 });
-    }
-  });
-
-  return allResults.map(result => {
-    const keywordScore = keywordResults.indexOf(result.text) !== -1 ? 1 : 0;
-    const combinedScore = (result.score || 0) + keywordScore;
-    return { ...result, combinedScore };
-  }).sort((a, b) => b.combinedScore - a.combinedScore).slice(0, 5);
-}
-
-
 // Updated hybridSearch function
-async function hybridSearch(query: string, conversationHistory: ConversationHistory): Promise<any[]> {
-  console.log('Starting hybridSearch with query:', query);
+export async function hybridSearch(question: string, conversationHistory: ConversationHistory): Promise<SearchResult[]> {
+  console.log('Starting hybrid search for question:', question);
 
   try {
-    const expandedQuery = await expandQuery(query, conversationHistory);
+    // Expand the query
+    console.log('Expanding query');
+    const expandedQuery = await expandQuery(question, conversationHistory);
     console.log('Expanded query:', expandedQuery);
 
-    const queryEmbedding = await embeddings.embedQuery(expandedQuery);
-    console.log('Query embedding generated');
+    // Perform vector search with expanded query
+    console.log('Performing vector search');
+    const vectorResults = await performVectorSearch(expandedQuery);
+    console.log('Vector search results:', vectorResults.length);
 
-    const index = pinecone.Index(PINECONE_INDEX_NAME);
-    const vectorResults = await index.query({
-      vector: queryEmbedding,
-      topK: 10,
-      includeMetadata: true
-    });
-    console.log('Vector search results:', vectorResults.matches.length);
-
-    const allDocuments = await admin.firestore().collection('documents').get();
-    const documents = allDocuments.docs.map(doc => doc.data().text);
-    console.log('Retrieved documents for keyword search:', documents.length);
-
-    const keywordResults = keywordSearch(expandedQuery, documents);
+    // Perform keyword search
+    console.log('Performing keyword search');
+    const keywordResults = await performKeywordSearch(expandedQuery);
     console.log('Keyword search results:', keywordResults.length);
 
-    const rerankedResults = rerank(vectorResults.matches, keywordResults, expandedQuery);
+    // Rerank results
+    console.log('Reranking results');
+    const rerankedResults = rerank(vectorResults, keywordResults, expandedQuery);
     console.log('Reranked results:', rerankedResults.length);
 
-    const fullResults = await Promise.all(rerankedResults.map(async (result) => {
-      if (!result.metadata?.documentId) {
-        console.error('Invalid documentId in result metadata', result.metadata);
-        return null;
-      }
-      const docRef = admin.firestore().collection('documents').doc(result.metadata.documentId);
-      const doc = await docRef.get();
-      const data = doc.data();
-      if (!data) {
-        console.error('No data found for document', result.metadata.documentId);
-        return null;
-      }
-
-      if (!data.chunks || !data.chunks[result.metadata.chunkIndex]) {
-        console.error('Invalid chunk data for document', result.metadata.documentId, 'at index', result.metadata.chunkIndex);
-        return null;
-      }
-
-      const chunk = data.chunks[result.metadata.chunkIndex];
-      return {
-        ...result,
-        text: decompressData(chunk.text),
-        summaries: {
-          brief: decompressData(chunk.summaries.brief),
-          medium: decompressData(chunk.summaries.medium),
-          detailed: decompressData(chunk.summaries.detailed)
-        }
-      };
-    }));
-
-    const validResults = fullResults.filter((result): result is NonNullable<typeof result> => result !== null);
-    console.log('Final processed results:', validResults.length);
-
-    return validResults;
+    return rerankedResults;
   } catch (error) {
-    console.error('Error in hybridSearch:', error);
-    throw error; // Re-throw to be caught in askAlfred
+    console.error('Error in hybrid search:', error);
+    return [];
   }
 }
 async function expandQuery(question: string, conversationHistory: ConversationHistory): Promise<string> {
@@ -226,9 +255,17 @@ async function expandQuery(question: string, conversationHistory: ConversationHi
     return expandedQuery;
   }
 }
-const ANTHROPIC_API_KEY = functions.config().anthropic.apikey;
-const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
-const CHUNK_SIZE = 4000; // Adjust based on Claude's token limit
+// Improved keyword search function using TF-IDF
+
+function rerank(vectorResults: SearchResult[], keywordResults: SearchResult[], query: string): SearchResult[] {
+  const allResults = [...vectorResults, ...keywordResults];
+
+  return allResults.map(result => {
+    const keywordScore = keywordResults.some(r => r.documentId === result.documentId) ? 1 : 0;
+    const combinedScore = (result.score || 0) + keywordScore;
+    return { ...result, score: combinedScore };
+  }).sort((a, b) => b.score - a.score).slice(0, 10);
+}
 
 
 
@@ -266,7 +303,6 @@ function truncatePrompt(prompt: string, maxTokens: number): string {
 }
 
 
-// Updated askAlfred function
 export const askAlfred = functions.runWith({
   timeoutSeconds: 300,
   memory: '1GB'
@@ -291,11 +327,21 @@ export const askAlfred = functions.runWith({
 
     console.log('Performing hybrid search');
     const searchResults = await hybridSearch(question, conversationHistory);
+    console.log('Hybrid search results:', JSON.stringify(searchResults, null, 2));
+
+    console.log('Performing vectorized similarity search');
+    const vectorSearchResults = await performVectorSearch(question);
+    console.log('Vector search results:', JSON.stringify(vectorSearchResults, null, 2));
+
+    console.log('Combining and ranking results');
+    const combinedResults = combineAndRankResults(searchResults, vectorSearchResults);
+    console.log('Combined results:', JSON.stringify(combinedResults, null, 2));
 
     console.log('Generating prompt');
-    const context = searchResults.map(result => result.summaries.medium).join('\n\n');
+    const context = combinedResults.map(result => result.summaries.medium).join('\n\n');
     const prompt = generatePrompt(question, context, conversationHistory);
     const truncatedPrompt = truncatePrompt(prompt, 4000);
+    console.log('Generated prompt:', truncatedPrompt);
 
     console.log('Sending request to Anthropic API');
     const response = await axios.post(ANTHROPIC_API_URL, {
@@ -312,18 +358,25 @@ export const askAlfred = functions.runWith({
 
     if (response.data?.content?.[0]?.text) {
       const rawAnswer: string = response.data.content[0].text.trim();
+      console.log('Raw answer from Anthropic:', rawAnswer);
+
       const processedAnswer = postProcessAnswer(rawAnswer);
+      console.log('Processed answer:', processedAnswer);
 
       console.log('Updating conversation history');
       await updateConversationHistory(sessionId, { role: 'user', content: question });
       await updateConversationHistory(sessionId, { role: 'assistant', content: processedAnswer });
 
+      console.log('Calculating context relevance');
+      const contextRelevance = calculateContextRelevance(context, processedAnswer);
+
       console.log('Returning answer');
       return {
         answer: processedAnswer,
-        contextRelevance: calculateContextRelevance(context, processedAnswer)
+        contextRelevance: contextRelevance
       };
     } else {
+      console.error('Unexpected response structure from Anthropic API');
       throw new Error('Unexpected response structure from AI');
     }
   } catch (error: unknown) {
@@ -350,7 +403,68 @@ export const askAlfred = functions.runWith({
   }
 });
 
+// Updated performVectorSearch function
+async function performVectorSearch(question: string): Promise<SearchResult[]> {
+  try {
+    console.log('Starting vector search for question:', question);
+    const queryEmbedding = await embeddings.embedQuery(question);
+    const index = pinecone.Index(PINECONE_INDEX_NAME);
+    const searchResults = await index.query({
+      vector: queryEmbedding,
+      topK: 10,
+      includeMetadata: true
+    });
 
+    console.log('Raw search results:', JSON.stringify(searchResults, null, 2));
+
+    return searchResults.matches
+        .filter((match): match is QueryResponse['matches'][number] & { metadata: PineconeMetadata } => {
+          if (!match.metadata) {
+            console.warn('Match missing metadata:', match);
+            return false;
+          }
+          const { text, documentId, chunkIndex, summaries } = match.metadata;
+          const isValid =
+              (typeof text === 'string' || text instanceof Buffer) &&
+              typeof documentId === 'string' &&
+              typeof chunkIndex === 'number' &&
+              Array.isArray(summaries) &&
+              summaries.length === 3;
+          if (!isValid) {
+            console.warn('Invalid metadata structure:', match.metadata);
+          }
+          return isValid;
+        })
+        .map(match => {
+          console.log('Processing match:', JSON.stringify(match, null, 2));
+          const { text, documentId, chunkIndex, summaries } = match.metadata;
+          return {
+            text: decompressData(text),
+            score: match.score ?? 0,
+            documentId,
+            chunkIndex,
+            summaries: {
+              brief: decompressData(summaries[0]),
+              medium: decompressData(summaries[1]),
+              detailed: decompressData(summaries[2])
+            }
+          };
+        });
+  } catch (error) {
+    console.error('Error in performVectorSearch:', error);
+    return [];
+  }
+}
+
+function combineAndRankResults(hybridResults: SearchResult[], vectorResults: SearchResult[]): SearchResult[] {
+  const combinedResults = [...hybridResults, ...vectorResults];
+
+  const uniqueResults = Array.from(new Map(combinedResults.map(item =>
+      [`${item.documentId}_${item.chunkIndex}`, item]
+  )).values());
+
+  return uniqueResults.sort((a, b) => b.score - a.score).slice(0, 10);
+}
 function postProcessAnswer(rawAnswer: string): string {
   let processedAnswer = rawAnswer.trim();
   processedAnswer = processedAnswer.replace(/^Sure,?\s+/, '');
@@ -777,8 +891,24 @@ function compressData(data: string): Buffer {
 }
 
 // Decompress data from Firebase storage
-function decompressData(data: Buffer): string {
-  return zlib.gunzipSync(data).toString();
+// Updated decompressData function
+function decompressData(data: string | Buffer | undefined | null): string {
+  if (!data) {
+    console.warn('Attempted to decompress undefined or null data');
+    return '';
+  }
+  try {
+    if (typeof data === 'string') {
+      // If it's a string, assume it's already base64 encoded
+      return zlib.gunzipSync(Buffer.from(data, 'base64')).toString();
+    } else {
+      // If it's a Buffer, decompress directly
+      return zlib.gunzipSync(data).toString();
+    }
+  } catch (error) {
+    console.error('Error decompressing data:', error);
+    return '';
+  }
 }
 
 
