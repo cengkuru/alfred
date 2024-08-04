@@ -396,8 +396,8 @@ export const askAlfred = functions.runWith({
     const response = await axios.post(ANTHROPIC_API_URL, {
       model: "claude-3-haiku-20240307",
       max_tokens: 500,
+      system: `You are answering a ${questionType} question about infrastructure transparency and the CoST initiative.`,
       messages: [
-        { role: "system", content: `You are answering a ${questionType} question about infrastructure transparency and the CoST initiative.` },
         { role: "user", content: truncatedPrompt }
       ]
     }, {
@@ -442,19 +442,22 @@ export const askAlfred = functions.runWith({
         console.error('Axios error response data:', error.response.data);
         console.error('Axios error response status:', error.response.status);
         console.error('Axios error response headers:', error.response.headers);
+        throw new functions.https.HttpsError('internal', `API error: ${error.response.status} - ${JSON.stringify(error.response.data)}`);
       } else if (error.request) {
         console.error('Axios error request:', error.request);
+        throw new functions.https.HttpsError('internal', 'API request failed. Please check your network connection.');
       } else {
         console.error('Axios error message:', error.message);
+        throw new functions.https.HttpsError('internal', `API error: ${error.message}`);
       }
     } else if (error instanceof Error) {
       console.error('Error message:', error.message);
       console.error('Error stack:', error.stack);
+      throw new functions.https.HttpsError('internal', `Processing error: ${error.message}`);
     } else {
       console.error('Unknown error:', error);
+      throw new functions.https.HttpsError('internal', 'An unknown error occurred. Please try again later.');
     }
-
-    throw new functions.https.HttpsError('internal', 'Processing error. Please try again later.');
   }
 });
 // Updated performVectorSearch function
