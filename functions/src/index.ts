@@ -118,6 +118,7 @@ async function performKeywordSearch(query: string): Promise<SearchResult[]> {
   console.log('Starting keyword search for query:', query);
 
   try {
+    // Fetch documents from Firestore
     const allDocuments = await admin.firestore().collection('documents').get();
 
     const documents = allDocuments.docs.map(doc => {
@@ -135,12 +136,20 @@ async function performKeywordSearch(query: string): Promise<SearchResult[]> {
 
     console.log(`Retrieved ${documents.length} documents for keyword search`);
 
-    const keywordResults = keywordSearch(query, documents.map(doc => doc.text));
+    // Perform keyword search on full text and summaries
+    const keywordResults = keywordSearch(query, documents.map(doc =>
+        `${doc.text} ${doc.summaries.brief} ${doc.summaries.medium} ${doc.summaries.detailed}`
+    ));
 
     console.log(`Keyword search returned ${keywordResults.length} results`);
 
     return keywordResults.map(result => {
-      const document = documents.find(doc => doc.text === result);
+      const document = documents.find(doc =>
+          result.includes(doc.text) ||
+          result.includes(doc.summaries.brief) ||
+          result.includes(doc.summaries.medium) ||
+          result.includes(doc.summaries.detailed)
+      );
       if (!document) {
         console.warn('No matching document found for keyword result');
         return null;
@@ -158,7 +167,6 @@ async function performKeywordSearch(query: string): Promise<SearchResult[]> {
     return [];
   }
 }
-
 // Helper function for keyword search
 function keywordSearch(query: string, documents: string[]): string[] {
   console.log(`Performing keyword search with query: "${query}" on ${documents.length} documents`);
@@ -193,6 +201,7 @@ function keywordSearch(query: string, documents: string[]): string[] {
   console.log(`Keyword search returned ${results.length} results`);
   return results;
 }
+
 // Updated hybridSearch function
 export async function hybridSearch(question: string, conversationHistory: ConversationHistory): Promise<SearchResult[]> {
   console.log('Starting hybrid search for question:', question);
@@ -225,7 +234,7 @@ export async function hybridSearch(question: string, conversationHistory: Conver
   }
 }
 async function expandQuery(question: string, conversationHistory: ConversationHistory): Promise<string> {
-  const recentMessages = conversationHistory.messages.slice(-3).map(m => m.content).join(' ');
+  const recentMessages = conversationHistory.messages.slice(-5).map(m => m.content).join(' ');
   const expandedQuery = `${recentMessages} ${question}`;
 
   try {
@@ -234,7 +243,7 @@ async function expandQuery(question: string, conversationHistory: ConversationHi
       max_tokens: 100,
       messages: [{
         role: "user",
-        content: `Given the conversation context and question, generate an expanded search query to find relevant information:
+        content: `You are an AI assistant specializing in Infrastructure Transparency and the Construction Sector Transparency Initiative (CoST). Given the conversation context and question, generate an expanded search query to find relevant information about infrastructure transparency, public contracting, and CoST initiatives:
         
         Context: ${recentMessages}
         Question: ${question}
@@ -255,8 +264,6 @@ async function expandQuery(question: string, conversationHistory: ConversationHi
     return expandedQuery;
   }
 }
-// Improved keyword search function using TF-IDF
-
 function rerank(vectorResults: SearchResult[], keywordResults: SearchResult[], query: string): SearchResult[] {
   const allResults = [...vectorResults, ...keywordResults];
 
@@ -270,12 +277,19 @@ function rerank(vectorResults: SearchResult[], keywordResults: SearchResult[], q
 
 
 // Improved: Prompt generation function
-function generatePrompt(question: string, context: string, conversationHistory: ConversationHistory): string {
-  const recentConversation = conversationHistory.messages.slice(-3).map(m => `${m.role}: ${m.content}`).join('\n');
+function generatePrompt(question: string, searchResults: SearchResult[], conversationHistory: ConversationHistory): string {
+  // Select most relevant context based on search result scores
+  const relevantContext = searchResults
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 3)
+      .map(result => result.summaries.medium)
+      .join('\n\n');
+
+  const recentConversation = conversationHistory.messages.slice(-5).map(m => `${m.role}: ${m.content}`).join('\n');
 
   return `
 Context:
-${context}
+${relevantContext}
 
 Recent Conversation:
 ${recentConversation}
@@ -296,20 +310,47 @@ Instructions:
 Begin your response now:`;
 }
 
+
 function truncatePrompt(prompt: string, maxTokens: number): string {
   const tokens = prompt.split(/\s+/);
   if (tokens.length <= maxTokens) return prompt;
   return tokens.slice(0, maxTokens).join(' ') + '...';
 }
 
+async function classifyQuestionType(question: string): Promise<string> {
+  try {
+    const response = await axios.post(ANTHROPIC_API_URL, {
+      model: "claude-3-haiku-20240307",
+      max_tokens: 50,
+      messages: [{
+        role: "user",
+        content: `Classify the following question into one of these types: factual, definitional, procedural, or analytical.
+        
+        Question: ${question}
+        
+        Classification:`
+      }]
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01'
+      },
+    });
 
+    return response.data?.content?.[0]?.text.trim().toLowerCase() || 'unknown';
+  } catch (error) {
+    console.error('Error classifying question:', error);
+    return 'unknown';
+  }
+}
 export const askAlfred = functions.runWith({
-  timeoutSeconds: 300,
+  timeoutSeconds: 500,
   memory: '1GB'
 }).https.onCall(async (data, context) => {
-  const { question, sessionId } = data;
+  console.log('askAlfred function called with data:', JSON.stringify(data));
 
-  console.log('askAlfred called with:', { question, sessionId });
+  const { question, sessionId } = data;
 
   if (!question || typeof question !== 'string' || question.trim() === '') {
     console.error('Invalid question provided:', question);
@@ -324,30 +365,41 @@ export const askAlfred = functions.runWith({
   try {
     console.log('Getting conversation history for sessionId:', sessionId);
     const conversationHistory = await getConversationHistory(sessionId);
+    console.log('Conversation history retrieved:', JSON.stringify(conversationHistory));
+
+    console.log('Classifying question type');
+    const questionType = await classifyQuestionType(question);
+    console.log('Question classified as:', questionType);
+
+    console.log('Expanding query');
+    const expandedQuery = await expandQuery(question, conversationHistory);
+    console.log('Query expanded to:', expandedQuery);
 
     console.log('Performing hybrid search');
-    const searchResults = await hybridSearch(question, conversationHistory);
-    console.log('Hybrid search results:', JSON.stringify(searchResults, null, 2));
+    const hybridResults = await hybridSearch(expandedQuery, conversationHistory);
+    console.log('Hybrid search returned results:', hybridResults.length);
 
     console.log('Performing vectorized similarity search');
-    const vectorSearchResults = await performVectorSearch(question);
-    console.log('Vector search results:', JSON.stringify(vectorSearchResults, null, 2));
+    const vectorSearchResults = await performVectorSearch(expandedQuery);
+    console.log('Vector search returned results:', vectorSearchResults.length);
 
     console.log('Combining and ranking results');
-    const combinedResults = combineAndRankResults(searchResults, vectorSearchResults);
-    console.log('Combined results:', JSON.stringify(combinedResults, null, 2));
+    const combinedResults = combineAndRankResults(hybridResults, vectorSearchResults);
+    console.log('Combined results count:', combinedResults.length);
 
     console.log('Generating prompt');
-    const context = combinedResults.map(result => result.summaries.medium).join('\n\n');
-    const prompt = generatePrompt(question, context, conversationHistory);
+    const prompt = generatePrompt(question, combinedResults, conversationHistory);
     const truncatedPrompt = truncatePrompt(prompt, 4000);
-    console.log('Generated prompt:', truncatedPrompt);
+    console.log('Prompt generated and truncated to length:', truncatedPrompt.length);
 
     console.log('Sending request to Anthropic API');
     const response = await axios.post(ANTHROPIC_API_URL, {
       model: "claude-3-haiku-20240307",
       max_tokens: 500,
-      messages: [{ role: "user", content: truncatedPrompt }]
+      messages: [
+        { role: "system", content: `You are answering a ${questionType} question about infrastructure transparency and the CoST initiative.` },
+        { role: "user", content: truncatedPrompt }
+      ]
     }, {
       headers: {
         'Content-Type': 'application/json',
@@ -356,27 +408,30 @@ export const askAlfred = functions.runWith({
       },
     });
 
+    console.log('Received response from Anthropic API');
+
     if (response.data?.content?.[0]?.text) {
       const rawAnswer: string = response.data.content[0].text.trim();
-      console.log('Raw answer from Anthropic:', rawAnswer);
+      console.log('Raw answer length:', rawAnswer.length);
 
       const processedAnswer = postProcessAnswer(rawAnswer);
-      console.log('Processed answer:', processedAnswer);
+      console.log('Processed answer length:', processedAnswer.length);
 
       console.log('Updating conversation history');
       await updateConversationHistory(sessionId, { role: 'user', content: question });
       await updateConversationHistory(sessionId, { role: 'assistant', content: processedAnswer });
 
       console.log('Calculating context relevance');
-      const contextRelevance = calculateContextRelevance(context, processedAnswer);
+      const contextRelevance = calculateContextRelevance(combinedResults.map(r => r.text).join(' '), processedAnswer);
 
       console.log('Returning answer');
       return {
         answer: processedAnswer,
-        contextRelevance: contextRelevance
+        contextRelevance: contextRelevance,
+        questionType: questionType
       };
     } else {
-      console.error('Unexpected response structure from Anthropic API');
+      console.error('Unexpected response structure from Anthropic API:', JSON.stringify(response.data));
       throw new Error('Unexpected response structure from AI');
     }
   } catch (error: unknown) {
@@ -384,13 +439,13 @@ export const askAlfred = functions.runWith({
 
     if (axios.isAxiosError(error)) {
       if (error.response) {
-        console.error('Error response data:', error.response.data);
-        console.error('Error response status:', error.response.status);
-        console.error('Error response headers:', error.response.headers);
+        console.error('Axios error response data:', error.response.data);
+        console.error('Axios error response status:', error.response.status);
+        console.error('Axios error response headers:', error.response.headers);
       } else if (error.request) {
-        console.error('Error request:', error.request);
+        console.error('Axios error request:', error.request);
       } else {
-        console.error('Error message:', error.message);
+        console.error('Axios error message:', error.message);
       }
     } else if (error instanceof Error) {
       console.error('Error message:', error.message);
@@ -402,7 +457,6 @@ export const askAlfred = functions.runWith({
     throw new functions.https.HttpsError('internal', 'Processing error. Please try again later.');
   }
 });
-
 // Updated performVectorSearch function
 async function performVectorSearch(question: string): Promise<SearchResult[]> {
   try {
@@ -457,14 +511,39 @@ async function performVectorSearch(question: string): Promise<SearchResult[]> {
 }
 
 function combineAndRankResults(hybridResults: SearchResult[], vectorResults: SearchResult[]): SearchResult[] {
-  const combinedResults = [...hybridResults, ...vectorResults];
+  const allResults = [...hybridResults, ...vectorResults];
 
-  const uniqueResults = Array.from(new Map(combinedResults.map(item =>
+  // Normalize scores
+  const maxScore = Math.max(...allResults.map(r => r.score));
+  const normalizedResults = allResults.map(r => ({
+    ...r,
+    normalizedScore: r.score / maxScore
+  }));
+
+  // Apply weights (adjust these based on performance)
+  const HYBRID_WEIGHT = 0.6;
+  const VECTOR_WEIGHT = 0.4;
+
+  const weightedResults = normalizedResults.map(r => ({
+    ...r,
+    weightedScore: r.normalizedScore * (hybridResults.includes(r) ? HYBRID_WEIGHT : VECTOR_WEIGHT)
+  }));
+
+  // Sort by weighted score and remove duplicates
+  const uniqueResults = Array.from(new Map(weightedResults.map(item =>
       [`${item.documentId}_${item.chunkIndex}`, item]
   )).values());
 
-  return uniqueResults.sort((a, b) => b.score - a.score).slice(0, 10);
+  return uniqueResults
+      .sort((a, b) => b.weightedScore - a.weightedScore)
+      .slice(0, 10)
+      .map(({weightedScore, normalizedScore, ...rest}) => rest); // Remove temporary scoring fields
 }
+
+
+
+
+
 function postProcessAnswer(rawAnswer: string): string {
   let processedAnswer = rawAnswer.trim();
   processedAnswer = processedAnswer.replace(/^Sure,?\s+/, '');
@@ -913,6 +992,30 @@ function decompressData(data: string | Buffer | undefined | null): string {
 
 
 // Updated processDocument function
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+async function retryWithBackoff<T>(
+    operation: () => Promise<T>,
+    retries = 5,
+    baseDelay = 1000
+): Promise<T> {
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await operation();
+    } catch (error) {
+      if (i === retries - 1) throw error;
+      if (axios.isAxiosError(error) && error.response?.status === 429) {
+        const waitTime = baseDelay * Math.pow(2, i);
+        console.log(`Rate limited. Retrying in ${waitTime}ms...`);
+        await delay(waitTime);
+      } else {
+        throw error;
+      }
+    }
+  }
+  throw new Error('Max retries reached');
+}
+
 export const processDocument = functions.runWith({
   timeoutSeconds: 540,
   memory: '2GB'
@@ -929,12 +1032,13 @@ export const processDocument = functions.runWith({
 
     const processedChunks: ProcessedChunk[] = [];
 
-    // Batch process chunks
-    const batchSize = 5;
+    // Reduce batch size
+    const batchSize = 3;
+
     await batchProcess(relevantChunks, batchSize, async (batch) => {
       const batchResults = await Promise.all(batch.map(async (chunk) => {
         const metadata = extractMetadata(chunk);
-        const summaries = await progressiveSummarization(chunk);
+        const summaries = await retryWithBackoff(() => progressiveSummarization(chunk));
         return { text: chunk, metadata, summaries };
       }));
       processedChunks.push(...batchResults);
@@ -970,7 +1074,7 @@ export const processDocument = functions.runWith({
     const index = pinecone.Index(PINECONE_INDEX_NAME);
     const embeddingsArray = await batchProcess(processedChunks, batchSize, async (batch) => {
       const texts = batch.map(chunk => chunk.summaries.medium);
-      return embeddings.embedDocuments(texts);
+      return retryWithBackoff(() => embeddings.embedDocuments(texts));
     });
 
     const vectors = processedChunks.map((chunk, i) => ({
@@ -983,11 +1087,14 @@ export const processDocument = functions.runWith({
       }
     }));
 
-    await index.upsert(vectors);
+    await retryWithBackoff(() => index.upsert(vectors));
 
     return { success: true, message: `Processed ${processedChunks.length} chunks of the document` };
   } catch (error) {
     console.error('Error in processDocument:', error);
+    if (axios.isAxiosError(error)) {
+      console.error('Axios error details:', error.response?.data);
+    }
     throw new functions.https.HttpsError('internal', 'Document processing failed. Please try again.');
   }
 });
