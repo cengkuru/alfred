@@ -203,36 +203,41 @@ function keywordSearch(query: string, documents: string[]): string[] {
 }
 
 // Updated hybridSearch function
-export async function hybridSearch(question: string, conversationHistory: ConversationHistory): Promise<SearchResult[]> {
-  console.log('Starting hybrid search for question:', question);
+export async function hybridSearch(query: string, conversationHistory: ConversationHistory): Promise<SearchResult[]> {
+  console.log('Starting improved hybrid search for query:', query);
 
   try {
-    // Expand the query
-    console.log('Expanding query');
-    const expandedQuery = await expandQuery(question, conversationHistory);
-    console.log('Expanded query:', expandedQuery);
-
-    // Perform vector search with expanded query
+    // Perform vector search
     console.log('Performing vector search');
-    const vectorResults = await performVectorSearch(expandedQuery);
+    const vectorResults = await performVectorSearch(query);
     console.log('Vector search results:', vectorResults.length);
 
     // Perform keyword search
     console.log('Performing keyword search');
-    const keywordResults = await performKeywordSearch(expandedQuery);
+    const keywordResults = await performKeywordSearch(query);
     console.log('Keyword search results:', keywordResults.length);
 
-    // Rerank results
-    console.log('Reranking results');
-    const rerankedResults = rerank(vectorResults, keywordResults, expandedQuery);
-    console.log('Reranked results:', rerankedResults.length);
+    // Combine and rank results
+    console.log('Combining and ranking results');
+    const combinedResults = combineAndRankResults(vectorResults, keywordResults);
+    console.log('Combined results:', combinedResults.length);
 
-    return rerankedResults;
+    // If no results, fallback to semantic search
+    if (combinedResults.length === 0) {
+      console.log('No results found, falling back to semantic search');
+      const semanticResults = await performSemanticSearch(query);
+      console.log('Semantic search results:', semanticResults.length);
+      return semanticResults;
+    }
+
+    return combinedResults;
   } catch (error) {
-    console.error('Error in hybrid search:', error);
+    console.error('Error in improved hybrid search:', error);
     return [];
   }
 }
+
+
 async function expandQuery(question: string, conversationHistory: ConversationHistory): Promise<string> {
   const recentMessages = conversationHistory.messages.slice(-5).map(m => m.content).join(' ');
   const expandedQuery = `${recentMessages} ${question}`;
@@ -264,25 +269,42 @@ async function expandQuery(question: string, conversationHistory: ConversationHi
     return expandedQuery;
   }
 }
-function rerank(vectorResults: SearchResult[], keywordResults: SearchResult[], query: string): SearchResult[] {
-  const allResults = [...vectorResults, ...keywordResults];
 
-  return allResults.map(result => {
-    const keywordScore = keywordResults.some(r => r.documentId === result.documentId) ? 1 : 0;
-    const combinedScore = (result.score || 0) + keywordScore;
-    return { ...result, score: combinedScore };
-  }).sort((a, b) => b.score - a.score).slice(0, 10);
+async function performSemanticSearch(query: string): Promise<SearchResult[]> {
+  try {
+    const queryEmbedding = await embeddings.embedQuery(query);
+    const index = pinecone.Index(PINECONE_INDEX_NAME);
+    const searchResults = await index.query({
+      vector: queryEmbedding,
+      topK: 20,
+      includeMetadata: true
+    });
+
+    return searchResults.matches
+        .filter((match): match is QueryResponse['matches'][number] & { metadata: PineconeMetadata } => !!match.metadata)
+        .map(match => ({
+          text: decompressData(match.metadata.text),
+          score: match.score ?? 0,
+          documentId: match.metadata.documentId,
+          chunkIndex: match.metadata.chunkIndex,
+          summaries: {
+            brief: decompressData(match.metadata.summaries[0]),
+            medium: decompressData(match.metadata.summaries[1]),
+            detailed: decompressData(match.metadata.summaries[2])
+          }
+        }));
+  } catch (error) {
+    console.error('Error in semantic search:', error);
+    return [];
+  }
 }
-
-
 
 // Improved: Prompt generation function
 function generatePrompt(question: string, searchResults: SearchResult[], conversationHistory: ConversationHistory): string {
-  // Select most relevant context based on search result scores
   const relevantContext = searchResults
       .sort((a, b) => b.score - a.score)
-      .slice(0, 3)
-      .map(result => result.summaries.medium)
+      .slice(0, 5)
+      .map(result => `${result.summaries.detailed}\n\nSource: ${result.documentId}, Chunk: ${result.chunkIndex}`)
       .join('\n\n');
 
   const recentConversation = conversationHistory.messages.slice(-5).map(m => `${m.role}: ${m.content}`).join('\n');
@@ -301,14 +323,16 @@ Current Question: ${question}
 Instructions:
 1. Analyze the question, context, and recent conversation to provide a coherent and relevant response.
 2. If this is a follow-up question, make sure to reference and build upon the previous parts of the conversation.
-3. Provide a comprehensive but concise answer that directly addresses the user's query.
-4. Use markdown formatting to enhance readability, including headers and emphasis where appropriate.
-5. Include relevant statistics or examples from the provided context when applicable.
-6. If the information provided is insufficient, acknowledge this and suggest potential avenues for further research.
-7. Aim for a response length of about 150-200 words to ensure it fits within the token limit.
+3. Provide a comprehensive answer that directly addresses the user's query, using the provided context.
+4. If the exact information is not available in the context, use your general knowledge to provide a relevant response, but clearly indicate when you're doing so.
+5. Use markdown formatting to enhance readability, including headers and emphasis where appropriate.
+6. Include relevant statistics, examples, or quotes from the provided context when applicable.
+7. If the information provided is insufficient, acknowledge this and suggest potential avenues for further research or inquiry.
+8. Aim for a detailed response of about 200-300 words to ensure thoroughness.
 
 Begin your response now:`;
 }
+
 
 
 function truncatePrompt(prompt: string, maxTokens: number): string {
@@ -379,24 +403,16 @@ export const askAlfred = functions.runWith({
     const hybridResults = await hybridSearch(expandedQuery, conversationHistory);
     console.log('Hybrid search returned results:', hybridResults.length);
 
-    console.log('Performing vectorized similarity search');
-    const vectorSearchResults = await performVectorSearch(expandedQuery);
-    console.log('Vector search returned results:', vectorSearchResults.length);
-
-    console.log('Combining and ranking results');
-    const combinedResults = combineAndRankResults(hybridResults, vectorSearchResults);
-    console.log('Combined results count:', combinedResults.length);
-
     console.log('Generating prompt');
-    const prompt = generatePrompt(question, combinedResults, conversationHistory);
+    const prompt = generatePrompt(question, hybridResults, conversationHistory);
     const truncatedPrompt = truncatePrompt(prompt, 4000);
     console.log('Prompt generated and truncated to length:', truncatedPrompt.length);
 
     console.log('Sending request to Anthropic API');
     const response = await axios.post(ANTHROPIC_API_URL, {
       model: "claude-3-haiku-20240307",
-      max_tokens: 500,
-      system: `You are answering a ${questionType} question about infrastructure transparency and the CoST initiative.`,
+      max_tokens: 1000,
+      system: `You are answering a ${questionType} question about infrastructure transparency and the CoST initiative. Use the provided context to give a detailed and accurate answer. If the information is not directly available, use your knowledge to provide a relevant response.`,
       messages: [
         { role: "user", content: truncatedPrompt }
       ]
@@ -422,7 +438,7 @@ export const askAlfred = functions.runWith({
       await updateConversationHistory(sessionId, { role: 'assistant', content: processedAnswer });
 
       console.log('Calculating context relevance');
-      const contextRelevance = calculateContextRelevance(combinedResults.map(r => r.text).join(' '), processedAnswer);
+      const contextRelevance = calculateContextRelevance(hybridResults.map(r => r.text).join(' '), processedAnswer);
 
       console.log('Returning answer');
       return {
@@ -513,36 +529,29 @@ async function performVectorSearch(question: string): Promise<SearchResult[]> {
   }
 }
 
-function combineAndRankResults(hybridResults: SearchResult[], vectorResults: SearchResult[]): SearchResult[] {
-  const allResults = [...hybridResults, ...vectorResults];
+// Updated combineAndRankResults function
+function combineAndRankResults(vectorResults: SearchResult[], keywordResults: SearchResult[]): SearchResult[] {
+  const allResults = [...vectorResults, ...keywordResults];
 
-  // Normalize scores
-  const maxScore = Math.max(...allResults.map(r => r.score));
-  const normalizedResults = allResults.map(r => ({
-    ...r,
-    normalizedScore: r.score / maxScore
-  }));
-
-  // Apply weights (adjust these based on performance)
-  const HYBRID_WEIGHT = 0.6;
-  const VECTOR_WEIGHT = 0.4;
-
-  const weightedResults = normalizedResults.map(r => ({
-    ...r,
-    weightedScore: r.normalizedScore * (hybridResults.includes(r) ? HYBRID_WEIGHT : VECTOR_WEIGHT)
-  }));
-
-  // Sort by weighted score and remove duplicates
-  const uniqueResults = Array.from(new Map(weightedResults.map(item =>
+  // Remove duplicates
+  const uniqueResults = Array.from(new Map(allResults.map(item =>
       [`${item.documentId}_${item.chunkIndex}`, item]
   )).values());
 
-  return uniqueResults
-      .sort((a, b) => b.weightedScore - a.weightedScore)
-      .slice(0, 10)
-      .map(({weightedScore, normalizedScore, ...rest}) => rest); // Remove temporary scoring fields
-}
+  // Rank results based on a combination of vector similarity and keyword matching
+  const rankedResults = uniqueResults.map(result => {
+    const vectorScore = vectorResults.find(r => r.documentId === result.documentId && r.chunkIndex === result.chunkIndex)?.score || 0;
+    const keywordScore = keywordResults.includes(result) ? 1 : 0;
 
+    return {
+      ...result,
+      score: vectorScore * 0.6 + keywordScore * 0.4
+    };
+  });
+
+  // Sort by combined score and return top results
+  return rankedResults.sort((a, b) => b.score - a.score).slice(0, 10);
+}
 
 
 
