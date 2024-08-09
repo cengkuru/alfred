@@ -1,6 +1,8 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import {Pinecone, QueryResponse} from '@pinecone-database/pinecone';
+import { IndexStatsDescription } from '@pinecone-database/pinecone';
+import { PineconeRecord, RecordMetadata } from '@pinecone-database/pinecone';
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { Configuration, OpenAIApi } from 'openai';
 import axios from 'axios';
@@ -105,15 +107,7 @@ async function retryOperation<T>(operation: () => Promise<T>, maxRetries = 3): P
   throw new Error('Max retries reached');
 }
 
-async function batchEmbedTexts(texts: string[]): Promise<number[][]> {
-  return retryOperation(async () => {
-    const embeddingResponse = await openai.createEmbedding({
-      model: "text-embedding-ada-002",
-      input: texts,
-    });
-    return embeddingResponse.data.data.map(item => item.embedding);
-  });
-}
+
 async function updateProgress(processedItems: number, totalItems: number): Promise<void> {
   await admin.firestore().collection('vectorizationProgress').doc('current').set({
     processedItems,
@@ -662,24 +656,58 @@ export const clearConversationHistory = functions.https.onCall(async (data, cont
 
 export const getContextualQuestions = functions.https.onCall(async (data, context) => {
   try {
-    const prompt = `You are Alfred, an AI assistant specializing in Infrastructure Transparency and the Construction Sector Transparency Initiative (CoST). Your purpose is to help users understand and implement transparency in infrastructure projects.
+    const db = admin.firestore();
+    let contextualContent = '';
 
-Given this context, generate 4 engaging and relevant questions that users might want to ask about infrastructure transparency. Each question should be concise (no more than 6 words) and paired with an appropriate Bootstrap icon name.
+    // Step 1: Fetch summaries
+    const summariesSnapshot = await db.collection('summaries').limit(3).orderBy('createdAt', 'desc').get();
+    summariesSnapshot.forEach(doc => {
+      const summaryData = doc.data();
+      contextualContent += `Summary: ${summaryData.content}\n\n`;
+    });
+
+    // Step 2: Fetch recent documents
+    const documentsSnapshot = await db.collection('documents').limit(3).orderBy('createdAt', 'desc').get();
+    documentsSnapshot.forEach(doc => {
+      const documentData = doc.data();
+      contextualContent += `Document: ${documentData.title}\nExcerpt: ${documentData.excerpt}\n\n`;
+    });
+
+    // Step 3: Fetch completed vectorization tasks
+    const tasksSnapshot = await db.collection('vectorizationTasks')
+        .where('status', '==', 'COMPLETED')
+        .limit(3)
+        .orderBy('updatedAt', 'desc')
+        .get();
+    tasksSnapshot.forEach(doc => {
+      const taskData = doc.data();
+      contextualContent += `Vectorized Content: ${taskData.texts.slice(0, 3).join(' ')}\n`;
+      contextualContent += `Intent: ${taskData.metadata.intent}, Sentiment: ${taskData.metadata.sentiment}\n\n`;
+    });
+
+    // Step 4: Generate AI prompt with Firestore context
+    const prompt = `You are Alfred, an AI assistant specializing in Infrastructure Transparency and the Construction Sector Transparency Initiative (CoST). Your purpose is to help users understand and implement transparency in infrastructure projects. 
+
+Here's some context from our recent summaries, documents, and vectorized content:
+${contextualContent}
+
+Given this context, generate 4 engaging and relevant questions that users might want to ask about infrastructure transparency, focusing on our recent data. Each question should be concise (no more than 10 words) and paired with an appropriate Bootstrap icon name.
 
 Format your response as a JSON array of objects, each with 'text' and 'icon' properties. For example:
 [
-  { "text": "CoST impact on corruption?", "icon": "bi-shield-check" },
+  { "text": "How does recent project X enhance contracting transparency?", "icon": "bi-shield-check" },
   ...
 ]
 
 Focus on key areas such as:
-1. Transparency in public contracting
-2. Benefits of the CoST initiative
-3. Best practices in infrastructure project management
-4. Socio-economic impacts of transparent infrastructure investments
+1. Transparency in public contracting related to our recent documents
+2. Benefits of the CoST initiative as seen in our summaries
+3. Best practices in infrastructure project management from our vectorized content
+4. Socio-economic impacts of our transparent infrastructure investments
 
 Generate the questions now:`;
 
+    // Step 5: Call Anthropic API
     const response = await axios.post(ANTHROPIC_API_URL, {
       model: "claude-3-haiku-20240307",
       max_tokens: 400,
@@ -710,14 +738,13 @@ Generate the questions now:`;
     console.error('Error generating contextual questions:', error);
     // Fallback to static questions if there's an error
     return [
-      { text: "CoST initiative overview?", icon: "bi-info-circle" },
-      { text: "Transparency impact on projects?", icon: "bi-graph-up" },
-      { text: "Public engagement in CoST?", icon: "bi-people" },
-      { text: "Implementing CoST standards?", icon: "bi-clipboard-check" }
+      { text: "Recent transparency improvements in contracting?", icon: "bi-shield-check" },
+      { text: "CoST benefits highlighted in latest summary?", icon: "bi-file-earmark-text" },
+      { text: "Best practices from vectorized project data?", icon: "bi-graph-up" },
+      { text: "Socio-economic impact of recent initiatives?", icon: "bi-people" }
     ];
   }
 });
-
 
 
 export const startVectorization = functions
@@ -897,6 +924,7 @@ export const provideFeedback = https.onCall(async (data, context) => {
   }
 });
 
+
 export const reprocessFailedAndPendingTasks = functions
     .runWith({
       timeoutSeconds: 540,
@@ -921,6 +949,12 @@ export const reprocessFailedAndPendingTasks = functions
             // Reprocess the task
             await processVectorizationTask(task);
 
+            // Verify that vectors were created in Pinecone
+            const vectorCount = await getVectorCount();
+            if (vectorCount === 0) {
+              throw new Error('No vectors created in Pinecone');
+            }
+
             // Update task status to completed
             await doc.ref.update({
               status: VectorizationStatus.COMPLETED,
@@ -929,25 +963,26 @@ export const reprocessFailedAndPendingTasks = functions
             });
 
             console.log(`Successfully reprocessed task ${doc.id}`);
-            return { taskId: doc.id, success: true };
+            return { taskId: doc.id, success: true, vectorCount };
           } catch (error) {
             console.error(`Error reprocessing task ${doc.id}:`, error);
             await doc.ref.update({
               status: VectorizationStatus.FAILED,
               updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-              error: JSON.stringify(error),
+              error: error instanceof Error ? error.message : String(error),
             });
-            return { taskId: doc.id, success: false, error: JSON.stringify(error) };
+            return { taskId: doc.id, success: false, error: error instanceof Error ? error.message : String(error) };
           }
         });
 
         const results = await Promise.all(taskUpdates);
         const successCount = results.filter(r => r.success).length;
         const failCount = results.length - successCount;
+        const totalVectors = results.reduce((sum, r) => sum + (r.vectorCount || 0), 0);
 
         return {
           success: true,
-          message: `Reprocessed ${results.length} tasks. ${successCount} succeeded, ${failCount} failed.`,
+          message: `Reprocessed ${results.length} tasks. ${successCount} succeeded, ${failCount} failed. Total vectors: ${totalVectors}`,
           results: results
         };
       } catch (error) {
@@ -957,11 +992,48 @@ export const reprocessFailedAndPendingTasks = functions
     });
 
 async function processVectorizationTask(task: VectorizationTask): Promise<void> {
+  const index = pinecone.Index(PINECONE_INDEX_NAME);
+
   for (let i = 0; i < task.texts.length; i += BATCH_SIZE) {
     const batch = task.texts.slice(i, i + BATCH_SIZE);
-    await processChunkBatch(task.id, task.id, batch, i);
+    const embeddings = await batchEmbedTexts(batch);
+
+    const vectors: PineconeRecord<RecordMetadata>[] = embeddings.map((embedding, j) => ({
+      id: `${task.id}-${i + j}`,
+      values: embedding,
+      metadata: {
+        text: batch[j].slice(0, 1000), // Truncate text to 1000 characters
+        intent: task.metadata.intent,
+        sentiment: task.metadata.sentiment,
+        places: task.metadata.entities.places.join(','),
+        people: task.metadata.entities.people.join(','),
+        organizations: task.metadata.entities.organizations.join(','),
+        dates: task.metadata.entities.dates.join(','),
+        numericValues: task.metadata.numericValues.join(','),
+      }
+    }));
+
+    await index.upsert(vectors);
   }
 }
+
+async function getVectorCount(): Promise<number> {
+  const index = pinecone.Index(PINECONE_INDEX_NAME);
+  const statsResponse: IndexStatsDescription = await index.describeIndexStats();
+  return statsResponse.totalRecordCount || 0;
+}
+
+
+async function batchEmbedTexts(texts: VectorizationTask['texts']): Promise<number[][]> {
+  return retryOperation(async () => {
+    const embeddingResponse = await openai.createEmbedding({
+      model: "text-embedding-ada-002",
+      input: texts,
+    });
+    return embeddingResponse.data.data.map(item => item.embedding);
+  });
+}
+
 
 
 
