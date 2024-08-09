@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, from, throwError, BehaviorSubject } from 'rxjs';
-import { mergeMap, catchError, tap, finalize } from 'rxjs/operators';
+import {Observable, from, throwError, BehaviorSubject, of} from 'rxjs';
+import {mergeMap, catchError, tap, finalize, map} from 'rxjs/operators';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import nlp from "compromise";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {VectorizationStatus, VectorizationTask} from "../models/vectorization-task.model";
+
+import firebase from 'firebase/compat/app';
 
 interface TextItem {
   text: string;
@@ -15,6 +19,8 @@ interface VectorizationState {
   processedItems: number;
   continuationToken: string | null;
 }
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +39,8 @@ export class TextVectorizationService {
 
   constructor(
       private http: HttpClient,
-      private fns: AngularFireFunctions
+      private fns: AngularFireFunctions,
+      private firestore: AngularFirestore
   ) {}
 
   processDocument(filePath: string): Observable<any> {
@@ -55,27 +62,6 @@ export class TextVectorizationService {
     );
   }
 
-  async enrichQuery(question: string): Promise<string> {
-    const processedQuestion = await this.preprocessText(question);
-    const keyTerms = this.extractKeyTerms(processedQuestion);
-    const entities = this.extractEntities(question);
-    const numericValues = this.extractNumericValues(question);
-    const sentiment = this.analyzeSentiment(question);
-    const intent = this.classifyIntent(question);
-
-    const enrichedQuery = {
-      original: question,
-      processed: processedQuestion,
-      keyTerms,
-      entities,
-      numericValues,
-      sentiment,
-      intent
-    };
-
-    console.log('Enriched Query:', enrichedQuery);
-    return JSON.stringify(enrichedQuery);
-  }
 
   public clearVectorizationProgress(): Observable<any> {
     const clearProgressFunction = this.fns.httpsCallable('clearVectorizationProgress');
@@ -197,9 +183,6 @@ export class TextVectorizationService {
     };
   }
 
-  private extractKeyTerms(text: string): string[] {
-    return text.split(/\s+/).filter(term => term.length > 3);
-  }
 
   private extractEntities(text: string): { [key: string]: string[] } {
     const words = text.split(/\s+/);
@@ -292,4 +275,89 @@ export class TextVectorizationService {
     if (error instanceof Error) return error.message;
     return String(error);
   }
+
+
+  getAllVectorizationTasks(): Observable<VectorizationTask[]> {
+    console.log('Fetching vectorization tasks');
+    return this.firestore.collection<VectorizationTask>('vectorizationTasks').snapshotChanges().pipe(
+        tap(actions => console.log('Raw Firestore actions:', actions)),
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as VectorizationTask;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })),
+        tap(tasks => console.log('Mapped vectorization tasks:', tasks)),
+        catchError(error => {
+          console.error('Error in getAllVectorizationTasks:', error);
+          return this.handleError('getAllVectorizationTasks', error);
+        })
+    );
+  }
+
+  getRecentVectorizationTasks(limit: number = 2): Observable<VectorizationTask[]> {
+    console.log(`Attempting to fetch the ${limit} most recent vectorization tasks`);
+
+    return this.firestore.collection<VectorizationTask>('vectorizationTasks').get().pipe(
+        tap(snapshot => {
+          console.log(`Firestore query returned ${snapshot.size} documents`);
+          if (snapshot.empty) {
+            console.log('The vectorizationTasks collection is empty');
+          } else {
+            console.log('Collection is not empty. Checking individual documents...');
+            snapshot.docs.forEach((doc, index) => {
+              console.log(`Document ${index + 1}:`, doc.id, doc.data());
+            });
+          }
+        }),
+        map(snapshot => snapshot.docs.map(doc => {
+          const data = doc.data() as VectorizationTask;
+          console.log(`Processing document ${doc.id}:`, data);
+          return {
+            id: doc.id,
+            ...data,
+            createdAt: this.ensureDate(data.createdAt),
+            updatedAt: this.ensureDate(data.updatedAt)
+          };
+        })),
+        tap(tasks => {
+          console.log(`Mapped ${tasks.length} vectorization tasks`);
+          tasks.forEach((task, index) => {
+            console.log(`Task ${index + 1}:`, task);
+          });
+        }),
+        catchError(error => {
+          console.error('Error in getRecentVectorizationTasks:', error);
+          if (error.code) {
+            console.error('Firestore error code:', error.code);
+          }
+          return this.handleError('getRecentVectorizationTasks', error);
+        })
+    );
+  }
+
+  private ensureDate(date: any): Date {
+    if (date instanceof firebase.firestore.Timestamp) {
+      return date.toDate();
+    } else if (date instanceof Date) {
+      return date;
+    } else if (typeof date === 'string') {
+      return new Date(date);
+    }
+    console.warn('Unknown date format:', date);
+    return new Date(); // Return current date as a fallback
+  }
+
+  reprocessFailedAndPendingTasks(): Observable<any> {
+    const reprocessTasks = this.fns.httpsCallable('reprocessFailedAndPendingTasks');
+    return from(reprocessTasks({})).pipe(
+        tap((result: { data: any }) => {
+          console.log('Reprocessing result:', result.data);
+        }),
+        catchError((error: Error) => {
+          console.error('Error reprocessing tasks:', error);
+          return throwError(() => new Error(`Failed to reprocess tasks: ${this.getErrorMessage(error)}`));
+        })
+    );
+  }
+
 }

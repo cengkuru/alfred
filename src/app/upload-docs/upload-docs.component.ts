@@ -1,9 +1,13 @@
-import {Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Subscription } from 'rxjs';
+import {from, Subscription} from 'rxjs';
 import {AiService} from "../services/ai.service";
 import {ProcessingProgress} from "../models/processing-progress.models";
 import { trigger, transition, style, animate, keyframes } from '@angular/animations';
+import {TextVectorizationService} from "../services/ textVectorization.service";
+import {VectorizationStatus, VectorizationTask} from "../models/vectorization-task.model";
+import {Functions, httpsCallable} from "@angular/fire/functions";
+import {catchError, finalize, tap} from "rxjs/operators";
 
 
 @Component({
@@ -38,15 +42,74 @@ import { trigger, transition, style, animate, keyframes } from '@angular/animati
     ])
   ]
 })
-export class UploadDocsComponent implements OnDestroy {
+export class UploadDocsComponent implements OnInit, OnDestroy   {
+  failedTasks: VectorizationTask[] = [];
+  private failedTasksSub: Subscription | null = null;
+  vectorizationTasks: VectorizationTask[] = [];
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
   selectedFile: File | null = null;
   processingProgress: ProcessingProgress | null = null;
   isProcessing = false;
   private processingSub: Subscription | null = null;
+  isReprocessing = false;
+  reprocessingSuccess = false;
+  errorMessage: string | null = null;  // Properly declared errorMessage property
 
-  constructor(private aiService: AiService) {}
+
+  constructor(
+      private aiService: AiService,
+      private textVectorizationService: TextVectorizationService,
+      // private fns: Functions
+  ) {}
+
+  ngOnInit() {
+    // this.getVectorizations(1)
+    this.reprocessFailedAndPendingTasks();
+
+
+  }
+
+  getVectorizations(limit=2) {
+    this.textVectorizationService.getRecentVectorizationTasks(limit).subscribe(
+        tasks => {
+          this.vectorizationTasks = tasks;
+          console.log('Vectorization tasks:', this.vectorizationTasks);
+        },
+        // Error handling is now done in the service, so this error callback is optional
+        // but can be used for component-specific error handling if needed
+        error => console.error('Unexpected error in component:', error)
+    );
+  }
+  checkFailedVectorizations() {
+    this.failedTasksSub = this.textVectorizationService.getAllVectorizationTasks().subscribe(
+        tasks => {
+          this.failedTasks = tasks.filter(task => task.status === VectorizationStatus.FAILED);
+          console.log('Failed vectorization tasks:', this.failedTasks);
+        },
+        error => console.error('Error fetching failed vectorization tasks:', error)
+    );
+  }
+
+  reprocessFailedAndPendingTasks() {
+    this.isReprocessing = true;
+    this.reprocessingSuccess = false;
+
+    this.textVectorizationService.reprocessFailedAndPendingTasks().subscribe({
+      next: (result) => {
+        console.log('Reprocessing result:', result);
+        this.reprocessingSuccess = true;
+        this.checkFailedVectorizations();
+      },
+      error: (error) => {
+        console.error('Error reprocessing tasks:', error);
+        // Handle the error (e.g., show an error message to the user)
+      },
+      complete: () => {
+        this.isReprocessing = false;
+      }
+    });
+  }
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -60,30 +123,44 @@ export class UploadDocsComponent implements OnDestroy {
   async uploadFile(): Promise<void> {
     if (!this.selectedFile) {
       console.error('No file selected');
+      this.errorMessage = 'Please select a file before uploading.';
       return;
     }
 
     this.isProcessing = true;
     this.processingProgress = null;
-    const text = await this.readFileAsText(this.selectedFile);
+    this.errorMessage = null;
 
-    this.processingSub = this.aiService.processDocument(text).subscribe(
-        (progress: ProcessingProgress) => {
+    try {
+      const text = await this.readFileAsText(this.selectedFile);
+      this.processDocument(text);
+    } catch (error) {
+      console.error('Error reading file:', error);
+      this.errorMessage = 'Failed to read the file. Please try again.';
+      this.isProcessing = false;
+    }
+  }
+
+  private processDocument(text: string): void {
+    this.processingSub = this.aiService.processDocument(text).pipe(
+        tap((progress: ProcessingProgress) => {
           this.processingProgress = progress;
-        },
-        (error) => {
+        }),
+        catchError((error) => {
           console.error('Error processing document:', error);
-          this.isProcessing = false;
-          this.processingProgress = null;
-        },
-        () => {
-          console.log('Document processing complete');
+          this.errorMessage = 'An error occurred while processing the document. Please try again.';
+          return [];
+        }),
+        finalize(() => {
           this.isProcessing = false;
           this.selectedFile = null;
-          this.fileInput.nativeElement.value = '';
-        }
-    );
+          if (this.fileInput) {
+            this.fileInput.nativeElement.value = '';
+          }
+        })
+    ).subscribe();
   }
+
 
   private readFileAsText(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -98,5 +175,12 @@ export class UploadDocsComponent implements OnDestroy {
     if (this.processingSub) {
       this.processingSub.unsubscribe();
     }
+
+    if (this.failedTasksSub) {
+      this.failedTasksSub.unsubscribe();
+    }
   }
+
+
+
 }

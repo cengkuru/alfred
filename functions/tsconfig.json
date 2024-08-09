@@ -6,11 +6,13 @@
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017",
+    "target": "es2018",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "types": ["node", "lodash"],
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "noErrorTruncation": true
   },
   "compileOnSave": true,
   "include": [

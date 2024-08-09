@@ -17,6 +17,7 @@
     "@langchain/openai": "^0.2.5",
     "@langchain/pinecone": "^0.0.8",
     "@pinecone-database/pinecone": "^3.0.0",
+    "@types/cors": "^2.8.17",
     "axios": "^1.7.2",
     "cors": "^2.8.5",
     "express-rate-limit": "^7.3.1",

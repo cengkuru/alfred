@@ -8,6 +8,9 @@ import {https, logger} from "firebase-functions";
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import * as natural from 'natural';
 import * as zlib from 'zlib';
+import {firestore} from "firebase-admin";
+import DocumentData = firestore.DocumentData;
+import {VectorizationStatus, VectorizationTask} from "./models/vectorization-task.model";
 
 // Initialize Firebase Admin SDK if not already done
 if (!admin.apps.length) {
@@ -24,7 +27,26 @@ const pinecone = new Pinecone({
   apiKey: PINECONE_API_KEY,
 });
 
-const BATCH_SIZE = 100;
+const CHUNK_SIZE = 1000; // Adjust based on your needs
+const BATCH_SIZE = 5; // Reduced batch size
+const MAX_RETRIES = 5;
+const INITIAL_BACKOFF = 1000; // 1 second
+
+interface ChunkData {
+  text: string;
+  metadata: any;
+}
+
+interface DocumentWithSummaries extends DocumentData {
+  text: string;
+  summaries?: {
+    brief: string;
+    medium: string;
+    detailed: string;
+  };
+}
+
+
 
 const embeddings = new OpenAIEmbeddings({ openAIApiKey: OPENAI_API_KEY });
 
@@ -111,96 +133,109 @@ interface Message {
 
 const ANTHROPIC_API_KEY = functions.config().anthropic.apikey;
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages';
-const CHUNK_SIZE = 4000; // Adjust based on Claude's token limit
 
 
-async function performKeywordSearch(query: string): Promise<SearchResult[]> {
-  console.log('Starting keyword search for query:', query);
+async function performKeywordSearch(expandedQuery: string): Promise<SearchResult[]> {
+  console.log('Starting improved keyword search for query:', expandedQuery);
 
   try {
-    // Fetch documents from Firestore
-    const allDocuments = await admin.firestore().collection('documents').get();
+    const results: SearchResult[] = [];
 
-    const documents = allDocuments.docs.map(doc => {
-      const data = doc.data();
-      return {
-        id: doc.id,
-        text: data.text ? decompressData(Buffer.from(data.text, 'base64')) : '',
-        summaries: {
-          brief: data.summaries?.brief ? decompressData(Buffer.from(data.summaries.brief, 'base64')) : '',
-          medium: data.summaries?.medium ? decompressData(Buffer.from(data.summaries.medium, 'base64')) : '',
-          detailed: data.summaries?.detailed ? decompressData(Buffer.from(data.summaries.detailed, 'base64')) : ''
-        }
-      };
+    // 1. Search in documents collection
+    const documentsSnapshot = await admin.firestore()
+        .collection('documents')
+        .where('processed', '==', true)
+        .get();
+
+    // 2. Search in vectorizationTasks collection
+    const tasksSnapshot = await admin.firestore()
+        .collection('vectorizationTasks')
+        .where('status', '==', VectorizationStatus.COMPLETED)
+        .get();
+
+    // Combine both document sources
+    const allDocuments = [
+      ...documentsSnapshot.docs.map(doc => ({ id: doc.id, data: doc.data() as DocumentWithSummaries, type: 'document' as const })),
+      ...tasksSnapshot.docs.map(doc => ({ id: doc.id, data: doc.data() as VectorizationTask, type: 'task' as const }))
+    ];
+
+    // Create TF-IDF model
+    const TfIdf = natural.TfIdf;
+    const tfidf = new TfIdf();
+
+    // Add documents to TF-IDF model
+    allDocuments.forEach((doc, index) => {
+      let content = '';
+      if (doc.type === 'document') {
+        content = [
+          decompressData(doc.data.text),
+          decompressData(doc.data.summaries?.brief),
+          decompressData(doc.data.summaries?.medium),
+          decompressData(doc.data.summaries?.detailed)
+        ].filter(Boolean).join(' ');
+      } else if (doc.type === 'task') {
+        content = doc.data.texts.join(' ') + JSON.stringify(doc.data.metadata);
+      }
+      tfidf.addDocument(content);
     });
 
-    console.log(`Retrieved ${documents.length} documents for keyword search`);
+    // Perform search
+    const tokenizer = new natural.WordTokenizer();
+    const queryTokens = tokenizer.tokenize(expandedQuery.toLowerCase());
 
-    // Perform keyword search on full text and summaries
-    const keywordResults = keywordSearch(query, documents.map(doc =>
-        `${doc.text} ${doc.summaries.brief} ${doc.summaries.medium} ${doc.summaries.detailed}`
-    ));
+    const scores = allDocuments.map((_, index) => {
+      return queryTokens.reduce((score, token) => score + tfidf.tfidf(token, index), 0);
+    });
 
-    console.log(`Keyword search returned ${keywordResults.length} results`);
+    // Sort and select top results
+    const topResults = scores
+        .map((score, index) => ({ score, index }))
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 10);  // Adjust number of results as needed
 
-    return keywordResults.map(result => {
-      const document = documents.find(doc =>
-          result.includes(doc.text) ||
-          result.includes(doc.summaries.brief) ||
-          result.includes(doc.summaries.medium) ||
-          result.includes(doc.summaries.detailed)
-      );
-      if (!document) {
-        console.warn('No matching document found for keyword result');
-        return null;
+    // Process results
+    for (const result of topResults) {
+      const doc = allDocuments[result.index];
+      let searchResult: SearchResult;
+
+      if (doc.type === 'document') {
+        searchResult = {
+          text: decompressData(doc.data.text),
+          score: result.score,
+          documentId: doc.id,
+          chunkIndex: 0,
+          summaries: {
+            brief: decompressData(doc.data.summaries?.brief) || '',
+            medium: decompressData(doc.data.summaries?.medium) || '',
+            detailed: decompressData(doc.data.summaries?.detailed) || ''
+          }
+        };
+      } else {
+        // For vectorizationTasks, we'll use the first text as the main content
+        searchResult = {
+          text: doc.data.texts[0] || '',
+          score: result.score,
+          documentId: doc.id,
+          chunkIndex: doc.data.batchIndex || 0,
+          summaries: {
+            brief: JSON.stringify(doc.data.metadata),
+            medium: doc.data.texts.join(' ').substring(0, 500),
+            detailed: doc.data.texts.join(' ')
+          }
+        };
       }
-      return {
-        text: result,
-        score: 1, // Default score for keyword results
-        documentId: document.id,
-        chunkIndex: 0, // Assuming each document is a single chunk for keyword search
-        summaries: document.summaries
-      };
-    }).filter((result): result is SearchResult => result !== null);
+
+      results.push(searchResult);
+    }
+
+    return results;
   } catch (error) {
-    console.error('Error in performKeywordSearch:', error);
+    console.error('Error in improved keyword search:', error);
     return [];
   }
 }
+
 // Helper function for keyword search
-function keywordSearch(query: string, documents: string[]): string[] {
-  console.log(`Performing keyword search with query: "${query}" on ${documents.length} documents`);
-
-  const validDocuments = documents.filter(doc => typeof doc === 'string' && doc.trim() !== '');
-
-  if (validDocuments.length === 0) {
-    console.warn('No valid documents for keyword search');
-    return [];
-  }
-
-  const TfIdf = natural.TfIdf;
-  const tfidf = new TfIdf();
-
-  validDocuments.forEach(doc => tfidf.addDocument(doc));
-
-  const tokenizer = new natural.WordTokenizer();
-  const queryTokens = tokenizer.tokenize(query.toLowerCase());
-
-  const scores = validDocuments.map((_, index) => {
-    return queryTokens.reduce((score, token) => {
-      return score + tfidf.tfidf(token, index);
-    }, 0);
-  });
-
-  const results = scores
-      .map((score, index) => ({ score, index }))
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 5)
-      .map(item => validDocuments[item.index]);
-
-  console.log(`Keyword search returned ${results.length} results`);
-  return results;
-}
 
 // Updated hybridSearch function
 export async function hybridSearch(query: string, conversationHistory: ConversationHistory): Promise<SearchResult[]> {
@@ -212,7 +247,7 @@ export async function hybridSearch(query: string, conversationHistory: Conversat
     const vectorResults = await performVectorSearch(query);
     console.log('Vector search results:', vectorResults.length);
 
-    // Perform keyword search
+    // Perform keyword search using the new performKeywordSearch function
     console.log('Performing keyword search');
     const keywordResults = await performKeywordSearch(query);
     console.log('Keyword search results:', keywordResults.length);
@@ -236,7 +271,6 @@ export async function hybridSearch(query: string, conversationHistory: Conversat
     return [];
   }
 }
-
 
 async function expandQuery(question: string, conversationHistory: ConversationHistory): Promise<string> {
   const recentMessages = conversationHistory.messages.slice(-5).map(m => m.content).join(' ');
@@ -626,10 +660,6 @@ export const clearConversationHistory = functions.https.onCall(async (data, cont
 });
 
 
-
-
-// Contextual questions
-// Cloud Function (add to your existing functions file)
 export const getContextualQuestions = functions.https.onCall(async (data, context) => {
   try {
     const prompt = `You are Alfred, an AI assistant specializing in Infrastructure Transparency and the Construction Sector Transparency Initiative (CoST). Your purpose is to help users understand and implement transparency in infrastructure projects.
@@ -690,118 +720,105 @@ Generate the questions now:`;
 
 
 
-
-
-
-
-
-
-
-
-
-interface VectorizationState {
-  totalItems: number;
-  processedItems: number;
-  continuationToken: string | null;
-}
-
-
-function sanitizeText(text: string): string {
-  return text.replace(/[\uFFFD\uFFFE\uFFFF]/g, '')
-      .replace(/[\u0000-\u001F\u007F-\u009F]/g, '')
-      .normalize('NFKD')
-      .replace(/[^\x20-\x7E]/g, '');
-}
-
-function sanitizeMetadata(metadata: Record<string, any>): Record<string, string | number | boolean | string[]> {
-  const sanitized: Record<string, string | number | boolean | string[]> = {};
-  for (const [key, value] of Object.entries(metadata)) {
-    if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
-      sanitized[key] = value;
-    } else if (Array.isArray(value) && value.every(item => typeof item === 'string')) {
-      sanitized[key] = value;
-    } else if (typeof value === 'object' && value !== null) {
-      sanitized[key] = JSON.stringify(value);
-    }
-  }
-  return sanitized;
-}
-
-
-async function processChunk(chunk: TextItem, index: any, indexDimension: number): Promise<void> {
-  const sanitizedText = sanitizeText(chunk.text);
-  if (sanitizedText.length === 0) {
-    console.warn('Text chunk was empty after sanitization');
-    return;
-  }
-  const embedding = await embeddings.embedQuery(sanitizedText);
-  if (embedding.length !== indexDimension) {
-    throw new Error(`Generated embedding dimension (${embedding.length}) does not match index dimension (${indexDimension})`);
-  }
-  const sanitizedMetadata = sanitizeMetadata(chunk.metadata);
-  await index.upsert([{
-    id: `doc-${Date.now()}-${chunk.metadata.startIndex || ''}`,
-    values: embedding,
-    metadata: {
-      ...sanitizedMetadata,
-      text: sanitizedText.slice(0, 1000),
-      timestamp: new Date().toISOString(),
-    },
-  }]);
-}
 export const startVectorization = functions
     .runWith({
       timeoutSeconds: 540,
       memory: '2GB'
     })
-    .https.onCall(async (data: { texts: TextItem[], state: VectorizationState }, context) => {
+    .https.onCall(async (data: { documentId: string, text: string }, context) => {
+      const { documentId, text } = data;
+
       try {
-        functions.logger.info('Function started with data:', JSON.stringify(data, null, 2));
+        // Step 1: Create document chunks
+        const splitter = new RecursiveCharacterTextSplitter({
+          chunkSize: CHUNK_SIZE,
+          chunkOverlap: 200,
+        });
+        const chunks = await splitter.splitText(text);
 
-        if (!Array.isArray(data.texts) || data.texts.length === 0) {
-          throw new functions.https.HttpsError('invalid-argument', 'The function must be called with a non-empty "texts" array.');
+        // Step 2: Create a vectorization task
+        const taskRef = await admin.firestore().collection('vectorizationTasks').add({
+          documentId,
+          status: 'processing',
+          progress: 0,
+          createdAt: admin.firestore.FieldValue.serverTimestamp(),
+          updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+          totalChunks: chunks.length,
+          processedChunks: 0,
+        });
+
+        // Step 3: Process chunks in batches
+        for (let i = 0; i < chunks.length; i += BATCH_SIZE) {
+          const batch = chunks.slice(i, i + BATCH_SIZE);
+          await processChunkBatch(taskRef.id, documentId, batch, i);
         }
 
-        const index = pinecone.Index(PINECONE_INDEX_NAME);
-        const indexDescription = await index.describeIndexStats();
-        const indexDimension = indexDescription.dimension;
+        // Step 4: Update task status to completed
+        await taskRef.update({
+          status: 'completed',
+          progress: 100,
+          updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+        });
 
-        if (!indexDimension) {
-          throw new Error('Could not determine index dimension');
-        }
-
-        let state: VectorizationState = data.state;
-
-        for (const chunk of data.texts) {
-          await processChunk(chunk, index, indexDimension);
-          state.processedItems++;
-
-          // Update progress periodically (e.g., every 10 chunks)
-          if (state.processedItems % 10 === 0) {
-            await updateProgress(state.processedItems, state.totalItems);
-          }
-        }
-
-        // Final progress update
-        await updateProgress(state.processedItems, state.totalItems);
-
-        return {
-          success: true,
-          message: `Processed all ${state.totalItems} items`,
-          state: state
-        };
-
+        return { success: true, message: 'Vectorization process started', taskId: taskRef.id };
       } catch (error) {
-        functions.logger.error('Detailed error in startVectorization:', error);
-        if (error instanceof functions.https.HttpsError) {
-          throw error;
-        } else if (error instanceof Error) {
-          throw new functions.https.HttpsError('internal', `Vectorization failed: ${error.message}`);
-        } else {
-          throw new functions.https.HttpsError('internal', 'Vectorization failed: Unknown error');
-        }
+        console.error('Error in startVectorization:', error);
+        throw new functions.https.HttpsError('internal', 'Vectorization process failed to start');
       }
     });
+
+async function processChunkBatch(taskId: string, documentId: string, chunks: string[], startIndex: number) {
+  const chunkData: ChunkData[] = chunks.map((chunk, index) => ({
+    text: chunk,
+    metadata: {
+      documentId,
+      chunkIndex: startIndex + index,
+      // Add any other metadata extraction logic here
+    },
+  }));
+
+  const index = pinecone.Index(PINECONE_INDEX_NAME);
+
+  for (const chunk of chunkData) {
+    await retryWithBackoff(async () => {
+      const [embedding] = await embeddings.embedDocuments([chunk.text]);
+      await index.upsert([{
+        id: `${documentId}-${chunk.metadata.chunkIndex}`,
+        values: embedding,
+        metadata: chunk.metadata,
+      }]);
+    });
+
+    // Update progress
+    await admin.firestore().collection('vectorizationTasks').doc(taskId).update({
+      processedChunks: admin.firestore.FieldValue.increment(1),
+      progress: admin.firestore.FieldValue.increment(100 / chunks.length),
+      updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+    });
+  }
+}
+
+async function retryWithBackoff<T>(operation: () => Promise<T>): Promise<T> {
+  let retries = 0;
+  while (retries < MAX_RETRIES) {
+    try {
+      return await operation();
+    } catch (error: unknown) {
+      if (retries === MAX_RETRIES - 1) throw error;
+      if (axios.isAxiosError(error) && error.response?.status === 429) {
+        const delay = INITIAL_BACKOFF * Math.pow(2, retries);
+        console.log(`Rate limited. Retrying in ${delay}ms...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        retries++;
+      } else {
+        throw error;
+      }
+    }
+  }
+  throw new Error('Max retries reached');
+}
+
+
 export const getVectorizationProgress = functions.https.onCall(async (data, context) => {
   const progressDoc = await admin.firestore().collection('vectorizationProgress').doc('current').get();
   if (!progressDoc.exists) {
@@ -880,6 +897,71 @@ export const provideFeedback = https.onCall(async (data, context) => {
   }
 });
 
+export const reprocessFailedAndPendingTasks = functions
+    .runWith({
+      timeoutSeconds: 540,
+      memory: '2GB'
+    })
+    .https.onCall(async (data, context) => {
+      try {
+        const tasksSnapshot = await admin.firestore().collection('vectorizationTasks')
+            .where('status', 'in', [VectorizationStatus.FAILED, VectorizationStatus.PENDING])
+            .get();
+
+        if (tasksSnapshot.empty) {
+          console.log('No failed or pending tasks found.');
+          return { success: true, message: 'No tasks to reprocess' };
+        }
+
+        const taskUpdates = tasksSnapshot.docs.map(async (doc) => {
+          const task = doc.data() as VectorizationTask;
+          console.log(`Reprocessing task ${doc.id} with status ${task.status}`);
+
+          try {
+            // Reprocess the task
+            await processVectorizationTask(task);
+
+            // Update task status to completed
+            await doc.ref.update({
+              status: VectorizationStatus.COMPLETED,
+              progress: 100,
+              updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+            });
+
+            console.log(`Successfully reprocessed task ${doc.id}`);
+            return { taskId: doc.id, success: true };
+          } catch (error) {
+            console.error(`Error reprocessing task ${doc.id}:`, error);
+            await doc.ref.update({
+              status: VectorizationStatus.FAILED,
+              updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+              error: JSON.stringify(error),
+            });
+            return { taskId: doc.id, success: false, error: JSON.stringify(error) };
+          }
+        });
+
+        const results = await Promise.all(taskUpdates);
+        const successCount = results.filter(r => r.success).length;
+        const failCount = results.length - successCount;
+
+        return {
+          success: true,
+          message: `Reprocessed ${results.length} tasks. ${successCount} succeeded, ${failCount} failed.`,
+          results: results
+        };
+      } catch (error) {
+        console.error('Error in reprocessFailedAndPendingTasks:', error);
+        throw new functions.https.HttpsError('internal', 'Failed to reprocess tasks. Please try again.');
+      }
+    });
+
+async function processVectorizationTask(task: VectorizationTask): Promise<void> {
+  for (let i = 0; i < task.texts.length; i += BATCH_SIZE) {
+    const batch = task.texts.slice(i, i + BATCH_SIZE);
+    await processChunkBatch(task.id, task.id, batch, i);
+  }
+}
 
 
 
@@ -1003,30 +1085,6 @@ function decompressData(data: string | Buffer | undefined | null): string {
 }
 
 
-// Updated processDocument function
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
-async function retryWithBackoff<T>(
-    operation: () => Promise<T>,
-    retries = 5,
-    baseDelay = 1000
-): Promise<T> {
-  for (let i = 0; i < retries; i++) {
-    try {
-      return await operation();
-    } catch (error) {
-      if (i === retries - 1) throw error;
-      if (axios.isAxiosError(error) && error.response?.status === 429) {
-        const waitTime = baseDelay * Math.pow(2, i);
-        console.log(`Rate limited. Retrying in ${waitTime}ms...`);
-        await delay(waitTime);
-      } else {
-        throw error;
-      }
-    }
-  }
-  throw new Error('Max retries reached');
-}
 
 export const processDocument = functions.runWith({
   timeoutSeconds: 540,
@@ -1110,4 +1168,5 @@ export const processDocument = functions.runWith({
     throw new functions.https.HttpsError('internal', 'Document processing failed. Please try again.');
   }
 });
+
 
